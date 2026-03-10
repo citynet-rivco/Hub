@@ -100,7 +100,7 @@ button { font-family: var(--font-body); }
 .header--scrolled { box-shadow: 0 2px 20px rgba(10,22,40,0.06); }
 .header__inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
 .logo { display: flex; align-items: center; gap: 12px; cursor: pointer; }
-.logo__mark { width: 36px; height: 36px; background: var(--ink); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: var(--white); font-family: var(--font-display); font-weight: 600; font-size: 14px; letter-spacing: -0.02em; }
+.logo__mark { width: 36px; height: 36px; background: transparent; display: flex; align-items: center; justify-content: center; }
 .logo__text { font-family: var(--font-display); font-size: var(--size-lg); font-weight: 600; color: var(--ink); letter-spacing: -0.02em; }
 .logo__text span { color: var(--text-tertiary); font-weight: 400; margin-left: 2px; font-size: var(--size-sm); }
 
@@ -222,9 +222,10 @@ nav a.active { color: var(--accent); background: var(--accent-pale); }
 .cm-card:nth-child(11n+11) .cm-card__avatar { background: #3d5a6b; }
 .cm-card__name { font-family: var(--font-display); font-size: var(--size-base); font-weight: 600; color: var(--ink); line-height: 1.3; }
 .cm-card__role { font-size: var(--size-xs); color: var(--text-tertiary); margin-top: 2px; }
-.cm-card__email { display: flex; align-items: center; gap: 8px; font-size: var(--size-xs); color: var(--text-secondary); padding: 8px 0; border-top: 1px solid var(--border-light); transition: color var(--dur-fast); }
-.cm-card__email:hover { color: var(--accent); }
-.cm-card__email svg { width: 14px; height: 14px; opacity: 0.4; flex-shrink: 0; }
+.cm-card__contacts { padding: 8px 0; border-top: 1px solid var(--border-light); display: flex; flex-direction: column; gap: 4px; }
+.cm-card__contact { display: flex; align-items: center; gap: 8px; font-size: var(--size-xs); color: var(--text-secondary); transition: color var(--dur-fast); }
+.cm-card__contact:hover { color: var(--accent); }
+.cm-card__contact svg { width: 14px; height: 14px; opacity: 0.4; flex-shrink: 0; }
 .cm-card__actions { display: flex; gap: 6px; margin-top: var(--space-sm); }
 .cm-card__btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 5px; padding: 8px 12px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; border: none; border-radius: var(--radius-sm); cursor: pointer; transition: all var(--dur-fast); }
 .cm-card__btn svg { width: 12px; height: 12px; }
@@ -327,7 +328,7 @@ nav a.active { color: var(--accent); background: var(--accent-pale); }
 /* ════════════════════════════════════════════════════
    HOUSING PAGE
    ════════════════════════════════════════════════════ */
-.housing-tabs { display: flex; gap: 4px; margin-bottom: var(--space-xl); border-bottom: 2px solid var(--border-light); padding-bottom: 0; }
+.housing-tabs { display: flex; gap: 4px; margin-bottom: var(--space-xl); border-bottom: 2px solid var(--border-light); padding-bottom: 0; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; }
 .housing-tab { padding: 10px 20px; font-size: var(--size-sm); font-weight: 600; color: var(--text-tertiary); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all var(--dur-fast); background: none; border-top: none; border-left: none; border-right: none; }
 .housing-tab:hover { color: var(--text-primary); }
 .housing-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
@@ -342,6 +343,7 @@ nav a.active { color: var(--accent); background: var(--accent-pale); }
 .housing-card--emergency::before { background: var(--signal-red); }
 .housing-card--transitional::before { background: var(--signal-purple); }
 .housing-card--affordable::before { background: var(--signal-green); }
+.housing-card--team::before { background: var(--gold); }
 .housing-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
 
 .housing-card__badge { display: inline-flex; align-items: center; gap: 4px; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 3px 8px; border-radius: 100px; margin-bottom: var(--space-sm); }
@@ -349,6 +351,7 @@ nav a.active { color: var(--accent); background: var(--accent-pale); }
 .housing-card__badge--transitional { background: var(--signal-purple-pale); color: var(--signal-purple); }
 .housing-card__badge--affordable { background: var(--signal-green-pale); color: var(--signal-green); }
 .housing-card__badge--special { background: var(--gold-pale); color: var(--gold); }
+.housing-card__badge--team { background: var(--gold-pale); color: var(--gold); }
 
 .housing-card__name { font-family: var(--font-display); font-size: var(--size-base); font-weight: 600; color: var(--ink); line-height: 1.3; margin-bottom: var(--space-xs); }
 .housing-card__pop { font-size: var(--size-xs); color: var(--accent); font-weight: 500; font-style: italic; margin-bottom: var(--space-sm); }
@@ -424,7 +427,7 @@ nav a.active { color: var(--accent); background: var(--accent-pale); }
   <div class="container topbar__inner">
     <div class="topbar__label">
       <span class="topbar__dot"></span>
-      An official resource of City Net Homeless Services - Riverside County
+      An official resource of City Net Homeless Services
     </div>
     <div class="topbar__right">
       <span>Outreach Hotline: (951) 390-3567</span>
@@ -436,7 +439,13 @@ nav a.active { color: var(--accent); background: var(--accent-pale); }
 <header class="header" id="header">
   <div class="container header__inner">
     <div class="logo" onclick="navigate('home')">
-      <div class="logo__mark">CN</div>
+      <div class="logo__mark">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%;">
+          <rect width="48" height="48" rx="8" fill="var(--ink)"/>
+          <path d="M24 11L37 21V35H29V25H19V35H11V21L24 11Z" fill="var(--white)"/>
+          <circle cx="24" cy="31" r="5" fill="var(--accent-light)"/>
+        </svg>
+      </div>
       <div class="logo__text">City Net <span>| Client Hub</span></div>
     </div>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" onclick="document.getElementById('mainNav').classList.toggle('open')">
@@ -446,6 +455,8 @@ nav a.active { color: var(--accent); background: var(--accent-pale); }
       <a onclick="navigate('home')" data-page="home" class="active">Home</a>
       <a onclick="navigate('employment')" data-page="employment">Employment</a>
       <a onclick="navigate('housing')" data-page="housing">Housing</a>
+      <a onclick="navigate('healthcare')" data-page="healthcare">Healthcare</a>
+      <a onclick="navigate('resources')" data-page="resources">Resources</a>
       <a onclick="navigate('home','team-section')" data-page="team">Case Managers</a>
       <a href="tel:9513903567" class="nav-cta">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:14px;height:14px"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -518,7 +529,7 @@ nav a.active { color: var(--accent); background: var(--accent-pale); }
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           </div>
           <h3 class="hub-card__title">Case Managers</h3>
-          <p class="hub-card__desc">Find your assigned case manager and reach out directly via email. Your team is here to guide you through every step.</p>
+          <p class="hub-card__desc">Find your assigned case manager and reach out directly via email or phone. Your team is here to guide you through every step.</p>
           <span class="hub-card__link">Meet your team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </div>
       </div>
@@ -687,15 +698,95 @@ nav a.active { color: var(--accent); background: var(--accent-pale); }
   </section>
 </div>
 
+<div class="page" id="page-healthcare">
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero__breadcrumb">
+        <a onclick="navigate('home')">Home</a>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        Healthcare Resources
+      </div>
+      <h1 class="page-hero__title">Health <em>Care</em></h1>
+      <p class="page-hero__desc">Access trusted medical clinics, behavioral health support, and specialized care programs. Navigating health systems can be complex, so connect with these providers to establish stable care.</p>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="container">
+      <div class="stats__grid">
+        <div class="stat"><div class="stat__number">17</div><div class="stat__divider"></div><div class="stat__label">Care Providers</div></div>
+        <div class="stat"><div class="stat__number">4</div><div class="stat__divider"></div><div class="stat__label">Care Categories</div></div>
+        <div class="stat"><div class="stat__number">6+</div><div class="stat__divider"></div><div class="stat__label">Cities Served</div></div>
+        <div class="stat"><div class="stat__number">IEHP</div><div class="stat__divider"></div><div class="stat__label">Medi-Cal Support</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="housing-tabs" id="hcTabs">
+        <button class="housing-tab active" data-tab="medical">Medical & Clinics</button>
+        <button class="housing-tab" data-tab="behavioral">Mental Health & Recovery</button>
+        <button class="housing-tab" data-tab="specialty">Specialty Care</button>
+        <button class="housing-tab" data-tab="legal">Social & Legal Services</button>
+      </div>
+      <div id="hcPanels"></div>
+    </div>
+  </section>
+</div>
+
+<div class="page" id="page-resources">
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero__breadcrumb">
+        <a onclick="navigate('home')">Home</a>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        Additional Resources
+      </div>
+      <h1 class="page-hero__title">Additional <em>Resources</em></h1>
+      <p class="page-hero__desc">Find essential community support networks ranging from local food pantries and clothing distribution, to educational scholarships and pet care.</p>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="container">
+      <div class="stats__grid">
+        <div class="stat"><div class="stat__number">19</div><div class="stat__divider"></div><div class="stat__label">Community Partners</div></div>
+        <div class="stat"><div class="stat__number">4</div><div class="stat__divider"></div><div class="stat__label">Support Types</div></div>
+        <div class="stat"><div class="stat__number">10</div><div class="stat__divider"></div><div class="stat__label">Food Pantries</div></div>
+        <div class="stat"><div class="stat__number">Free</div><div class="stat__divider"></div><div class="stat__label">Access</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="housing-tabs" id="resTabs">
+        <button class="housing-tab active" data-tab="food">Food Pantries</button>
+        <button class="housing-tab" data-tab="basic">Basic Needs</button>
+        <button class="housing-tab" data-tab="education">Education</button>
+        <button class="housing-tab" data-tab="animals">Animal Care</button>
+      </div>
+      <div id="resPanels"></div>
+    </div>
+  </section>
+</div>
+
 <footer class="footer">
   <div class="container">
     <div class="footer__top">
       <div>
         <div class="logo" onclick="navigate('home')">
-          <div class="logo__mark">CN</div>
+          <div class="logo__mark">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%;">
+              <rect width="48" height="48" rx="8" fill="var(--ink)"/>
+              <path d="M24 11L37 21V35H29V25H19V35H11V21L24 11Z" fill="var(--white)"/>
+              <circle cx="24" cy="31" r="5" fill="var(--accent-light)"/>
+            </svg>
+          </div>
           <div class="logo__text">City Net</div>
         </div>
-        <p class="footer__desc">Connecting our neighbors experiencing homelessness to transformative care and housing solutions across Southern California.</p>
+        <p class="footer__desc">Connecting our neighbors experiencing homelessness to transformative care and housing solutions.</p>
       </div>
       <div>
         <h4 class="footer__col-title">Navigate</h4>
@@ -703,11 +794,13 @@ nav a.active { color: var(--accent); background: var(--accent-pale); }
           <a onclick="navigate('home')">Home</a>
           <a onclick="navigate('employment')">Employment</a>
           <a onclick="navigate('housing')">Housing Resources</a>
+          <a onclick="navigate('healthcare')">Healthcare</a>
+          <a onclick="navigate('resources')">Resources</a>
           <a onclick="navigate('home','team-section')">Case Managers</a>
         </div>
       </div>
       <div>
-        <h4 class="footer__col-title">Resources</h4>
+        <h4 class="footer__col-title">Quick Links</h4>
         <div class="footer__links">
           <a href="https://www.caljobs.ca.gov" target="_blank">CalJOBS</a>
           <a href="https://rivcoworkforce.org/job-seeker" target="_blank">Workforce Dev Center</a>
@@ -838,6 +931,65 @@ const housingData = {
   ]
 };
 
+const healthcareData = {
+  medical: [
+    { name: "Loma Linda University Medical Center", phone: "951-290-4000", website: "https://lluh.org/locations/loma-linda-university-medical-center-murrieta", address: "28062 Baxter Road, Murrieta, CA", special: "Emergency Room (IEHP)" },
+    { name: "Rancho Springs Medical Center", phone: "951-696-6000", website: "https://www.swhranchosprings.com/", address: "25500 Medical Center Drive, Murrieta, CA", special: "Emergency Room (IEHP)" },
+    { name: "Healthcare in Action", phone: "909-970-5860", website: "https://www.healthcareinaction.org/", address: "Riverside County", special: "Street Medicine" },
+    { name: "Planned Parenthood", phone: "888-743-7526", website: "https://www.plannedparenthood.org/health-center/california/murrieta/92562/murrieta-health-center-10002-9011025", address: "25130 Hancock Avenue, Suite 100, Murrieta, CA", special: "Sexual Health" },
+  ],
+  behavioral: [
+    { name: "Healthcare in Action", phone: "909-970-5860", website: "https://forms.gle/xxSdqjXi7BML1LsZ8", address: "Riverside County", special: "Mental Health" },
+    { name: "Riverside University Health System", phone: "800-499-3008", website: "https://www.ruhealth.org/behavioral-health", address: "Riverside County", special: "Behavioral Health" },
+    { name: "Renewing Hope Family Counseling Center", phone: "951-465-3664", email: "office@renewing-hope.org", website: "https://www.renewinghopeinc.com/", address: "24910 Las Brisas Road, Unit 117, Murrieta, CA", special: "IEHP Provider" },
+    { name: "Temecula Valley Comprehensive Treatment", phone: "855-553-2363", website: "https://www.ctcprograms.com/", address: "40700 California Oaks Road, Suite 202, Murrieta, CA", special: "Opioid Treatment" },
+    { name: "Hill Alcohol & Drug Treatment", phone: "951-719-3685", email: "info@hillrecovery.com", website: "https://hillrecovery.com/treatment-center/", address: "41877 Enterprise Circle N, Suite 100, Temecula, CA", special: "Substance Use" },
+    { name: "TruEvolution - Behavioral Health", phone: "951-888-1346", email: "support@truevolution.org", website: "https://www.truevolution.org/behavioral-health", address: "3838 Brockton Avenue, Riverside, CA", special: "LGBTQIA+ Affirmative" },
+  ],
+  specialty: [
+    { name: "Autism Society Inland Empire", phone: "951-220-6922", email: "info@ieautism.org", website: "https://ieautism.org/", address: "420 N McKinley, Suite 111-118, Corona CA", special: "Autism Services" },
+    { name: "TruEvolution - Sexual Health", phone: "951-888-1346", email: "care@truevolution.org", website: "https://www.truevolution.org/case-management", address: "3838 Brockton Avenue, Riverside, CA", special: "HIV Testing & PrEP" },
+    { name: "Riverside County DPSS - IHSS", phone: "888-960-4477", website: "http://www.RiversideIHSS.org", address: "561 N San Jacinto Street, Hemet, CA", special: "Elderly & Dependent Care" },
+  ],
+  legal: [
+    { name: "Community Connect", phone: "211", address: "Riverside County", special: "General Referrals" },
+    { name: "Riverside County DPSS", phone: "877-410-8827", email: "DPSSComm@rivco.org", website: "https://rivcodpss.org/", address: "43264 Business Park Drive Suite 102, Temecula, CA", special: "Public Benefits" },
+    { name: "Riverside Legal Aid", phone: "951-682-7968", email: "info@riversidelegalaid.org", website: "https://riversidelegalaid.org", address: "4129 Main Street, Suite 101, Riverside, CA", special: "Family Law & More" },
+    { name: "Riverside Legal Aid - Eviction Defense", phone: "951-888-2039", email: "info@riversidelegalaid.org", website: "https://riversidelegalaid.org/unsafe-housing-tenant-rights/", address: "Remote", special: "Eviction Defense" },
+    { name: "Inland Coalition for Immigrant Justice", phone: "909-474-9996", email: "info@ic4ij.org", website: "https://ic4ij.org/", address: "2441 N Sierra Way, San Bernardino, CA", special: "Immigration Legal Support" },
+  ]
+};
+
+const resourcesData = {
+  food: [
+    { name: "Community Food Pantry of Murrieta", phone: "951-677-6347", website: "https://communityoutreachofmurrieta.com/pantry-hours", address: "39493 Los Alamos Road, Suite A, Murrieta, CA" },
+    { name: "The Salvation Army", phone: "951-677-1324", website: "https://murrieta.salvationarmy.org", address: "40270 Los Alamos Road, Murrieta, CA" },
+    { name: "Aspire to Inspire", phone: "951-457-2712", address: "29930 Hunter Road, Murrieta, CA" },
+    { name: "Greater Works Church", phone: "951-326-5295", website: "https://4greaterworks.org", address: "25823 Jefferson Avenue, Murrieta, CA" },
+    { name: "Murrieta United Methodist Church", phone: "951-677-6174", website: "https://murrietaumc.org/ministries/food-pantry/", address: "24652 Adams Avenue, Murrieta, CA" },
+    { name: "Gateway Church of the Nazarene", phone: "951-461-0221", website: "https://gatewaynaz.org/food-pantry", address: "23560 Jefferson Avenue, Murrieta, CA" },
+    { name: "The Bridge Church", phone: "951-600-9112", website: "https://thebridgechurch.tv", address: "38801 Calistoga Drive, Murrieta, CA" },
+    { name: "Menifee Valley Cupboard", phone: "951-301-4414", website: "https://mvcupboard.org", address: "26808 Cherry Hills Blvd, Menifee, CA" },
+    { name: "LGBTQ Community Center of the Desert", phone: "760-281-2616", website: "https://thecentercv.org/en/community-food-bank/", address: "2901 E Alejo Road, Palm Spring, CA", special: "Food Bank (Thurs 5-7PM)" },
+    { name: "Murrieta Senior Center", phone: "951-304-7275", website: "https://murrietaca.gov/facilities/facility/details/Senior-Center-7", address: "5 Town Square, Murrieta, CA", special: "Elderly Adults" },
+  ],
+  basic: [
+    { name: "St. Martha's 2nd Hand Treasures", phone: "951-677-0078", website: "https://communityoutreachofmurrieta.com/thrift-store", address: "39793 Avenida Acacias, Murrieta, CA", special: "Clothing" },
+    { name: "TruEvolution - IE LGBTQ+ Center", phone: "951-888-1346", email: "IELGBTQ@truevolution.org", website: "https://www.truevolution.org/ie-lgbtq-center", address: "3838 Brockton Avenue, Riverside, CA", special: "Basic Needs" },
+    { name: "Joshua Home", phone: "909-512-6767", email: "JoshuaHomeLGBTQ@gmail.com", website: "https://www.joshuahomelgbtq.org/the-center-jh", address: "306 West Hanna Street, Suite 500, Colton, CA", special: "LGBTQIA+ Youth" },
+    { name: "Transgender Health & Wellness Center", phone: "760-202-4308", email: "info@trans.health", website: "https://trans.health", address: "340 South Farrell Drive, Suite A208, Palm Springs, CA", special: "Food Vouchers" },
+    { name: "The LGBTQ Community Center", phone: "760-416-7790", email: "info@thecentercv.org", website: "https://thecentercv.org/en/", address: "1301 North Palm Canyon Drive, 3rd Floor, Palm Springs, CA", special: "Basic Needs" },
+  ],
+  education: [
+    { name: "Federal Student Aid (FAFSA)", phone: "800-433-3243", website: "https://studentaid.gov/h/apply-for-aid/fafsa", address: "Online", special: "Students" },
+    { name: "Arise Wellness Scholarship", phone: "951-581-4111", email: "arisewellnessstudio@gmail.com", address: "24710 Washington Avenue, Suite 4, Murrieta, CA", special: "Women's Wellness & Education" },
+  ],
+  animals: [
+    { name: "Animal Friends of the Valley", phone: "951-674-0618", website: "http://www.afv.org", address: "33751 Mission Trail, Wildomar, CA", special: "Shelter & Field Services" },
+    { name: "Hold My Leash (Brittany Aina)", phone: "858-761-3656", email: "Brittanyaina@care-villages.com", website: "https://www.care-villages.com/hold-my-leash", address: "Riverside County", special: "Pet Care" },
+  ]
+};
+
 /* ════════════════════════════════════════════════════
    NAVIGATION
    ════════════════════════════════════════════════════ */
@@ -876,10 +1028,16 @@ function renderCMs(list) {
         <div class="cm-card__avatar">${initials}</div>
         <div><div class="cm-card__name">${cm.name}</div><div class="cm-card__role">Case Manager</div></div>
       </div>
-      <a class="cm-card__email" href="mailto:${cm.email}">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        ${cm.email}
-      </a>
+      <div class="cm-card__contacts">
+        <a class="cm-card__contact" href="mailto:${cm.email}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          ${cm.email}
+        </a>
+        <a class="cm-card__contact" href="tel:${cm.phone.replace(/[^0-9]/g,'')}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg>
+          ${cm.phone}
+        </a>
+      </div>
       <div class="cm-card__actions">
         <a href="mailto:${cm.email}" class="cm-card__btn cm-card__btn--primary">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -989,8 +1147,86 @@ document.querySelectorAll('#housingTabs .housing-tab').forEach(tab => {
   tab.addEventListener('click', () => {
     document.querySelectorAll('#housingTabs .housing-tab').forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
-    document.querySelectorAll('.housing-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('#page-housing .housing-panel').forEach(p => p.classList.remove('active'));
     document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+  });
+});
+
+/* ════════════════════════════════════════════════════
+   HEALTHCARE RENDER
+   ════════════════════════════════════════════════════ */
+function renderHealthcare() {
+  const panels = document.getElementById('hcPanels');
+  let html = '';
+  const types = { medical: 'Medical & Clinics', behavioral: 'Mental Health & Recovery', specialty: 'Specialty Care', legal: 'Social & Legal' };
+  const colors = { medical: 'emergency', behavioral: 'transitional', specialty: 'team', legal: 'affordable' };
+
+  for (const [type, label] of Object.entries(types)) {
+    const items = healthcareData[type];
+    html += `<div class="housing-panel${type === 'medical' ? ' active' : ''}" id="hc-panel-${type}">
+      <div class="housing-grid">`;
+    items.forEach(h => {
+      html += `<div class="housing-card housing-card--${colors[type]}">`;
+      html += `<div class="housing-card__badge housing-card__badge--${h.special ? 'special' : colors[type]}">${h.special || label}</div>`;
+      html += `<div class="housing-card__name">${h.name}</div>`;
+      html += `<div class="housing-card__details">`;
+      if (h.address) html += `<div class="housing-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>${h.address}</div>`;
+      if (h.phone) html += `<div class="housing-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg><a href="tel:${h.phone.replace(/[^0-9]/g,'')}">${h.phone}</a></div>`;
+      if (h.email) html += `<div class="housing-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:${h.email}">${h.email}</a></div>`;
+      if (h.website) html += `<div class="housing-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><a href="${h.website}" target="_blank">Visit Website ↗</a></div>`;
+      html += '</div></div>';
+    });
+    html += '</div></div>';
+  }
+  panels.innerHTML = html;
+}
+renderHealthcare();
+
+document.querySelectorAll('#hcTabs .housing-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('#hcTabs .housing-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    document.querySelectorAll('#page-healthcare .housing-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('hc-panel-' + tab.dataset.tab).classList.add('active');
+  });
+});
+
+/* ════════════════════════════════════════════════════
+   RESOURCES RENDER
+   ════════════════════════════════════════════════════ */
+function renderResources() {
+  const panels = document.getElementById('resPanels');
+  let html = '';
+  const types = { food: 'Food Pantries', basic: 'Basic Needs', education: 'Education', animals: 'Animal Care' };
+  const colors = { food: 'affordable', basic: 'transitional', education: 'team', animals: 'emergency' };
+
+  for (const [type, label] of Object.entries(types)) {
+    const items = resourcesData[type];
+    html += `<div class="housing-panel${type === 'food' ? ' active' : ''}" id="res-panel-${type}">
+      <div class="housing-grid">`;
+    items.forEach(h => {
+      html += `<div class="housing-card housing-card--${colors[type]}">`;
+      html += `<div class="housing-card__badge housing-card__badge--${h.special ? 'special' : colors[type]}">${h.special || label}</div>`;
+      html += `<div class="housing-card__name">${h.name}</div>`;
+      html += `<div class="housing-card__details">`;
+      if (h.address) html += `<div class="housing-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>${h.address}</div>`;
+      if (h.phone) html += `<div class="housing-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg><a href="tel:${h.phone.replace(/[^0-9]/g,'')}">${h.phone}</a></div>`;
+      if (h.email) html += `<div class="housing-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:${h.email}">${h.email}</a></div>`;
+      if (h.website) html += `<div class="housing-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><a href="${h.website}" target="_blank">Visit Website ↗</a></div>`;
+      html += '</div></div>';
+    });
+    html += '</div></div>';
+  }
+  panels.innerHTML = html;
+}
+renderResources();
+
+document.querySelectorAll('#resTabs .housing-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('#resTabs .housing-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    document.querySelectorAll('#page-resources .housing-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('res-panel-' + tab.dataset.tab).classList.add('active');
   });
 });
 
