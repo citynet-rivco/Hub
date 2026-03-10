@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>City Net — Case Management Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&display=swap" rel="stylesheet">
+<style>
+/* ════════════════════════════════════════════════════
+   DESIGN TOKENS
+   ════════════════════════════════════════════════════ */
+:root {
+  --ink: #0a1628;
+  --ink-soft: #1b2a45;
+  --ink-muted: #3d5275;
+  --surface: #f6f4f0;
+  --surface-warm: #edeae4;
+  --surface-card: #ffffff;
+  --accent: #1a5f7a;
+  --accent-light: #2980a8;
+  --accent-pale: #e8f2f7;
+  --accent-dark: #134a5f;
+  --signal-green: #1a7a5f;
+  --signal-green-pale: #e8f7f2;
+  --signal-amber: #92400e;
+  --signal-amber-pale: #fffbeb;
+  --signal-red: #b91c1c;
+  --signal-red-pale: #fef2f2;
+  --signal-purple: #6b21a8;
+  --signal-purple-pale: #f5f3ff;
+  --gold: #c4930a;
+  --gold-pale: #fefce8;
+  --border: #d8d4cd;
+  --border-light: #e8e5df;
+  --text-primary: #0a1628;
+  --text-secondary: #4a5568;
+  --text-tertiary: #8896a7;
+  --white: #ffffff;
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'DM Sans', -apple-system, sans-serif;
+  --size-xs: 0.6875rem;
+  --size-sm: 0.8125rem;
+  --size-base: 0.9375rem;
+  --size-md: 1.0625rem;
+  --size-lg: 1.25rem;
+  --size-xl: 1.5rem;
+  --size-2xl: 2rem;
+  --size-3xl: 2.75rem;
+  --size-hero: clamp(2.5rem, 5vw, 4rem);
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 5.5rem;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --shadow-sm: 0 1px 3px rgba(10,22,40,0.04), 0 1px 2px rgba(10,22,40,0.06);
+  --shadow-md: 0 4px 16px rgba(10,22,40,0.06), 0 2px 6px rgba(10,22,40,0.04);
+  --shadow-lg: 0 12px 40px rgba(10,22,40,0.08), 0 4px 12px rgba(10,22,40,0.04);
+  --shadow-card-hover: 0 16px 48px rgba(10,22,40,0.1), 0 6px 16px rgba(10,22,40,0.05);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 200ms;
+  --dur-base: 350ms;
+}
+
+/* ════════════════════════════════════════════════════
+   RESET
+   ════════════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+body { font-family: var(--font-body); font-size: var(--size-base); color: var(--text-primary); background: var(--surface); line-height: 1.6; overflow-x: hidden; }
+::selection { background: var(--accent); color: var(--white); }
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font-family: var(--font-body); }
+
+.container { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 var(--space-xl); }
+
+/* ════════════════════════════════════════════════════
+   TOP BAR
+   ════════════════════════════════════════════════════ */
+.topbar { background: var(--ink); color: var(--white); padding: 7px 0; font-size: var(--size-xs); letter-spacing: 0.04em; position: relative; z-index: 100; }
+.topbar__inner { display: flex; align-items: center; justify-content: space-between; gap: var(--space-md); }
+.topbar__label { display: flex; align-items: center; gap: 8px; opacity: 0.8; }
+.topbar__dot { width: 6px; height: 6px; border-radius: 50%; background: var(--signal-green); box-shadow: 0 0 6px rgba(26,122,95,0.5); }
+.topbar__right { display: flex; gap: var(--space-lg); opacity: 0.6; }
+.topbar__right a:hover { opacity: 1; }
+
+/* ════════════════════════════════════════════════════
+   HEADER
+   ════════════════════════════════════════════════════ */
+.header { position: sticky; top: 0; z-index: 90; background: rgba(246,244,240,0.88); backdrop-filter: blur(20px) saturate(1.4); -webkit-backdrop-filter: blur(20px) saturate(1.4); border-bottom: 1px solid var(--border-light); transition: box-shadow var(--dur-base) var(--ease-out); }
+.header--scrolled { box-shadow: 0 2px 20px rgba(10,22,40,0.06); }
+.header__inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.logo { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+.logo__mark { width: 36px; height: 36px; background: var(--ink); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: var(--white); font-family: var(--font-display); font-weight: 600; font-size: 14px; letter-spacing: -0.02em; }
+.logo__text { font-family: var(--font-display); font-size: var(--size-lg); font-weight: 600; color: var(--ink); letter-spacing: -0.02em; }
+.logo__text span { color: var(--text-tertiary); font-weight: 400; margin-left: 2px; font-size: var(--size-sm); }
+
+nav { display: flex; align-items: center; gap: 2px; }
+nav a { padding: 8px 14px; font-size: var(--size-sm); font-weight: 500; color: var(--text-secondary); border-radius: var(--radius-sm); transition: all var(--dur-fast); letter-spacing: 0.01em; cursor: pointer; }
+nav a:hover { color: var(--text-primary); background: var(--surface-warm); }
+nav a.active { color: var(--accent); background: var(--accent-pale); }
+.nav-cta { margin-left: var(--space-sm); padding: 8px 20px !important; background: var(--ink) !important; color: var(--white) !important; border-radius: var(--radius-sm) !important; font-weight: 500 !important; }
+.nav-cta:hover { background: var(--ink-soft) !important; transform: translateY(-1px); box-shadow: var(--shadow-md); }
+
+.nav-toggle { display: none; background: none; border: none; width: 36px; height: 36px; cursor: pointer; }
+.nav-toggle span { display: block; width: 20px; height: 2px; background: var(--ink); margin: 0 auto; transition: all var(--dur-fast); }
+.nav-toggle span + span { margin-top: 5px; }
+
+/* ════════════════════════════════════════════════════
+   PAGE TRANSITIONS
+   ════════════════════════════════════════════════════ */
+.page { display: none; animation: pageFadeIn 0.45s var(--ease-out) both; }
+.page.active { display: block; }
+@keyframes pageFadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ════════════════════════════════════════════════════
+   HERO (HOME)
+   ════════════════════════════════════════════════════ */
+.hero { padding: var(--space-4xl) 0 var(--space-3xl); position: relative; overflow: hidden; }
+.hero::before { content:''; position: absolute; top: -40%; right: -20%; width: 700px; height: 700px; background: radial-gradient(circle, rgba(26,95,122,0.04) 0%, transparent 70%); pointer-events: none; }
+.hero__eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 5px 14px 5px 10px; background: var(--accent-pale); border: 1px solid rgba(26,95,122,0.12); border-radius: 100px; font-size: 10px; font-weight: 600; color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: var(--space-lg); }
+.hero__eyebrow svg { width: 14px; height: 14px; }
+.hero__title { font-family: var(--font-display); font-size: var(--size-hero); font-weight: 500; line-height: 1.08; letter-spacing: -0.03em; color: var(--ink); max-width: 780px; }
+.hero__title em { font-style: italic; color: var(--accent); }
+.hero__sub { margin-top: var(--space-lg); font-size: var(--size-md); line-height: 1.7; color: var(--text-secondary); max-width: 560px; }
+.hero__actions { margin-top: var(--space-2xl); display: flex; gap: var(--space-md); flex-wrap: wrap; }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 26px; font-family: var(--font-body); font-size: var(--size-sm); font-weight: 500; border-radius: var(--radius-sm); border: none; cursor: pointer; transition: all var(--dur-fast) var(--ease-out); letter-spacing: 0.01em; }
+.btn svg { width: 16px; height: 16px; }
+.btn--primary { background: var(--ink); color: var(--white); }
+.btn--primary:hover { background: var(--ink-soft); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.btn--secondary { background: transparent; color: var(--text-primary); border: 1.5px solid var(--border); }
+.btn--secondary:hover { border-color: var(--ink); background: var(--surface-warm); }
+.btn--accent { background: var(--accent); color: var(--white); }
+.btn--accent:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.btn--white { background: var(--white); color: var(--ink); }
+.btn--white:hover { background: var(--surface); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.btn--ghost { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.25); }
+.btn--ghost:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.05); }
+.btn--sm { padding: 8px 16px; font-size: var(--size-xs); }
+
+/* ════════════════════════════════════════════════════
+   STATS
+   ════════════════════════════════════════════════════ */
+.stats { padding: var(--space-xl) 0; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); background: var(--white); }
+.stats__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-xl); }
+.stat { text-align: center; }
+.stat__number { font-family: var(--font-display); font-size: var(--size-2xl); font-weight: 500; color: var(--ink); letter-spacing: -0.03em; line-height: 1; }
+.stat__divider { width: 24px; height: 2px; background: var(--accent); margin: 8px auto 0; border-radius: 2px; }
+.stat__label { margin-top: 6px; font-size: 10px; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
+
+/* ════════════════════════════════════════════════════
+   SECTION
+   ════════════════════════════════════════════════════ */
+.section { padding: var(--space-4xl) 0; }
+.section--alt { background: var(--white); }
+.section--ink { background: var(--ink); }
+.section__header { max-width: 640px; margin-bottom: var(--space-2xl); }
+.section__header--center { text-align: center; margin-left: auto; margin-right: auto; }
+.section__overline { display: flex; align-items: center; gap: 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: var(--space-sm); }
+.section__overline::before { content:''; width: 20px; height: 2px; background: var(--accent); border-radius: 2px; }
+.section__overline--center::before { display: none; }
+.section__overline--white { color: rgba(255,255,255,0.5); }
+.section__overline--white::before { background: rgba(255,255,255,0.3); }
+.section__title { font-family: var(--font-display); font-size: var(--size-3xl); font-weight: 500; letter-spacing: -0.025em; line-height: 1.12; color: var(--ink); }
+.section__title--white { color: var(--white); }
+.section__desc { margin-top: var(--space-sm); font-size: var(--size-base); color: var(--text-secondary); line-height: 1.7; }
+.section__desc--white { color: rgba(255,255,255,0.55); }
+
+/* ════════════════════════════════════════════════════
+   HUB CARDS (Home)
+   ════════════════════════════════════════════════════ */
+.hub-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.hub-card { background: var(--surface-card); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: var(--space-2xl); transition: all var(--dur-base) var(--ease-out); cursor: pointer; position: relative; overflow: hidden; }
+.hub-card::before { content:''; position: absolute; top: 0; left: 0; right: 0; height: 3px; transition: opacity var(--dur-base); opacity: 0; }
+.hub-card:hover { border-color: rgba(26,95,122,0.2); box-shadow: var(--shadow-card-hover); transform: translateY(-4px); }
+.hub-card:hover::before { opacity: 1; }
+.hub-card--employment::before { background: linear-gradient(90deg, var(--signal-green), var(--accent)); }
+.hub-card--housing::before { background: linear-gradient(90deg, var(--accent), var(--signal-purple)); }
+.hub-card--team::before { background: linear-gradient(90deg, var(--gold), var(--accent)); }
+.hub-card__icon { width: 48px; height: 48px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-lg); }
+.hub-card__icon svg { width: 24px; height: 24px; }
+.hub-card--employment .hub-card__icon { background: var(--signal-green-pale); color: var(--signal-green); }
+.hub-card--housing .hub-card__icon { background: var(--accent-pale); color: var(--accent); }
+.hub-card--team .hub-card__icon { background: var(--gold-pale); color: var(--gold); }
+.hub-card__title { font-family: var(--font-display); font-size: var(--size-xl); font-weight: 600; color: var(--ink); letter-spacing: -0.01em; margin-bottom: var(--space-xs); }
+.hub-card__desc { font-size: var(--size-sm); color: var(--text-secondary); line-height: 1.7; margin-bottom: var(--space-lg); }
+.hub-card__link { display: inline-flex; align-items: center; gap: 6px; font-size: var(--size-sm); font-weight: 600; color: var(--accent); transition: gap var(--dur-fast); }
+.hub-card:hover .hub-card__link { gap: 10px; }
+.hub-card__link svg { width: 14px; height: 14px; }
+
+/* ════════════════════════════════════════════════════
+   CASE MANAGER CARDS
+   ════════════════════════════════════════════════════ */
+.team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.cm-card { background: var(--surface-card); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: var(--space-lg); transition: all var(--dur-base) var(--ease-out); position: relative; overflow: hidden; }
+.cm-card::before { content:''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-light)); opacity: 0; transition: opacity var(--dur-base); }
+.cm-card:hover { border-color: rgba(26,95,122,0.2); box-shadow: var(--shadow-card-hover); transform: translateY(-3px); }
+.cm-card:hover::before { opacity: 1; }
+.cm-card__top { display: flex; align-items: center; gap: 14px; margin-bottom: var(--space-md); }
+.cm-card__avatar { width: 48px; height: 48px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 600; font-size: 16px; color: var(--white); flex-shrink: 0; position: relative; }
+.cm-card__avatar::after { content:''; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent 60%); }
+.cm-card:nth-child(11n+1) .cm-card__avatar { background: #1a5f7a; }
+.cm-card:nth-child(11n+2) .cm-card__avatar { background: #2d5a3d; }
+.cm-card:nth-child(11n+3) .cm-card__avatar { background: #5a3d6b; }
+.cm-card:nth-child(11n+4) .cm-card__avatar { background: #6b4f3d; }
+.cm-card:nth-child(11n+5) .cm-card__avatar { background: #3d4f6b; }
+.cm-card:nth-child(11n+6) .cm-card__avatar { background: #6b3d4f; }
+.cm-card:nth-child(11n+7) .cm-card__avatar { background: #1a7a5f; }
+.cm-card:nth-child(11n+8) .cm-card__avatar { background: #4a3d6b; }
+.cm-card:nth-child(11n+9) .cm-card__avatar { background: #3d6b5a; }
+.cm-card:nth-child(11n+10) .cm-card__avatar { background: #6b5a3d; }
+.cm-card:nth-child(11n+11) .cm-card__avatar { background: #3d5a6b; }
+.cm-card__name { font-family: var(--font-display); font-size: var(--size-base); font-weight: 600; color: var(--ink); line-height: 1.3; }
+.cm-card__role { font-size: var(--size-xs); color: var(--text-tertiary); margin-top: 2px; }
+.cm-card__email { display: flex; align-items: center; gap: 8px; font-size: var(--size-xs); color: var(--text-secondary); padding: 8px 0; border-top: 1px solid var(--border-light); transition: color var(--dur-fast); }
+.cm-card__email:hover { color: var(--accent); }
+.cm-card__email svg { width: 14px; height: 14px; opacity: 0.4; flex-shrink: 0; }
+.cm-card__actions { display: flex; gap: 6px; margin-top: var(--space-sm); }
+.cm-card__btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 5px; padding: 8px 12px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; border: none; border-radius: var(--radius-sm); cursor: pointer; transition: all var(--dur-fast); }
+.cm-card__btn svg { width: 12px; height: 12px; }
+.cm-card__btn--primary { background: var(--ink); color: var(--white); }
+.cm-card__btn--primary:hover { background: var(--ink-soft); }
+.cm-card__btn--secondary { background: var(--surface); color: var(--text-primary); border: 1px solid var(--border); }
+.cm-card__btn--secondary:hover { border-color: var(--ink-muted); }
+
+/* ════════════════════════════════════════════════════
+   SEARCH BAR
+   ════════════════════════════════════════════════════ */
+.search-bar { display: flex; align-items: center; gap: 10px; padding: 10px 16px; background: var(--surface-card); border: 1px solid var(--border); border-radius: var(--radius-sm); max-width: 360px; transition: border-color var(--dur-fast); }
+.search-bar:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(26,95,122,0.08); }
+.search-bar svg { width: 16px; height: 16px; color: var(--text-tertiary); flex-shrink: 0; }
+.search-bar input { border: none; background: none; font-family: var(--font-body); font-size: var(--size-sm); color: var(--text-primary); outline: none; width: 100%; }
+.search-bar input::placeholder { color: var(--text-tertiary); }
+
+.filter-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-lg); gap: var(--space-md); flex-wrap: wrap; }
+.filter-bar__count { font-size: var(--size-sm); color: var(--text-tertiary); }
+.filter-bar__count strong { color: var(--text-primary); font-weight: 600; }
+
+/* ════════════════════════════════════════════════════
+   PAGE HERO (Sub-pages)
+   ════════════════════════════════════════════════════ */
+.page-hero { padding: var(--space-3xl) 0 var(--space-2xl); position: relative; overflow: hidden; }
+.page-hero__breadcrumb { display: flex; align-items: center; gap: 8px; font-size: var(--size-xs); color: var(--text-tertiary); margin-bottom: var(--space-lg); }
+.page-hero__breadcrumb a { color: var(--accent); cursor: pointer; }
+.page-hero__breadcrumb a:hover { text-decoration: underline; }
+.page-hero__breadcrumb svg { width: 12px; height: 12px; }
+.page-hero__title { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1.1; color: var(--ink); }
+.page-hero__title em { font-style: italic; color: var(--accent); }
+.page-hero__desc { margin-top: var(--space-md); font-size: var(--size-md); color: var(--text-secondary); line-height: 1.7; max-width: 600px; }
+
+/* ════════════════════════════════════════════════════
+   EMPLOYMENT PAGE
+   ════════════════════════════════════════════════════ */
+.emp-layout { display: grid; grid-template-columns: 1fr 300px; gap: var(--space-2xl); align-items: start; }
+
+/* Filter pills */
+.filter-pills { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: var(--space-lg); }
+.pill { padding: 6px 14px; font-size: var(--size-xs); font-weight: 600; border: 1.5px solid var(--border); border-radius: 100px; background: var(--white); color: var(--text-secondary); cursor: pointer; transition: all var(--dur-fast); letter-spacing: 0.02em; }
+.pill:hover { border-color: var(--ink-muted); color: var(--text-primary); }
+.pill.active { background: var(--ink); color: var(--white); border-color: var(--ink); }
+
+/* City group */
+.city-group { margin-bottom: var(--space-xl); border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-light); }
+.city-group__header { display: flex; align-items: center; justify-content: space-between; background: var(--ink); padding: 10px 18px; cursor: pointer; user-select: none; }
+.city-group__header:hover { background: var(--ink-soft); }
+.city-group__left { display: flex; align-items: center; gap: 10px; }
+.city-group__dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+.city-group__name { font-size: var(--size-xs); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--white); }
+.city-group__right { display: flex; align-items: center; gap: 12px; }
+.city-group__count { font-size: var(--size-xs); color: rgba(255,255,255,0.45); }
+.city-group__chevron { color: rgba(255,255,255,0.4); font-size: 12px; transition: transform var(--dur-fast); }
+.city-group.collapsed .city-group__chevron { transform: rotate(-90deg); }
+.city-group.collapsed .city-group__body { display: none; }
+.city-group__body { background: var(--white); }
+
+/* Job row */
+.job-row { display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 12px 18px; border-bottom: 1px solid var(--border-light); gap: 16px; transition: background var(--dur-fast); cursor: pointer; }
+.job-row:last-child { border-bottom: none; }
+.job-row:hover { background: var(--accent-pale); }
+.job-row__title { font-size: var(--size-sm); font-weight: 600; color: var(--accent); display: flex; align-items: center; gap: 5px; line-height: 1.3; }
+.job-row__arrow { font-size: 10px; color: var(--accent-light); opacity: 0; transition: opacity var(--dur-fast); }
+.job-row:hover .job-row__arrow { opacity: 1; }
+.job-row__meta { display: flex; align-items: center; gap: 8px; margin-top: 2px; }
+.job-row__employer { font-size: var(--size-xs); color: var(--text-tertiary); }
+.job-row__posted { font-size: 10px; color: var(--text-tertiary); opacity: 0.6; }
+.job-row__right { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; flex-shrink: 0; }
+.job-row__wage { font-size: var(--size-sm); font-weight: 700; color: var(--ink); }
+.badge { font-size: 9px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 9px; border-radius: 100px; }
+.badge--ft { background: var(--signal-green-pale); color: var(--signal-green); }
+.badge--pt { background: var(--signal-amber-pale); color: var(--signal-amber); }
+
+/* Sidebar */
+.emp-sidebar { position: sticky; top: 80px; display: flex; flex-direction: column; gap: 16px; }
+.sidebar-card { background: var(--white); border: 1px solid var(--border-light); border-radius: var(--radius-md); overflow: hidden; }
+.sidebar-card__head { background: var(--ink); padding: 10px 16px; }
+.sidebar-card__head h3 { font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.65); }
+.sidebar-card__body { padding: 0; }
+
+.step { display: flex; gap: 12px; align-items: flex-start; padding: 12px 16px; border-bottom: 1px solid var(--border-light); }
+.step:last-child { border-bottom: none; }
+.step__num { width: 22px; height: 22px; border-radius: 50%; background: var(--accent); color: var(--white); font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.step__title { font-size: var(--size-xs); font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+.step__desc { font-size: var(--size-xs); color: var(--text-tertiary); line-height: 1.5; }
+
+.resource-link { display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-bottom: 1px solid var(--border-light); transition: background var(--dur-fast); cursor: pointer; }
+.resource-link:last-child { border-bottom: none; }
+.resource-link:hover { background: var(--accent-pale); }
+.resource-link__cat { font-size: 8px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 1px; }
+.resource-link__name { font-size: var(--size-xs); font-weight: 600; color: var(--accent); }
+.resource-link__arrow { font-size: 11px; color: var(--accent-light); }
+
+.tip-item { display: flex; gap: 10px; padding: 10px 16px; border-bottom: 1px solid var(--border-light); align-items: flex-start; }
+.tip-item:last-child { border-bottom: none; }
+.tip-item__check { width: 18px; height: 18px; background: var(--signal-green-pale); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; color: var(--signal-green); flex-shrink: 0; margin-top: 1px; }
+.tip-item__text { font-size: var(--size-xs); color: var(--text-secondary); line-height: 1.55; }
+
+/* ════════════════════════════════════════════════════
+   HOUSING PAGE
+   ════════════════════════════════════════════════════ */
+.housing-tabs { display: flex; gap: 4px; margin-bottom: var(--space-xl); border-bottom: 2px solid var(--border-light); padding-bottom: 0; }
+.housing-tab { padding: 10px 20px; font-size: var(--size-sm); font-weight: 600; color: var(--text-tertiary); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all var(--dur-fast); background: none; border-top: none; border-left: none; border-right: none; }
+.housing-tab:hover { color: var(--text-primary); }
+.housing-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+.housing-panel { display: none; }
+.housing-panel.active { display: block; }
+
+.housing-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+
+.housing-card { background: var(--white); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: var(--space-lg); transition: all var(--dur-base) var(--ease-out); position: relative; overflow: hidden; }
+.housing-card::before { content:''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; border-radius: 3px 0 0 3px; }
+.housing-card--emergency::before { background: var(--signal-red); }
+.housing-card--transitional::before { background: var(--signal-purple); }
+.housing-card--affordable::before { background: var(--signal-green); }
+.housing-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+
+.housing-card__badge { display: inline-flex; align-items: center; gap: 4px; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 3px 8px; border-radius: 100px; margin-bottom: var(--space-sm); }
+.housing-card__badge--emergency { background: var(--signal-red-pale); color: var(--signal-red); }
+.housing-card__badge--transitional { background: var(--signal-purple-pale); color: var(--signal-purple); }
+.housing-card__badge--affordable { background: var(--signal-green-pale); color: var(--signal-green); }
+.housing-card__badge--special { background: var(--gold-pale); color: var(--gold); }
+
+.housing-card__name { font-family: var(--font-display); font-size: var(--size-base); font-weight: 600; color: var(--ink); line-height: 1.3; margin-bottom: var(--space-xs); }
+.housing-card__pop { font-size: var(--size-xs); color: var(--accent); font-weight: 500; font-style: italic; margin-bottom: var(--space-sm); }
+
+.housing-card__details { display: flex; flex-direction: column; gap: 6px; margin-top: var(--space-sm); padding-top: var(--space-sm); border-top: 1px solid var(--border-light); }
+.housing-card__row { display: flex; align-items: flex-start; gap: 8px; font-size: var(--size-xs); color: var(--text-secondary); line-height: 1.5; }
+.housing-card__row svg { width: 14px; height: 14px; flex-shrink: 0; margin-top: 1px; opacity: 0.4; }
+.housing-card__row a { color: var(--accent); transition: color var(--dur-fast); }
+.housing-card__row a:hover { color: var(--accent-dark); text-decoration: underline; }
+
+/* ════════════════════════════════════════════════════
+   CTA BANNER
+   ════════════════════════════════════════════════════ */
+.cta-banner { margin: var(--space-3xl) 0; padding: var(--space-3xl) var(--space-2xl); background: var(--ink); border-radius: var(--radius-xl); text-align: center; position: relative; overflow: hidden; }
+.cta-banner::before { content:''; position: absolute; top: -50%; left: -20%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(26,95,122,0.3), transparent 65%); pointer-events: none; }
+.cta-banner::after { content:''; position: absolute; bottom: -40%; right: -15%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(26,122,95,0.15), transparent 65%); pointer-events: none; }
+.cta-banner__title { font-family: var(--font-display); font-size: var(--size-2xl); font-weight: 500; color: var(--white); letter-spacing: -0.02em; position: relative; }
+.cta-banner__text { margin-top: var(--space-sm); font-size: var(--size-base); color: rgba(255,255,255,0.55); max-width: 480px; margin-left: auto; margin-right: auto; position: relative; }
+.cta-banner__actions { margin-top: var(--space-xl); display: flex; justify-content: center; gap: var(--space-md); position: relative; flex-wrap: wrap; }
+
+/* ════════════════════════════════════════════════════
+   FOOTER
+   ════════════════════════════════════════════════════ */
+.footer { padding: var(--space-2xl) 0 var(--space-lg); border-top: 1px solid var(--border-light); }
+.footer__top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: var(--space-2xl); padding-bottom: var(--space-xl); border-bottom: 1px solid var(--border-light); }
+.footer__desc { margin-top: var(--space-sm); font-size: var(--size-xs); color: var(--text-tertiary); line-height: 1.7; max-width: 300px; }
+.footer__col-title { font-family: var(--font-display); font-size: var(--size-sm); font-weight: 600; color: var(--ink); margin-bottom: var(--space-sm); }
+.footer__links { display: flex; flex-direction: column; gap: var(--space-xs); }
+.footer__links a { font-size: var(--size-xs); color: var(--text-tertiary); transition: color var(--dur-fast); cursor: pointer; }
+.footer__links a:hover { color: var(--accent); }
+.footer__bottom { padding-top: var(--space-lg); display: flex; justify-content: space-between; align-items: center; font-size: var(--size-xs); color: var(--text-tertiary); }
+.footer__legal { display: flex; gap: var(--space-lg); }
+.footer__legal a:hover { color: var(--text-secondary); }
+
+/* ════════════════════════════════════════════════════
+   ANIMATIONS
+   ════════════════════════════════════════════════════ */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ════════════════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .hub-grid, .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .emp-layout { grid-template-columns: 1fr; }
+  .emp-sidebar { position: static; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .housing-grid { grid-template-columns: 1fr; }
+  .footer__top { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  :root { --space-4xl: 3.5rem; --space-3xl: 2.5rem; }
+  .nav-toggle { display: block; }
+  nav { display: none; position: absolute; top: 64px; left: 0; right: 0; background: var(--surface-card); border-bottom: 1px solid var(--border-light); flex-direction: column; padding: var(--space-md) var(--space-xl); box-shadow: var(--shadow-lg); }
+  nav.open { display: flex; }
+  nav a { padding: 12px 0; width: 100%; }
+  .nav-cta { margin-left: 0 !important; text-align: center; margin-top: var(--space-xs); }
+  .hub-grid, .team-grid { grid-template-columns: 1fr; }
+  .stats__grid { grid-template-columns: repeat(2, 1fr); }
+  .emp-sidebar { grid-template-columns: 1fr; }
+  .footer__top { grid-template-columns: 1fr; }
+  .topbar__right { display: none; }
+  .cta-banner__actions { flex-direction: column; align-items: center; }
+  .filter-bar { flex-direction: column; align-items: stretch; }
+  .search-bar { max-width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ TOP BAR ═══ -->
+<div class="topbar">
+  <div class="container topbar__inner">
+    <div class="topbar__label">
+      <span class="topbar__dot"></span>
+      An official resource of City Net — Riverside County Homeless Services
+    </div>
+    <div class="topbar__right">
+      <span>Outreach Hotline: (951) 390-3567</span>
+      <a href="https://www.citynet.org" target="_blank">citynet.org</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ HEADER ═══ -->
+<header class="header" id="header">
+  <div class="container header__inner">
+    <div class="logo" onclick="navigate('home')">
+      <div class="logo__mark">CN</div>
+      <div class="logo__text">City Net <span>| Client Hub</span></div>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" onclick="document.getElementById('mainNav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="mainNav">
+      <a onclick="navigate('home')" data-page="home" class="active">Home</a>
+      <a onclick="navigate('employment')" data-page="employment">Employment</a>
+      <a onclick="navigate('housing')" data-page="housing">Housing</a>
+      <a onclick="navigate('home','team-section')" data-page="team">Case Managers</a>
+      <a href="tel:9513903567" class="nav-cta">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:14px;height:14px"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Get Help
+      </a>
+    </nav>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE: HOME
+     ══════════════════════════════════════════════════════════ -->
+<div class="page active" id="page-home">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero__eyebrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Riverside County Case Management
+      </div>
+      <h1 class="hero__title">Your partner on the<br>pathway <em>home</em></h1>
+      <p class="hero__sub">Search for local jobs, explore housing resources, and connect directly with your case manager — all in one place.</p>
+      <div class="hero__actions">
+        <button class="btn btn--primary" onclick="navigate('employment')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          Find a Job
+        </button>
+        <button class="btn btn--secondary" onclick="navigate('housing')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          Housing Resources
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats__grid">
+        <div class="stat"><div class="stat__number">35+</div><div class="stat__divider"></div><div class="stat__label">Job Openings</div></div>
+        <div class="stat"><div class="stat__number">30+</div><div class="stat__divider"></div><div class="stat__label">Housing Resources</div></div>
+        <div class="stat"><div class="stat__number">11</div><div class="stat__divider"></div><div class="stat__label">Case Managers</div></div>
+        <div class="stat"><div class="stat__number">5</div><div class="stat__divider"></div><div class="stat__label">Cities Covered</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hub Cards -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header section__header--center">
+        <div class="section__overline section__overline--center">Navigate Your Services</div>
+        <h2 class="section__title">How can we help today?</h2>
+        <p class="section__desc">Everything you need to move forward — organized, accessible, and updated regularly by your case management team.</p>
+      </div>
+      <div class="hub-grid">
+        <div class="hub-card hub-card--employment reveal" onclick="navigate('employment')">
+          <div class="hub-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          </div>
+          <h3 class="hub-card__title">Employment</h3>
+          <p class="hub-card__desc">Browse 35+ current job openings across Murrieta, Temecula, Lake Elsinore, Menifee, and Wildomar. Full-time and part-time positions available.</p>
+          <span class="hub-card__link">Browse job listings <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+        <div class="hub-card hub-card--housing reveal" onclick="navigate('housing')">
+          <div class="hub-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3 class="hub-card__title">Housing</h3>
+          <p class="hub-card__desc">Explore emergency shelters, transitional housing, and affordable apartments across Riverside County. Specialized options available.</p>
+          <span class="hub-card__link">View housing resources <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+        <div class="hub-card hub-card--team reveal" onclick="navigate('home','team-section')">
+          <div class="hub-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3 class="hub-card__title">Case Managers</h3>
+          <p class="hub-card__desc">Find your assigned case manager and reach out directly via email. Your team is here to guide you through every step.</p>
+          <span class="hub-card__link">Meet your team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Managers -->
+  <section class="section section--alt" id="team-section">
+    <div class="container">
+      <div class="section__header">
+        <div class="section__overline">Your Case Management Team</div>
+        <h2 class="section__title">Meet the people in your corner</h2>
+        <p class="section__desc">Find your assigned case manager below to connect directly.</p>
+      </div>
+      <div class="filter-bar">
+        <div class="search-bar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" placeholder="Search by name..." id="cmSearch">
+        </div>
+        <div class="filter-bar__count">Showing <strong id="cmCount">11</strong> case managers</div>
+      </div>
+      <div class="team-grid" id="teamGrid"></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-banner">
+        <h2 class="cta-banner__title">Ready to take the next step?</h2>
+        <p class="cta-banner__text">Whether you're looking for work, need housing support, or want to connect with your case manager — we're here for you.</p>
+        <div class="cta-banner__actions">
+          <a href="tel:9513903567" class="btn btn--white">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call Outreach Hotline
+          </a>
+          <a href="https://www.citynet.org" target="_blank" class="btn btn--ghost">Visit citynet.org <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:14px;height:14px"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE: EMPLOYMENT
+     ══════════════════════════════════════════════════════════ -->
+<div class="page" id="page-employment">
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero__breadcrumb">
+        <a onclick="navigate('home')">Home</a>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        Employment
+      </div>
+      <h1 class="page-hero__title">Employment <em>Opportunities</em></h1>
+      <p class="page-hero__desc">Current job openings across Riverside County communities. Click any job title to search for that position on Indeed. Many employers review on a rolling basis — apply as soon as possible.</p>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="container">
+      <div class="stats__grid">
+        <div class="stat"><div class="stat__number">35</div><div class="stat__divider"></div><div class="stat__label">Open Positions</div></div>
+        <div class="stat"><div class="stat__number">5</div><div class="stat__divider"></div><div class="stat__label">Cities Covered</div></div>
+        <div class="stat"><div class="stat__number">$15–$25</div><div class="stat__divider"></div><div class="stat__label">Wage Range / hr</div></div>
+        <div class="stat"><div class="stat__number">20 FT / 15 PT</div><div class="stat__divider"></div><div class="stat__label">Full & Part Time</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="emp-layout">
+        <div class="emp-main">
+          <div class="filter-pills" id="empFilters">
+            <button class="pill active" data-filter="all">All Positions</button>
+            <button class="pill" data-filter="ft">Full-Time</button>
+            <button class="pill" data-filter="pt">Part-Time</button>
+          </div>
+          <div id="empListings"></div>
+        </div>
+        <aside class="emp-sidebar">
+          <!-- How to Apply -->
+          <div class="sidebar-card">
+            <div class="sidebar-card__head"><h3>How to Apply</h3></div>
+            <div class="sidebar-card__body">
+              <div class="step"><div class="step__num">1</div><div><div class="step__title">Click any job title</div><div class="step__desc">Opens an Indeed search for that role in the listed city.</div></div></div>
+              <div class="step"><div class="step__num">2</div><div><div class="step__title">Create an Indeed account</div><div class="step__desc">Free account lets you upload a resume and apply in one click.</div></div></div>
+              <div class="step"><div class="step__num">3</div><div><div class="step__title">Tailor your resume</div><div class="step__desc">Match keywords from the job description for better results.</div></div></div>
+              <div class="step"><div class="step__num">4</div><div><div class="step__title">Apply same-day</div><div class="step__desc">Rolling basis means positions can close without notice.</div></div></div>
+              <div class="step"><div class="step__num">5</div><div><div class="step__title">Follow up in 3–5 days</div><div class="step__desc">A brief call or email keeps you top of mind with hiring managers.</div></div></div>
+            </div>
+          </div>
+          <!-- Resources -->
+          <div class="sidebar-card">
+            <div class="sidebar-card__head"><h3>Employment Resources</h3></div>
+            <div class="sidebar-card__body">
+              <a class="resource-link" href="https://www.indeed.com/jobs?l=Murrieta%2C+CA" target="_blank"><div><div class="resource-link__cat">Job Search</div><div class="resource-link__name">Indeed — Local Listings</div></div><span class="resource-link__arrow">↗</span></a>
+              <a class="resource-link" href="https://www.linkedin.com/jobs/search/?location=Riverside%20County%2C%20CA" target="_blank"><div><div class="resource-link__cat">Job Search</div><div class="resource-link__name">LinkedIn Jobs</div></div><span class="resource-link__arrow">↗</span></a>
+              <a class="resource-link" href="https://www.caljobs.ca.gov" target="_blank"><div><div class="resource-link__cat">State of California</div><div class="resource-link__name">CalJOBS</div></div><span class="resource-link__arrow">↗</span></a>
+              <a class="resource-link" href="https://rivcoworkforce.org/job-seeker" target="_blank"><div><div class="resource-link__cat">Riverside County</div><div class="resource-link__name">Workforce Development Center</div></div><span class="resource-link__arrow">↗</span></a>
+              <a class="resource-link" href="https://rivcodpss.org/workforce-connection" target="_blank"><div><div class="resource-link__cat">DPSS</div><div class="resource-link__name">Workforce Connection</div></div><span class="resource-link__arrow">↗</span></a>
+            </div>
+          </div>
+          <!-- Tips -->
+          <div class="sidebar-card">
+            <div class="sidebar-card__head"><h3>Tips for Applicants</h3></div>
+            <div class="sidebar-card__body">
+              <div class="tip-item"><div class="tip-item__check">✓</div><div class="tip-item__text">Apply same-day — rolling openings can close quickly.</div></div>
+              <div class="tip-item"><div class="tip-item__check">✓</div><div class="tip-item__text">Keep your resume updated before each submission.</div></div>
+              <div class="tip-item"><div class="tip-item__check">✓</div><div class="tip-item__text">Follow up with employers 3–5 business days after applying.</div></div>
+              <div class="tip-item"><div class="tip-item__check">✓</div><div class="tip-item__text">A valid CA ID and reliable transportation strengthen applications.</div></div>
+              <div class="tip-item"><div class="tip-item__check">✓</div><div class="tip-item__text">The WDC offers free resume help, printing, and computer access.</div></div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE: HOUSING
+     ══════════════════════════════════════════════════════════ -->
+<div class="page" id="page-housing">
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero__breadcrumb">
+        <a onclick="navigate('home')">Home</a>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        Housing Resources
+      </div>
+      <h1 class="page-hero__title">Housing <em>Resources</em></h1>
+      <p class="page-hero__desc">Emergency shelters, transitional programs, and affordable housing options across Riverside County. Contact any resource directly or ask your case manager for guidance.</p>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="container">
+      <div class="stats__grid">
+        <div class="stat"><div class="stat__number">12</div><div class="stat__divider"></div><div class="stat__label">Emergency Shelters</div></div>
+        <div class="stat"><div class="stat__number">4</div><div class="stat__divider"></div><div class="stat__label">Transitional Programs</div></div>
+        <div class="stat"><div class="stat__number">13</div><div class="stat__divider"></div><div class="stat__label">Affordable Communities</div></div>
+        <div class="stat"><div class="stat__number">6+</div><div class="stat__divider"></div><div class="stat__label">Cities Served</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="housing-tabs" id="housingTabs">
+        <button class="housing-tab active" data-tab="emergency">Emergency Shelters</button>
+        <button class="housing-tab" data-tab="transitional">Transitional Housing</button>
+        <button class="housing-tab" data-tab="affordable">Affordable Housing</button>
+      </div>
+      <div id="housingPanels"></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-banner">
+        <h2 class="cta-banner__title">Not sure where to start?</h2>
+        <p class="cta-banner__text">Your case manager can help you identify the best housing option for your situation and walk you through the application process.</p>
+        <div class="cta-banner__actions">
+          <button class="btn btn--white" onclick="navigate('home','team-section')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            Find Your Case Manager
+          </button>
+          <a href="tel:9513903567" class="btn btn--ghost">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:14px;height:14px"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg>
+            Call Hotline
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div>
+        <div class="logo" onclick="navigate('home')">
+          <div class="logo__mark">CN</div>
+          <div class="logo__text">City Net</div>
+        </div>
+        <p class="footer__desc">Connecting our neighbors experiencing homelessness to transformative care and housing solutions across Southern California.</p>
+      </div>
+      <div>
+        <h4 class="footer__col-title">Navigate</h4>
+        <div class="footer__links">
+          <a onclick="navigate('home')">Home</a>
+          <a onclick="navigate('employment')">Employment</a>
+          <a onclick="navigate('housing')">Housing Resources</a>
+          <a onclick="navigate('home','team-section')">Case Managers</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer__col-title">Resources</h4>
+        <div class="footer__links">
+          <a href="https://www.caljobs.ca.gov" target="_blank">CalJOBS</a>
+          <a href="https://rivcoworkforce.org/job-seeker" target="_blank">Workforce Dev Center</a>
+          <a href="https://www.indeed.com/jobs?l=Murrieta%2C+CA" target="_blank">Indeed</a>
+          <a href="tel:9513903567">Outreach Hotline</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer__col-title">Organization</h4>
+        <div class="footer__links">
+          <a href="https://www.citynet.org" target="_blank">About City Net</a>
+          <a href="https://www.citynet.org" target="_blank">Contact Us</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div>© 2026 City Net. All rights reserved.</div>
+      <div class="footer__legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Accessibility</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ════════════════════════════════════════════════════
+   DATA
+   ════════════════════════════════════════════════════ */
+const caseManagers = [
+  { name: "Andrew Sayegh", email: “andrew.sayegh@citynet.org", phone: “951-401-3739”},
+  { name: "Ryan Lemus", email: "ryan.lemus@citynet.org", phone: “951-235-2667”},
+  { name: "Brandon Tucker", email: "brandon.tucker@citynet.org", phone: “951-201-9873”},
+  { name: "Adrian Labastida", email: "adrian.labastida@citynet.org", phone: “951-203-1293”},
+  { name: "Riley Lynch", email: “riley.lynch@citynet.org", phone: “951-675-2785”},
+  { name: "Aileen Magana", email: “aileen.magana@citynet.org", phone: “951-897-7685”},
+  { name: "Alex Nunez", email: “alex.nunez@citynet.org", phone: “951-212-6726”},
+  { name: "Breanna Wells-Tyrell", email: “breanna.wells-tyrell@citynet.org", phone: “951-836-3503”},
+  { name: "Damani Enokson", email: "damani.enokson@citynet.org", phone: “951-235-0969”},
+  { name: "Malcolm Parker", email: “malcolm.parker@citynet.org", phone: “951-834-3319”},
+  { name: "Whiskey Kelsey", email: “whiskey.kelsey@citynet.org", phone: “951-235-1898”},
+];
+
+const jobData = {
+  "Murrieta": [
+    { title: "Client Engagement Specialist", employer: "The Grey Legal Group", wage: "$23.00/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Client+Engagement+Specialist+Grey+Legal+Group&l=Murrieta%2C+CA" },
+    { title: "Welcome Team Coordinator", employer: "Shoup Legal", wage: "$21.00/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Welcome+Team+Coordinator+Shoup+Legal&l=Murrieta%2C+CA" },
+    { title: "Tire and Battery Service Advisor", employer: "Sam's Club", wage: "$19.00/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Tire+Battery+Service+Advisor+Sams+Club&l=Murrieta%2C+CA" },
+    { title: "Cashier", employer: "Panera Bread", wage: "$20.00/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Cashier+Panera+Bread&l=Murrieta%2C+CA" },
+    { title: "Freight / Receiving", employer: "The Home Depot", wage: "$19.00/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Freight+Receiving+Home+Depot&l=Murrieta%2C+CA" },
+    { title: "Security Specialist", employer: "Target", wage: "$20.50/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Security+Specialist+Target&l=Murrieta%2C+CA" },
+    { title: "Specialty Sales", employer: "Target", wage: "$18.25/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Specialty+Sales+Target&l=Murrieta%2C+CA" },
+    { title: "Customer Service", employer: "KFC", wage: "$20.00/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Customer+Service+KFC&l=Murrieta%2C+CA" },
+    { title: "Retail Sales Associate", employer: "PetSmart", wage: "$17.00/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Retail+Sales+Associate+PetSmart&l=Murrieta%2C+CA" },
+    { title: "Auto Care Center Technician", employer: "Walmart", wage: "$20.00/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Auto+Care+Center+Technician+Walmart&l=Murrieta%2C+CA" },
+  ],
+  "Wildomar": [
+    { title: "Membership Sales Associate", employer: "Super Star Car Wash", wage: "$18.50/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Membership+Sales+Associate+Super+Star+Car+Wash&l=Wildomar%2C+CA" },
+    { title: "Restaurant Crew", employer: "Dunkin'", wage: "$20.00/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Restaurant+Crew+Dunkin&l=Wildomar%2C+CA" },
+  ],
+  "Menifee": [
+    { title: "Seasonal Retail Sales Associate", employer: "Lowe's", wage: "$16.90/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Seasonal+Retail+Sales+Associate+Lowes&l=Menifee%2C+CA" },
+    { title: "Front Desk Sales Associate", employer: "Massage Envy", wage: "$16.50/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Front+Desk+Sales+Associate+Massage+Envy&l=Menifee%2C+CA" },
+    { title: "Barista", employer: "Better Buzz Coffee", wage: "$21.00/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Barista+Better+Buzz+Coffee&l=Menifee%2C+CA" },
+    { title: "Deli Clerk", employer: "Sprouts", wage: "$17.20/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Deli+Clerk+Sprouts&l=Menifee%2C+CA" },
+    { title: "CDL A Truck Driver", employer: "Updike Distribution Logistics", wage: "$15.50/hr", type: "pt", url: "https://www.indeed.com/jobs?q=CDL+A+Truck+Driver+Updike+Distribution+Logistics&l=Menifee%2C+CA" },
+  ],
+  "Lake Elsinore": [
+    { title: "Service Team", employer: "Panda Express", wage: "$21.00/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Service+Team+Panda+Express&l=Lake+Elsinore%2C+CA" },
+    { title: "Receptionist", employer: "H&R Block", wage: "$16.50/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Receptionist+HR+Block&l=Lake+Elsinore%2C+CA" },
+    { title: "Guest Advocate", employer: "Target", wage: "$18.25/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Guest+Advocate+Target&l=Lake+Elsinore%2C+CA" },
+    { title: "Specialty Sales", employer: "Target", wage: "$18.25/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Specialty+Sales+Target&l=Lake+Elsinore%2C+CA" },
+    { title: "Customer Service Representative", employer: "Chevron", wage: "$18.25/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Customer+Service+Representative+Chevron&l=Lake+Elsinore%2C+CA" },
+    { title: "Line Cook", employer: "Chili's", wage: "$16.00/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Line+Cook+Chilis&l=Lake+Elsinore%2C+CA" },
+    { title: "Deli / Bakery Team Associate", employer: "Walmart", wage: "$19.00/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Deli+Bakery+Team+Associate+Walmart&l=Lake+Elsinore%2C+CA" },
+    { title: "Cart Attendant", employer: "Walmart", wage: "$17.00/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Cart+Attendant+Walmart&l=Lake+Elsinore%2C+CA" },
+  ],
+  "Temecula": [
+    { title: "HR Support Services Assistant", employer: "Southwest Healthcare", wage: "$24.99/hr", type: "ft", url: "https://www.indeed.com/jobs?q=HR+Support+Services+Assistant+Southwest+Healthcare&l=Temecula%2C+CA" },
+    { title: "Roofing Laborer", employer: "Westmax Roofing", wage: "$25.00/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Roofing+Laborer+Westmax+Roofing&l=Temecula%2C+CA" },
+    { title: "Cook", employer: "Buffalo Wild Wings", wage: "$18.00/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Cook+Buffalo+Wild+Wings&l=Temecula%2C+CA" },
+    { title: "Shift Leader", employer: "Panda Express", wage: "$23.00/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Shift+Leader+Panda+Express&l=Temecula%2C+CA" },
+    { title: "Service Team", employer: "Panda Express", wage: "$21.00/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Service+Team+Panda+Express&l=Temecula%2C+CA" },
+    { title: "Apprentice Jeweler", employer: "Signet Jewelers", wage: "$16.90/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Apprentice+Jeweler+Signet+Jewelers&l=Temecula%2C+CA" },
+    { title: "Store Protection Specialist", employer: "Ross", wage: "$17.40/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Store+Protection+Specialist+Ross&l=Temecula%2C+CA" },
+    { title: "Seasonal Sales Associate", employer: "Men's Wearhouse", wage: "$17.40/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Seasonal+Sales+Associate+Mens+Wearhouse&l=Temecula%2C+CA" },
+    { title: "Retail Customer Service Associate", employer: "FedEx", wage: "$19.70/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Retail+Customer+Service+Associate+FedEx&l=Temecula%2C+CA" },
+    { title: "Operations Manager", employer: "CVS", wage: "$21.90/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Operations+Manager+CVS&l=Temecula%2C+CA" },
+  ],
+};
+
+const housingData = {
+  emergency: [
+    { name: "Project TOUCH", phone: "951-677-9661", email: "info@projecttouchonline.com", website: "https://projecttouchonline.com", address: "28736 Calle del Lago, Murrieta, CA" },
+    { name: "The Anchor", phone: "951-390-3567", website: "https://lake-elsinore.org/400/The-Anchor", address: "215 W Graham Ave, Lake Elsinore, CA" },
+    { name: "Path of Life — Emergency", phone: "951-462-9822", email: "hotline@thepathoflife.com", website: "https://thepathoflife.com/shelter", address: "2840 Hulen Place, Riverside, CA" },
+    { name: "Path of Life — Cold Weather", phone: "951-318-1329", email: "hotline@thepathoflife.com", website: "https://thepathoflife.com/shelter", address: "3695 1st Street, Riverside, CA" },
+    { name: "Coachella Valley Rescue Mission", phone: "760-851-2160", email: "info@cvrm.org", website: "https://cvrm.org/what-we-do/get-help-today/", address: "84110 Manila Ave, Indio, CA" },
+    { name: "Martha's Village", phone: "760-347-4741", email: "info@marthasvillage.org", website: "https://marthasvillage.org/services/emergency-housing/", address: "83791 Date Ave, Indio, CA" },
+    { name: "Valley Restart Shelter", phone: "951-766-7476", website: "https://valleyrestartshelter.org", address: "200 E Menlo Street, Hemet, CA", special: "Women & Families" },
+    { name: "Corona Norco Rescue Mission", phone: "951-279-1300", address: "420 W Harrison Street, Corona, CA", special: "Women & Families" },
+    { name: "Path of Life — Family", phone: "951-462-9822", email: "hotline@thepathoflife.com", website: "https://thepathoflife.com/shelter", address: "2530 3rd Street, Riverside, CA", special: "Women & Families" },
+    { name: "Jacob's House", phone: "951-452-2627", website: "https://jacobshousetemecula.org", address: "31525 Jedediah Smith Road, Temecula, CA", special: "Hospital Patients & Families" },
+    { name: "Operation SafeHouse — West", phone: "951-351-4418", email: "info@operationsafehouse.org", website: "https://operationsafehouse.org", address: "9685 Hayes Street, Riverside, CA", special: "Youth" },
+    { name: "Operation SafeHouse — East", phone: "760-343-3211", email: "info@operationsafehouse.org", website: "https://operationsafehouse.org", address: "72710 East Lynn Street, Thousand Palms, CA", special: "Youth" },
+  ],
+  transitional: [
+    { name: "Project TOUCH", phone: "951-677-9661", email: "info@projecttouchonline.com", website: "https://projecttouchonline.com", address: "28736 Calle del Lago, Murrieta, CA" },
+    { name: "U.S.VETS Inland Empire", phone: "951-269-1119", email: "kbush@usvets.org", website: "https://usvets.org/locations/inland-empire/", address: "15305 6th Street, March Air Reserve Base, CA", special: "Veterans" },
+    { name: "TruEvolution — Project Legacy", phone: "951-888-1346", email: "CurtT@truevolution.org", website: "https://truevolution.org/project-legacy", address: "3838 Brockton Avenue, Riverside, CA", special: "LGBTQIA+" },
+    { name: "Starting Over, Inc.", phone: "951-898-0862", email: "office@startingoverinc.org", website: "https://startingoverinc.org", address: "6355 Riverside Ave, Suite 100, Riverside, CA", special: "Justice-Involved" },
+  ],
+  affordable: [
+    { name: "Monte Vista", phone: "951-600-1505", email: "montevista@solari-ent.com", website: "https://affirmedhousing.com/completed/monte-1/", address: "24740 Jefferson Avenue, Murrieta, CA" },
+    { name: "Monte Vista II", phone: "951-600-1505", email: "montevista@solari-ent.com", website: "https://dahlingroup.com/projects/Monte-Vista-II", address: "41411 Juniper Street, Murrieta, CA" },
+    { name: "Momamos Terrace", phone: "951-290-5101", website: "https://monamosterraceapts.com", address: "25054 Monroe Avenue, Murrieta, CA" },
+    { name: "Oak View Ranch", phone: "951-290-0533", website: "https://liveatoakviewranch.com", address: "24960 Adams Avenue, Murrieta, CA" },
+    { name: "Tres Lagos", phone: "951-877-5726", website: "https://treslagosapartments.com", address: "23345 Catt Road, Wildomar, CA" },
+    { name: "Monarch Terrace", phone: "951-247-5414", email: "manager@rent-monarchterrace.com", website: "https://rent-monarchterrace.com", address: "23215 Ironwood Avenue, Moreno Valley, CA" },
+    { name: "TELACU Villa", phone: "951-486-9842", website: "https://telacu.com/property_listings/telacu-villa", address: "25105 Fir Avenue, Moreno Valley, CA" },
+    { name: "Verano Terrace", phone: "951-924-0162", address: "25445 Sunnymead Blvd, Moreno Valley, CA" },
+    { name: "Fountain Glen", phone: "951-677-8035", website: "https://fountainglengrandisle.com", address: "24405 Village Walk Place, Murrieta, CA", special: "Elderly Adults" },
+    { name: "Amanda Park", phone: "951-698-1133", website: "https://amandaparksenior.usamfm.com", address: "24425 Skyview Ridge Drive, Murrieta, CA", special: "Elderly Adults" },
+    { name: "Courtyards at Cottonwood", phone: "951-247-5546", email: "courtyardsatcottonwood@awimc.com", website: "https://awimc.com/community/courtyards-at-cottonwood-apartments", address: "24580 Cottonwood Avenue, Moreno Valley, CA" },
+    { name: "Mountain View", phone: "951-653-1173", email: "mountainview@rpmcompany.com", website: "https://mountainviewapartmenthomes.com", address: "13135 Heacock Street, Moreno Valley, CA" },
+    { name: "Corona Del Rey", phone: "951-278-3245", email: "coronadelrey@nationalcore.org", website: "https://nationalcore.org/communities/corona-del-rey", address: "1148 D Street, Corona, CA" },
+  ]
+};
+
+/* ════════════════════════════════════════════════════
+   NAVIGATION
+   ════════════════════════════════════════════════════ */
+function navigate(page, scrollTo) {
+  document.querySelectorAll('.page').forEach(p => { p.classList.remove('active'); p.style.animation = 'none'; });
+  const target = document.getElementById('page-' + page);
+  if (target) {
+    target.style.animation = 'none';
+    target.offsetHeight; // reflow
+    target.style.animation = '';
+    target.classList.add('active');
+  }
+  document.querySelectorAll('nav a[data-page]').forEach(a => a.classList.toggle('active', a.dataset.page === page));
+  document.getElementById('mainNav').classList.remove('open');
+  if (scrollTo) {
+    setTimeout(() => {
+      const el = document.getElementById(scrollTo);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  } else {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  // Init reveals
+  setTimeout(initReveals, 150);
+}
+
+/* ════════════════════════════════════════════════════
+   CASE MANAGERS RENDER
+   ════════════════════════════════════════════════════ */
+const teamGrid = document.getElementById('teamGrid');
+function renderCMs(list) {
+  teamGrid.innerHTML = list.map(cm => {
+    const initials = cm.name.split(' ').map(w => w[0]).join('');
+    return `<div class="cm-card reveal">
+      <div class="cm-card__top">
+        <div class="cm-card__avatar">${initials}</div>
+        <div><div class="cm-card__name">${cm.name}</div><div class="cm-card__role">Case Manager</div></div>
+      </div>
+      <a class="cm-card__email" href="mailto:${cm.email}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        ${cm.email}
+      </a>
+      <div class="cm-card__actions">
+        <a href="mailto:${cm.email}" class="cm-card__btn cm-card__btn--primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Email
+        </a>
+        <button class="cm-card__btn cm-card__btn--secondary" onclick="event.stopPropagation();navigator.clipboard.writeText('${cm.email}');this.innerHTML='✓ Copied';setTimeout(()=>this.innerHTML='<svg viewBox=\\'0 0 24 24\\' fill=\\'none\\' stroke=\\'currentColor\\' stroke-width=\\'2\\' stroke-linecap=\\'round\\'><rect x=\\'9\\' y=\\'9\\' width=\\'13\\' height=\\'13\\' rx=\\'2\\'/><path d=\\'M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1\\'/></svg> Copy',1500)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy
+        </button>
+      </div>
+    </div>`;
+  }).join('');
+  document.getElementById('cmCount').textContent = list.length;
+  setTimeout(initReveals, 50);
+}
+renderCMs(caseManagers);
+
+document.getElementById('cmSearch').addEventListener('input', e => {
+  const q = e.target.value.toLowerCase().trim();
+  renderCMs(caseManagers.filter(cm => cm.name.toLowerCase().includes(q) || cm.email.toLowerCase().includes(q)));
+});
+
+/* ════════════════════════════════════════════════════
+   EMPLOYMENT RENDER
+   ════════════════════════════════════════════════════ */
+let empFilter = 'all';
+function renderEmployment() {
+  const container = document.getElementById('empListings');
+  let html = '';
+  for (const [city, jobs] of Object.entries(jobData)) {
+    const filtered = empFilter === 'all' ? jobs : jobs.filter(j => j.type === empFilter);
+    const id = city.toLowerCase().replace(/\s+/g, '-');
+    html += `<div class="city-group" id="emp-${id}">
+      <div class="city-group__header" onclick="this.closest('.city-group').classList.toggle('collapsed')">
+        <div class="city-group__left"><div class="city-group__dot"></div><span class="city-group__name">${city}</span></div>
+        <div class="city-group__right">
+          <span class="city-group__count">${filtered.length} opening${filtered.length !== 1 ? 's' : ''}</span>
+          <span class="city-group__chevron">▾</span>
+        </div>
+      </div>
+      <div class="city-group__body">`;
+    if (filtered.length === 0) {
+      html += `<div style="padding:20px;text-align:center;color:var(--text-tertiary);font-size:var(--size-sm);">No ${empFilter === 'ft' ? 'full-time' : 'part-time'} openings in ${city}.</div>`;
+    } else {
+      filtered.forEach(j => {
+        html += `<div class="job-row" onclick="window.open('${j.url}','_blank')">
+          <div>
+            <div class="job-row__title">${j.title} <span class="job-row__arrow">↗</span></div>
+            <div class="job-row__meta"><span class="job-row__employer">${j.employer}</span><span class="job-row__posted">· Mar 2026</span></div>
+          </div>
+          <div class="job-row__right">
+            <span class="job-row__wage">${j.wage}</span>
+            <span class="badge badge--${j.type}">${j.type === 'ft' ? 'Full-Time' : 'Part-Time'}</span>
+          </div>
+        </div>`;
+      });
+    }
+    html += '</div></div>';
+  }
+  container.innerHTML = html;
+}
+renderEmployment();
+
+document.querySelectorAll('#empFilters .pill').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#empFilters .pill').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    empFilter = btn.dataset.filter;
+    renderEmployment();
+  });
+});
+
+/* ════════════════════════════════════════════════════
+   HOUSING RENDER
+   ════════════════════════════════════════════════════ */
+function renderHousing() {
+  const panels = document.getElementById('housingPanels');
+  let html = '';
+  const types = { emergency: 'Emergency Shelters', transitional: 'Transitional Housing', affordable: 'Affordable Housing' };
+  const colors = { emergency: 'emergency', transitional: 'transitional', affordable: 'affordable' };
+
+  for (const [type, label] of Object.entries(types)) {
+    const items = housingData[type];
+    html += `<div class="housing-panel${type === 'emergency' ? ' active' : ''}" id="panel-${type}">
+      <div class="housing-grid">`;
+    items.forEach(h => {
+      html += `<div class="housing-card housing-card--${colors[type]}">`;
+      if (h.special) {
+        html += `<div class="housing-card__badge housing-card__badge--special">${h.special}</div>`;
+      } else {
+        html += `<div class="housing-card__badge housing-card__badge--${colors[type]}">${label}</div>`;
+      }
+      html += `<div class="housing-card__name">${h.name}</div>`;
+      html += `<div class="housing-card__details">`;
+      html += `<div class="housing-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>${h.address}</div>`;
+      html += `<div class="housing-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg><a href="tel:${h.phone.replace(/[^0-9]/g,'')}">${h.phone}</a></div>`;
+      if (h.email) html += `<div class="housing-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:${h.email}">${h.email}</a></div>`;
+      if (h.website) html += `<div class="housing-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><a href="${h.website}" target="_blank">Visit Website ↗</a></div>`;
+      html += '</div></div>';
+    });
+    html += '</div></div>';
+  }
+  panels.innerHTML = html;
+}
+renderHousing();
+
+document.querySelectorAll('#housingTabs .housing-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('#housingTabs .housing-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    document.querySelectorAll('.housing-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+  });
+});
+
+/* ════════════════════════════════════════════════════
+   SCROLL REVEALS
+   ════════════════════════════════════════════════════ */
+function initReveals() {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.reveal:not(.visible)').forEach(el => obs.observe(el));
+}
+initReveals();
+
+/* Header scroll */
+window.addEventListener('scroll', () => {
+  document.getElementById('header').classList.toggle('header--scrolled', window.scrollY > 20);
+}, { passive: true });
+</script>
+</body>
+</html>
