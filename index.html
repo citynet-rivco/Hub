@@ -420,12 +420,11 @@ nav a.active { color: var(--accent); background: var(--accent-pale); }
 </head>
 <body>
 
-<!-- ═══ TOP BAR ═══ -->
 <div class="topbar">
   <div class="container topbar__inner">
     <div class="topbar__label">
       <span class="topbar__dot"></span>
-      An official resource of City Net — Riverside County Homeless Services
+      An official resource of City Net Homeless Services - Riverside County
     </div>
     <div class="topbar__right">
       <span>Outreach Hotline: (951) 390-3567</span>
@@ -434,7 +433,6 @@ nav a.active { color: var(--accent); background: var(--accent-pale); }
   </div>
 </div>
 
-<!-- ═══ HEADER ═══ -->
 <header class="header" id="header">
   <div class="container header__inner">
     <div class="logo" onclick="navigate('home')">
@@ -457,17 +455,13 @@ nav a.active { color: var(--accent); background: var(--accent-pale); }
   </div>
 </header>
 
-<!-- ══════════════════════════════════════════════════════════
-     PAGE: HOME
-     ══════════════════════════════════════════════════════════ -->
 <div class="page active" id="page-home">
 
-  <!-- Hero -->
   <section class="hero">
     <div class="container">
       <div class="hero__eyebrow">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        Riverside County Case Management
+        Riverside County
       </div>
       <h1 class="hero__title">Your partner on the<br>pathway <em>home</em></h1>
       <p class="hero__sub">Search for local jobs, explore housing resources, and connect directly with your case manager — all in one place.</p>
@@ -484,7 +478,6 @@ nav a.active { color: var(--accent); background: var(--accent-pale); }
     </div>
   </section>
 
-  <!-- Stats -->
   <section class="stats">
     <div class="container">
       <div class="stats__grid">
@@ -496,7 +489,6 @@ nav a.active { color: var(--accent); background: var(--accent-pale); }
     </div>
   </section>
 
-  <!-- Hub Cards -->
   <section class="section">
     <div class="container">
       <div class="section__header section__header--center">
@@ -533,7 +525,6 @@ nav a.active { color: var(--accent); background: var(--accent-pale); }
     </div>
   </section>
 
-  <!-- Case Managers -->
   <section class="section section--alt" id="team-section">
     <div class="container">
       <div class="section__header">
@@ -552,7 +543,6 @@ nav a.active { color: var(--accent); background: var(--accent-pale); }
     </div>
   </section>
 
-  <!-- CTA -->
   <section class="section">
     <div class="container">
       <div class="cta-banner">
@@ -570,9 +560,6 @@ nav a.active { color: var(--accent); background: var(--accent-pale); }
   </section>
 </div>
 
-<!-- ══════════════════════════════════════════════════════════
-     PAGE: EMPLOYMENT
-     ══════════════════════════════════════════════════════════ -->
 <div class="page" id="page-employment">
   <section class="page-hero">
     <div class="container">
@@ -609,7 +596,6 @@ nav a.active { color: var(--accent); background: var(--accent-pale); }
           <div id="empListings"></div>
         </div>
         <aside class="emp-sidebar">
-          <!-- How to Apply -->
           <div class="sidebar-card">
             <div class="sidebar-card__head"><h3>How to Apply</h3></div>
             <div class="sidebar-card__body">
@@ -620,7 +606,6 @@ nav a.active { color: var(--accent); background: var(--accent-pale); }
               <div class="step"><div class="step__num">5</div><div><div class="step__title">Follow up in 3–5 days</div><div class="step__desc">A brief call or email keeps you top of mind with hiring managers.</div></div></div>
             </div>
           </div>
-          <!-- Resources -->
           <div class="sidebar-card">
             <div class="sidebar-card__head"><h3>Employment Resources</h3></div>
             <div class="sidebar-card__body">
@@ -631,7 +616,6 @@ nav a.active { color: var(--accent); background: var(--accent-pale); }
               <a class="resource-link" href="https://rivcodpss.org/workforce-connection" target="_blank"><div><div class="resource-link__cat">DPSS</div><div class="resource-link__name">Workforce Connection</div></div><span class="resource-link__arrow">↗</span></a>
             </div>
           </div>
-          <!-- Tips -->
           <div class="sidebar-card">
             <div class="sidebar-card__head"><h3>Tips for Applicants</h3></div>
             <div class="sidebar-card__body">
@@ -648,9 +632,6 @@ nav a.active { color: var(--accent); background: var(--accent-pale); }
   </section>
 </div>
 
-<!-- ══════════════════════════════════════════════════════════
-     PAGE: HOUSING
-     ══════════════════════════════════════════════════════════ -->
 <div class="page" id="page-housing">
   <section class="page-hero">
     <div class="container">
@@ -686,7 +667,6 @@ nav a.active { color: var(--accent); background: var(--accent-pale); }
     </div>
   </section>
 
-  <!-- CTA -->
   <section class="section">
     <div class="container">
       <div class="cta-banner">
@@ -707,7 +687,6 @@ nav a.active { color: var(--accent); background: var(--accent-pale); }
   </section>
 </div>
 
-<!-- ═══ FOOTER ═══ -->
 <footer class="footer">
   <div class="container">
     <div class="footer__top">
@@ -760,17 +739,17 @@ nav a.active { color: var(--accent); background: var(--accent-pale); }
    DATA
    ════════════════════════════════════════════════════ */
 const caseManagers = [
-  { name: "Andrew Sayegh", email: “andrew.sayegh@citynet.org", phone: “951-401-3739”},
-  { name: "Ryan Lemus", email: "ryan.lemus@citynet.org", phone: “951-235-2667”},
-  { name: "Brandon Tucker", email: "brandon.tucker@citynet.org", phone: “951-201-9873”},
-  { name: "Adrian Labastida", email: "adrian.labastida@citynet.org", phone: “951-203-1293”},
-  { name: "Riley Lynch", email: “riley.lynch@citynet.org", phone: “951-675-2785”},
-  { name: "Aileen Magana", email: “aileen.magana@citynet.org", phone: “951-897-7685”},
-  { name: "Alex Nunez", email: “alex.nunez@citynet.org", phone: “951-212-6726”},
-  { name: "Breanna Wells-Tyrell", email: “breanna.wells-tyrell@citynet.org", phone: “951-836-3503”},
-  { name: "Damani Enokson", email: "damani.enokson@citynet.org", phone: “951-235-0969”},
-  { name: "Malcolm Parker", email: “malcolm.parker@citynet.org", phone: “951-834-3319”},
-  { name: "Whiskey Kelsey", email: “whiskey.kelsey@citynet.org", phone: “951-235-1898”},
+  { name: "Andrew Sayegh", email: "andrew.sayegh@citynet.org", phone: "951-401-3739"},
+  { name: "Ryan Lemus", email: "ryan.lemus@citynet.org", phone: "951-235-2667"},
+  { name: "Brandon Tucker", email: "brandon.tucker@citynet.org", phone: "951-201-9873"},
+  { name: "Adrian Labastida", email: "adrian.labastida@citynet.org", phone: "951-203-1293"},
+  { name: "Riley Lynch", email: "riley.lynch@citynet.org", phone: "951-675-2785"},
+  { name: "Aileen Magana", email: "aileen.magana@citynet.org", phone: "951-897-7685"},
+  { name: "Alex Nunez", email: "alex.nunez@citynet.org", phone: "951-212-6726"},
+  { name: "Breanna Wells-Tyrell", email: "breanna.wells-tyrell@citynet.org", phone: "951-836-3503"},
+  { name: "Damani Enokson", email: "damani.enokson@citynet.org", phone: "951-235-0969"},
+  { name: "Malcolm Parker", email: "malcolm.parker@citynet.org", phone: "951-834-3319"},
+  { name: "Whiskey Kelsey", email: "whiskey.kelsey@citynet.org", phone: "951-235-1898"},
 ];
 
 const jobData = {
