@@ -285,9 +285,10 @@ nav a.active { color: var(--accent); background: var(--accent-pale); }
 .city-group__body { background: var(--white); }
 
 /* Job row */
-.job-row { display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 12px 18px; border-bottom: 1px solid var(--border-light); gap: 16px; transition: background var(--dur-fast); cursor: pointer; }
+.job-row { display: grid; grid-template-columns: auto 1fr auto; align-items: center; padding: 12px 18px; border-bottom: 1px solid var(--border-light); gap: 16px; transition: background var(--dur-fast); cursor: pointer; }
 .job-row:last-child { border-bottom: none; }
 .job-row:hover { background: var(--accent-pale); }
+.job-row__logo { width: 40px; height: 40px; border-radius: var(--radius-sm); object-fit: contain; background: var(--white); border: 1px solid var(--border-light); padding: 4px; }
 .job-row__title { font-size: var(--size-sm); font-weight: 600; color: var(--accent); display: flex; align-items: center; gap: 5px; line-height: 1.3; }
 .job-row__arrow { font-size: 10px; color: var(--accent-light); opacity: 0; transition: opacity var(--dur-fast); }
 .job-row:hover .job-row__arrow { opacity: 1; }
@@ -714,8 +715,8 @@ nav a.active { color: var(--accent); background: var(--accent-pale); }
   <section class="stats">
     <div class="container">
       <div class="stats__grid">
-        <div class="stat"><div class="stat__number">17</div><div class="stat__divider"></div><div class="stat__label">Care Providers</div></div>
-        <div class="stat"><div class="stat__number">4</div><div class="stat__divider"></div><div class="stat__label">Care Categories</div></div>
+        <div class="stat"><div class="stat__number">13</div><div class="stat__divider"></div><div class="stat__label">Care Providers</div></div>
+        <div class="stat"><div class="stat__number">3</div><div class="stat__divider"></div><div class="stat__label">Care Categories</div></div>
         <div class="stat"><div class="stat__number">6+</div><div class="stat__divider"></div><div class="stat__label">Cities Served</div></div>
         <div class="stat"><div class="stat__number">IEHP</div><div class="stat__divider"></div><div class="stat__label">Medi-Cal Support</div></div>
       </div>
@@ -728,7 +729,6 @@ nav a.active { color: var(--accent); background: var(--accent-pale); }
         <button class="housing-tab active" data-tab="medical">Medical & Clinics</button>
         <button class="housing-tab" data-tab="behavioral">Mental Health & Recovery</button>
         <button class="housing-tab" data-tab="specialty">Specialty Care</button>
-        <button class="housing-tab" data-tab="legal">Social & Legal Services</button>
       </div>
       <div id="hcPanels"></div>
     </div>
@@ -751,8 +751,8 @@ nav a.active { color: var(--accent); background: var(--accent-pale); }
   <section class="stats">
     <div class="container">
       <div class="stats__grid">
-        <div class="stat"><div class="stat__number">19</div><div class="stat__divider"></div><div class="stat__label">Community Partners</div></div>
-        <div class="stat"><div class="stat__number">4</div><div class="stat__divider"></div><div class="stat__label">Support Types</div></div>
+        <div class="stat"><div class="stat__number">24</div><div class="stat__divider"></div><div class="stat__label">Community Partners</div></div>
+        <div class="stat"><div class="stat__number">5</div><div class="stat__divider"></div><div class="stat__label">Support Types</div></div>
         <div class="stat"><div class="stat__number">10</div><div class="stat__divider"></div><div class="stat__label">Food Pantries</div></div>
         <div class="stat"><div class="stat__number">Free</div><div class="stat__divider"></div><div class="stat__label">Access</div></div>
       </div>
@@ -766,6 +766,7 @@ nav a.active { color: var(--accent); background: var(--accent-pale); }
         <button class="housing-tab" data-tab="basic">Basic Needs</button>
         <button class="housing-tab" data-tab="education">Education</button>
         <button class="housing-tab" data-tab="animals">Animal Care</button>
+        <button class="housing-tab" data-tab="legal">Social & Legal Services</button>
       </div>
       <div id="resPanels"></div>
     </div>
@@ -950,13 +951,6 @@ const healthcareData = {
     { name: "Autism Society Inland Empire", phone: "951-220-6922", email: "info@ieautism.org", website: "https://ieautism.org/", address: "420 N McKinley, Suite 111-118, Corona CA", special: "Autism Services" },
     { name: "TruEvolution - Sexual Health", phone: "951-888-1346", email: "care@truevolution.org", website: "https://www.truevolution.org/case-management", address: "3838 Brockton Avenue, Riverside, CA", special: "HIV Testing & PrEP" },
     { name: "Riverside County DPSS - IHSS", phone: "888-960-4477", website: "http://www.RiversideIHSS.org", address: "561 N San Jacinto Street, Hemet, CA", special: "Elderly & Dependent Care" },
-  ],
-  legal: [
-    { name: "Community Connect", phone: "211", address: "Riverside County", special: "General Referrals" },
-    { name: "Riverside County DPSS", phone: "877-410-8827", email: "DPSSComm@rivco.org", website: "https://rivcodpss.org/", address: "43264 Business Park Drive Suite 102, Temecula, CA", special: "Public Benefits" },
-    { name: "Riverside Legal Aid", phone: "951-682-7968", email: "info@riversidelegalaid.org", website: "https://riversidelegalaid.org", address: "4129 Main Street, Suite 101, Riverside, CA", special: "Family Law & More" },
-    { name: "Riverside Legal Aid - Eviction Defense", phone: "951-888-2039", email: "info@riversidelegalaid.org", website: "https://riversidelegalaid.org/unsafe-housing-tenant-rights/", address: "Remote", special: "Eviction Defense" },
-    { name: "Inland Coalition for Immigrant Justice", phone: "909-474-9996", email: "info@ic4ij.org", website: "https://ic4ij.org/", address: "2441 N Sierra Way, San Bernardino, CA", special: "Immigration Legal Support" },
   ]
 };
 
@@ -987,6 +981,13 @@ const resourcesData = {
   animals: [
     { name: "Animal Friends of the Valley", phone: "951-674-0618", website: "http://www.afv.org", address: "33751 Mission Trail, Wildomar, CA", special: "Shelter & Field Services" },
     { name: "Hold My Leash (Brittany Aina)", phone: "858-761-3656", email: "Brittanyaina@care-villages.com", website: "https://www.care-villages.com/hold-my-leash", address: "Riverside County", special: "Pet Care" },
+  ],
+  legal: [
+    { name: "Community Connect", phone: "211", address: "Riverside County", special: "General Referrals" },
+    { name: "Riverside County DPSS", phone: "877-410-8827", email: "DPSSComm@rivco.org", website: "https://rivcodpss.org/", address: "43264 Business Park Drive Suite 102, Temecula, CA", special: "Public Benefits" },
+    { name: "Riverside Legal Aid", phone: "951-682-7968", email: "info@riversidelegalaid.org", website: "https://riversidelegalaid.org", address: "4129 Main Street, Suite 101, Riverside, CA", special: "Family Law & More" },
+    { name: "Riverside Legal Aid - Eviction Defense", phone: "951-888-2039", email: "info@riversidelegalaid.org", website: "https://riversidelegalaid.org/unsafe-housing-tenant-rights/", address: "Remote", special: "Eviction Defense" },
+    { name: "Inland Coalition for Immigrant Justice", phone: "909-474-9996", email: "info@ic4ij.org", website: "https://ic4ij.org/", address: "2441 N Sierra Way, San Bernardino, CA", special: "Immigration Legal Support" },
   ]
 };
 
@@ -1062,12 +1063,51 @@ document.getElementById('cmSearch').addEventListener('input', e => {
 /* ════════════════════════════════════════════════════
    EMPLOYMENT RENDER
    ════════════════════════════════════════════════════ */
+function getDomain(employer) {
+  const map = {
+    "The Grey Legal Group": "thegreylegalgroup.com",
+    "Shoup Legal": "shouplegal.com",
+    "Sam's Club": "samsclub.com",
+    "Panera Bread": "panerabread.com",
+    "The Home Depot": "homedepot.com",
+    "Target": "target.com",
+    "KFC": "kfc.com",
+    "PetSmart": "petsmart.com",
+    "Walmart": "walmart.com",
+    "Super Star Car Wash": "superstarcarwashaz.com",
+    "Dunkin'": "dunkindonuts.com",
+    "Lowe's": "lowes.com",
+    "Massage Envy": "massageenvy.com",
+    "Better Buzz Coffee": "betterbuzzcoffee.com",
+    "Sprouts": "sprouts.com",
+    "Updike Distribution Logistics": "updikelogistics.com",
+    "Panda Express": "pandaexpress.com",
+    "H&R Block": "hrblock.com",
+    "Chevron": "chevron.com",
+    "Chili's": "chilis.com",
+    "Southwest Healthcare": "swhealthcaresystem.com",
+    "Westmax Roofing": "westmaxroofing.com",
+    "Buffalo Wild Wings": "buffalowildwings.com",
+    "Signet Jewelers": "signetjewelers.com",
+    "Ross": "rossstores.com",
+    "Men's Wearhouse": "menswearhouse.com",
+    "FedEx": "fedex.com",
+    "CVS": "cvs.com"
+  };
+  return map[employer] || "placeholder.com";
+}
+
 let empFilter = 'all';
 function renderEmployment() {
   const container = document.getElementById('empListings');
   let html = '';
   for (const [city, jobs] of Object.entries(jobData)) {
-    const filtered = empFilter === 'all' ? jobs : jobs.filter(j => j.type === empFilter);
+    const sortedJobs = [...jobs].sort((a, b) => {
+      const titleCmp = a.title.localeCompare(b.title);
+      return titleCmp !== 0 ? titleCmp : a.employer.localeCompare(b.employer);
+    });
+
+    const filtered = empFilter === 'all' ? sortedJobs : sortedJobs.filter(j => j.type === empFilter);
     const id = city.toLowerCase().replace(/\s+/g, '-');
     html += `<div class="city-group" id="emp-${id}">
       <div class="city-group__header" onclick="this.closest('.city-group').classList.toggle('collapsed')">
@@ -1082,7 +1122,11 @@ function renderEmployment() {
       html += `<div style="padding:20px;text-align:center;color:var(--text-tertiary);font-size:var(--size-sm);">No ${empFilter === 'ft' ? 'full-time' : 'part-time'} openings in ${city}.</div>`;
     } else {
       filtered.forEach(j => {
+        const fallbackUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(j.employer)}&background=ece8e1&color=0a1628&size=128&bold=true`;
+        const logoUrl = `https://logo.clearbit.com/${getDomain(j.employer)}`;
+
         html += `<div class="job-row" onclick="window.open('${j.url}','_blank')">
+          <img class="job-row__logo" src="${logoUrl}" alt="${j.employer} Logo" onerror="this.onerror=null;this.src='${fallbackUrl}'">
           <div>
             <div class="job-row__title">${j.title} <span class="job-row__arrow">↗</span></div>
             <div class="job-row__meta"><span class="job-row__employer">${j.employer}</span><span class="job-row__posted">· Mar 2026</span></div>
@@ -1158,8 +1202,8 @@ document.querySelectorAll('#housingTabs .housing-tab').forEach(tab => {
 function renderHealthcare() {
   const panels = document.getElementById('hcPanels');
   let html = '';
-  const types = { medical: 'Medical & Clinics', behavioral: 'Mental Health & Recovery', specialty: 'Specialty Care', legal: 'Social & Legal' };
-  const colors = { medical: 'emergency', behavioral: 'transitional', specialty: 'team', legal: 'affordable' };
+  const types = { medical: 'Medical & Clinics', behavioral: 'Mental Health & Recovery', specialty: 'Specialty Care' };
+  const colors = { medical: 'emergency', behavioral: 'transitional', specialty: 'team' };
 
   for (const [type, label] of Object.entries(types)) {
     const items = healthcareData[type];
@@ -1197,8 +1241,8 @@ document.querySelectorAll('#hcTabs .housing-tab').forEach(tab => {
 function renderResources() {
   const panels = document.getElementById('resPanels');
   let html = '';
-  const types = { food: 'Food Pantries', basic: 'Basic Needs', education: 'Education', animals: 'Animal Care' };
-  const colors = { food: 'affordable', basic: 'transitional', education: 'team', animals: 'emergency' };
+  const types = { food: 'Food Pantries', basic: 'Basic Needs', education: 'Education', animals: 'Animal Care', legal: 'Social & Legal Services' };
+  const colors = { food: 'affordable', basic: 'transitional', education: 'team', animals: 'emergency', legal: 'team' };
 
   for (const [type, label] of Object.entries(types)) {
     const items = resourcesData[type];
@@ -1212,7 +1256,7 @@ function renderResources() {
       if (h.address) html += `<div class="housing-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>${h.address}</div>`;
       if (h.phone) html += `<div class="housing-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg><a href="tel:${h.phone.replace(/[^0-9]/g,'')}">${h.phone}</a></div>`;
       if (h.email) html += `<div class="housing-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:${h.email}">${h.email}</a></div>`;
-      if (h.website) html += `<div class="housing-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><a href="${h.website}" target="_blank">Visit Website ↗</a></div>`;
+      if (h.website) html += `<div class="housing-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><a href="${h.website}" target="_blank">Visit Website ↗</a></div>`;
       html += '</div></div>';
     });
     html += '</div></div>';
