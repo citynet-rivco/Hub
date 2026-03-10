@@ -6,419 +6,259 @@
 <title>City Net — Client Hub</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
 <style>
 /* ════════════════════════════════════════════════════
-   DESIGN TOKENS
+   DESIGN TOKENS (Refreshed UI/UX)
    ════════════════════════════════════════════════════ */
 :root {
-  --ink: #0a1628;
-  --ink-soft: #1b2a45;
-  --ink-muted: #3d5275;
-  --surface: #f6f4f0;
-  --surface-warm: #edeae4;
-  --surface-card: #ffffff;
-  --accent: #1a5f7a;
-  --accent-light: #2980a8;
-  --accent-pale: #e8f2f7;
-  --accent-dark: #134a5f;
-  --signal-green: #1a7a5f;
-  --signal-green-pale: #e8f7f2;
-  --signal-amber: #92400e;
-  --signal-amber-pale: #fffbeb;
-  --signal-red: #b91c1c;
-  --signal-red-pale: #fef2f2;
-  --signal-purple: #6b21a8;
-  --signal-purple-pale: #f5f3ff;
-  --gold: #c4930a;
-  --gold-pale: #fefce8;
-  --border: #d8d4cd;
-  --border-light: #e8e5df;
-  --text-primary: #0a1628;
-  --text-secondary: #4a5568;
-  --text-tertiary: #8896a7;
-  --white: #ffffff;
-  --font-display: 'Fraunces', Georgia, serif;
-  --font-body: 'DM Sans', -apple-system, sans-serif;
-  --size-xs: 0.6875rem;
-  --size-sm: 0.8125rem;
-  --size-base: 0.9375rem;
-  --size-md: 1.0625rem;
-  --size-lg: 1.25rem;
-  --size-xl: 1.5rem;
-  --size-2xl: 2rem;
-  --size-3xl: 2.75rem;
-  --size-hero: clamp(2.5rem, 5vw, 4rem);
-  --space-xs: 0.5rem;
-  --space-sm: 0.75rem;
-  --space-md: 1rem;
-  --space-lg: 1.5rem;
-  --space-xl: 2rem;
-  --space-2xl: 3rem;
-  --space-3xl: 4rem;
-  --space-4xl: 5.5rem;
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 14px;
-  --radius-xl: 20px;
-  --shadow-sm: 0 1px 3px rgba(10,22,40,0.04), 0 1px 2px rgba(10,22,40,0.06);
-  --shadow-md: 0 4px 16px rgba(10,22,40,0.06), 0 2px 6px rgba(10,22,40,0.04);
-  --shadow-lg: 0 12px 40px rgba(10,22,40,0.08), 0 4px 12px rgba(10,22,40,0.04);
-  --shadow-card-hover: 0 16px 48px rgba(10,22,40,0.1), 0 6px 16px rgba(10,22,40,0.05);
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --dur-fast: 200ms;
-  --dur-base: 350ms;
+  /* Core Colors */
+  --brand-primary: #0f3c53; /* Deep Navy */
+  --brand-secondary: #267c9c; /* Brighter Blue */
+  --brand-accent: #d97736; /* Warm Orange/Rust for CTAs */
+  
+  /* Neutrals */
+  --bg-main: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-alt: #f1f5f9;
+  --text-dark: #0f172a;
+  --text-body: #334155;
+  --text-muted: #64748b;
+  --border-light: #e2e8f0;
+  --border-med: #cbd5e1;
+
+  /* Status Colors */
+  --status-green-bg: #dcfce7;
+  --status-green-text: #166534;
+  --status-blue-bg: #e0f2fe;
+  --status-blue-text: #075985;
+  --status-purple-bg: #f3e8ff;
+  --status-purple-text: #6b21a8;
+  --status-orange-bg: #ffedd5;
+  --status-orange-text: #9a3412;
+  --status-red-bg: #fee2e2;
+  --status-red-text: #991b1b;
+
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, sans-serif;
+  --font-serif: 'Merriweather', Georgia, serif;
+  
+  /* Spacing & Layout */
+  --max-width: 1280px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-hover: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ════════════════════════════════════════════════════
-   RESET
+   RESET & BASE
    ════════════════════════════════════════════════════ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
-body { font-family: var(--font-body); font-size: var(--size-base); color: var(--text-primary); background: var(--surface); line-height: 1.6; overflow-x: hidden; }
-::selection { background: var(--accent); color: var(--white); }
-img { display: block; max-width: 100%; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { 
+  font-family: var(--font-sans); 
+  color: var(--text-body); 
+  background-color: var(--bg-main); 
+  line-height: 1.6; 
+  -webkit-font-smoothing: antialiased;
+}
 a { color: inherit; text-decoration: none; }
-button { font-family: var(--font-body); }
+button { font-family: inherit; border: none; background: none; cursor: pointer; }
+img { max-width: 100%; height: auto; display: block; }
+ul { list-style: none; }
 
-.container { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 var(--space-xl); }
+.container { width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem; }
+
+/* Typography */
+h1, h2, h3, h4 { color: var(--text-dark); line-height: 1.2; }
+.display-title { font-family: var(--font-serif); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 300; letter-spacing: -0.02em; }
+.display-title em { font-style: italic; color: var(--brand-secondary); }
+.section-title { font-family: var(--font-sans); font-size: 2rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 0.5rem; }
+
+/* CTAs & Buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  padding: 0.75rem 1.5rem; font-weight: 600; font-size: 0.95rem;
+  border-radius: var(--radius-md); transition: all var(--transition-fast);
+}
+.btn--primary { background-color: var(--brand-primary); color: white; }
+.btn--primary:hover { background-color: var(--brand-secondary); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.btn--outline { border: 2px solid var(--border-med); color: var(--text-dark); background: transparent; }
+.btn--outline:hover { border-color: var(--brand-primary); background: var(--bg-alt); }
+.btn--accent { background-color: var(--brand-accent); color: white; }
+.btn--accent:hover { filter: brightness(110%); transform: translateY(-2px); box-shadow: var(--shadow-md); }
 
 /* ════════════════════════════════════════════════════
-   TOP BAR
+   LAYOUT COMPONENTS
    ════════════════════════════════════════════════════ */
-.topbar { background: var(--ink); color: var(--white); padding: 7px 0; font-size: var(--size-xs); letter-spacing: 0.04em; position: relative; z-index: 100; }
-.topbar__inner { display: flex; align-items: center; justify-content: space-between; gap: var(--space-md); }
-.topbar__label { display: flex; align-items: center; gap: 8px; opacity: 0.8; }
-.topbar__dot { width: 6px; height: 6px; border-radius: 50%; background: var(--signal-green); box-shadow: 0 0 6px rgba(26,122,95,0.5); }
-.topbar__right { display: flex; gap: var(--space-lg); opacity: 0.6; }
-.topbar__right a:hover { opacity: 1; }
+/* Topbar */
+.topbar { background: var(--brand-primary); color: white; padding: 0.5rem 0; font-size: 0.8rem; letter-spacing: 0.02em; }
+.topbar__inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
+.topbar__badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.1); padding: 2px 8px; border-radius: var(--radius-full); }
+.topbar__badge::before { content: ''; display: block; width: 6px; height: 6px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 8px rgba(74,222,128,0.6); }
 
-/* ════════════════════════════════════════════════════
-   HEADER
-   ════════════════════════════════════════════════════ */
-.header { position: sticky; top: 0; z-index: 90; background: rgba(246,244,240,0.88); backdrop-filter: blur(20px) saturate(1.4); -webkit-backdrop-filter: blur(20px) saturate(1.4); border-bottom: 1px solid var(--border-light); transition: box-shadow var(--dur-base) var(--ease-out); }
-.header--scrolled { box-shadow: 0 2px 20px rgba(10,22,40,0.06); }
-.header__inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+/* Header / Nav */
+.header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border-light); transition: box-shadow var(--transition-fast); }
+.header--scrolled { box-shadow: var(--shadow-sm); }
+.header__inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+
 .logo { display: flex; align-items: center; gap: 12px; cursor: pointer; }
-.logo__mark { width: 36px; height: 36px; background: transparent; display: flex; align-items: center; justify-content: center; }
-.logo__text { font-family: var(--font-display); font-size: var(--size-lg); font-weight: 600; color: var(--ink); letter-spacing: -0.02em; }
-.logo__text span { color: var(--text-tertiary); font-weight: 400; margin-left: 2px; font-size: var(--size-sm); }
+.logo__img { height: 40px; width: auto; object-fit: contain; }
+.logo__text { font-weight: 700; font-size: 1.25rem; color: var(--brand-primary); }
+.logo__text span { font-weight: 400; color: var(--text-muted); font-size: 1rem; border-left: 1px solid var(--border-med); padding-left: 8px; margin-left: 4px; }
 
-nav { display: flex; align-items: center; gap: 2px; }
-nav a { padding: 8px 14px; font-size: var(--size-sm); font-weight: 500; color: var(--text-secondary); border-radius: var(--radius-sm); transition: all var(--dur-fast); letter-spacing: 0.01em; cursor: pointer; }
-nav a:hover { color: var(--text-primary); background: var(--surface-warm); }
-nav a.active { color: var(--accent); background: var(--accent-pale); }
-.nav-cta { margin-left: var(--space-sm); padding: 8px 20px !important; background: var(--ink) !important; color: var(--white) !important; border-radius: var(--radius-sm) !important; font-weight: 500 !important; }
-.nav-cta:hover { background: var(--ink-soft) !important; transform: translateY(-1px); box-shadow: var(--shadow-md); }
+.nav-menu { display: flex; align-items: center; gap: 0.25rem; }
+.nav-link { padding: 0.5rem 1rem; font-weight: 500; font-size: 0.95rem; color: var(--text-body); border-radius: var(--radius-sm); transition: all var(--transition-fast); }
+.nav-link:hover { background: var(--bg-alt); color: var(--brand-primary); }
+.nav-link.active { color: var(--brand-secondary); background: var(--status-blue-bg); }
 
-.nav-toggle { display: none; background: none; border: none; width: 36px; height: 36px; cursor: pointer; }
-.nav-toggle span { display: block; width: 20px; height: 2px; background: var(--ink); margin: 0 auto; transition: all var(--dur-fast); }
-.nav-toggle span + span { margin-top: 5px; }
+.mobile-menu-btn { display: none; padding: 0.5rem; }
+.mobile-menu-btn svg { width: 24px; height: 24px; stroke: var(--text-dark); }
 
-/* ════════════════════════════════════════════════════
-   PAGE TRANSITIONS
-   ════════════════════════════════════════════════════ */
-.page { display: none; animation: pageFadeIn 0.45s var(--ease-out) both; }
+/* Pages & Transitions */
+.page { display: none; animation: fadeIn var(--transition-normal) forwards; }
 .page.active { display: block; }
-@keyframes pageFadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Shared Hero Section */
+.hero { padding: 4rem 0 3rem; text-align: center; position: relative; }
+.hero__breadcrumb { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem; background: var(--bg-card); padding: 0.25rem 1rem; border-radius: var(--radius-full); border: 1px solid var(--border-light); }
+.hero__breadcrumb a { color: var(--brand-secondary); cursor: pointer; }
+.hero__breadcrumb a:hover { text-decoration: underline; }
+.hero__desc { max-width: 700px; margin: 1.5rem auto 0; font-size: 1.125rem; color: var(--text-body); }
+
+/* Shared Stats Row */
+.stats-row { background: var(--bg-card); border-y: 1px solid var(--border-light); padding: 2rem 0; margin-bottom: 3rem; }
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center; }
+.stat-item__num { font-size: 2.5rem; font-weight: 700; color: var(--brand-primary); line-height: 1; font-family: var(--font-serif); }
+.stat-item__label { font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-top: 0.5rem; }
+
+/* Filter & Search Bar */
+.controls-bar { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; margin-bottom: 2rem; background: var(--bg-card); padding: 1rem; border-radius: var(--radius-lg); border: 1px solid var(--border-light); box-shadow: var(--shadow-sm); }
+.search-wrapper { display: flex; align-items: center; gap: 0.75rem; background: var(--bg-alt); padding: 0.5rem 1rem; border-radius: var(--radius-md); flex: 1; max-width: 400px; border: 1px solid transparent; transition: border-color var(--transition-fast); }
+.search-wrapper:focus-within { border-color: var(--brand-secondary); background: var(--bg-card); }
+.search-wrapper input { border: none; background: none; outline: none; width: 100%; font-size: 0.95rem; color: var(--text-dark); }
+.tabs-wrapper { display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; }
+.tabs-wrapper::-webkit-scrollbar { display: none; }
+.tab-btn { padding: 0.5rem 1.25rem; font-weight: 600; font-size: 0.9rem; color: var(--text-body); background: var(--bg-alt); border-radius: var(--radius-full); transition: all var(--transition-fast); white-space: nowrap; border: 1px solid transparent; }
+.tab-btn:hover { background: var(--border-light); }
+.tab-btn.active { background: var(--brand-primary); color: white; box-shadow: var(--shadow-sm); }
+
+/* Grid Layouts */
+.grid-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
 
 /* ════════════════════════════════════════════════════
-   HERO (HOME)
+   SPECIFIC COMPONENTS
    ════════════════════════════════════════════════════ */
-.hero { padding: var(--space-4xl) 0 var(--space-3xl); position: relative; overflow: hidden; }
-.hero::before { content:''; position: absolute; top: -40%; right: -20%; width: 700px; height: 700px; background: radial-gradient(circle, rgba(26,95,122,0.04) 0%, transparent 70%); pointer-events: none; }
-.hero__eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 5px 14px 5px 10px; background: var(--accent-pale); border: 1px solid rgba(26,95,122,0.12); border-radius: 100px; font-size: 10px; font-weight: 600; color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: var(--space-lg); }
-.hero__eyebrow svg { width: 14px; height: 14px; }
-.hero__title { font-family: var(--font-display); font-size: var(--size-hero); font-weight: 500; line-height: 1.08; letter-spacing: -0.03em; color: var(--ink); max-width: 780px; }
-.hero__title em { font-style: italic; color: var(--accent); }
-.hero__sub { margin-top: var(--space-lg); font-size: var(--size-md); line-height: 1.7; color: var(--text-secondary); max-width: 560px; }
-.hero__actions { margin-top: var(--space-2xl); display: flex; gap: var(--space-md); flex-wrap: wrap; }
 
-.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 26px; font-family: var(--font-body); font-size: var(--size-sm); font-weight: 500; border-radius: var(--radius-sm); border: none; cursor: pointer; transition: all var(--dur-fast) var(--ease-out); letter-spacing: 0.01em; }
-.btn svg { width: 16px; height: 16px; }
-.btn--primary { background: var(--ink); color: var(--white); }
-.btn--primary:hover { background: var(--ink-soft); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
-.btn--secondary { background: transparent; color: var(--text-primary); border: 1.5px solid var(--border); }
-.btn--secondary:hover { border-color: var(--ink); background: var(--surface-warm); }
-.btn--accent { background: var(--accent); color: var(--white); }
-.btn--accent:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
-.btn--white { background: var(--white); color: var(--ink); }
-.btn--white:hover { background: var(--surface); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
-.btn--ghost { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.25); }
-.btn--ghost:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.05); }
-.btn--sm { padding: 8px 16px; font-size: var(--size-xs); }
+/* Resource Cards (Housing, Healthcare, etc) */
+.resource-card { background: var(--bg-card); border-radius: var(--radius-lg); border: 1px solid var(--border-light); padding: 1.5rem; transition: all var(--transition-normal); display: flex; flex-direction: column; height: 100%; }
+.resource-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: var(--border-med); }
+.resource-card__badge { align-self: flex-start; padding: 0.25rem 0.75rem; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; border-radius: var(--radius-full); margin-bottom: 1rem; }
+.resource-card__title { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-dark); }
+.resource-card__details { margin-top: auto; padding-top: 1rem; display: flex; flex-direction: column; gap: 0.75rem; }
+.resource-info-row { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.9rem; color: var(--text-body); }
+.resource-info-row svg { width: 18px; height: 18px; stroke: var(--brand-secondary); flex-shrink: 0; margin-top: 2px; }
+.resource-info-row a { transition: color var(--transition-fast); }
+.resource-info-row a:hover { color: var(--brand-secondary); text-decoration: underline; }
 
-/* ════════════════════════════════════════════════════
-   STATS
-   ════════════════════════════════════════════════════ */
-.stats { padding: var(--space-xl) 0; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); background: var(--white); }
-.stats__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-xl); }
-.stat { text-align: center; }
-.stat__number { font-family: var(--font-display); font-size: var(--size-2xl); font-weight: 500; color: var(--ink); letter-spacing: -0.03em; line-height: 1; }
-.stat__divider { width: 24px; height: 2px; background: var(--accent); margin: 8px auto 0; border-radius: 2px; }
-.stat__label { margin-top: 6px; font-size: 10px; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
+/* Badge Colors */
+.badge-red { background: var(--status-red-bg); color: var(--status-red-text); }
+.badge-purple { background: var(--status-purple-bg); color: var(--status-purple-text); }
+.badge-green { background: var(--status-green-bg); color: var(--status-green-text); }
+.badge-blue { background: var(--status-blue-bg); color: var(--status-blue-text); }
+.badge-orange { background: var(--status-orange-bg); color: var(--status-orange-text); }
 
-/* ════════════════════════════════════════════════════
-   SECTION
-   ════════════════════════════════════════════════════ */
-.section { padding: var(--space-4xl) 0; }
-.section--alt { background: var(--white); }
-.section--ink { background: var(--ink); }
-.section__header { max-width: 640px; margin-bottom: var(--space-2xl); }
-.section__header--center { text-align: center; margin-left: auto; margin-right: auto; }
-.section__overline { display: flex; align-items: center; gap: 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: var(--space-sm); }
-.section__overline::before { content:''; width: 20px; height: 2px; background: var(--accent); border-radius: 2px; }
-.section__overline--center::before { display: none; }
-.section__overline--white { color: rgba(255,255,255,0.5); }
-.section__overline--white::before { background: rgba(255,255,255,0.3); }
-.section__title { font-family: var(--font-display); font-size: var(--size-3xl); font-weight: 500; letter-spacing: -0.025em; line-height: 1.12; color: var(--ink); }
-.section__title--white { color: var(--white); }
-.section__desc { margin-top: var(--space-sm); font-size: var(--size-base); color: var(--text-secondary); line-height: 1.7; }
-.section__desc--white { color: rgba(255,255,255,0.55); }
+/* Team Cards */
+.team-card { background: var(--bg-card); border-radius: var(--radius-lg); padding: 1.5rem; display: flex; flex-direction: column; align-items: center; text-align: center; border: 1px solid var(--border-light); transition: all var(--transition-normal); }
+.team-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+.team-card__avatar { width: 80px; height: 80px; border-radius: 50%; background: var(--bg-alt); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; color: var(--brand-primary); margin-bottom: 1rem; border: 3px solid white; box-shadow: var(--shadow-sm); }
+.team-card__name { font-size: 1.125rem; font-weight: 700; color: var(--text-dark); }
+.team-card__role { font-size: 0.85rem; color: var(--brand-secondary); font-weight: 500; margin-bottom: 1rem; }
+.team-card__actions { display: flex; flex-direction: column; gap: 0.5rem; width: 100%; margin-top: auto; }
+.team-btn { display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.6rem; border-radius: var(--radius-md); font-size: 0.85rem; font-weight: 600; transition: background var(--transition-fast); }
+.team-btn--email { background: var(--bg-alt); color: var(--text-dark); }
+.team-btn--email:hover { background: var(--border-light); }
+.team-btn--phone { background: var(--status-green-bg); color: var(--status-green-text); }
+.team-btn--phone:hover { filter: brightness(95%); }
 
-/* ════════════════════════════════════════════════════
-   HUB CARDS (Home)
-   ════════════════════════════════════════════════════ */
-.hub-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.hub-card { background: var(--surface-card); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: var(--space-2xl); transition: all var(--dur-base) var(--ease-out); cursor: pointer; position: relative; overflow: hidden; }
-.hub-card::before { content:''; position: absolute; top: 0; left: 0; right: 0; height: 3px; transition: opacity var(--dur-base); opacity: 0; }
-.hub-card:hover { border-color: rgba(26,95,122,0.2); box-shadow: var(--shadow-card-hover); transform: translateY(-4px); }
-.hub-card:hover::before { opacity: 1; }
-.hub-card--employment::before { background: linear-gradient(90deg, var(--signal-green), var(--accent)); }
-.hub-card--housing::before { background: linear-gradient(90deg, var(--accent), var(--signal-purple)); }
-.hub-card--team::before { background: linear-gradient(90deg, var(--gold), var(--accent)); }
-.hub-card__icon { width: 48px; height: 48px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-lg); }
-.hub-card__icon svg { width: 24px; height: 24px; }
-.hub-card--employment .hub-card__icon { background: var(--signal-green-pale); color: var(--signal-green); }
-.hub-card--housing .hub-card__icon { background: var(--accent-pale); color: var(--accent); }
-.hub-card--team .hub-card__icon { background: var(--gold-pale); color: var(--gold); }
-.hub-card__title { font-family: var(--font-display); font-size: var(--size-xl); font-weight: 600; color: var(--ink); letter-spacing: -0.01em; margin-bottom: var(--space-xs); }
-.hub-card__desc { font-size: var(--size-sm); color: var(--text-secondary); line-height: 1.7; margin-bottom: var(--space-lg); }
-.hub-card__link { display: inline-flex; align-items: center; gap: 6px; font-size: var(--size-sm); font-weight: 600; color: var(--accent); transition: gap var(--dur-fast); }
-.hub-card:hover .hub-card__link { gap: 10px; }
-.hub-card__link svg { width: 14px; height: 14px; }
+/* Employment Layout */
+.employment-layout { display: grid; grid-template-columns: 1fr 320px; gap: 2rem; align-items: start; }
+.city-group { margin-bottom: 2rem; background: var(--bg-card); border-radius: var(--radius-lg); border: 1px solid var(--border-light); overflow: hidden; }
+.city-group__header { background: var(--brand-primary); color: white; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; user-select: none; }
+.city-group__title { font-weight: 600; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem; }
+.city-group__icon { transition: transform var(--transition-fast); }
+.city-group.collapsed .city-group__icon { transform: rotate(-90deg); }
+.city-group.collapsed .city-group__list { display: none; }
 
-/* ════════════════════════════════════════════════════
-   CASE MANAGER CARDS
-   ════════════════════════════════════════════════════ */
-.team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.cm-card { background: var(--surface-card); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: var(--space-lg); transition: all var(--dur-base) var(--ease-out); position: relative; overflow: hidden; }
-.cm-card::before { content:''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-light)); opacity: 0; transition: opacity var(--dur-base); }
-.cm-card:hover { border-color: rgba(26,95,122,0.2); box-shadow: var(--shadow-card-hover); transform: translateY(-3px); }
-.cm-card:hover::before { opacity: 1; }
-.cm-card__top { display: flex; align-items: center; gap: 14px; margin-bottom: var(--space-md); }
-.cm-card__avatar { width: 48px; height: 48px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 600; font-size: 16px; color: var(--white); flex-shrink: 0; position: relative; }
-.cm-card__avatar::after { content:''; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent 60%); }
-.cm-card:nth-child(11n+1) .cm-card__avatar { background: #1a5f7a; }
-.cm-card:nth-child(11n+2) .cm-card__avatar { background: #2d5a3d; }
-.cm-card:nth-child(11n+3) .cm-card__avatar { background: #5a3d6b; }
-.cm-card:nth-child(11n+4) .cm-card__avatar { background: #6b4f3d; }
-.cm-card:nth-child(11n+5) .cm-card__avatar { background: #3d4f6b; }
-.cm-card:nth-child(11n+6) .cm-card__avatar { background: #6b3d4f; }
-.cm-card:nth-child(11n+7) .cm-card__avatar { background: #1a7a5f; }
-.cm-card:nth-child(11n+8) .cm-card__avatar { background: #4a3d6b; }
-.cm-card:nth-child(11n+9) .cm-card__avatar { background: #3d6b5a; }
-.cm-card:nth-child(11n+10) .cm-card__avatar { background: #6b5a3d; }
-.cm-card:nth-child(11n+11) .cm-card__avatar { background: #3d5a6b; }
-.cm-card__name { font-family: var(--font-display); font-size: var(--size-base); font-weight: 600; color: var(--ink); line-height: 1.3; }
-.cm-card__role { font-size: var(--size-xs); color: var(--text-tertiary); margin-top: 2px; }
-.cm-card__contacts { padding: 8px 0; border-top: 1px solid var(--border-light); display: flex; flex-direction: column; gap: 4px; }
-.cm-card__contact { display: flex; align-items: center; gap: 8px; font-size: var(--size-xs); color: var(--text-secondary); transition: color var(--dur-fast); }
-.cm-card__contact:hover { color: var(--accent); }
-.cm-card__contact svg { width: 14px; height: 14px; opacity: 0.4; flex-shrink: 0; }
-.cm-card__actions { display: flex; gap: 6px; margin-top: var(--space-sm); }
-.cm-card__btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 5px; padding: 8px 12px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; border: none; border-radius: var(--radius-sm); cursor: pointer; transition: all var(--dur-fast); }
-.cm-card__btn svg { width: 12px; height: 12px; }
-.cm-card__btn--primary { background: var(--ink); color: var(--white); }
-.cm-card__btn--primary:hover { background: var(--ink-soft); }
-.cm-card__btn--secondary { background: var(--surface); color: var(--text-primary); border: 1px solid var(--border); }
-.cm-card__btn--secondary:hover { border-color: var(--ink-muted); }
-
-/* ════════════════════════════════════════════════════
-   SEARCH BAR
-   ════════════════════════════════════════════════════ */
-.search-bar { display: flex; align-items: center; gap: 10px; padding: 10px 16px; background: var(--surface-card); border: 1px solid var(--border); border-radius: var(--radius-sm); max-width: 360px; transition: border-color var(--dur-fast); }
-.search-bar:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(26,95,122,0.08); }
-.search-bar svg { width: 16px; height: 16px; color: var(--text-tertiary); flex-shrink: 0; }
-.search-bar input { border: none; background: none; font-family: var(--font-body); font-size: var(--size-sm); color: var(--text-primary); outline: none; width: 100%; }
-.search-bar input::placeholder { color: var(--text-tertiary); }
-
-.filter-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-lg); gap: var(--space-md); flex-wrap: wrap; }
-.filter-bar__count { font-size: var(--size-sm); color: var(--text-tertiary); }
-.filter-bar__count strong { color: var(--text-primary); font-weight: 600; }
-
-/* ════════════════════════════════════════════════════
-   PAGE HERO (Sub-pages)
-   ════════════════════════════════════════════════════ */
-.page-hero { padding: var(--space-3xl) 0 var(--space-2xl); position: relative; overflow: hidden; }
-.page-hero__breadcrumb { display: flex; align-items: center; gap: 8px; font-size: var(--size-xs); color: var(--text-tertiary); margin-bottom: var(--space-lg); }
-.page-hero__breadcrumb a { color: var(--accent); cursor: pointer; }
-.page-hero__breadcrumb a:hover { text-decoration: underline; }
-.page-hero__breadcrumb svg { width: 12px; height: 12px; }
-.page-hero__title { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1.1; color: var(--ink); }
-.page-hero__title em { font-style: italic; color: var(--accent); }
-.page-hero__desc { margin-top: var(--space-md); font-size: var(--size-md); color: var(--text-secondary); line-height: 1.7; max-width: 600px; }
-
-/* ════════════════════════════════════════════════════
-   EMPLOYMENT PAGE
-   ════════════════════════════════════════════════════ */
-.emp-layout { display: grid; grid-template-columns: 1fr 300px; gap: var(--space-2xl); align-items: start; }
-
-/* Filter pills */
-.filter-pills { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: var(--space-lg); }
-.pill { padding: 6px 14px; font-size: var(--size-xs); font-weight: 600; border: 1.5px solid var(--border); border-radius: 100px; background: var(--white); color: var(--text-secondary); cursor: pointer; transition: all var(--dur-fast); letter-spacing: 0.02em; }
-.pill:hover { border-color: var(--ink-muted); color: var(--text-primary); }
-.pill.active { background: var(--ink); color: var(--white); border-color: var(--ink); }
-
-/* City group */
-.city-group { margin-bottom: var(--space-xl); border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-light); }
-.city-group__header { display: flex; align-items: center; justify-content: space-between; background: var(--ink); padding: 10px 18px; cursor: pointer; user-select: none; }
-.city-group__header:hover { background: var(--ink-soft); }
-.city-group__left { display: flex; align-items: center; gap: 10px; }
-.city-group__dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
-.city-group__name { font-size: var(--size-xs); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--white); }
-.city-group__right { display: flex; align-items: center; gap: 12px; }
-.city-group__count { font-size: var(--size-xs); color: rgba(255,255,255,0.45); }
-.city-group__chevron { color: rgba(255,255,255,0.4); font-size: 12px; transition: transform var(--dur-fast); }
-.city-group.collapsed .city-group__chevron { transform: rotate(-90deg); }
-.city-group.collapsed .city-group__body { display: none; }
-.city-group__body { background: var(--white); }
-
-/* Job row */
-.job-row { display: grid; grid-template-columns: auto 1fr auto; align-items: center; padding: 12px 18px; border-bottom: 1px solid var(--border-light); gap: 16px; transition: background var(--dur-fast); cursor: pointer; }
+.job-row { display: grid; grid-template-columns: auto 1fr auto; gap: 1rem; align-items: center; padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border-light); transition: background var(--transition-fast); cursor: pointer; }
 .job-row:last-child { border-bottom: none; }
-.job-row:hover { background: var(--accent-pale); }
-.job-row__logo { width: 40px; height: 40px; border-radius: var(--radius-sm); object-fit: contain; background: var(--white); border: 1px solid var(--border-light); padding: 4px; }
-.job-row__title { font-size: var(--size-sm); font-weight: 600; color: var(--accent); display: flex; align-items: center; gap: 5px; line-height: 1.3; }
-.job-row__arrow { font-size: 10px; color: var(--accent-light); opacity: 0; transition: opacity var(--dur-fast); }
-.job-row:hover .job-row__arrow { opacity: 1; }
-.job-row__meta { display: flex; align-items: center; gap: 8px; margin-top: 2px; }
-.job-row__employer { font-size: var(--size-xs); color: var(--text-tertiary); }
-.job-row__posted { font-size: 10px; color: var(--text-tertiary); opacity: 0.6; }
-.job-row__right { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; flex-shrink: 0; }
-.job-row__wage { font-size: var(--size-sm); font-weight: 700; color: var(--ink); }
-.badge { font-size: 9px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 9px; border-radius: 100px; }
-.badge--ft { background: var(--signal-green-pale); color: var(--signal-green); }
-.badge--pt { background: var(--signal-amber-pale); color: var(--signal-amber); }
+.job-row:hover { background: var(--bg-alt); }
+.job-logo { width: 48px; height: 48px; border-radius: var(--radius-sm); border: 1px solid var(--border-light); object-fit: contain; padding: 4px; background: white; }
+.job-title { font-weight: 600; color: var(--brand-primary); font-size: 1.05rem; display: flex; align-items: center; gap: 6px; margin-bottom: 0.25rem; }
+.job-title svg { stroke: var(--text-muted); opacity: 0; transition: opacity var(--transition-fast); }
+.job-row:hover .job-title svg { opacity: 1; stroke: var(--brand-secondary); }
+.job-meta { font-size: 0.85rem; color: var(--text-muted); display: flex; align-items: center; gap: 8px; }
+.job-right { text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 0.5rem; }
+.job-wage { font-weight: 700; color: var(--text-dark); }
+.job-badge { padding: 0.2rem 0.6rem; border-radius: var(--radius-full); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; }
+.job-badge.ft { background: var(--status-blue-bg); color: var(--status-blue-text); }
+.job-badge.pt { background: var(--status-orange-bg); color: var(--status-orange-text); }
 
-/* Sidebar */
-.emp-sidebar { position: sticky; top: 80px; display: flex; flex-direction: column; gap: 16px; }
-.sidebar-card { background: var(--white); border: 1px solid var(--border-light); border-radius: var(--radius-md); overflow: hidden; }
-.sidebar-card__head { background: var(--ink); padding: 10px 16px; }
-.sidebar-card__head h3 { font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.65); }
-.sidebar-card__body { padding: 0; }
+/* Employment Sidebar */
+.sidebar-widget { background: var(--bg-card); border-radius: var(--radius-lg); border: 1px solid var(--border-light); padding: 1.5rem; margin-bottom: 1.5rem; }
+.sidebar-widget__title { font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; border-bottom: 2px solid var(--bg-alt); padding-bottom: 0.5rem; color: var(--brand-primary); }
+.step-list { display: flex; flex-direction: column; gap: 1rem; }
+.step-item { display: flex; gap: 1rem; }
+.step-num { width: 24px; height: 24px; border-radius: 50%; background: var(--brand-secondary); color: white; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; flex-shrink: 0; }
+.step-content h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.2rem; }
+.step-content p { font-size: 0.8rem; color: var(--text-muted); }
 
-.step { display: flex; gap: 12px; align-items: flex-start; padding: 12px 16px; border-bottom: 1px solid var(--border-light); }
-.step:last-child { border-bottom: none; }
-.step__num { width: 22px; height: 22px; border-radius: 50%; background: var(--accent); color: var(--white); font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
-.step__title { font-size: var(--size-xs); font-weight: 600; color: var(--ink); margin-bottom: 2px; }
-.step__desc { font-size: var(--size-xs); color: var(--text-tertiary); line-height: 1.5; }
+/* Live Update Banner Simulation */
+.live-update-banner { background: var(--status-blue-bg); border: 1px solid var(--status-blue-text); color: var(--status-blue-text); padding: 0.75rem; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; gap: 0.5rem; font-size: 0.9rem; font-weight: 500; margin-bottom: 1.5rem; animation: pulse 2s infinite; }
+@keyframes pulse { 0% { opacity: 0.8; } 50% { opacity: 1; } 100% { opacity: 0.8; } }
 
-.resource-link { display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-bottom: 1px solid var(--border-light); transition: background var(--dur-fast); cursor: pointer; }
-.resource-link:last-child { border-bottom: none; }
-.resource-link:hover { background: var(--accent-pale); }
-.resource-link__cat { font-size: 8px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 1px; }
-.resource-link__name { font-size: var(--size-xs); font-weight: 600; color: var(--accent); }
-.resource-link__arrow { font-size: 11px; color: var(--accent-light); }
+/* Footer */
+.footer { background: white; border-top: 1px solid var(--border-light); padding: 4rem 0 2rem; margin-top: 4rem; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2rem; margin-bottom: 3rem; }
+.footer-col h4 { font-size: 1rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--brand-primary); }
+.footer-links { display: flex; flex-direction: column; gap: 0.75rem; }
+.footer-links a { color: var(--text-muted); font-size: 0.9rem; transition: color var(--transition-fast); }
+.footer-links a:hover { color: var(--brand-secondary); }
+.footer-bottom { padding-top: 2rem; border-top: 1px solid var(--border-light); display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: var(--text-muted); }
 
-.tip-item { display: flex; gap: 10px; padding: 10px 16px; border-bottom: 1px solid var(--border-light); align-items: flex-start; }
-.tip-item:last-child { border-bottom: none; }
-.tip-item__check { width: 18px; height: 18px; background: var(--signal-green-pale); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; color: var(--signal-green); flex-shrink: 0; margin-top: 1px; }
-.tip-item__text { font-size: var(--size-xs); color: var(--text-secondary); line-height: 1.55; }
-
-/* ════════════════════════════════════════════════════
-   HOUSING PAGE
-   ════════════════════════════════════════════════════ */
-.housing-tabs { display: flex; gap: 4px; margin-bottom: var(--space-xl); border-bottom: 2px solid var(--border-light); padding-bottom: 0; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; }
-.housing-tab { padding: 10px 20px; font-size: var(--size-sm); font-weight: 600; color: var(--text-tertiary); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all var(--dur-fast); background: none; border-top: none; border-left: none; border-right: none; }
-.housing-tab:hover { color: var(--text-primary); }
-.housing-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
-
-.housing-panel { display: none; }
-.housing-panel.active { display: block; }
-
-.housing-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-
-.housing-card { background: var(--white); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: var(--space-lg); transition: all var(--dur-base) var(--ease-out); position: relative; overflow: hidden; }
-.housing-card::before { content:''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; border-radius: 3px 0 0 3px; }
-.housing-card--emergency::before { background: var(--signal-red); }
-.housing-card--transitional::before { background: var(--signal-purple); }
-.housing-card--affordable::before { background: var(--signal-green); }
-.housing-card--team::before { background: var(--gold); }
-.housing-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
-
-.housing-card__badge { display: inline-flex; align-items: center; gap: 4px; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 3px 8px; border-radius: 100px; margin-bottom: var(--space-sm); }
-.housing-card__badge--emergency { background: var(--signal-red-pale); color: var(--signal-red); }
-.housing-card__badge--transitional { background: var(--signal-purple-pale); color: var(--signal-purple); }
-.housing-card__badge--affordable { background: var(--signal-green-pale); color: var(--signal-green); }
-.housing-card__badge--special { background: var(--gold-pale); color: var(--gold); }
-.housing-card__badge--team { background: var(--gold-pale); color: var(--gold); }
-
-.housing-card__name { font-family: var(--font-display); font-size: var(--size-base); font-weight: 600; color: var(--ink); line-height: 1.3; margin-bottom: var(--space-xs); }
-.housing-card__pop { font-size: var(--size-xs); color: var(--accent); font-weight: 500; font-style: italic; margin-bottom: var(--space-sm); }
-
-.housing-card__details { display: flex; flex-direction: column; gap: 6px; margin-top: var(--space-sm); padding-top: var(--space-sm); border-top: 1px solid var(--border-light); }
-.housing-card__row { display: flex; align-items: flex-start; gap: 8px; font-size: var(--size-xs); color: var(--text-secondary); line-height: 1.5; }
-.housing-card__row svg { width: 14px; height: 14px; flex-shrink: 0; margin-top: 1px; opacity: 0.4; }
-.housing-card__row a { color: var(--accent); transition: color var(--dur-fast); }
-.housing-card__row a:hover { color: var(--accent-dark); text-decoration: underline; }
-
-/* ════════════════════════════════════════════════════
-   CTA BANNER
-   ════════════════════════════════════════════════════ */
-.cta-banner { margin: var(--space-3xl) 0; padding: var(--space-3xl) var(--space-2xl); background: var(--ink); border-radius: var(--radius-xl); text-align: center; position: relative; overflow: hidden; }
-.cta-banner::before { content:''; position: absolute; top: -50%; left: -20%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(26,95,122,0.3), transparent 65%); pointer-events: none; }
-.cta-banner::after { content:''; position: absolute; bottom: -40%; right: -15%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(26,122,95,0.15), transparent 65%); pointer-events: none; }
-.cta-banner__title { font-family: var(--font-display); font-size: var(--size-2xl); font-weight: 500; color: var(--white); letter-spacing: -0.02em; position: relative; }
-.cta-banner__text { margin-top: var(--space-sm); font-size: var(--size-base); color: rgba(255,255,255,0.55); max-width: 480px; margin-left: auto; margin-right: auto; position: relative; }
-.cta-banner__actions { margin-top: var(--space-xl); display: flex; justify-content: center; gap: var(--space-md); position: relative; flex-wrap: wrap; }
-
-/* ════════════════════════════════════════════════════
-   FOOTER
-   ════════════════════════════════════════════════════ */
-.footer { padding: var(--space-2xl) 0 var(--space-lg); border-top: 1px solid var(--border-light); }
-.footer__top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: var(--space-2xl); padding-bottom: var(--space-xl); border-bottom: 1px solid var(--border-light); }
-.footer__desc { margin-top: var(--space-sm); font-size: var(--size-xs); color: var(--text-tertiary); line-height: 1.7; max-width: 300px; }
-.footer__col-title { font-family: var(--font-display); font-size: var(--size-sm); font-weight: 600; color: var(--ink); margin-bottom: var(--space-sm); }
-.footer__links { display: flex; flex-direction: column; gap: var(--space-xs); }
-.footer__links a { font-size: var(--size-xs); color: var(--text-tertiary); transition: color var(--dur-fast); cursor: pointer; }
-.footer__links a:hover { color: var(--accent); }
-.footer__bottom { padding-top: var(--space-lg); display: flex; justify-content: space-between; align-items: center; font-size: var(--size-xs); color: var(--text-tertiary); }
-.footer__legal { display: flex; gap: var(--space-lg); }
-.footer__legal a:hover { color: var(--text-secondary); }
-
-/* ════════════════════════════════════════════════════
-   ANIMATIONS
-   ════════════════════════════════════════════════════ */
-@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out); }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-
-/* ════════════════════════════════════════════════════
-   RESPONSIVE
-   ════════════════════════════════════════════════════ */
+/* Responsive */
 @media (max-width: 1024px) {
-  .hub-grid, .team-grid { grid-template-columns: repeat(2, 1fr); }
-  .emp-layout { grid-template-columns: 1fr; }
-  .emp-sidebar { position: static; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-  .housing-grid { grid-template-columns: 1fr; }
-  .footer__top { grid-template-columns: 1fr 1fr; }
+  .employment-layout { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 768px) {
-  :root { --space-4xl: 3.5rem; --space-3xl: 2.5rem; }
-  .nav-toggle { display: block; }
-  nav { display: none; position: absolute; top: 64px; left: 0; right: 0; background: var(--surface-card); border-bottom: 1px solid var(--border-light); flex-direction: column; padding: var(--space-md) var(--space-xl); box-shadow: var(--shadow-lg); }
-  nav.open { display: flex; }
-  nav a { padding: 12px 0; width: 100%; }
-  .nav-cta { margin-left: 0 !important; text-align: center; margin-top: var(--space-xs); }
-  .hub-grid, .team-grid { grid-template-columns: 1fr; }
-  .stats__grid { grid-template-columns: repeat(2, 1fr); }
-  .emp-sidebar { grid-template-columns: 1fr; }
-  .footer__top { grid-template-columns: 1fr; }
+  .header__inner { height: 60px; }
+  .nav-menu { display: none; position: absolute; top: 60px; left: 0; width: 100%; background: white; flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--border-light); box-shadow: var(--shadow-md); }
+  .nav-menu.open { display: flex; }
+  .nav-link { width: 100%; text-align: left; padding: 0.75rem 1rem; }
+  .nav-cta { margin: 0.5rem 0 0 0; width: 100%; }
+  .mobile-menu-btn { display: block; }
+  
+  .display-title { font-size: 2.5rem; }
+  .job-row { grid-template-columns: 1fr; gap: 0.5rem; }
+  .job-logo { display: none; }
+  .job-right { text-align: left; align-items: flex-start; flex-direction: row; justify-content: space-between; margin-top: 0.5rem; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+  .topbar__inner { justify-content: center; text-align: center; }
   .topbar__right { display: none; }
-  .cta-banner__actions { flex-direction: column; align-items: center; }
-  .filter-bar { flex-direction: column; align-items: stretch; }
-  .search-bar { max-width: 100%; }
 }
 </style>
 </head>
@@ -426,13 +266,11 @@ nav a.active { color: var(--accent); background: var(--accent-pale); }
 
 <div class="topbar">
   <div class="container topbar__inner">
-    <div class="topbar__label">
-      <span class="topbar__dot"></span>
+    <div class="topbar__badge">
       An official resource of City Net Homeless Services
     </div>
     <div class="topbar__right">
-      <span>Outreach Hotline: (951) 390-3567</span>
-      <a href="https://www.citynet.org" target="_blank">citynet.org</a>
+      <span>Outreach Hotline: <a href="tel:9513903567" style="font-weight:bold;text-decoration:underline;">(951) 390-3567</a></span>
     </div>
   </div>
 </div>
@@ -440,378 +278,280 @@ nav a.active { color: var(--accent); background: var(--accent-pale); }
 <header class="header" id="header">
   <div class="container header__inner">
     <div class="logo" onclick="navigate('home')">
-      <div class="logo__mark">
-        <img class="logo__img" src="City+Net+Logo+Icon+Full+Color.png" alt="City Net Logo" style="width: 100%; height: 100%; object-fit: contain;">
-      </div>
-      <div class="logo__text">City Net <span>| Client Hub</span></div>
+      <img class="logo__img" src="City+Net+Logo+Icon+Full+Color.png" alt="City Net Logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%230f3c53\' rx=\'20\'/><text x=\'50\' y=\'65\' font-family=\'sans-serif\' font-size=\'40\' fill=\'white\' text-anchor=\'middle\' font-weight=\'bold\'>CN</text></svg>'">
+      <div class="logo__text">City Net <span>Client Hub</span></div>
     </div>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" onclick="document.getElementById('mainNav').classList.toggle('open')">
-      <span></span><span></span><span></span>
+    <button class="mobile-menu-btn" onclick="document.getElementById('mainNav').classList.toggle('open')">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
-    <nav id="mainNav">
-      <a onclick="navigate('home')" data-page="home" class="active">Home</a>
-      <a onclick="navigate('employment')" data-page="employment">Employment</a>
-      <a onclick="navigate('housing')" data-page="housing">Housing</a>
-      <a onclick="navigate('healthcare')" data-page="healthcare">Healthcare</a>
-      <a onclick="navigate('resources')" data-page="resources">Resources</a>
-      <a onclick="navigate('home','team-section')" data-page="team">Case Managers</a>
-      <a href="tel:9513903567" class="nav-cta">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:14px;height:14px"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        Get Help
+    <nav class="nav-menu" id="mainNav">
+      <button class="nav-link active" onclick="navigate('home')" data-page="home">Home</button>
+      <button class="nav-link" onclick="navigate('employment')" data-page="employment">Employment</button>
+      <button class="nav-link" onclick="navigate('housing')" data-page="housing">Housing</button>
+      <button class="nav-link" onclick="navigate('healthcare')" data-page="healthcare">Healthcare</button>
+      <button class="nav-link" onclick="navigate('resources')" data-page="resources">Resources</button>
+      <button class="nav-link" onclick="navigate('home', 'team-section')" data-page="team">Case Managers</button>
+      <a href="tel:9513903567" class="btn btn--accent nav-cta">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:16px;height:16px"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Get Help Now
       </a>
     </nav>
   </div>
 </header>
 
 <div class="page active" id="page-home">
-
-  <section class="hero">
-    <div class="container">
-      <div class="hero__eyebrow">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        Riverside County
-      </div>
-      <h1 class="hero__title">Your partner on the<br>pathway <em>home</em></h1>
-      <p class="hero__sub">Search for local jobs, explore housing resources, and connect directly with your case manager — all in one place.</p>
-      <div class="hero__actions">
-        <button class="btn btn--primary" onclick="navigate('employment')">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-          Find a Job
-        </button>
-        <button class="btn btn--secondary" onclick="navigate('housing')">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          Housing Resources
-        </button>
-      </div>
+  <section class="hero container">
+    <div class="hero__breadcrumb">Riverside County Region</div>
+    <h1 class="display-title">Your partner on the<br>pathway <em>home</em></h1>
+    <p class="hero__desc">Search for local jobs, explore housing and healthcare resources, and connect directly with your dedicated case manager — all in one centralized hub.</p>
+    <div class="hero__actions" style="justify-content: center;">
+      <button class="btn btn--primary" onclick="navigate('employment')">Find a Job</button>
+      <button class="btn btn--outline" onclick="navigate('housing')">Housing Resources</button>
     </div>
   </section>
 
-  <section class="stats">
-    <div class="container">
-      <div class="stats__grid">
-        <div class="stat"><div class="stat__number">35+</div><div class="stat__divider"></div><div class="stat__label">Job Openings</div></div>
-        <div class="stat"><div class="stat__number">30+</div><div class="stat__divider"></div><div class="stat__label">Housing Resources</div></div>
-        <div class="stat"><div class="stat__number">11</div><div class="stat__divider"></div><div class="stat__label">Case Managers</div></div>
-        <div class="stat"><div class="stat__number">5</div><div class="stat__divider"></div><div class="stat__label">Cities Covered</div></div>
-      </div>
+  <section class="stats-row">
+    <div class="container stats-grid">
+      <div><div class="stat-item__num">35+</div><div class="stat-item__label">Job Openings</div></div>
+      <div><div class="stat-item__num">30+</div><div class="stat-item__label">Housing Resources</div></div>
+      <div><div class="stat-item__num">11</div><div class="stat-item__label">Case Managers</div></div>
+      <div><div class="stat-item__num">6+</div><div class="stat-item__label">Cities Covered</div></div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="section__header section__header--center">
-        <div class="section__overline section__overline--center">Navigate Your Services</div>
-        <h2 class="section__title">How can we help today?</h2>
-        <p class="section__desc">Everything you need to move forward — organized, accessible, and updated regularly by your case management team.</p>
+  <section class="container" style="margin-bottom: 4rem;">
+    <h2 class="section-title" style="text-align: center;">How can we help today?</h2>
+    <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">Everything you need to move forward — organized, accessible, and updated regularly.</p>
+    
+    <div class="grid-cards">
+      <div class="resource-card" onclick="navigate('employment')" style="cursor:pointer">
+        <div class="resource-card__badge badge-green">Employment</div>
+        <h3 class="resource-card__title">Find Work</h3>
+        <p class="resource-info-row">Browse 35+ current job openings across Murrieta, Temecula, Lake Elsinore, Menifee, and Wildomar.</p>
+        <div class="resource-card__details">
+          <span class="resource-info-row"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg> <a>Browse job listings</a></span>
+        </div>
       </div>
-      <div class="hub-grid">
-        <div class="hub-card hub-card--employment reveal" onclick="navigate('employment')">
-          <div class="hub-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-          </div>
-          <h3 class="hub-card__title">Employment</h3>
-          <p class="hub-card__desc">Browse 35+ current job openings across Murrieta, Temecula, Lake Elsinore, Menifee, and Wildomar. Full-time and part-time positions available.</p>
-          <span class="hub-card__link">Browse job listings <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      
+      <div class="resource-card" onclick="navigate('housing')" style="cursor:pointer">
+        <div class="resource-card__badge badge-blue">Housing</div>
+        <h3 class="resource-card__title">Housing Programs</h3>
+        <p class="resource-info-row">Explore emergency shelters, transitional housing, and affordable apartments.</p>
+        <div class="resource-card__details">
+          <span class="resource-info-row"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg> <a>View housing resources</a></span>
         </div>
-        <div class="hub-card hub-card--housing reveal" onclick="navigate('housing')">
-          <div class="hub-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          </div>
-          <h3 class="hub-card__title">Housing</h3>
-          <p class="hub-card__desc">Explore emergency shelters, transitional housing, and affordable apartments across Riverside County. Specialized options available.</p>
-          <span class="hub-card__link">View housing resources <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </div>
-        <div class="hub-card hub-card--team reveal" onclick="navigate('home','team-section')">
-          <div class="hub-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </div>
-          <h3 class="hub-card__title">Case Managers</h3>
-          <p class="hub-card__desc">Find your assigned case manager and reach out directly via email or phone. Your team is here to guide you through every step.</p>
-          <span class="hub-card__link">Meet your team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </div>
+
+      <div class="resource-card" onclick="navigate('healthcare')" style="cursor:pointer">
+        <div class="resource-card__badge badge-purple">Healthcare</div>
+        <h3 class="resource-card__title">Medical & Mental Health</h3>
+        <p class="resource-info-row">Access trusted medical clinics, behavioral health support, and specialized care programs.</p>
+        <div class="resource-card__details">
+          <span class="resource-info-row"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg> <a>Find healthcare providers</a></span>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section section--alt" id="team-section">
-    <div class="container">
-      <div class="section__header">
-        <div class="section__overline">Your Case Management Team</div>
-        <h2 class="section__title">Meet the people in your corner</h2>
-        <p class="section__desc">Find your assigned case manager below to connect directly.</p>
+  <section class="container" id="team-section" style="padding-top: 2rem;">
+    <h2 class="section-title">Your Case Management Team</h2>
+    <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Find your assigned case manager below to connect directly via phone or email.</p>
+    
+    <div class="controls-bar">
+      <div class="search-wrapper">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="text" id="cmSearch" placeholder="Search by name...">
       </div>
-      <div class="filter-bar">
-        <div class="search-bar">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input type="text" placeholder="Search by name..." id="cmSearch">
-        </div>
-        <div class="filter-bar__count">Showing <strong id="cmCount">11</strong> case managers</div>
-      </div>
-      <div class="team-grid" id="teamGrid"></div>
+      <div style="font-size: 0.9rem; color: var(--text-muted);">Showing <strong id="cmCount" style="color:var(--text-dark)">11</strong> managers</div>
     </div>
-  </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="cta-banner">
-        <h2 class="cta-banner__title">Ready to take the next step?</h2>
-        <p class="cta-banner__text">Whether you're looking for work, need housing support, or want to connect with your case manager — we're here for you.</p>
-        <div class="cta-banner__actions">
-          <a href="tel:9513903567" class="btn btn--white">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Call Outreach Hotline
-          </a>
-          <a href="https://www.citynet.org" target="_blank" class="btn btn--ghost">Visit citynet.org <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:14px;height:14px"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
-        </div>
-      </div>
-    </div>
+    <div class="grid-cards" id="teamGrid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));"></div>
   </section>
 </div>
 
 <div class="page" id="page-employment">
-  <section class="page-hero">
-    <div class="container">
-      <div class="page-hero__breadcrumb">
-        <a onclick="navigate('home')">Home</a>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
-        Employment
-      </div>
-      <h1 class="page-hero__title">Employment <em>Opportunities</em></h1>
-      <p class="page-hero__desc">Current job openings across Riverside County communities. Click any job title to search for that position on Indeed. Many employers review on a rolling basis — apply as soon as possible.</p>
+  <section class="hero container" style="padding-bottom: 1rem;">
+    <div class="hero__breadcrumb"><a onclick="navigate('home')">Home</a> / Employment</div>
+    <h1 class="display-title">Employment <em>Opportunities</em></h1>
+    <p class="hero__desc">Current job openings across Riverside County communities. Click any job title to search for that position on Indeed.</p>
+  </section>
+
+  <section class="stats-row">
+    <div class="container stats-grid">
+      <div><div class="stat-item__num">35</div><div class="stat-item__label">Open Positions</div></div>
+      <div><div class="stat-item__num">5</div><div class="stat-item__label">Cities Covered</div></div>
+      <div><div class="stat-item__num">$15–25</div><div class="stat-item__label">Wage Range / hr</div></div>
+      <div><div class="stat-item__num">20 / 15</div><div class="stat-item__label">FT / PT Roles</div></div>
     </div>
   </section>
 
-  <section class="stats">
-    <div class="container">
-      <div class="stats__grid">
-        <div class="stat"><div class="stat__number">35</div><div class="stat__divider"></div><div class="stat__label">Open Positions</div></div>
-        <div class="stat"><div class="stat__number">5</div><div class="stat__divider"></div><div class="stat__label">Cities Covered</div></div>
-        <div class="stat"><div class="stat__number">$15–$25</div><div class="stat__divider"></div><div class="stat__label">Wage Range / hr</div></div>
-        <div class="stat"><div class="stat__number">20 FT / 15 PT</div><div class="stat__divider"></div><div class="stat__label">Full & Part Time</div></div>
+  <section class="container employment-layout">
+    <div class="emp-main">
+      <div class="live-update-banner" id="liveUpdateBanner" style="display:none;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+        Syncing latest jobs from Indeed...
       </div>
-    </div>
-  </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="emp-layout">
-        <div class="emp-main">
-          <div class="filter-pills" id="empFilters">
-            <button class="pill active" data-filter="all">All Positions</button>
-            <button class="pill" data-filter="ft">Full-Time</button>
-            <button class="pill" data-filter="pt">Part-Time</button>
-          </div>
-          <div id="empListings"></div>
+      <div class="controls-bar" style="margin-bottom: 1.5rem;">
+        <div class="tabs-wrapper" id="empFilters">
+          <button class="tab-btn active" data-filter="all">All Positions</button>
+          <button class="tab-btn" data-filter="ft">Full-Time Only</button>
+          <button class="tab-btn" data-filter="pt">Part-Time Only</button>
         </div>
-        <aside class="emp-sidebar">
-          <div class="sidebar-card">
-            <div class="sidebar-card__head"><h3>How to Apply</h3></div>
-            <div class="sidebar-card__body">
-              <div class="step"><div class="step__num">1</div><div><div class="step__title">Click any job title</div><div class="step__desc">Opens an Indeed search for that role in the listed city.</div></div></div>
-              <div class="step"><div class="step__num">2</div><div><div class="step__title">Create an Indeed account</div><div class="step__desc">Free account lets you upload a resume and apply in one click.</div></div></div>
-              <div class="step"><div class="step__num">3</div><div><div class="step__title">Tailor your resume</div><div class="step__desc">Match keywords from the job description for better results.</div></div></div>
-              <div class="step"><div class="step__num">4</div><div><div class="step__title">Apply same-day</div><div class="step__desc">Rolling basis means positions can close without notice.</div></div></div>
-              <div class="step"><div class="step__num">5</div><div><div class="step__title">Follow up in 3–5 days</div><div class="step__desc">A brief call or email keeps you top of mind with hiring managers.</div></div></div>
-            </div>
-          </div>
-          <div class="sidebar-card">
-            <div class="sidebar-card__head"><h3>Employment Resources</h3></div>
-            <div class="sidebar-card__body">
-              <a class="resource-link" href="https://www.indeed.com/jobs?l=Murrieta%2C+CA" target="_blank"><div><div class="resource-link__cat">Job Search</div><div class="resource-link__name">Indeed — Local Listings</div></div><span class="resource-link__arrow">↗</span></a>
-              <a class="resource-link" href="https://www.linkedin.com/jobs/search/?location=Riverside%20County%2C%20CA" target="_blank"><div><div class="resource-link__cat">Job Search</div><div class="resource-link__name">LinkedIn Jobs</div></div><span class="resource-link__arrow">↗</span></a>
-              <a class="resource-link" href="https://www.caljobs.ca.gov" target="_blank"><div><div class="resource-link__cat">State of California</div><div class="resource-link__name">CalJOBS</div></div><span class="resource-link__arrow">↗</span></a>
-              <a class="resource-link" href="https://rivcoworkforce.org/job-seeker" target="_blank"><div><div class="resource-link__cat">Riverside County</div><div class="resource-link__name">Workforce Development Center</div></div><span class="resource-link__arrow">↗</span></a>
-              <a class="resource-link" href="https://rivcodpss.org/workforce-connection" target="_blank"><div><div class="resource-link__cat">DPSS</div><div class="resource-link__name">Workforce Connection</div></div><span class="resource-link__arrow">↗</span></a>
-            </div>
-          </div>
-          <div class="sidebar-card">
-            <div class="sidebar-card__head"><h3>Tips for Applicants</h3></div>
-            <div class="sidebar-card__body">
-              <div class="tip-item"><div class="tip-item__check">✓</div><div class="tip-item__text">Apply same-day — rolling openings can close quickly.</div></div>
-              <div class="tip-item"><div class="tip-item__check">✓</div><div class="tip-item__text">Keep your resume updated before each submission.</div></div>
-              <div class="tip-item"><div class="tip-item__check">✓</div><div class="tip-item__text">Follow up with employers 3–5 business days after applying.</div></div>
-              <div class="tip-item"><div class="tip-item__check">✓</div><div class="tip-item__text">A valid CA ID and reliable transportation strengthen applications.</div></div>
-              <div class="tip-item"><div class="tip-item__check">✓</div><div class="tip-item__text">The WDC offers free resume help, printing, and computer access.</div></div>
-            </div>
-          </div>
-        </aside>
       </div>
+      
+      <div id="empListings"></div>
     </div>
+    
+    <aside class="emp-sidebar">
+      <div class="sidebar-widget">
+        <h3 class="sidebar-widget__title">How to Apply</h3>
+        <div class="step-list">
+          <div class="step-item"><div class="step-num">1</div><div class="step-content"><h4>Click a job title</h4><p>Opens an Indeed search for that specific role.</p></div></div>
+          <div class="step-item"><div class="step-num">2</div><div class="step-content"><h4>Create an account</h4><p>Indeed lets you upload a resume for easy applying.</p></div></div>
+          <div class="step-item"><div class="step-num">3</div><div class="step-content"><h4>Tailor your resume</h4><p>Match keywords from the job description.</p></div></div>
+          <div class="step-item"><div class="step-num">4</div><div class="step-content"><h4>Apply same-day</h4><p>Positions can close without notice.</p></div></div>
+        </div>
+      </div>
+
+      <div class="sidebar-widget">
+        <h3 class="sidebar-widget__title">External Resources</h3>
+        <div class="step-list" style="gap: 0.75rem;">
+          <a href="https://www.indeed.com/jobs?l=Murrieta%2C+CA" target="_blank" class="resource-info-row" style="font-weight:500;"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg> Indeed Local Jobs</a>
+          <a href="https://www.caljobs.ca.gov" target="_blank" class="resource-info-row" style="font-weight:500;"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg> CalJOBS Portal</a>
+          <a href="https://rivcoworkforce.org/job-seeker" target="_blank" class="resource-info-row" style="font-weight:500;"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg> RivCo Workforce Dev</a>
+        </div>
+      </div>
+    </aside>
   </section>
 </div>
 
 <div class="page" id="page-housing">
-  <section class="page-hero">
-    <div class="container">
-      <div class="page-hero__breadcrumb">
-        <a onclick="navigate('home')">Home</a>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
-        Housing Resources
-      </div>
-      <h1 class="page-hero__title">Housing <em>Resources</em></h1>
-      <p class="page-hero__desc">Emergency shelters, transitional programs, and affordable housing options across Riverside County. Contact any resource directly or ask your case manager for guidance.</p>
+  <section class="hero container" style="padding-bottom: 1rem;">
+    <div class="hero__breadcrumb"><a onclick="navigate('home')">Home</a> / Housing</div>
+    <h1 class="display-title">Housing <em>Resources</em></h1>
+    <p class="hero__desc">Emergency shelters, transitional programs, and affordable housing options across Riverside County.</p>
+  </section>
+
+  <section class="stats-row">
+    <div class="container stats-grid">
+      <div><div class="stat-item__num">12</div><div class="stat-item__label">Emergency Shelters</div></div>
+      <div><div class="stat-item__num">4</div><div class="stat-item__label">Transitional Programs</div></div>
+      <div><div class="stat-item__num">13</div><div class="stat-item__label">Affordable Communities</div></div>
+      <div><div class="stat-item__num">6+</div><div class="stat-item__label">Cities Served</div></div>
     </div>
   </section>
 
-  <section class="stats">
-    <div class="container">
-      <div class="stats__grid">
-        <div class="stat"><div class="stat__number">12</div><div class="stat__divider"></div><div class="stat__label">Emergency Shelters</div></div>
-        <div class="stat"><div class="stat__number">4</div><div class="stat__divider"></div><div class="stat__label">Transitional Programs</div></div>
-        <div class="stat"><div class="stat__number">13</div><div class="stat__divider"></div><div class="stat__label">Affordable Communities</div></div>
-        <div class="stat"><div class="stat__number">6+</div><div class="stat__divider"></div><div class="stat__label">Cities Served</div></div>
+  <section class="container">
+    <div class="controls-bar">
+      <div class="tabs-wrapper" id="housingTabs">
+        <button class="tab-btn active" data-tab="emergency">Emergency Shelters</button>
+        <button class="tab-btn" data-tab="transitional">Transitional Housing</button>
+        <button class="tab-btn" data-tab="affordable">Affordable Housing</button>
       </div>
     </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="housing-tabs" id="housingTabs">
-        <button class="housing-tab active" data-tab="emergency">Emergency Shelters</button>
-        <button class="housing-tab" data-tab="transitional">Transitional Housing</button>
-        <button class="housing-tab" data-tab="affordable">Affordable Housing</button>
-      </div>
-      <div id="housingPanels"></div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="cta-banner">
-        <h2 class="cta-banner__title">Not sure where to start?</h2>
-        <p class="cta-banner__text">Your case manager can help you identify the best housing option for your situation and walk you through the application process.</p>
-        <div class="cta-banner__actions">
-          <button class="btn btn--white" onclick="navigate('home','team-section')">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
-            Find Your Case Manager
-          </button>
-          <a href="tel:9513903567" class="btn btn--ghost">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:14px;height:14px"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg>
-            Call Hotline
-          </a>
-        </div>
-      </div>
-    </div>
+    <div id="housingPanels"></div>
   </section>
 </div>
 
 <div class="page" id="page-healthcare">
-  <section class="page-hero">
-    <div class="container">
-      <div class="page-hero__breadcrumb">
-        <a onclick="navigate('home')">Home</a>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
-        Healthcare Resources
-      </div>
-      <h1 class="page-hero__title">Health <em>Care</em></h1>
-      <p class="page-hero__desc">Access trusted medical clinics, behavioral health support, and specialized care programs. Navigating health systems can be complex, so connect with these providers to establish stable care.</p>
+  <section class="hero container" style="padding-bottom: 1rem;">
+    <div class="hero__breadcrumb"><a onclick="navigate('home')">Home</a> / Healthcare</div>
+    <h1 class="display-title">Health <em>Care</em></h1>
+    <p class="hero__desc">Access trusted medical clinics, behavioral health support, and specialized care programs.</p>
+  </section>
+
+  <section class="stats-row">
+    <div class="container stats-grid">
+      <div><div class="stat-item__num">13</div><div class="stat-item__label">Care Providers</div></div>
+      <div><div class="stat-item__num">3</div><div class="stat-item__label">Care Categories</div></div>
+      <div><div class="stat-item__num">6+</div><div class="stat-item__label">Cities Served</div></div>
+      <div><div class="stat-item__num">IEHP</div><div class="stat-item__label">Medi-Cal Support</div></div>
     </div>
   </section>
 
-  <section class="stats">
-    <div class="container">
-      <div class="stats__grid">
-        <div class="stat"><div class="stat__number">13</div><div class="stat__divider"></div><div class="stat__label">Care Providers</div></div>
-        <div class="stat"><div class="stat__number">3</div><div class="stat__divider"></div><div class="stat__label">Care Categories</div></div>
-        <div class="stat"><div class="stat__number">6+</div><div class="stat__divider"></div><div class="stat__label">Cities Served</div></div>
-        <div class="stat"><div class="stat__number">IEHP</div><div class="stat__divider"></div><div class="stat__label">Medi-Cal Support</div></div>
+  <section class="container">
+    <div class="controls-bar">
+      <div class="tabs-wrapper" id="hcTabs">
+        <button class="tab-btn active" data-tab="medical">Medical & Clinics</button>
+        <button class="tab-btn" data-tab="behavioral">Mental Health & Recovery</button>
+        <button class="tab-btn" data-tab="specialty">Specialty Care</button>
       </div>
     </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="housing-tabs" id="hcTabs">
-        <button class="housing-tab active" data-tab="medical">Medical & Clinics</button>
-        <button class="housing-tab" data-tab="behavioral">Mental Health & Recovery</button>
-        <button class="housing-tab" data-tab="specialty">Specialty Care</button>
-      </div>
-      <div id="hcPanels"></div>
-    </div>
+    <div id="hcPanels"></div>
   </section>
 </div>
 
 <div class="page" id="page-resources">
-  <section class="page-hero">
-    <div class="container">
-      <div class="page-hero__breadcrumb">
-        <a onclick="navigate('home')">Home</a>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
-        Additional Resources
-      </div>
-      <h1 class="page-hero__title">Additional <em>Resources</em></h1>
-      <p class="page-hero__desc">Find essential community support networks ranging from local food pantries and clothing distribution, to educational scholarships and pet care.</p>
+  <section class="hero container" style="padding-bottom: 1rem;">
+    <div class="hero__breadcrumb"><a onclick="navigate('home')">Home</a> / Resources</div>
+    <h1 class="display-title">Additional <em>Resources</em></h1>
+    <p class="hero__desc">Find essential community support networks ranging from local food pantries and clothing distribution, to educational scholarships and legal aid.</p>
+  </section>
+
+  <section class="stats-row">
+    <div class="container stats-grid">
+      <div><div class="stat-item__num">24</div><div class="stat-item__label">Community Partners</div></div>
+      <div><div class="stat-item__num">5</div><div class="stat-item__label">Support Types</div></div>
+      <div><div class="stat-item__num">10</div><div class="stat-item__label">Food Pantries</div></div>
+      <div><div class="stat-item__num">Free</div><div class="stat-item__label">Access</div></div>
     </div>
   </section>
 
-  <section class="stats">
-    <div class="container">
-      <div class="stats__grid">
-        <div class="stat"><div class="stat__number">24</div><div class="stat__divider"></div><div class="stat__label">Community Partners</div></div>
-        <div class="stat"><div class="stat__number">5</div><div class="stat__divider"></div><div class="stat__label">Support Types</div></div>
-        <div class="stat"><div class="stat__number">10</div><div class="stat__divider"></div><div class="stat__label">Food Pantries</div></div>
-        <div class="stat"><div class="stat__number">Free</div><div class="stat__divider"></div><div class="stat__label">Access</div></div>
+  <section class="container">
+    <div class="controls-bar">
+      <div class="tabs-wrapper" id="resTabs">
+        <button class="tab-btn active" data-tab="basic">Basic Needs</button>
+        <button class="tab-btn" data-tab="food">Food Pantries</button>
+        <button class="tab-btn" data-tab="legal">Social & Legal Services</button>
+        <button class="tab-btn" data-tab="education">Education</button>
+        <button class="tab-btn" data-tab="animals">Animal Care</button>
       </div>
     </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="housing-tabs" id="resTabs">
-        <button class="housing-tab active" data-tab="food">Food Pantries</button>
-        <button class="housing-tab" data-tab="basic">Basic Needs</button>
-        <button class="housing-tab" data-tab="education">Education</button>
-        <button class="housing-tab" data-tab="animals">Animal Care</button>
-        <button class="housing-tab" data-tab="legal">Social & Legal Services</button>
-      </div>
-      <div id="resPanels"></div>
-    </div>
+    <div id="resPanels"></div>
   </section>
 </div>
 
 <footer class="footer">
   <div class="container">
-    <div class="footer__top">
-      <div>
-        <div class="logo" onclick="navigate('home')">
-          <div class="logo__mark">
-            <img class="logo__img" src="City+Net+Logo+Icon+Full+Color.png" alt="City Net Logo" style="width: 100%; height: 100%; object-fit: contain;">
-          </div>
-          <div class="logo__text">City Net</div>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="logo" style="margin-bottom: 1rem;" onclick="navigate('home')">
+          <img class="logo__img" src="City+Net+Logo+Icon+Full+Color.png" alt="City Net Logo" onerror="this.style.display='none'">
+          <div class="logo__text" style="color:var(--text-dark)">City Net</div>
         </div>
-        <p class="footer__desc">Connecting our neighbors experiencing homelessness to transformative care and housing solutions.</p>
+        <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 300px;">Connecting our neighbors experiencing homelessness to transformative care and housing solutions.</p>
       </div>
-      <div>
-        <h4 class="footer__col-title">Navigate</h4>
-        <div class="footer__links">
-          <a onclick="navigate('home')">Home</a>
-          <a onclick="navigate('employment')">Employment</a>
-          <a onclick="navigate('housing')">Housing Resources</a>
-          <a onclick="navigate('healthcare')">Healthcare</a>
-          <a onclick="navigate('resources')">Resources</a>
-          <a onclick="navigate('home','team-section')">Case Managers</a>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <div class="footer-links">
+          <a href="#" onclick="navigate('home'); return false;">Home</a>
+          <a href="#" onclick="navigate('employment'); return false;">Employment</a>
+          <a href="#" onclick="navigate('housing'); return false;">Housing</a>
+          <a href="#" onclick="navigate('healthcare'); return false;">Healthcare</a>
         </div>
       </div>
-      <div>
-        <h4 class="footer__col-title">Quick Links</h4>
-        <div class="footer__links">
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <div class="footer-links">
           <a href="https://www.caljobs.ca.gov" target="_blank">CalJOBS</a>
           <a href="https://rivcoworkforce.org/job-seeker" target="_blank">Workforce Dev Center</a>
-          <a href="https://www.indeed.com/jobs?l=Murrieta%2C+CA" target="_blank">Indeed</a>
-          <a href="tel:9513903567">Outreach Hotline</a>
+          <a href="https://www.indeed.com/jobs?l=Riverside+County%2C+CA" target="_blank">Indeed</a>
+          <a href="#" onclick="navigate('resources'); return false;">Additional Resources</a>
         </div>
       </div>
-      <div>
-        <h4 class="footer__col-title">Organization</h4>
-        <div class="footer__links">
-          <a href="https://www.citynet.org" target="_blank">About City Net</a>
-          <a href="https://www.citynet.org" target="_blank">Contact Us</a>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="footer-links">
+          <a href="tel:9513903567" style="font-weight: 600; color: var(--brand-primary);">(951) 390-3567</a>
+          <a href="https://www.citynet.org" target="_blank">citynet.org</a>
+          <a href="#" onclick="navigate('home','team-section'); return false;">Find Case Manager</a>
         </div>
       </div>
     </div>
-    <div class="footer__bottom">
-      <div>© 2026 City Net. All rights reserved.</div>
-      <div class="footer__legal">
+    <div class="footer-bottom">
+      <div>&copy; 2026 City Net. All rights reserved.</div>
+      <div style="display:flex; gap:1.5rem;">
         <a href="#">Privacy Policy</a>
         <a href="#">Terms of Service</a>
         <a href="#">Accessibility</a>
@@ -840,50 +580,62 @@ const caseManagers = [
 
 const jobData = {
   "Murrieta": [
-    { title: "Client Engagement Specialist", employer: "The Grey Legal Group", wage: "$23.00/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Client+Engagement+Specialist+Grey+Legal+Group&l=Murrieta%2C+CA" },
-    { title: "Welcome Team Coordinator", employer: "Shoup Legal", wage: "$21.00/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Welcome+Team+Coordinator+Shoup+Legal&l=Murrieta%2C+CA" },
-    { title: "Tire and Battery Service Advisor", employer: "Sam's Club", wage: "$19.00/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Tire+Battery+Service+Advisor+Sams+Club&l=Murrieta%2C+CA" },
+    { title: "Auto Care Center Technician", employer: "Walmart", wage: "$20.00/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Auto+Care+Center+Technician+Walmart&l=Murrieta%2C+CA" },
     { title: "Cashier", employer: "Panera Bread", wage: "$20.00/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Cashier+Panera+Bread&l=Murrieta%2C+CA" },
+    { title: "Client Engagement Specialist", employer: "The Grey Legal Group", wage: "$23.00/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Client+Engagement+Specialist+Grey+Legal+Group&l=Murrieta%2C+CA" },
+    { title: "Customer Service", employer: "KFC", wage: "$20.00/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Customer+Service+KFC&l=Murrieta%2C+CA" },
     { title: "Freight / Receiving", employer: "The Home Depot", wage: "$19.00/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Freight+Receiving+Home+Depot&l=Murrieta%2C+CA" },
+    { title: "Retail Sales Associate", employer: "PetSmart", wage: "$17.00/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Retail+Sales+Associate+PetSmart&l=Murrieta%2C+CA" },
     { title: "Security Specialist", employer: "Target", wage: "$20.50/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Security+Specialist+Target&l=Murrieta%2C+CA" },
     { title: "Specialty Sales", employer: "Target", wage: "$18.25/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Specialty+Sales+Target&l=Murrieta%2C+CA" },
-    { title: "Customer Service", employer: "KFC", wage: "$20.00/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Customer+Service+KFC&l=Murrieta%2C+CA" },
-    { title: "Retail Sales Associate", employer: "PetSmart", wage: "$17.00/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Retail+Sales+Associate+PetSmart&l=Murrieta%2C+CA" },
-    { title: "Auto Care Center Technician", employer: "Walmart", wage: "$20.00/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Auto+Care+Center+Technician+Walmart&l=Murrieta%2C+CA" },
+    { title: "Tire and Battery Service Advisor", employer: "Sam's Club", wage: "$19.00/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Tire+Battery+Service+Advisor+Sams+Club&l=Murrieta%2C+CA" },
+    { title: "Welcome Team Coordinator", employer: "Shoup Legal", wage: "$21.00/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Welcome+Team+Coordinator+Shoup+Legal&l=Murrieta%2C+CA" },
   ],
   "Wildomar": [
     { title: "Membership Sales Associate", employer: "Super Star Car Wash", wage: "$18.50/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Membership+Sales+Associate+Super+Star+Car+Wash&l=Wildomar%2C+CA" },
     { title: "Restaurant Crew", employer: "Dunkin'", wage: "$20.00/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Restaurant+Crew+Dunkin&l=Wildomar%2C+CA" },
   ],
   "Menifee": [
-    { title: "Seasonal Retail Sales Associate", employer: "Lowe's", wage: "$16.90/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Seasonal+Retail+Sales+Associate+Lowes&l=Menifee%2C+CA" },
-    { title: "Front Desk Sales Associate", employer: "Massage Envy", wage: "$16.50/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Front+Desk+Sales+Associate+Massage+Envy&l=Menifee%2C+CA" },
     { title: "Barista", employer: "Better Buzz Coffee", wage: "$21.00/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Barista+Better+Buzz+Coffee&l=Menifee%2C+CA" },
-    { title: "Deli Clerk", employer: "Sprouts", wage: "$17.20/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Deli+Clerk+Sprouts&l=Menifee%2C+CA" },
     { title: "CDL A Truck Driver", employer: "Updike Distribution Logistics", wage: "$15.50/hr", type: "pt", url: "https://www.indeed.com/jobs?q=CDL+A+Truck+Driver+Updike+Distribution+Logistics&l=Menifee%2C+CA" },
+    { title: "Deli Clerk", employer: "Sprouts", wage: "$17.20/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Deli+Clerk+Sprouts&l=Menifee%2C+CA" },
+    { title: "Front Desk Sales Associate", employer: "Massage Envy", wage: "$16.50/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Front+Desk+Sales+Associate+Massage+Envy&l=Menifee%2C+CA" },
+    { title: "Seasonal Retail Sales Associate", employer: "Lowe's", wage: "$16.90/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Seasonal+Retail+Sales+Associate+Lowes&l=Menifee%2C+CA" },
   ],
   "Lake Elsinore": [
-    { title: "Service Team", employer: "Panda Express", wage: "$21.00/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Service+Team+Panda+Express&l=Lake+Elsinore%2C+CA" },
-    { title: "Receptionist", employer: "H&R Block", wage: "$16.50/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Receptionist+HR+Block&l=Lake+Elsinore%2C+CA" },
-    { title: "Guest Advocate", employer: "Target", wage: "$18.25/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Guest+Advocate+Target&l=Lake+Elsinore%2C+CA" },
-    { title: "Specialty Sales", employer: "Target", wage: "$18.25/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Specialty+Sales+Target&l=Lake+Elsinore%2C+CA" },
-    { title: "Customer Service Representative", employer: "Chevron", wage: "$18.25/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Customer+Service+Representative+Chevron&l=Lake+Elsinore%2C+CA" },
-    { title: "Line Cook", employer: "Chili's", wage: "$16.00/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Line+Cook+Chilis&l=Lake+Elsinore%2C+CA" },
-    { title: "Deli / Bakery Team Associate", employer: "Walmart", wage: "$19.00/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Deli+Bakery+Team+Associate+Walmart&l=Lake+Elsinore%2C+CA" },
     { title: "Cart Attendant", employer: "Walmart", wage: "$17.00/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Cart+Attendant+Walmart&l=Lake+Elsinore%2C+CA" },
+    { title: "Customer Service Representative", employer: "Chevron", wage: "$18.25/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Customer+Service+Representative+Chevron&l=Lake+Elsinore%2C+CA" },
+    { title: "Deli / Bakery Team Associate", employer: "Walmart", wage: "$19.00/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Deli+Bakery+Team+Associate+Walmart&l=Lake+Elsinore%2C+CA" },
+    { title: "Guest Advocate", employer: "Target", wage: "$18.25/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Guest+Advocate+Target&l=Lake+Elsinore%2C+CA" },
+    { title: "Line Cook", employer: "Chili's", wage: "$16.00/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Line+Cook+Chilis&l=Lake+Elsinore%2C+CA" },
+    { title: "Receptionist", employer: "H&R Block", wage: "$16.50/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Receptionist+HR+Block&l=Lake+Elsinore%2C+CA" },
+    { title: "Service Team", employer: "Panda Express", wage: "$21.00/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Service+Team+Panda+Express&l=Lake+Elsinore%2C+CA" },
+    { title: "Specialty Sales", employer: "Target", wage: "$18.25/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Specialty+Sales+Target&l=Lake+Elsinore%2C+CA" },
   ],
   "Temecula": [
-    { title: "HR Support Services Assistant", employer: "Southwest Healthcare", wage: "$24.99/hr", type: "ft", url: "https://www.indeed.com/jobs?q=HR+Support+Services+Assistant+Southwest+Healthcare&l=Temecula%2C+CA" },
-    { title: "Roofing Laborer", employer: "Westmax Roofing", wage: "$25.00/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Roofing+Laborer+Westmax+Roofing&l=Temecula%2C+CA" },
-    { title: "Cook", employer: "Buffalo Wild Wings", wage: "$18.00/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Cook+Buffalo+Wild+Wings&l=Temecula%2C+CA" },
-    { title: "Shift Leader", employer: "Panda Express", wage: "$23.00/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Shift+Leader+Panda+Express&l=Temecula%2C+CA" },
-    { title: "Service Team", employer: "Panda Express", wage: "$21.00/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Service+Team+Panda+Express&l=Temecula%2C+CA" },
     { title: "Apprentice Jeweler", employer: "Signet Jewelers", wage: "$16.90/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Apprentice+Jeweler+Signet+Jewelers&l=Temecula%2C+CA" },
-    { title: "Store Protection Specialist", employer: "Ross", wage: "$17.40/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Store+Protection+Specialist+Ross&l=Temecula%2C+CA" },
-    { title: "Seasonal Sales Associate", employer: "Men's Wearhouse", wage: "$17.40/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Seasonal+Sales+Associate+Mens+Wearhouse&l=Temecula%2C+CA" },
-    { title: "Retail Customer Service Associate", employer: "FedEx", wage: "$19.70/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Retail+Customer+Service+Associate+FedEx&l=Temecula%2C+CA" },
+    { title: "Cook", employer: "Buffalo Wild Wings", wage: "$18.00/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Cook+Buffalo+Wild+Wings&l=Temecula%2C+CA" },
+    { title: "HR Support Services Assistant", employer: "Southwest Healthcare", wage: "$24.99/hr", type: "ft", url: "https://www.indeed.com/jobs?q=HR+Support+Services+Assistant+Southwest+Healthcare&l=Temecula%2C+CA" },
     { title: "Operations Manager", employer: "CVS", wage: "$21.90/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Operations+Manager+CVS&l=Temecula%2C+CA" },
-  ],
+    { title: "Retail Customer Service Associate", employer: "FedEx", wage: "$19.70/hr", type: "pt", url: "https://www.indeed.com/jobs?q=Retail+Customer+Service+Associate+FedEx&l=Temecula%2C+CA" },
+    { title: "Roofing Laborer", employer: "Westmax Roofing", wage: "$25.00/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Roofing+Laborer+Westmax+Roofing&l=Temecula%2C+CA" },
+    { title: "Seasonal Sales Associate", employer: "Men's Wearhouse", wage: "$17.40/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Seasonal+Sales+Associate+Mens+Wearhouse&l=Temecula%2C+CA" },
+    { title: "Service Team", employer: "Panda Express", wage: "$21.00/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Service+Team+Panda+Express&l=Temecula%2C+CA" },
+    { title: "Shift Leader", employer: "Panda Express", wage: "$23.00/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Shift+Leader+Panda+Express&l=Temecula%2C+CA" },
+    { title: "Store Protection Specialist", employer: "Ross", wage: "$17.40/hr", type: "ft", url: "https://www.indeed.com/jobs?q=Store+Protection+Specialist+Ross&l=Temecula%2C+CA" },
+  ]
+};
+
+// Map of employers to their domains to fetch proper logos
+const employerDomains = {
+  "The Grey Legal Group": "thegreylegalgroup.com", "Shoup Legal": "shouplegal.com", "Sam's Club": "samsclub.com",
+  "Panera Bread": "panerabread.com", "The Home Depot": "homedepot.com", "Target": "target.com",
+  "KFC": "kfc.com", "PetSmart": "petsmart.com", "Walmart": "walmart.com", "Super Star Car Wash": "superstarcarwashaz.com",
+  "Dunkin'": "dunkindonuts.com", "Lowe's": "lowes.com", "Massage Envy": "massageenvy.com", "Better Buzz Coffee": "betterbuzzcoffee.com",
+  "Sprouts": "sprouts.com", "Updike Distribution Logistics": "updikelogistics.com", "Panda Express": "pandaexpress.com",
+  "H&R Block": "hrblock.com", "Chevron": "chevron.com", "Chili's": "chilis.com", "Southwest Healthcare": "swhealthcaresystem.com",
+  "Westmax Roofing": "westmaxroofing.com", "Buffalo Wild Wings": "buffalowildwings.com", "Signet Jewelers": "signetjewelers.com",
+  "Ross": "rossstores.com", "Men's Wearhouse": "menswearhouse.com", "FedEx": "fedex.com", "CVS": "cvs.com"
 };
 
 const housingData = {
@@ -947,6 +699,13 @@ const healthcareData = {
 };
 
 const resourcesData = {
+  basic: [
+    { name: "St. Martha's 2nd Hand Treasures", phone: "951-677-0078", website: "https://communityoutreachofmurrieta.com/thrift-store", address: "39793 Avenida Acacias, Murrieta, CA", special: "Clothing" },
+    { name: "TruEvolution - IE LGBTQ+ Center", phone: "951-888-1346", email: "IELGBTQ@truevolution.org", website: "https://www.truevolution.org/ie-lgbtq-center", address: "3838 Brockton Avenue, Riverside, CA", special: "Basic Needs" },
+    { name: "Joshua Home", phone: "909-512-6767", email: "JoshuaHomeLGBTQ@gmail.com", website: "https://www.joshuahomelgbtq.org/the-center-jh", address: "306 West Hanna Street, Suite 500, Colton, CA", special: "LGBTQIA+ Youth" },
+    { name: "Transgender Health & Wellness Center", phone: "760-202-4308", email: "info@trans.health", website: "https://trans.health", address: "340 South Farrell Drive, Suite A208, Palm Springs, CA", special: "Food Vouchers" },
+    { name: "The LGBTQ Community Center", phone: "760-416-7790", email: "info@thecentercv.org", website: "https://thecentercv.org/en/", address: "1301 North Palm Canyon Drive, 3rd Floor, Palm Springs, CA", special: "Basic Needs" },
+  ],
   food: [
     { name: "Community Food Pantry of Murrieta", phone: "951-677-6347", website: "https://communityoutreachofmurrieta.com/pantry-hours", address: "39493 Los Alamos Road, Suite A, Murrieta, CA" },
     { name: "The Salvation Army", phone: "951-677-1324", website: "https://murrieta.salvationarmy.org", address: "40270 Los Alamos Road, Murrieta, CA" },
@@ -959,12 +718,12 @@ const resourcesData = {
     { name: "LGBTQ Community Center of the Desert", phone: "760-281-2616", website: "https://thecentercv.org/en/community-food-bank/", address: "2901 E Alejo Road, Palm Spring, CA", special: "Food Bank (Thurs 5-7PM)" },
     { name: "Murrieta Senior Center", phone: "951-304-7275", website: "https://murrietaca.gov/facilities/facility/details/Senior-Center-7", address: "5 Town Square, Murrieta, CA", special: "Elderly Adults" },
   ],
-  basic: [
-    { name: "St. Martha's 2nd Hand Treasures", phone: "951-677-0078", website: "https://communityoutreachofmurrieta.com/thrift-store", address: "39793 Avenida Acacias, Murrieta, CA", special: "Clothing" },
-    { name: "TruEvolution - IE LGBTQ+ Center", phone: "951-888-1346", email: "IELGBTQ@truevolution.org", website: "https://www.truevolution.org/ie-lgbtq-center", address: "3838 Brockton Avenue, Riverside, CA", special: "Basic Needs" },
-    { name: "Joshua Home", phone: "909-512-6767", email: "JoshuaHomeLGBTQ@gmail.com", website: "https://www.joshuahomelgbtq.org/the-center-jh", address: "306 West Hanna Street, Suite 500, Colton, CA", special: "LGBTQIA+ Youth" },
-    { name: "Transgender Health & Wellness Center", phone: "760-202-4308", email: "info@trans.health", website: "https://trans.health", address: "340 South Farrell Drive, Suite A208, Palm Springs, CA", special: "Food Vouchers" },
-    { name: "The LGBTQ Community Center", phone: "760-416-7790", email: "info@thecentercv.org", website: "https://thecentercv.org/en/", address: "1301 North Palm Canyon Drive, 3rd Floor, Palm Springs, CA", special: "Basic Needs" },
+  legal: [
+    { name: "Community Connect", phone: "211", address: "Riverside County", special: "General Referrals" },
+    { name: "Riverside County DPSS", phone: "877-410-8827", email: "DPSSComm@rivco.org", website: "https://rivcodpss.org/", address: "43264 Business Park Drive Suite 102, Temecula, CA", special: "Public Benefits" },
+    { name: "Riverside Legal Aid", phone: "951-682-7968", email: "info@riversidelegalaid.org", website: "https://riversidelegalaid.org", address: "4129 Main Street, Suite 101, Riverside, CA", special: "Family Law & More" },
+    { name: "Riverside Legal Aid - Eviction Defense", phone: "951-888-2039", email: "info@riversidelegalaid.org", website: "https://riversidelegalaid.org/unsafe-housing-tenant-rights/", address: "Remote", special: "Eviction Defense" },
+    { name: "Inland Coalition for Immigrant Justice", phone: "909-474-9996", email: "info@ic4ij.org", website: "https://ic4ij.org/", address: "2441 N Sierra Way, San Bernardino, CA", special: "Immigration Legal Support" },
   ],
   education: [
     { name: "Federal Student Aid (FAFSA)", phone: "800-433-3243", website: "https://studentaid.gov/h/apply-for-aid/fafsa", address: "Online", special: "Students" },
@@ -973,313 +732,219 @@ const resourcesData = {
   animals: [
     { name: "Animal Friends of the Valley", phone: "951-674-0618", website: "http://www.afv.org", address: "33751 Mission Trail, Wildomar, CA", special: "Shelter & Field Services" },
     { name: "Hold My Leash (Brittany Aina)", phone: "858-761-3656", email: "Brittanyaina@care-villages.com", website: "https://www.care-villages.com/hold-my-leash", address: "Riverside County", special: "Pet Care" },
-  ],
-  legal: [
-    { name: "Community Connect", phone: "211", address: "Riverside County", special: "General Referrals" },
-    { name: "Riverside County DPSS", phone: "877-410-8827", email: "DPSSComm@rivco.org", website: "https://rivcodpss.org/", address: "43264 Business Park Drive Suite 102, Temecula, CA", special: "Public Benefits" },
-    { name: "Riverside Legal Aid", phone: "951-682-7968", email: "info@riversidelegalaid.org", website: "https://riversidelegalaid.org", address: "4129 Main Street, Suite 101, Riverside, CA", special: "Family Law & More" },
-    { name: "Riverside Legal Aid - Eviction Defense", phone: "951-888-2039", email: "info@riversidelegalaid.org", website: "https://riversidelegalaid.org/unsafe-housing-tenant-rights/", address: "Remote", special: "Eviction Defense" },
-    { name: "Inland Coalition for Immigrant Justice", phone: "909-474-9996", email: "info@ic4ij.org", website: "https://ic4ij.org/", address: "2441 N Sierra Way, San Bernardino, CA", special: "Immigration Legal Support" },
   ]
 };
 
 /* ════════════════════════════════════════════════════
-   NAVIGATION
+   APP LOGIC & RENDERING
    ════════════════════════════════════════════════════ */
-function navigate(page, scrollTo) {
-  document.querySelectorAll('.page').forEach(p => { p.classList.remove('active'); p.style.animation = 'none'; });
-  const target = document.getElementById('page-' + page);
-  if (target) {
-    target.style.animation = 'none';
-    target.offsetHeight; // reflow
-    target.style.animation = '';
-    target.classList.add('active');
-  }
-  document.querySelectorAll('nav a[data-page]').forEach(a => a.classList.toggle('active', a.dataset.page === page));
+
+// Single Page Navigation
+function navigate(pageId, scrollToId = null) {
+  // Update views
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + pageId).classList.add('active');
+  
+  // Update nav UI
+  document.querySelectorAll('.nav-link').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.page === pageId);
+  });
+  
+  // Close mobile menu
   document.getElementById('mainNav').classList.remove('open');
-  if (scrollTo) {
+  
+  // Handle scrolling
+  if (scrollToId) {
     setTimeout(() => {
-      const el = document.getElementById(scrollTo);
+      const el = document.getElementById(scrollToId);
       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 100);
   } else {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-  // Init reveals
-  setTimeout(initReveals, 150);
+  
+  // Trigger animations
+  if (pageId === 'employment') simulateLiveUpdate();
 }
 
-/* ════════════════════════════════════════════════════
-   CASE MANAGERS RENDER
-   ════════════════════════════════════════════════════ */
-const teamGrid = document.getElementById('teamGrid');
+// Render Case Managers
 function renderCMs(list) {
-  teamGrid.innerHTML = list.map(cm => {
-    const initials = cm.name.split(' ').map(w => w[0]).join('');
-    return `<div class="cm-card reveal">
-      <div class="cm-card__top">
-        <div class="cm-card__avatar">${initials}</div>
-        <div><div class="cm-card__name">${cm.name}</div><div class="cm-card__role">Case Manager</div></div>
+  const container = document.getElementById('teamGrid');
+  container.innerHTML = list.map(cm => {
+    const initials = cm.name.split(' ').map(n => n[0]).join('');
+    return `
+      <div class="team-card">
+        <div class="team-card__avatar">${initials}</div>
+        <div class="team-card__name">${cm.name}</div>
+        <div class="team-card__role">Case Manager</div>
+        <div class="team-card__actions">
+          <a href="tel:${cm.phone.replace(/[^0-9]/g,'')}" class="team-btn team-btn--phone">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:16px;height:16px"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            ${cm.phone}
+          </a>
+          <button onclick="navigator.clipboard.writeText('${cm.email}'); this.innerHTML='<span style=\\'color:green\\'>✓ Copied</span>'; setTimeout(()=>this.innerHTML='${cm.email}', 2000);" class="team-btn team-btn--email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:16px;height:16px"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            ${cm.email}
+          </button>
+        </div>
       </div>
-      <div class="cm-card__contacts">
-        <a class="cm-card__contact" href="mailto:${cm.email}">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          ${cm.email}
-        </a>
-        <a class="cm-card__contact" href="tel:${cm.phone.replace(/[^0-9]/g,'')}">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg>
-          ${cm.phone}
-        </a>
-      </div>
-      <div class="cm-card__actions">
-        <a href="mailto:${cm.email}" class="cm-card__btn cm-card__btn--primary">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          Email
-        </a>
-        <button class="cm-card__btn cm-card__btn--secondary" onclick="event.stopPropagation();navigator.clipboard.writeText('${cm.email}');this.innerHTML='✓ Copied';setTimeout(()=>this.innerHTML='<svg viewBox=\\'0 0 24 24\\' fill=\\'none\\' stroke=\\'currentColor\\' stroke-width=\\'2\\' stroke-linecap=\\'round\\'><rect x=\\'9\\' y=\\'9\\' width=\\'13\\' height=\\'13\\' rx=\\'2\\'/><path d=\\'M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1\\'/></svg> Copy',1500)">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy
-        </button>
-      </div>
-    </div>`;
+    `;
   }).join('');
   document.getElementById('cmCount').textContent = list.length;
-  setTimeout(initReveals, 50);
 }
-renderCMs(caseManagers);
 
+// CM Search binding
 document.getElementById('cmSearch').addEventListener('input', e => {
-  const q = e.target.value.toLowerCase().trim();
+  const q = e.target.value.toLowerCase();
   renderCMs(caseManagers.filter(cm => cm.name.toLowerCase().includes(q) || cm.email.toLowerCase().includes(q)));
 });
 
-/* ════════════════════════════════════════════════════
-   EMPLOYMENT RENDER
-   ════════════════════════════════════════════════════ */
-function getDomain(employer) {
-  const map = {
-    "The Grey Legal Group": "thegreylegalgroup.com",
-    "Shoup Legal": "shouplegal.com",
-    "Sam's Club": "samsclub.com",
-    "Panera Bread": "panerabread.com",
-    "The Home Depot": "homedepot.com",
-    "Target": "target.com",
-    "KFC": "kfc.com",
-    "PetSmart": "petsmart.com",
-    "Walmart": "walmart.com",
-    "Super Star Car Wash": "superstarcarwashaz.com",
-    "Dunkin'": "dunkindonuts.com",
-    "Lowe's": "lowes.com",
-    "Massage Envy": "massageenvy.com",
-    "Better Buzz Coffee": "betterbuzzcoffee.com",
-    "Sprouts": "sprouts.com",
-    "Updike Distribution Logistics": "updikelogistics.com",
-    "Panda Express": "pandaexpress.com",
-    "H&R Block": "hrblock.com",
-    "Chevron": "chevron.com",
-    "Chili's": "chilis.com",
-    "Southwest Healthcare": "swhealthcaresystem.com",
-    "Westmax Roofing": "westmaxroofing.com",
-    "Buffalo Wild Wings": "buffalowildwings.com",
-    "Signet Jewelers": "signetjewelers.com",
-    "Ross": "rossstores.com",
-    "Men's Wearhouse": "menswearhouse.com",
-    "FedEx": "fedex.com",
-    "CVS": "cvs.com"
-  };
-  return map[employer] || "placeholder.com";
-}
-
-let empFilter = 'all';
+// Render Employment List
+let currentEmpFilter = 'all';
 function renderEmployment() {
   const container = document.getElementById('empListings');
   let html = '';
+  
   for (const [city, jobs] of Object.entries(jobData)) {
-    const sortedJobs = [...jobs].sort((a, b) => {
-      const titleCmp = a.title.localeCompare(b.title);
-      return titleCmp !== 0 ? titleCmp : a.employer.localeCompare(b.employer);
-    });
-
-    const filtered = empFilter === 'all' ? sortedJobs : sortedJobs.filter(j => j.type === empFilter);
-    const id = city.toLowerCase().replace(/\s+/g, '-');
-    html += `<div class="city-group" id="emp-${id}">
-      <div class="city-group__header" onclick="this.closest('.city-group').classList.toggle('collapsed')">
-        <div class="city-group__left"><div class="city-group__dot"></div><span class="city-group__name">${city}</span></div>
-        <div class="city-group__right">
-          <span class="city-group__count">${filtered.length} opening${filtered.length !== 1 ? 's' : ''}</span>
-          <span class="city-group__chevron">▾</span>
+    // Sort jobs alphabetically
+    const sorted = [...jobs].sort((a,b) => a.title.localeCompare(b.title));
+    // Apply filter
+    const filtered = currentEmpFilter === 'all' ? sorted : sorted.filter(j => j.type === currentEmpFilter);
+    
+    html += `
+      <div class="city-group">
+        <div class="city-group__header" onclick="this.parentElement.classList.toggle('collapsed')">
+          <div class="city-group__title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            ${city}
+          </div>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <span style="background:rgba(255,255,255,0.2); padding:2px 10px; border-radius:12px; font-size:0.8rem;">${filtered.length} Jobs</span>
+            <svg class="city-group__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
         </div>
-      </div>
-      <div class="city-group__body">`;
-    if (filtered.length === 0) {
-      html += `<div style="padding:20px;text-align:center;color:var(--text-tertiary);font-size:var(--size-sm);">No ${empFilter === 'ft' ? 'full-time' : 'part-time'} openings in ${city}.</div>`;
+        <div class="city-group__list">
+    `;
+    
+    if(filtered.length === 0) {
+      html += `<div style="padding:2rem; text-align:center; color:var(--text-muted);">No ${currentEmpFilter === 'ft' ? 'Full-Time' : 'Part-Time'} openings currently listed in ${city}.</div>`;
     } else {
       filtered.forEach(j => {
-        const fallbackUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(j.employer)}&background=ece8e1&color=0a1628&size=128&bold=true`;
-        const logoUrl = `https://logo.clearbit.com/${getDomain(j.employer)}`;
-
-        html += `<div class="job-row" onclick="window.open('${j.url}','_blank')">
-          <img class="job-row__logo" src="${logoUrl}" alt="${j.employer} Logo" onerror="this.onerror=null;this.src='${fallbackUrl}'">
-          <div>
-            <div class="job-row__title">${j.title} <span class="job-row__arrow">↗</span></div>
-            <div class="job-row__meta"><span class="job-row__employer">${j.employer}</span><span class="job-row__posted">· Mar 2026</span></div>
+        const logoUrl = `https://logo.clearbit.com/${employerDomains[j.employer] || 'placeholder.com'}`;
+        const fallbackUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(j.employer)}&background=f1f5f9&color=0f3c53&bold=true`;
+        
+        html += `
+          <div class="job-row" onclick="window.open('${j.url}', '_blank')">
+            <img src="${logoUrl}" onerror="this.src='${fallbackUrl}'" class="job-logo" alt="${j.employer}">
+            <div>
+              <div class="job-title">${j.title} <svg viewBox="0 0 24 24" style="width:14px;height:14px"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+              <div class="job-meta">
+                <span style="font-weight:500;color:var(--text-body)">${j.employer}</span> • Just Updated
+              </div>
+            </div>
+            <div class="job-right">
+              <div class="job-wage">${j.wage}</div>
+              <div class="job-badge ${j.type}">${j.type === 'ft' ? 'Full-Time' : 'Part-Time'}</div>
+            </div>
           </div>
-          <div class="job-row__right">
-            <span class="job-row__wage">${j.wage}</span>
-            <span class="badge badge--${j.type}">${j.type === 'ft' ? 'Full-Time' : 'Part-Time'}</span>
-          </div>
-        </div>`;
+        `;
       });
     }
-    html += '</div></div>';
+    html += `</div></div>`;
   }
   container.innerHTML = html;
 }
+
+// Employment filter binding
+document.querySelectorAll('#empFilters .tab-btn').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    document.querySelectorAll('#empFilters .tab-btn').forEach(b => b.classList.remove('active'));
+    e.target.classList.add('active');
+    currentEmpFilter = e.target.dataset.filter;
+    simulateLiveUpdate();
+  });
+});
+
+function simulateLiveUpdate() {
+  const banner = document.getElementById('liveUpdateBanner');
+  banner.style.display = 'flex';
+  document.getElementById('empListings').style.opacity = '0.5';
+  setTimeout(() => {
+    renderEmployment();
+    document.getElementById('empListings').style.opacity = '1';
+    banner.style.display = 'none';
+  }, 600);
+}
+
+// Generic Tab Renderer for Housing, Healthcare, Resources
+function setupTabs(tabContainerId, panelContainerId, dataObj, colorMap) {
+  const tabBtns = document.querySelectorAll(`#${tabContainerId} .tab-btn`);
+  
+  function render(activeKey) {
+    const container = document.getElementById(panelContainerId);
+    if(!dataObj[activeKey]) return;
+    
+    let html = `<div class="grid-cards" style="animation: fadeIn var(--transition-fast) forwards;">`;
+    
+    dataObj[activeKey].forEach(item => {
+      const colorClass = colorMap[activeKey] || 'badge-blue';
+      const badgeText = item.special || tabBtns[0].textContent; // fallback
+      
+      html += `
+        <div class="resource-card">
+          <div class="resource-card__badge ${colorClass}">${badgeText}</div>
+          <h3 class="resource-card__title">${item.name}</h3>
+          <div class="resource-card__details">
+      `;
+      
+      if (item.address) html += `<div class="resource-info-row"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>${item.address}</span></div>`;
+      if (item.phone) html += `<div class="resource-info-row"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg><a href="tel:${item.phone.replace(/[^0-9]/g,'')}">${item.phone}</a></div>`;
+      if (item.email) html += `<div class="resource-info-row"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:${item.email}">${item.email}</a></div>`;
+      if (item.website) html += `<div class="resource-info-row"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><a href="${item.website}" target="_blank">Visit Website →</a></div>`;
+      
+      html += `</div></div>`;
+    });
+    
+    html += `</div>`;
+    container.innerHTML = html;
+  }
+
+  // Bind clicks
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      tabBtns.forEach(b => b.classList.remove('active'));
+      e.target.classList.add('active');
+      render(e.target.dataset.tab);
+    });
+  });
+  
+  // Initial render
+  if(tabBtns.length > 0) render(tabBtns[0].dataset.tab);
+}
+
+/* ════════════════════════════════════════════════════
+   INITIALIZATION
+   ════════════════════════════════════════════════════ */
+// Initialize base renders
+renderCMs(caseManagers);
 renderEmployment();
 
-document.querySelectorAll('#empFilters .pill').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('#empFilters .pill').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    empFilter = btn.dataset.filter;
-    renderEmployment();
-  });
+// Initialize Tabbed Sections
+setupTabs('housingTabs', 'housingPanels', housingData, {
+  emergency: 'badge-red', transitional: 'badge-purple', affordable: 'badge-green'
 });
 
-/* ════════════════════════════════════════════════════
-   HOUSING RENDER
-   ════════════════════════════════════════════════════ */
-function renderHousing() {
-  const panels = document.getElementById('housingPanels');
-  let html = '';
-  const types = { emergency: 'Emergency Shelters', transitional: 'Transitional Housing', affordable: 'Affordable Housing' };
-  const colors = { emergency: 'emergency', transitional: 'transitional', affordable: 'affordable' };
-
-  for (const [type, label] of Object.entries(types)) {
-    const items = housingData[type];
-    html += `<div class="housing-panel${type === 'emergency' ? ' active' : ''}" id="panel-${type}">
-      <div class="housing-grid">`;
-    items.forEach(h => {
-      html += `<div class="housing-card housing-card--${colors[type]}">`;
-      if (h.special) {
-        html += `<div class="housing-card__badge housing-card__badge--special">${h.special}</div>`;
-      } else {
-        html += `<div class="housing-card__badge housing-card__badge--${colors[type]}">${label}</div>`;
-      }
-      html += `<div class="housing-card__name">${h.name}</div>`;
-      html += `<div class="housing-card__details">`;
-      html += `<div class="housing-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>${h.address}</div>`;
-      html += `<div class="housing-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg><a href="tel:${h.phone.replace(/[^0-9]/g,'')}">${h.phone}</a></div>`;
-      if (h.email) html += `<div class="housing-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:${h.email}">${h.email}</a></div>`;
-      if (h.website) html += `<div class="housing-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><a href="${h.website}" target="_blank">Visit Website ↗</a></div>`;
-      html += '</div></div>';
-    });
-    html += '</div></div>';
-  }
-  panels.innerHTML = html;
-}
-renderHousing();
-
-document.querySelectorAll('#housingTabs .housing-tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    document.querySelectorAll('#housingTabs .housing-tab').forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-    document.querySelectorAll('#page-housing .housing-panel').forEach(p => p.classList.remove('active'));
-    document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
-  });
+setupTabs('hcTabs', 'hcPanels', healthcareData, {
+  medical: 'badge-blue', behavioral: 'badge-purple', specialty: 'badge-orange'
 });
 
-/* ════════════════════════════════════════════════════
-   HEALTHCARE RENDER
-   ════════════════════════════════════════════════════ */
-function renderHealthcare() {
-  const panels = document.getElementById('hcPanels');
-  let html = '';
-  const types = { medical: 'Medical & Clinics', behavioral: 'Mental Health & Recovery', specialty: 'Specialty Care' };
-  const colors = { medical: 'emergency', behavioral: 'transitional', specialty: 'team' };
-
-  for (const [type, label] of Object.entries(types)) {
-    const items = healthcareData[type];
-    html += `<div class="housing-panel${type === 'medical' ? ' active' : ''}" id="hc-panel-${type}">
-      <div class="housing-grid">`;
-    items.forEach(h => {
-      html += `<div class="housing-card housing-card--${colors[type]}">`;
-      html += `<div class="housing-card__badge housing-card__badge--${h.special ? 'special' : colors[type]}">${h.special || label}</div>`;
-      html += `<div class="housing-card__name">${h.name}</div>`;
-      html += `<div class="housing-card__details">`;
-      if (h.address) html += `<div class="housing-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>${h.address}</div>`;
-      if (h.phone) html += `<div class="housing-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg><a href="tel:${h.phone.replace(/[^0-9]/g,'')}">${h.phone}</a></div>`;
-      if (h.email) html += `<div class="housing-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:${h.email}">${h.email}</a></div>`;
-      if (h.website) html += `<div class="housing-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><a href="${h.website}" target="_blank">Visit Website ↗</a></div>`;
-      html += '</div></div>';
-    });
-    html += '</div></div>';
-  }
-  panels.innerHTML = html;
-}
-renderHealthcare();
-
-document.querySelectorAll('#hcTabs .housing-tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    document.querySelectorAll('#hcTabs .housing-tab').forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-    document.querySelectorAll('#page-healthcare .housing-panel').forEach(p => p.classList.remove('active'));
-    document.getElementById('hc-panel-' + tab.dataset.tab).classList.add('active');
-  });
+setupTabs('resTabs', 'resPanels', resourcesData, {
+  basic: 'badge-blue', food: 'badge-green', legal: 'badge-purple', education: 'badge-orange', animals: 'badge-red'
 });
 
-/* ════════════════════════════════════════════════════
-   RESOURCES RENDER
-   ════════════════════════════════════════════════════ */
-function renderResources() {
-  const panels = document.getElementById('resPanels');
-  let html = '';
-  const types = { food: 'Food Pantries', basic: 'Basic Needs', education: 'Education', animals: 'Animal Care', legal: 'Social & Legal Services' };
-  const colors = { food: 'affordable', basic: 'transitional', education: 'team', animals: 'emergency', legal: 'team' };
-
-  for (const [type, label] of Object.entries(types)) {
-    const items = resourcesData[type];
-    html += `<div class="housing-panel${type === 'food' ? ' active' : ''}" id="res-panel-${type}">
-      <div class="housing-grid">`;
-    items.forEach(h => {
-      html += `<div class="housing-card housing-card--${colors[type]}">`;
-      html += `<div class="housing-card__badge housing-card__badge--${h.special ? 'special' : colors[type]}">${h.special || label}</div>`;
-      html += `<div class="housing-card__name">${h.name}</div>`;
-      html += `<div class="housing-card__details">`;
-      if (h.address) html += `<div class="housing-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>${h.address}</div>`;
-      if (h.phone) html += `<div class="housing-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg><a href="tel:${h.phone.replace(/[^0-9]/g,'')}">${h.phone}</a></div>`;
-      if (h.email) html += `<div class="housing-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:${h.email}">${h.email}</a></div>`;
-      if (h.website) html += `<div class="housing-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><a href="${h.website}" target="_blank">Visit Website ↗</a></div>`;
-      html += '</div></div>';
-    });
-    html += '</div></div>';
-  }
-  panels.innerHTML = html;
-}
-renderResources();
-
-document.querySelectorAll('#resTabs .housing-tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    document.querySelectorAll('#resTabs .housing-tab').forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-    document.querySelectorAll('#page-resources .housing-panel').forEach(p => p.classList.remove('active'));
-    document.getElementById('res-panel-' + tab.dataset.tab).classList.add('active');
-  });
-});
-
-/* ════════════════════════════════════════════════════
-   SCROLL REVEALS
-   ════════════════════════════════════════════════════ */
-function initReveals() {
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
-  document.querySelectorAll('.reveal:not(.visible)').forEach(el => obs.observe(el));
-}
-initReveals();
-
-/* Header scroll */
+// Header scroll effect
 window.addEventListener('scroll', () => {
-  document.getElementById('header').classList.toggle('header--scrolled', window.scrollY > 20);
+  document.getElementById('header').classList.toggle('header--scrolled', window.scrollY > 10);
 }, { passive: true });
 </script>
 </body>
