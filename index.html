@@ -216,6 +216,16 @@ nav { display: flex; align-items: center; gap: 4px; }
 .cm-card__btn:hover { border-color: var(--ink); background: var(--surface); }
 
 /* ════════════════════════════════════════════════════
+   TEAM STATUS BAR
+   ════════════════════════════════════════════════════ */
+.team-status-bar { display: flex; align-items: center; justify-content: space-between; background: var(--surface-warm); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 12px 16px; margin-bottom: var(--space-lg); flex-wrap: wrap; gap: 12px; }
+.team-status-indicator { display: flex; align-items: center; gap: 8px; font-size: var(--size-sm); color: var(--ink); }
+.status-dot { width: 10px; height: 10px; border-radius: 50%; }
+.status-dot.online { background: var(--signal-green); box-shadow: 0 0 0 3px rgba(4, 108, 78, 0.2); }
+.status-dot.offline { background: var(--text-tertiary); box-shadow: 0 0 0 3px rgba(100, 116, 139, 0.2); }
+.team-status-hours { font-size: var(--size-xs); color: var(--text-secondary); font-weight: 500; }
+
+/* ════════════════════════════════════════════════════
    CONTROLS & TABS (USWDS Accessible Style)
    ════════════════════════════════════════════════════ */
 .controls-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-lg); gap: var(--space-md); flex-wrap: wrap; background: var(--white); padding: 12px 16px; border: 1px solid var(--border); border-radius: var(--radius-md); }
@@ -225,7 +235,7 @@ nav { display: flex; align-items: center; gap: 4px; }
 .search-bar input::placeholder { color: var(--text-tertiary); }
 
 .filter-pills, .housing-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
-.pill, .housing-tab { padding: 10px 20px; font-size: var(--size-sm); font-weight: 600; border: 2px solid var(--border); border-radius: var(--radius-sm); background: var(--white); color: var(--text-secondary); transition: all var(--dur-fast); letter-spacing: 0.02em; }
+.pill, .housing-tab { padding: 10px 20px; font-size: var(--size-sm); font-weight: 600; border: 2px solid var(--border); border-radius: var(--radius-sm); background: var(--white); color: var(--text-secondary); transition: all var(--dur-fast); letter-spacing: 0.02em; flex-shrink: 0; }
 .pill:hover, .housing-tab:hover { border-color: var(--ink); color: var(--ink); }
 .pill.active, .housing-tab.active { background: var(--ink); color: var(--white); border-color: var(--ink); }
 
@@ -332,7 +342,7 @@ nav { display: flex; align-items: center; gap: 4px; }
 .footer__legal a:hover { color: var(--ink); }
 
 /* ════════════════════════════════════════════════════
-   RESPONSIVE
+   RESPONSIVE (Mobile Optimized)
    ════════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
   .hub-grid, .team-grid { grid-template-columns: repeat(2, 1fr); }
@@ -342,7 +352,7 @@ nav { display: flex; align-items: center; gap: 4px; }
   .footer__top { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 768px) {
-  :root { --space-4xl: 3.5rem; --space-3xl: 2.5rem; }
+  :root { --space-4xl: 2.5rem; --space-3xl: 2rem; --space-2xl: 1.5rem; }
   .nav-toggle { display: block; }
   nav { display: none; position: absolute; top: 72px; left: 0; right: 0; background: var(--white); border-bottom: 2px solid var(--border); flex-direction: column; padding: var(--space-md) var(--space-xl); box-shadow: var(--shadow-lg); align-items: flex-start; }
   nav.open { display: flex; }
@@ -357,10 +367,22 @@ nav { display: flex; align-items: center; gap: 4px; }
   .emp-sidebar { grid-template-columns: 1fr; }
   .footer__top { grid-template-columns: 1fr; }
   .topbar__right { display: none; }
-  .cta-banner__actions { flex-direction: column; align-items: stretch; }
-  .job-row { grid-template-columns: 1fr; }
+  .cta-banner__actions { flex-direction: column; align-items: stretch; width: 100%; }
+  .cta-banner__actions .btn { width: 100%; }
+  
+  .filter-pills, .housing-tabs { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 8px; scrollbar-width: none; }
+  .filter-pills::-webkit-scrollbar, .housing-tabs::-webkit-scrollbar { display: none; }
+  
+  .job-row { grid-template-columns: 1fr; gap: 12px; padding: 16px; }
   .job-row__logo { display: none; }
   .job-row__right { align-items: flex-start; flex-direction: row; justify-content: space-between; width: 100%; border-top: 1px solid var(--border-light); padding-top: 12px; }
+  
+  .hero__title { font-size: 2rem; }
+  .section__title { font-size: 1.75rem; }
+  .hub-card { padding: var(--space-lg); }
+  .cm-card { padding: var(--space-md); }
+  
+  .team-status-bar { flex-direction: column; align-items: flex-start; }
 }
 </style>
 </head>
@@ -381,9 +403,9 @@ nav { display: flex; align-items: center; gap: 4px; }
 
 <header class="header" id="header">
   <div class="container header__inner">
-    <div class="logo" onclick="navigate('home')">
+    <div class="logo" onclick="navigate('home')" tabindex="0" role="button">
       <div class="logo__mark">
-        <img class="logo__img" src="City+Net+Logo+Icon+Full+Color.png" alt="City Net Logo" style="width: 100%; height: 100%; object-fit: contain;">
+        <img class="logo__img" src="City+Net+Logo+Icon+Full+Color.png" alt="City Net Logo" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'">
       </div>
       <div class="logo__text">City Net <span>Client Hub</span></div>
     </div>
@@ -397,9 +419,9 @@ nav { display: flex; align-items: center; gap: 4px; }
       <div class="dropdown">
         <button class="nav-link" data-page="resources-group">Client Resources ▼</button>
         <div class="dropdown-content">
-          <a onclick="navigate('housing')">Housing</a>
-          <a onclick="navigate('healthcare')">Healthcare</a>
-          <a onclick="navigate('resources')">Additional Resources</a>
+          <a onclick="navigate('housing')" tabindex="0">Housing</a>
+          <a onclick="navigate('healthcare')" tabindex="0">Healthcare</a>
+          <a onclick="navigate('resources')" tabindex="0">Additional Resources</a>
         </div>
       </div>
 
@@ -451,19 +473,19 @@ nav { display: flex; align-items: center; gap: 4px; }
         <p class="section__desc">Everything you need to move forward — organized, accessible, and updated regularly by your case management team.</p>
       </div>
       <div class="hub-grid">
-        <div class="hub-card hub-card--employment" onclick="navigate('employment')">
+        <div class="hub-card hub-card--employment" onclick="navigate('employment')" tabindex="0" role="button">
           <div class="hub-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
           <h3 class="hub-card__title">Employment</h3>
           <p class="hub-card__desc">Browse current job openings across Murrieta, Temecula, Lake Elsinore, Menifee, and Wildomar. Full-time and part-time positions available.</p>
           <span class="hub-card__link">Browse job listings ↗</span>
         </div>
-        <div class="hub-card hub-card--housing" onclick="navigate('housing')">
+        <div class="hub-card hub-card--housing" onclick="navigate('housing')" tabindex="0" role="button">
           <div class="hub-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
           <h3 class="hub-card__title">Housing</h3>
-          <p class="hub-card__desc">Explore emergency shelters, transitional housing, and affordable apartments across Riverside County. Specialized options available.</p>
+          <p class="hub-card__desc">Explore emergency shelters, transitional housing, and affordable apartments across Riverside County.</p>
           <span class="hub-card__link">View housing resources ↗</span>
         </div>
-        <div class="hub-card hub-card--team" onclick="navigate('home','team-section')">
+        <div class="hub-card hub-card--team" onclick="navigate('home','team-section')" tabindex="0" role="button">
           <div class="hub-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
           <h3 class="hub-card__title">Case Managers</h3>
           <p class="hub-card__desc">Find your assigned case manager and reach out directly via email or phone. Your team is here to guide you through every step.</p>
@@ -480,10 +502,18 @@ nav { display: flex; align-items: center; gap: 4px; }
         <h2 class="section__title">Meet the people in your corner</h2>
         <p class="section__desc">Find your assigned case manager below to connect directly.</p>
       </div>
+      
+      <div class="team-status-bar" id="teamStatusBar">
+        <div class="team-status-indicator" id="teamStatusIndicator">
+          <span class="status-dot"></span> <strong id="teamStatusText">Checking status...</strong>
+        </div>
+        <div class="team-status-hours">Case managers are available Monday–Friday, 7:00 AM – 3:30 PM PST.</div>
+      </div>
+
       <div class="controls-bar">
         <div class="search-bar">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input type="text" placeholder="Search by name..." id="cmSearch">
+          <input type="text" placeholder="Search by name..." id="cmSearch" aria-label="Search case managers">
         </div>
         <div class="filter-bar__count">Showing <strong id="cmCount">11</strong> case managers</div>
       </div>
@@ -511,7 +541,7 @@ nav { display: flex; align-items: center; gap: 4px; }
 <div class="page" id="page-employment">
   <section class="hero">
     <div class="container">
-      <div class="hero__eyebrow"><a onclick="navigate('home')" style="cursor:pointer">Home</a> / Employment</div>
+      <div class="hero__eyebrow"><a onclick="navigate('home')" style="cursor:pointer" tabindex="0">Home</a> / Employment</div>
       <h1 class="hero__title">Employment <em>Opportunities</em></h1>
       <p class="hero__desc" style="max-width: 800px;">Current job openings across Riverside County communities. Click any job title to search for that position on Indeed.</p>
     </div>
@@ -578,7 +608,7 @@ nav { display: flex; align-items: center; gap: 4px; }
 <div class="page" id="page-housing">
   <section class="hero">
     <div class="container">
-      <div class="hero__eyebrow"><a onclick="navigate('home')" style="cursor:pointer">Home</a> / Client Resources</div>
+      <div class="hero__eyebrow"><a onclick="navigate('home')" style="cursor:pointer" tabindex="0">Home</a> / Client Resources</div>
       <h1 class="hero__title">Housing <em>Resources</em></h1>
       <p class="hero__desc">Emergency shelters, transitional programs, and affordable housing options across Riverside County.</p>
     </div>
@@ -612,7 +642,7 @@ nav { display: flex; align-items: center; gap: 4px; }
 <div class="page" id="page-healthcare">
   <section class="hero">
     <div class="container">
-      <div class="hero__eyebrow"><a onclick="navigate('home')" style="cursor:pointer">Home</a> / Client Resources</div>
+      <div class="hero__eyebrow"><a onclick="navigate('home')" style="cursor:pointer" tabindex="0">Home</a> / Client Resources</div>
       <h1 class="hero__title">Health <em>Care</em></h1>
       <p class="hero__desc">Access trusted medical clinics, behavioral health support, and specialized care programs.</p>
     </div>
@@ -646,7 +676,7 @@ nav { display: flex; align-items: center; gap: 4px; }
 <div class="page" id="page-resources">
   <section class="hero">
     <div class="container">
-      <div class="hero__eyebrow"><a onclick="navigate('home')" style="cursor:pointer">Home</a> / Client Resources</div>
+      <div class="hero__eyebrow"><a onclick="navigate('home')" style="cursor:pointer" tabindex="0">Home</a> / Client Resources</div>
       <h1 class="hero__title">Additional <em>Resources</em></h1>
       <p class="hero__desc">Find essential community support networks ranging from local food pantries and clothing distribution, to educational scholarships and pet care.</p>
     </div>
@@ -683,7 +713,7 @@ nav { display: flex; align-items: center; gap: 4px; }
   <div class="container">
     <div class="footer__top">
       <div>
-        <div class="logo" onclick="navigate('home')" style="margin-bottom:16px;">
+        <div class="logo" onclick="navigate('home')" style="margin-bottom:16px; cursor:pointer" tabindex="0">
           <div class="logo__mark">
             <img class="logo__img" src="City+Net+Logo+Icon+Full+Color.png" alt="City Net Logo" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'">
           </div>
@@ -694,12 +724,12 @@ nav { display: flex; align-items: center; gap: 4px; }
       <div>
         <h4 class="footer__col-title">Navigate</h4>
         <div class="footer__links">
-          <a onclick="navigate('home')">Home</a>
-          <a onclick="navigate('employment')">Employment</a>
-          <a onclick="navigate('housing')">Housing Resources</a>
-          <a onclick="navigate('healthcare')">Healthcare</a>
-          <a onclick="navigate('resources')">Additional Resources</a>
-          <a onclick="navigate('home','team-section')">Case Managers</a>
+          <a onclick="navigate('home')" tabindex="0">Home</a>
+          <a onclick="navigate('employment')" tabindex="0">Employment</a>
+          <a onclick="navigate('housing')" tabindex="0">Housing Resources</a>
+          <a onclick="navigate('healthcare')" tabindex="0">Healthcare</a>
+          <a onclick="navigate('resources')" tabindex="0">Additional Resources</a>
+          <a onclick="navigate('home','team-section')" tabindex="0">Case Managers</a>
         </div>
       </div>
       <div>
@@ -748,8 +778,8 @@ const caseManagers = [
   { name: "Whiskey Kelsey", email: "whiskey.kelsey@citynet.org", phone: "951-235-1898"},
 ];
 
-/* Simulation Dates base relative to today (March 10, 2026) */
-const TODAY = new Date("2026-03-10T13:00:00Z").getTime();
+/* Simulation Dates base relative to current time */
+const TODAY = new Date().getTime();
 const msPerDay = 24 * 60 * 60 * 1000;
 
 // Adding dynamic mock data for automation simulation. 
@@ -902,6 +932,43 @@ const resourcesData = {
 };
 
 /* ════════════════════════════════════════════════════
+   TEAM STATUS LOGIC
+   ════════════════════════════════════════════════════ */
+function updateTeamStatus() {
+  const indicator = document.getElementById('teamStatusIndicator');
+  if (!indicator) return;
+  
+  const text = document.getElementById('teamStatusText');
+  const dot = indicator.querySelector('.status-dot');
+
+  // Convert current time to Pacific Time (PST/PDT)
+  const now = new Date();
+  const ptString = now.toLocaleString("en-US", { timeZone: "America/Los_Angeles" });
+  const ptDate = new Date(ptString);
+  
+  const day = ptDate.getDay(); // 0 = Sun, 1 = Mon ... 6 = Sat
+  const hour = ptDate.getHours();
+  const minute = ptDate.getMinutes();
+
+  // Availability: Mon-Fri (1-5), 7:00 AM (7) to 3:30 PM (15:30)
+  const isWeekday = day >= 1 && day <= 5;
+  const isPastStart = hour > 7 || (hour === 7 && minute >= 0);
+  const isBeforeEnd = hour < 15 || (hour === 15 && minute < 30);
+
+  if (isWeekday && isPastStart && isBeforeEnd) {
+    dot.className = 'status-dot online';
+    text.textContent = 'Available Now';
+    text.style.color = 'var(--signal-green)';
+  } else {
+    dot.className = 'status-dot offline';
+    text.textContent = 'Currently Offline';
+    text.style.color = 'var(--text-tertiary)';
+  }
+}
+updateTeamStatus();
+setInterval(updateTeamStatus, 60000); // Check every minute
+
+/* ════════════════════════════════════════════════════
    JOB AUTOMATION ENGINE
    ════════════════════════════════════════════════════ */
 class JobAutomationManager {
@@ -931,8 +998,7 @@ class JobAutomationManager {
         return !isClosed && !isTooOld;
       });
 
-      // 3. (Mock Hook) Appending new jobs from external API 
-      // this.fetchNewJobs(city);
+      // 3. (Mock Hook) New jobs from external API could be appended here.
 
       this.totalActiveCount += this.activeJobs[city].length;
     }
@@ -974,7 +1040,7 @@ class JobAutomationManager {
 }
 
 // Initialize the Automation Engine
-const jobEngine = new JobAutomationManager(jobData);
+const jobEngine = new JobAutomationManager(rawJobData);
 
 /* ════════════════════════════════════════════════════
    NAVIGATION
@@ -1004,49 +1070,6 @@ function navigate(page, scrollTo) {
   }
   setTimeout(initReveals, 150);
 }
-
-/* ════════════════════════════════════════════════════
-   CASE MANAGERS RENDER
-   ════════════════════════════════════════════════════ */
-const teamGrid = document.getElementById('teamGrid');
-function renderCMs(list) {
-  teamGrid.innerHTML = list.map(cm => {
-    const initials = cm.name.split(' ').map(w => w[0]).join('');
-    return `<div class="cm-card reveal">
-      <div class="cm-card__top">
-        <div class="cm-card__avatar">${initials}</div>
-        <div><div class="cm-card__name">${cm.name}</div><div class="cm-card__role">Case Manager</div></div>
-      </div>
-      <div class="cm-card__contacts">
-        <a class="cm-card__contact" href="mailto:${cm.email}">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          ${cm.email}
-        </a>
-        <a class="cm-card__contact" href="tel:${cm.phone.replace(/[^0-9]/g,'')}">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg>
-          ${cm.phone}
-        </a>
-      </div>
-      <div class="cm-card__actions">
-        <a href="mailto:${cm.email}" class="cm-card__btn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          Email
-        </a>
-        <button class="cm-card__btn" onclick="event.stopPropagation();navigator.clipboard.writeText('${cm.email}');this.innerHTML='✓ Copied';setTimeout(()=>this.innerHTML='<svg viewBox=\\'0 0 24 24\\' fill=\\'none\\' stroke=\\'currentColor\\' stroke-width=\\'2\\' stroke-linecap=\\'round\\'><rect x=\\'9\\' y=\\'9\\' width=\\'13\\' height=\\'13\\' rx=\\'2\\'/><path d=\\'M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1\\'/></svg> Copy',1500)">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy
-        </button>
-      </div>
-    </div>`;
-  }).join('');
-  document.getElementById('cmCount').textContent = list.length;
-  setTimeout(initReveals, 50);
-}
-renderCMs(caseManagers);
-
-document.getElementById('cmSearch').addEventListener('input', e => {
-  const q = e.target.value.toLowerCase().trim();
-  renderCMs(caseManagers.filter(cm => cm.name.toLowerCase().includes(q) || cm.email.toLowerCase().includes(q)));
-});
 
 /* ════════════════════════════════════════════════════
    EMPLOYMENT RENDER
@@ -1097,7 +1120,7 @@ function renderEmployment() {
         const logoUrl = `https://logo.clearbit.com/${getDomain(j.employer)}`;
         const timeData = jobEngine.getTimeAgoString(j.postedDate);
 
-        html += `<div class="job-row" onclick="window.open('${j.url}','_blank')">
+        html += `<div class="job-row" tabindex="0" onclick="window.open('${j.url}','_blank')">
           <img class="job-row__logo" src="${logoUrl}" alt="${j.employer} Logo" onerror="this.onerror=null;this.src='${fallbackUrl}'">
           <div>
             <div class="job-row__title">${j.title} <span class="job-row__arrow">↗</span></div>
@@ -1202,7 +1225,7 @@ function renderHealthcare() {
       if (h.address) html += `<div class="housing-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>${h.address}</div>`;
       if (h.phone) html += `<div class="housing-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg><a href="tel:${h.phone.replace(/[^0-9]/g,'')}">${h.phone}</a></div>`;
       if (h.email) html += `<div class="housing-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:${h.email}">${h.email}</a></div>`;
-      if (h.website) html += `<div class="housing-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><a href="${h.website}" target="_blank">Visit Website ↗</a></div>`;
+      if (h.website) html += `<div class="housing-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><a href="${h.website}" target="_blank">Visit Website ↗</a></div>`;
       html += '</div></div>';
     });
     html += '</div></div>';
@@ -1243,7 +1266,7 @@ function renderResources() {
       if (h.address) html += `<div class="housing-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>${h.address}</div>`;
       if (h.phone) html += `<div class="housing-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg><a href="tel:${h.phone.replace(/[^0-9]/g,'')}">${h.phone}</a></div>`;
       if (h.email) html += `<div class="housing-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:${h.email}">${h.email}</a></div>`;
-      if (h.website) html += `<div class="housing-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><a href="${h.website}" target="_blank">Visit Website ↗</a></div>`;
+      if (h.website) html += `<div class="housing-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><a href="${h.website}" target="_blank">Visit Website ↗</a></div>`;
       html += '</div></div>';
     });
     html += '</div></div>';
