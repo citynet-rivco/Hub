@@ -1166,7 +1166,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
           <a href="https://www.caljobs.ca.gov" target="_blank" rel="noopener noreferrer">CalJOBS</a>
           <a href="https://rivcoworkforce.org/job-seeker" target="_blank" rel="noopener noreferrer">Workforce Dev Center</a>
           <a href="https://www.indeed.com/jobs?l=Murrieta%2C+CA" target="_blank" rel="noopener noreferrer">Indeed</a>
-          <a href="tel:9513903567">Outreach Hotline</a>
+          <a href="tel:9513903567">Outreach Line</a>
         </div>
       </div>
       <div>
@@ -1264,19 +1264,12 @@ const staffingAgencies = [
 
 const housing = {
   referrals: [
-    {name:"HomeConnect (CES)", phone:"800-498-8847", email:"homeconnect@ruhealth.org", website:"https://rivcodpss.org/2-1-1-24-hour-services", address:"5555 Arlington Ave, Riverside, CA", special:"General Referrals"},
-    {name:"HomeConnect (CES) - After-Hours", phone:"951-955-8278", email:"homeconnect@ruhealth.org", website:"https://ruhealth.org/behavioral-health/housing", address:"5555 Arlington Ave, Riverside, CA", special:"General Referrals"},
-    {name:"HomeConnect (CES) - HHOPE Program", phone:"951-715-5050", email:"HHOPE@ruhealth.org", website:"https://ruhealth.org/behavioral-health/housing", address:"10281 Kidd Street, Riverside, CA", special:"General Referrals"},
-    {name:"HomeConnect (CES) - HHOPE Admin", phone:"951-358-6796", email:"m.rodrigueztorres@ruhealth.org", website:"https://ruhealth.org/behavioral-health/housing", address:"10281 Kidd Street, Riverside, CA", special:"General Referrals"},
-    {name:"Riverside County OHS", email:"rwalker@rivco.org", website:"https://rivcohws.org/OHS", address:"3900 Main Street, 5th Floor, Riverside, CA", special:"General Referrals"},
-    {name:"Riverside County OHS", email:"APrimrose@Rivco.org", website:"https://rivcohws.org/OHS", address:"3900 Main Street, 5th Floor, Riverside, CA", special:"General Referrals"},
-    {name:"Riverside County OHS - YHDP", phone:"951-295-0254", email:"ggiron@rivco.org", website:"https://rivcohws.org/OHS", address:"3900 Main Street, 5th Floor, Riverside, CA", special:"Youth Referrals"},
-    {name:"Riverside County OHS - YHDP Lead", phone:"951-836-3487", email:"MSarmiento@Rivco.org", website:"https://rivcohws.org/OHS", address:"3900 Main Street, 5th Floor, Riverside, CA", special:"Youth Referrals"},
+    {name:"HomeConnect", phone:"800-498-8847", email:"homeconnect@ruhealth.org", website:"https://rivcodpss.org/2-1-1-24-hour-services", address:"5555 Arlington Ave, Riverside, CA", special:"General Referrals"},
+    {name:"HomeConnect - After-Hours", phone:"951-955-8278", email:"homeconnect@ruhealth.org", website:"https://ruhealth.org/behavioral-health/housing", address:"5555 Arlington Ave, Riverside, CA", special:"General Referrals"},
     {name:"City Net - Intake Line", phone:"951-390-3567", website:"https://www.citynet.org/riverside-county", special:"Street Outreach"},
     {name:"SWAG - Intake Line", phone:"833-792-4674", email:"hello@theswag.org", website:"https://www.theswag.org/", special:"Street Outreach"}
   ],
   emergency: [
-    {name:"CalWORKs Housing Support Program", phone:"800-498-8847", email:"hsp@rivco.org", website:"https://rivcodpss.org/hotelmotel-vouchers", special:"Hotel/Motel Vouchers"},
     {name:"Project TOUCH", phone:"951-677-9661", email:"info@projecttouchonline.com", website:"https://projecttouchonline.com/", address:"28736 Calle del Lago, Murrieta, CA", special:"21-Day Emergency Shelter"},
     {name:"The Anchor", phone:"951-390-3567", website:"https://www.lake-elsinore.org/400/The-Anchor", address:"215 W Graham Ave, Lake Elsinore, CA"},
     {name:"Path of Life - Emergency", phone:"951-462-9822", email:"hotline@thepathoflife.com", website:"https://www.thepathoflife.com/shelter", address:"2840 Hulen Place, Riverside, CA"},
@@ -1291,17 +1284,16 @@ const housing = {
     {name:"Jacob's House", phone:"951-452-2627", website:"https://www.jacobshousetemecula.org", address:"31525 Jedediah Smith Road, Temecula, CA", special:"Hospital Patients & Families"}
   ],
   transitional: [
-    {name:"Path of Life - YHDP", phone:"951-288-3302", email:"eprewitt@thepathoflife.com", website:"https://www.thepathoflife.com", special:"TAY Transitional & Rapid Rehousing"},
-    {name:"City Net - Murrieta Creek Project", phone:"951-390-3567", website:"https://www.citynet.org/riverside-county", special:"Rapid Rehousing"},
-    {name:"Project TOUCH", phone:"951-677-9661", email:"info@projecttouchonline.com", website:"https://projecttouchonline.com/", address:"28736 Calle del Lago, Murrieta, CA", special:"$565+/month"},
+    {name:"Path of Life - Youth", phone:"951-288-3302", email:"eprewitt@thepathoflife.com", website:"https://www.thepathoflife.com", special:"Youth (16-25)"},
+    {name:"Project TOUCH", phone:"951-677-9661", email:"info@projecttouchonline.com", website:"https://projecttouchonline.com/", address:"28736 Calle del Lago, Murrieta, CA", special:"General"},
     {name:"U.S.VETS Inland Empire", phone:"951-269-1119", email:"kbush@usvets.org", website:"https://usvets.org/locations/inland-empire/", address:"15305 6th Street, March Air Reserve Base, CA", special:"Veterans"},
     {name:"TruEvolution - Project Legacy", phone:"951-888-1346", email:"CurtT@truevolution.org", website:"https://www.truevolution.org/project-legacy", address:"3838 Brockton Avenue, Riverside, CA", special:"LGBTQIA+"},
-    {name:"Starting Over, Inc.", phone:"951-898-0862", email:"office@startingoverinc.org", website:"https://www.startingoverinc.org/", address:"6355 Riverside Ave, Suite 100, Riverside, CA", special:"Justice-Involved ($650/month)"}
+    {name:"Starting Over, Inc.", phone:"951-898-0862", email:"office@startingoverinc.org", website:"https://www.startingoverinc.org/", address:"6355 Riverside Ave, Suite 100, Riverside, CA", special:"Justice-Involved"}
   ],
   psh: [
-    {name:"No Place Like Home", email:"J.Zeng@ruhealth.org", website:"https://ruhealth.org/behavioral-health/no-place-like-home", special:"Permanent Supportive Housing"},
-    {name:"The Place Safehaven Program", phone:"951-779-3057", email:"HHOPE@ruhealth.org", website:"https://www.ruhealth.org/behavioral-health/housing", address:"2800 Hulen Place, Riverside, CA", special:"People with Mental Health"},
-    {name:"The Path Safehaven Program", phone:"760-251-2346", email:"HHOPE@ruhealth.org", website:"https://www.ruhealth.org/behavioral-health/housing", address:"19531 McLane Street, Palm Springs, CA", special:"People with Mental Health"}
+    {name:"No Place Like Home", email:"HomeConnect@ruhealth.org", website:"https://ruhealth.org/behavioral-health/no-place-like-home", special:"Permanent Supportive Housing"},
+    {name:"The Place Safehaven Program", phone:"951-779-3057", email:"HHOPE@ruhealth.org", website:"https://www.ruhealth.org/behavioral-health/housing", address:"2800 Hulen Place, Riverside, CA", special:"Permanent Supportive Housing"},
+    {name:"The Path Safehaven Program", phone:"760-251-2346", email:"HHOPE@ruhealth.org", website:"https://www.ruhealth.org/behavioral-health/housing", address:"19531 McLane Street, Palm Springs, CA", special:"Permanent Supportive Housing"}
   ],
   affordable: [
     {name:"Transgender Health & Wellness Center", phone:"760-202-4308", email:"info@trans.health", website:"https://trans.health", address:"340 South Farrell Drive, Suite A208, Palm Springs, CA", special:"Rental Assistance"},
@@ -1320,30 +1312,30 @@ const housing = {
     {name:"Fountain Glen", phone:"951-677-8035", website:"https://www.fountainglengrandisle.com", address:"24405 Village Walk Place, Murrieta, CA", special:"Elderly Adults"}
   ],
   sober: [
-    {name:"Village Care - SUD Residential", phone:"858-761-3656", email:"Brittanyaina@care-villages.com", website:"https://www.care-villages.com/services", special:"Substance Use Disorder"},
+    {name:"Village Care", phone:"858-761-3656", email:"Brittanyaina@care-villages.com", website:"https://www.care-villages.com/services", special:"Substance Use"},
     {name:"The Lemonade House", phone:"760-272-6816", email:"Amy@TheLemonadeHouse.Org", website:"https://thelemonadehouse.org", special:"Women, Substance Use"},
-    {name:"Alive Sober Living", website:"https://www.alivesoberliving.com", special:"$150 deposit, $800/month"}
+    {name:"Alive Sober Living", website:"https://www.alivesoberliving.com", special:"Substance Use"}
   ]
 };
 
 const healthcare = {
   medical:[
-    {name:"Loma Linda University Medical Center",phone:"951-290-4000",website:"https://lluh.org/locations/loma-linda-university-medical-center-murrieta",address:"28062 Baxter Road, Murrieta, CA",special:"Emergency Room (IEHP)"},
-    {name:"Rancho Springs Medical Center",phone:"951-696-6000",website:"https://www.swhranchosprings.com/",address:"25500 Medical Center Drive, Murrieta, CA",special:"Emergency Room (IEHP)"},
+    {name:"Loma Linda University Medical Center",phone:"951-290-4000",website:"https://lluh.org/locations/loma-linda-university-medical-center-murrieta",address:"28062 Baxter Road, Murrieta, CA",special:"Emergency Room"},
+    {name:"Rancho Springs Medical Center",phone:"951-696-6000",website:"https://www.swhranchosprings.com/",address:"25500 Medical Center Drive, Murrieta, CA",special:"Emergency Room"},
     {name:"Healthcare in Action",phone:"909-970-5860",website:"https://forms.gle/xxSdqjXi7BML1LsZ8",special:"Street Medicine"},
     {name:"Planned Parenthood",phone:"888-743-7526",website:"https://www.plannedparenthood.org/health-center/california/murrieta/92562/murrieta-health-center-10002-9011025",address:"25130 Hancock Avenue, Suite 100, Murrieta, CA",special:"Sexual Health"}
   ],
   behavioral:[
     {name:"Riverside University Health System",phone:"800-499-3008",website:"https://www.ruhealth.org/behavioral-health",special:"Behavioral Health"},
-    {name:"Renewing Hope Family Counseling",phone:"951-465-3664",email:"office@renewing-hope.org",website:"https://www.renewinghopeinc.com/",address:"24910 Las Brisas Road, Unit 117, Murrieta, CA",special:"IEHP Provider"},
+    {name:"Renewing Hope Family Counseling",phone:"951-465-3664",email:"office@renewing-hope.org",website:"https://www.renewinghopeinc.com/",address:"24910 Las Brisas Road, Unit 117, Murrieta, CA",special:"Behavioral Health"},
     {name:"Temecula Valley Comprehensive Treatment Center", phone:"855-553-2363", website:"https://www.ctcprograms.com/", address:"40700 California Oaks Road, Suite 202, Murrieta, CA", special:"Opioid addiction treatment"},
     {name:"Hill Alcohol & Drug Treatment",phone:"951-719-3685",email:"info@hillrecovery.com",website:"https://hillrecovery.com/treatment-center/",address:"41877 Enterprise Circle N, Suite 100, Temecula, CA",special:"Substance Use"},
-    {name:"TruEvolution - Behavioral Health", phone:"951-888-1346", email:"support@truevolution.org", website:"https://www.truevolution.org/behavioral-health", address:"3838 Brockton Avenue, Riverside, CA", special:"Affirmative Mental Health (IEHP)"}
+    {name:"TruEvolution - Behavioral Health", phone:"951-888-1346", email:"support@truevolution.org", website:"https://www.truevolution.org/behavioral-health", address:"3838 Brockton Avenue, Riverside, CA", special:"LGBTQIA+, Behavioral Health"}
   ],
   specialty:[
     {name:"Autism Society Inland Empire",phone:"951-220-6922",email:"info@ieautism.org",website:"https://ieautism.org/",address:"420 N McKinley, Suite 111-118, Corona CA",special:"Autism Services"},
     {name:"TruEvolution — Sexual Health",phone:"951-888-1346",email:"care@truevolution.org",website:"https://www.truevolution.org/case-management",address:"3838 Brockton Avenue, Riverside, CA",special:"HIV Testing & PrEP"},
-    {name:"Riverside County DPSS - IHSS", phone:"888-960-4477", website:"http://www.RiversideIHSS.org", address:"561 N San Jacinto Street, Hemet, CA", special:"In-Home Supportive Services"}
+    {name:"Riverside County - Department of Public Social Services", phone:"888-960-4477", website:"http://www.RiversideIHSS.org", address:"561 N San Jacinto Street, Hemet, CA", special:"In-Home Supportive Services"}
   ]
 };
 
@@ -1374,7 +1366,7 @@ const resources = {
   basic:[
     {name:"St. Martha's 2nd Hand Treasures",phone:"951-677-0078",website:"https://communityoutreachofmurrieta.com/thrift-store",address:"39793 Avenida Acacias, Murrieta, CA",special:"Clothing"},
     {name:"TruEvolution — IE LGBTQ+ Center",phone:"951-888-1346",email:"IELGBTQ@truevolution.org",website:"https://www.truevolution.org/ie-lgbtq-center",address:"3838 Brockton Avenue, Riverside, CA",special:"Basic Needs"},
-    {name:"Joshua Home", phone:"909-512-6767", email:"JoshuaHomeLGBTQ@gmail.com", website:"https://www.joshuahomelgbtq.org/the-center-jh", address:"306 West Hanna Street, Suite 500, Colton, CA", special:"LGBTQIA+ Youth"},
+    {name:"Joshua Home", phone:"909-512-6767", email:"JoshuaHomeLGBTQ@gmail.com", website:"https://www.joshuahomelgbtq.org/the-center-jh", address:"306 West Hanna Street, Suite 500, Colton, CA", special:"LGBTQIA+, Youth"},
     {name:"The LGBTQ Community Center of the Desert", phone:"760-416-7790", email:"info@thecentercv.org", website:"https://thecentercv.org/en/", address:"1301 North Palm Canyon Drive, 3rd Floor, Palm Springs, CA", special:"LGBTQIA+"}
   ],
   food:[
