@@ -1,3 +1,8 @@
+let cachedJobs = null;
+let lastFetch = 0;
+
+const CACHE_TIME = 24 * 60 * 60 * 1000; // 24 hours
+
 export default async function handler(req, res) {
   try {
 
@@ -9,50 +14,38 @@ export default async function handler(req, res) {
       });
     }
 
-    // Cities served by the hub
-    const cities = [
-      "Murrieta CA",
-      "Temecula CA",
-      "Menifee CA",
-      "Lake Elsinore CA",
-      "Wildomar CA"
-    ];
+    // Return cached jobs if within 24 hours
+    if (cachedJobs && Date.now() - lastFetch < CACHE_TIME) {
+      return res.status(200).json({
+        jobs_results: cachedJobs
+      });
+    }
 
-    // Job categories to search
-    const categories = [
-      "entry level jobs",
-      "hiring immediately",
-      "retail jobs",
-      "warehouse jobs",
-      "part time jobs",
-      "customer service jobs"
+    const queries = [
+      "entry level jobs Murrieta CA",
+      "entry level jobs Temecula CA",
+      "entry level jobs Menifee CA",
+      "entry level jobs Lake Elsinore CA",
+      "entry level jobs Wildomar CA"
     ];
 
     const allJobs = [];
 
-    // Run searches for each city and category
-    for (const city of cities) {
+    for (const q of queries) {
 
-      for (const category of categories) {
+      const url =
+        `https://serpapi.com/search.json?engine=google_jobs&q=${encodeURIComponent(q)}&location=Riverside,California&api_key=${API_KEY}`;
 
-        const query = `${category} ${city}`;
+      const response = await fetch(url);
+      const data = await response.json();
 
-        const url =
-          `https://serpapi.com/search.json?engine=google_jobs&q=${encodeURIComponent(query)}&location=Riverside,California&api_key=${API_KEY}`;
-
-        const response = await fetch(url);
-
-        const data = await response.json();
-
-        if (data.jobs_results) {
-          allJobs.push(...data.jobs_results);
-        }
-
+      if (data.jobs_results) {
+        allJobs.push(...data.jobs_results);
       }
 
     }
 
-    // Remove duplicates
+    // Remove duplicate jobs
     const seen = new Set();
 
     const uniqueJobs = allJobs.filter(job => {
@@ -67,6 +60,10 @@ export default async function handler(req, res) {
       return true;
 
     });
+
+    // Save cache
+    cachedJobs = uniqueJobs;
+    lastFetch = Date.now();
 
     return res.status(200).json({
       jobs_results: uniqueJobs
