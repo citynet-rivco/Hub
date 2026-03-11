@@ -1,0 +1,8 @@
+{
+  "crons": [
+    {
+      "path": "/api/jobs?cron_key=YOUR_SECRET_PASSWORD",
+      "schedule": "0 8 * * *" 
+    }
+  ]
+}
