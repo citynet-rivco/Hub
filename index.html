@@ -554,9 +554,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
    EMPLOYMENT (Linear App Style List)
 ══════════════════════════════════════════════════════ */
 .emp-layout { display: grid; grid-template-columns: 1fr 340px; gap: 2rem; align-items: start; }
+.emp-layout > div { min-width: 0; }
 .emp-sidebar { position: sticky; top: 100px; display: flex; flex-direction: column; gap: 24px; }
 
-.sync-bar { display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; background: var(--accent-pale); border-radius: var(--radius-md); font-size: 13px; color: var(--accent); font-weight: 600; margin-bottom: 1.5rem; }
+.sync-bar { display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; background: var(--accent-pale); border-radius: var(--radius-md); font-size: 13px; color: var(--accent); font-weight: 600; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 8px; }
 .live-dot { display: flex; align-items: center; gap: 8px; }
 .live-pip { width: 8px; height: 8px; background: var(--signal-green); border-radius: 50%; animation: pulse-live 2s infinite; }
 .sync-time { font-family: var(--f-body); font-size: 11px; opacity: 0.8; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; }
@@ -575,15 +576,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .city-block.closed .city-block__body { display: none; }
 .city-block__body { background: transparent; }
 
-.job-row { display: grid; grid-template-columns: auto 1fr auto; align-items: center; padding: 16px 20px; gap: 16px; border-bottom: 1px solid var(--border-light); cursor: pointer; transition: all var(--dur-fast); text-decoration: none; }
+.job-row { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; padding: 16px 20px; gap: 16px; border-bottom: 1px solid var(--border-light); cursor: pointer; transition: all var(--dur-fast); text-decoration: none; }
 .job-row:last-child { border-bottom: none; }
 .job-row:hover { background: var(--surface-warm); padding-left: 24px; padding-right: 16px; }
 
-.job-title { font-size: var(--size-sm); font-weight: 600; color: var(--text-primary); display: flex; align-items: center; gap: 8px; margin-bottom: 2px; transition: color var(--dur-fast); }
+.job-info { min-width: 0; }
+.job-title { font-size: var(--size-sm); font-weight: 600; color: var(--text-primary); display: flex; align-items: flex-start; gap: 8px; margin-bottom: 2px; transition: color var(--dur-fast); flex-wrap: wrap; word-break: break-word; }
 .job-arrow { font-size: 14px; opacity: 0; transform: translateX(-4px); transition: all var(--dur-fast); color: var(--text-tertiary); }
 .job-row:hover .job-title { color: var(--accent); }
 .job-row:hover .job-arrow { opacity: 1; transform: translateX(0); color: var(--accent); }
-.job-meta { display: flex; align-items: center; gap: 12px; font-size: 12px; color: var(--text-secondary); }
+.job-meta { display: flex; align-items: center; gap: 12px; font-size: 12px; color: var(--text-secondary); flex-wrap: wrap; }
 .job-employer { font-weight: 500; }
 .job-time { display: flex; align-items: center; gap: 4px; color: var(--text-tertiary); }
 .job-time svg { width: 12px; height: 12px; }
@@ -743,8 +745,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
   .cta-block__actions { width: 100%; flex-direction: column; }
   .cta-block__actions .btn { justify-content: center; width: 100%; }
   
-  .job-row { grid-template-columns: auto 1fr; padding: 16px; gap: 12px; }
-  .job-right { flex-direction: row; align-items: center; justify-content: space-between; grid-column: 1 / -1; margin-top: 8px; }
+  .job-row { grid-template-columns: auto minmax(0, 1fr); padding: 16px; gap: 12px; }
+  .job-right { flex-direction: row; align-items: center; justify-content: space-between; grid-column: 1 / -1; margin-top: 8px; flex-wrap: wrap; gap: 8px; }
   
   .footer__bottom { flex-direction: column; align-items: flex-start; gap: 12px; }
   .controls-row { flex-direction: column; align-items: stretch; }
@@ -1387,7 +1389,7 @@ const resources = {
   ],
   legal:[
     {name:"Community Connect",phone:"211",special:"General Referrals"},
-    {name:"Rivers County DPSS",phone:"877-410-8827",email:"DPSSComm@rivco.org",website:"https://rivcodpss.org/",address:"43264 Business Park Drive Suite 102, Temecula, CA",special:"Public Benefits (CalWORKs, CalFresh, etc)"},
+    {name:"Riverside County DPSS",phone:"877-410-8827",email:"DPSSComm@rivco.org",website:"https://rivcodpss.org/",address:"43264 Business Park Drive Suite 102, Temecula, CA",special:"Public Benefits (CalWORKs, CalFresh, etc)"},
     {name:"Riverside Legal Aid",phone:"951-682-7968",email:"info@riversidelegalaid.org",website:"https://riversidelegalaid.org",address:"4129 Main Street, Suite 101, Riverside, CA",special:"Family Law & More"},
     {name:"Riverside Legal Aid - Eviction Defense", phone:"951-888-2039", email:"info@riversidelegalaid.org", website:"https://riversidelegalaid.org/unsafe-housing-tenant-rights/", special:"Eviction Defense"},
     {name:"Inland Coalition for Immigrant Justice", phone:"909-474-9996", email:"info@ic4ij.org", website:"https://ic4ij.org/", address:"2441 N Sierra Way, San Bernardino, CA", special:"Immigration & Deportation"}
@@ -1527,7 +1529,7 @@ function renderJobs() {
                    onclick="window.open('${j.url}','_blank','noopener noreferrer')"
                    onkeydown="if(event.key==='Enter'||event.key===' ')window.open('${j.url}','_blank','noopener noreferrer')">
           <div class="job-initials" aria-hidden="true">${initials(j.employer)}</div>
-          <div>
+          <div class="job-info">
             <div class="job-title">${j.title}<span class="job-arrow" aria-hidden="true">↗</span></div>
             <div class="job-meta">
               <span class="job-employer">${j.employer}</span>
