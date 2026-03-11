@@ -1,81 +1,74 @@
-let cachedJobs = null;
-let lastFetch = 0;
-
-const CACHE_TIME = 24 * 60 * 60 * 1000; // 24 hours
+import { kv } from '@vercel/kv';
 
 export default async function handler(req, res) {
+  // 1. CORS Headers: Securely allow your City Net frontend to read the data
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader('Access-Control-Allow-Origin', '*'); // Or restrict to 'https://citynet.org' in production
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS');
+
+  // Handle browser pre-flight checks
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
   try {
-
-    const API_KEY = process.env.SERPAPI_KEY;
-
-    if (!API_KEY) {
-      return res.status(500).json({
-        error: "Missing SERPAPI_KEY environment variable"
-      });
+    // ------------------------------------------------------------------
+    // FRONTEND ACTION: Serve the cached data to users (Costs 0 API Credits)
+    // ------------------------------------------------------------------
+    if (req.query.action === 'get_cache') {
+      const cachedJobs = await kv.get('citynet_jobs_cache');
+      return res.status(200).json({ jobs_results: cachedJobs || [] });
     }
 
-    // Return cached jobs if within 24 hours
-    if (cachedJobs && Date.now() - lastFetch < CACHE_TIME) {
-      return res.status(200).json({
-        jobs_results: cachedJobs
-      });
+    // ------------------------------------------------------------------
+    // CRON ACTION: Fetch from SerpApi and update cache (Costs 5 API Credits)
+    // ------------------------------------------------------------------
+    // Protect this route so random web traffic can't trigger an API burn
+    const CRON_SECRET = process.env.CRON_KEY;
+    if (!req.query.cron_key || req.query.cron_key !== CRON_SECRET) {
+      return res.status(401).json({ error: 'Unauthorized. Invalid cron key.' });
     }
 
-    const queries = [
-      "entry level jobs Murrieta CA",
-      "entry level jobs Temecula CA",
-      "entry level jobs Menifee CA",
-      "entry level jobs Lake Elsinore CA",
-      "entry level jobs Wildomar CA"
-    ];
+    const SERP_API_KEY = process.env.SERP_API_KEY;
+    if (!SERP_API_KEY) {
+      return res.status(500).json({ error: 'Server misconfiguration: Missing SERP API Key' });
+    }
 
-    const allJobs = [];
+    const TARGET_CITIES = ['Murrieta', 'Temecula', 'Lake Elsinore', 'Menifee', 'Wildomar'];
+    let freshJobs = [];
 
-    for (const q of queries) {
-
-      const url =
-        `https://serpapi.com/search.json?engine=google_jobs&q=${encodeURIComponent(q)}&location=Riverside,California&api_key=${API_KEY}`;
-
-      const response = await fetch(url);
-      const data = await response.json();
-
-      if (data.jobs_results) {
-        allJobs.push(...data.jobs_results);
+    // Loop through the 5 cities and hit SerpApi 
+    // (We use a standard for-loop to avoid rate-limiting the SerpApi connection itself)
+    for (const city of TARGET_CITIES) {
+      const query = encodeURIComponent(`entry level jobs hiring urgently`);
+      const location = encodeURIComponent(`${city}, CA`);
+      
+      // Enforce Google Jobs to return English results, tailored to the specific city
+      const url = `https://serpapi.com/search.json?engine=google_jobs&q=${query}&location=${location}&hl=en&api_key=${SERP_API_KEY}`;
+      
+      const apiRes = await fetch(url);
+      const data = await apiRes.json();
+      
+      if (data.jobs_results && Array.isArray(data.jobs_results)) {
+         // Stamp each job with the target city before merging it into the master array
+         const normalized = data.jobs_results.map(job => ({ ...job, target_city: city }));
+         freshJobs.push(...normalized);
       }
-
     }
 
-    // Remove duplicate jobs
-    const seen = new Set();
+    // Overwrite the Vercel KV database with the fresh batch of entry-level jobs
+    if (freshJobs.length > 0) {
+      await kv.set('citynet_jobs_cache', freshJobs);
+    }
 
-    const uniqueJobs = allJobs.filter(job => {
-
-      const key =
-        `${job.title}|${job.company_name}|${job.location}`;
-
-      if (seen.has(key)) return false;
-
-      seen.add(key);
-
-      return true;
-
-    });
-
-    // Save cache
-    cachedJobs = uniqueJobs;
-    lastFetch = Date.now();
-
-    return res.status(200).json({
-      jobs_results: uniqueJobs
+    // Return a success message to the Vercel Cron monitor
+    res.status(200).json({ 
+      success: true, 
+      message: `Successfully refreshed cache with ${freshJobs.length} active jobs.` 
     });
 
   } catch (error) {
-
-    console.error("API ERROR:", error);
-
-    return res.status(500).json({
-      error: "Serverless function failed"
-    });
-
+    console.error('Job Fetching/Caching Error:', error);
+    res.status(500).json({ error: 'Internal Server Error during job sync.' });
   }
 }
