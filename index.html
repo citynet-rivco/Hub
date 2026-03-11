@@ -1486,7 +1486,7 @@ function renderTeam(q='') {
 document.getElementById('cmSearch')?.addEventListener('input', e => renderTeam(e.target.value));
 renderTeam();
 
-/* ─── JOB ENGINE (Real-Time Indeed & LinkedIn Integration) ─── */
+/* ─── JOB ENGINE ─────────────────────────────────────── */
 let activeJobs = {}, totalJobs = 0;
 let empFilter = 'all';
 
@@ -1495,42 +1495,6 @@ function timeAgo(iso) {
   if (h < 24) return { text: 'Updated recently', isNew: true };
   const d = Math.floor(h/24);
   return { text: `${d === 1 ? '1 day' : d+' days'} ago`, isNew: false };
-}
-
-async function fetchAndPopulateJobs() {
-  const ls = document.getElementById('lastSync');
-  if (ls) ls.textContent = 'Syncing from Indeed & LinkedIn...';
-  
-  // Simulate asynchronous API fetch from Indeed and LinkedIn feeds
-  return new Promise(resolve => {
-    setTimeout(() => {
-      totalJobs = 0;
-      const now = Date.now();
-      const MAX_AGE_MS = 14 * 86400000; // 14 days rule limit
-      
-      for (const city in jobs) {
-        // Apply strict filtering rules:
-        // 1. Remove all job listings after 14 days
-        // 2. Remove all job listings for all applications that have closed
-        activeJobs[city] = jobs[city].filter(j => {
-          const isClosed = j.status === 'closed';
-          const jobAge = now - new Date(j.posted).getTime();
-          const isTooOld = jobAge > MAX_AGE_MS;
-          
-          return !isClosed && !isTooOld;
-        });
-        totalJobs += activeJobs[city].length;
-      }
-      
-      if (ls) { 
-        const n = new Date(); 
-        ls.textContent = 'Live • ' + n.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}); 
-      }
-      
-      renderJobs();
-      resolve();
-    }, 600); // Simulated network latency for real-time fetch
-  });
 }
 
 function renderJobs() {
@@ -1567,7 +1531,7 @@ function renderJobs() {
             <div class="job-title">${j.title}<span class="job-arrow" aria-hidden="true">↗</span></div>
             <div class="job-meta">
               <span class="job-employer">${j.employer}</span>
-              <span class="job-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>${ta.text} <span style="margin-left:4px; opacity:0.75; font-weight:600;">via ${j.source}</span></span>
+              <span class="job-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>${ta.text} <span style="margin-left:4px; opacity:0.75; font-weight:600;">via ${j.source || 'Local'}</span></span>
             </div>
           </div>
           <div class="job-right">
@@ -1584,12 +1548,6 @@ function renderJobs() {
   }
   c.innerHTML = html;
 }
-
-// Initialize real-time job sync on load
-fetchAndPopulateJobs();
-// Auto-update every 5 minutes (300,000 ms) to poll Indeed/LinkedIn
-setInterval(fetchAndPopulateJobs, 300000);
-
 
 /* ─── RESOURCE CARD BUILDER ──────────────────────────── */
 const SVG = {
@@ -1752,6 +1710,150 @@ window.addEventListener('scroll', () => {
 
 /* ─── INITIAL REVEAL ─────────────────────────────────── */
 attachReveal();
+
+/* ─── REAL-TIME API INTEGRATION (SerpAPI Google Jobs via Vercel Proxy) ─── */
+const PROXY_URL = 'https://citynet-jobs-api.vercel.app/api/jobs';
+
+async function fetchGoogleJobs() {
+  if (!PROXY_URL) {
+      console.warn('No proxy URL provided. Falling back to local data.');
+      return [];
+  }
+
+  try {
+    const response = await fetch(PROXY_URL);
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    const data = await response.json();
+    
+    if (data.error) throw new Error(data.error);
+    if (!data.jobs_results || !Array.isArray(data.jobs_results)) return [];
+
+    return data.jobs_results.map(job => normalizeGoogleJob(job));
+
+  } catch (error) {
+    console.error('Failed to fetch jobs from proxy:', error);
+    return [];
+  }
+}
+
+function normalizeGoogleJob(data) {
+  // Extract city from location string
+  let city = 'Riverside County';
+  const knownCities = ['Murrieta', 'Temecula', 'Menifee', 'Lake Elsinore', 'Wildomar'];
+  if (data.location) {
+      for (const known of knownCities) {
+          if (data.location.toLowerCase().includes(known.toLowerCase())) {
+              city = known;
+              break;
+          }
+      }
+  }
+
+  // Attempt to parse "X days ago" into an ISO string
+  let postedDate = new Date().toISOString();
+  if (data.detected_extensions && data.detected_extensions.posted_at) {
+      const postedStr = data.detected_extensions.posted_at.toLowerCase();
+      const match = postedStr.match(/(\d+)\s+(day|hour|minute)s?\s+ago/);
+      if (match) {
+          const amount = parseInt(match[1], 10);
+          const unit = match[2];
+          const now = Date.now();
+          if (unit === 'day') postedDate = new Date(now - amount * 86400000).toISOString();
+          if (unit === 'hour') postedDate = new Date(now - amount * 3600000).toISOString();
+          if (unit === 'minute') postedDate = new Date(now - amount * 60000).toISOString();
+      }
+  }
+
+  // Determine full-time vs part-time
+  let jobType = 'ft';
+  if (data.detected_extensions && data.detected_extensions.schedule_type) {
+      if (data.detected_extensions.schedule_type.toLowerCase().includes('part')) {
+          jobType = 'pt';
+      }
+  }
+
+  // Extract Salary
+  let wage = 'Competitive';
+  if (data.detected_extensions && data.detected_extensions.salary) {
+      wage = data.detected_extensions.salary;
+  }
+
+  return {
+    title: data.title || 'Open Position',
+    employer: data.company_name || 'Local Business',
+    wage: wage,
+    type: jobType,
+    url: data.share_link || data.related_links?.[0]?.link || '#', 
+    posted: postedDate,
+    status: 'open', 
+    location: city,
+    source: 'Google Jobs'
+  };
+}
+
+function removeDuplicates(jobArray) {
+  const seen = new Set();
+  return jobArray.filter(job => {
+    const key = `${job.title.toLowerCase().trim()}|${job.employer.toLowerCase().trim()}|${job.location.toLowerCase().trim()}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+async function fetchAndPopulateJobs() {
+  const ls = document.getElementById('lastSync');
+  if (ls) ls.textContent = 'Syncing live feeds...';
+  
+  // 1. Fetch real-time data from Proxy
+  const liveListings = await fetchGoogleJobs();
+  
+  // 2. Combine with local backup dataset
+  let allJobs = [...liveListings];
+  for (const city in jobs) {
+    allJobs.push(...jobs[city].map(j => ({ ...j, location: city })));
+  }
+
+  // 3. Apply Data Rules (14-day limit, remove closed status)
+  const now = Date.now();
+  const MAX_AGE_MS = 14 * 86400000;
+  
+  let validJobs = allJobs.filter(j => {
+    const isClosed = j.status === 'closed' || j.status === 'expired';
+    const jobAge = now - new Date(j.posted).getTime();
+    const isExpired = jobAge > MAX_AGE_MS;
+    
+    return !isClosed && !isExpired;
+  });
+
+  // 4. Deduplicate
+  validJobs = removeDuplicates(validJobs);
+
+  // 5. Structure for UI (Group by Location)
+  activeJobs = {};
+  totalJobs = 0;
+  
+  validJobs.forEach(job => {
+    const loc = job.location;
+    const targetLoc = ['Murrieta', 'Temecula', 'Menifee', 'Lake Elsinore', 'Wildomar'].includes(loc) ? loc : 'Riverside County';
+    
+    if (!activeJobs[targetLoc]) activeJobs[targetLoc] = [];
+    activeJobs[targetLoc].push(job);
+    totalJobs++;
+  });
+
+  if (ls) { 
+    const n = new Date(); 
+    ls.textContent = 'Live • ' + n.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}); 
+  }
+  
+  renderJobs();
+}
+
+// Initialize real-time job sync on load
+fetchAndPopulateJobs();
+// Auto-update every 5 minutes (300,000 ms) to poll proxy
+setInterval(fetchAndPopulateJobs, 300000);
 
 </script>
 </body>
