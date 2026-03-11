@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
 <meta name="description" content="City Net Client Hub - Connecting our neighbors experiencing homelessness to transformative care, housing solutions, and employment.">
 <title>City Net — Client Hub</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -76,6 +76,11 @@
   --size-3xl: 3.5rem;
   --size-hero: clamp(3rem, 7vw, 6rem);
   
+  /* Spacing */
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+
   /* Radii */
   --radius-sm: 8px;
   --radius-md: 14px;
@@ -95,6 +100,7 @@
   --dur-fast: 200ms;
   --dur-base: 400ms;
   --dur-slow: 700ms;
+  --dur-spring: 500ms;
 }
 
 /* ══════════════════════════════════════════════════════
@@ -165,6 +171,7 @@ body {
 }
 
 img { display: block; max-width: 100%; }
+a, button { touch-action: manipulation; }
 a { color: inherit; text-decoration: none; transition: all var(--dur-fast); }
 button { font-family: var(--f-body); border: none; background: none; cursor: pointer; }
 ::selection { background: var(--accent); color: var(--text-primary); }
@@ -537,7 +544,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 /* ══════════════════════════════════════════════════════
    SEGMENTED CONTROLS (Pills & Tabs)
 ══════════════════════════════════════════════════════ */
-.pill-row { display: inline-flex; gap: 4px; padding: 4px; background: var(--surface-card); border: 1px solid var(--border-glass); border-radius: 100px; box-shadow: var(--shadow-sm), inset 0 2px 4px rgba(0,0,0,0.02); backdrop-filter: blur(20px); margin-bottom: 2rem; overflow-x: auto; max-width: 100%; scrollbar-width: none; }
+.pill-row { display: inline-flex; gap: 4px; padding: 4px; background: var(--surface-card); border: 1px solid var(--border-glass); border-radius: 100px; box-shadow: var(--shadow-sm), inset 0 2px 4px rgba(0,0,0,0.02); backdrop-filter: blur(20px); margin-bottom: 2rem; overflow-x: auto; max-width: 100%; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
 .pill-row::-webkit-scrollbar { display: none; }
 .pill, .tab { padding: 10px 20px; font-size: 13px; font-weight: 600; border: none; border-radius: 100px; background: transparent; color: var(--text-secondary); cursor: pointer; transition: all var(--dur-fast); white-space: nowrap; }
 .pill:hover, .tab:hover { color: var(--text-primary); }
@@ -1270,7 +1277,7 @@ const housing = {
     {name:"SWAG", phone:"833-792-4674", email:"hello@theswag.org", website:"https://www.theswag.org/", special:"Street Outreach"}
   ],
   emergency: [
-    {name:"Project TOUCH", phone:"951-677-9661", email:"info@projecttouchonline.com", website:"https://projecttouchonline.com/", address:"28736 Calle del Lago, Murrieta, CA",
+    {name:"Project TOUCH", phone:"951-677-9661", email:"info@projecttouchonline.com", website:"https://projecttouchonline.com/", address:"28736 Calle del Lago, Murrieta, CA"},
     {name:"The Anchor", phone:"951-390-3567", website:"https://www.lake-elsinore.org/400/The-Anchor", address:"215 W Graham Ave, Lake Elsinore, CA"},
     {name:"Path of Life - Emergency", phone:"951-462-9822", email:"hotline@thepathoflife.com", website:"https://www.thepathoflife.com/shelter", address:"2840 Hulen Place, Riverside, CA"},
     {name:"Path of Life - Cold Weather", phone:"951-318-1329", email:"hotline@thepathoflife.com", website:"https://www.thepathoflife.com/shelter", address:"3695 1st Street, Riverside, CA", special:"Seasonal"},
@@ -1285,7 +1292,7 @@ const housing = {
   ],
   transitional: [
     {name:"Path of Life - Youth", phone:"951-288-3302", email:"eprewitt@thepathoflife.com", website:"https://www.thepathoflife.com", special:"Youth (16-25)"},
-    {name:"Project TOUCH", phone:"951-677-9661", email:"info@projecttouchonline.com", website:"https://projecttouchonline.com/", address:"28736 Calle del Lago, Murrieta, CA",
+    {name:"Project TOUCH", phone:"951-677-9661", email:"info@projecttouchonline.com", website:"https://projecttouchonline.com/", address:"28736 Calle del Lago, Murrieta, CA"},
     {name:"U.S.VETS Inland Empire", phone:"951-269-1119", email:"kbush@usvets.org", website:"https://usvets.org/locations/inland-empire/", address:"15305 6th Street, March Air Reserve Base, CA", special:"Veterans"},
     {name:"TruEvolution", phone:"951-888-1346", email:"CurtT@truevolution.org", website:"https://www.truevolution.org/project-legacy", address:"3838 Brockton Avenue, Riverside, CA", special:"LGBTQIA+"},
     {name:"Starting Over, Inc.", phone:"951-898-0862", email:"office@startingoverinc.org", website:"https://www.startingoverinc.org/", address:"6355 Riverside Ave, Suite 100, Riverside, CA", special:"Justice-Involved"}
@@ -1362,8 +1369,8 @@ const resources = {
   basic:[
     {name:"St. Martha's 2nd Hand Treasures",phone:"951-677-0078",website:"https://communityoutreachofmurrieta.com/thrift-store",address:"39793 Avenida Acacias, Murrieta, CA",special:"Clothing"},
     {name:"IE LGBTQ+ Center",phone:"951-888-1346",email:"IELGBTQ@truevolution.org",website:"https://www.truevolution.org/ie-lgbtq-center",address:"3838 Brockton Avenue, Riverside, CA",special:"LGBTQIA+ Basic Needs"},
-    {name:"The LGBTQ Community Center of the Desert", phone:"760-416-7790", email:"info@thecentercv.org", website:"https://thecentercv.org/en/", address:"1301 North Palm Canyon Drive, 3rd Floor, Palm Springs, CA", special:"LGBTQIA+ Basic Needs"}
-    {name:"Transgender Health & Wellness Center", phone:"760-202-4308", email:"info@trans.health", website:"https://trans.health", address:"340 South Farrell Drive, Suite A208, Palm Springs, CA", special:"LGBTQIA+ Rental Assistance"},
+    {name:"The LGBTQ Community Center of the Desert", phone:"760-416-7790", email:"info@thecentercv.org", website:"https://thecentercv.org/en/", address:"1301 North Palm Canyon Drive, 3rd Floor, Palm Springs, CA", special:"LGBTQIA+ Basic Needs"},
+    {name:"Transgender Health & Wellness Center", phone:"760-202-4308", email:"info@trans.health", website:"https://trans.health", address:"340 South Farrell Drive, Suite A208, Palm Springs, CA", special:"LGBTQIA+ Rental Assistance"}
   ],
   food:[
     {name:"Community Food Pantry of Murrieta",phone:"951-677-6347",website:"https://communityoutreachofmurrieta.com/pantry-hours",address:"39493 Los Alamos Road, Suite A, Murrieta, CA"},
@@ -1371,11 +1378,7 @@ const resources = {
     {name:"Menifee Valley Cupboard",phone:"951-301-4414",website:"https://mvcupboard.org",address:"26808 Cherry Hills Blvd, Menifee, CA"},
     {name:"Aspire to Inspire", phone:"951-457-2712", address:"29930 Hunter Road, Murrieta, CA"},
     {name:"Greater Works Church", phone:"951-326-5295", website:"https://4greaterworks.org", address:"25823 Jefferson Avenue, Murrieta, CA"},
-    {name:"Murrieta United Methodist Church", phone:"951-677-6174", website:"https://murrietaumc.org/ministries/food-pantry/", address:"24652 Adams Avenue, Murrieta, CA"},
-    {name:"Gateway Church of the Nazarene", phone:"951-461-0221", website:"https://gatewaynaz.org/food-pantry", address:"23560 Jefferson Avenue, Murrieta, CA"},
-    {name:"The Bridge Church", phone:"951-600-9112", website:"https://thebridgechurch.tv", address:"38801 Calistoga Drive, Murrieta, CA"},
-    {name:"The LGBTQ Community Center - Food Bank", phone:"760-281-2616", website:"https://thecentercv.org/en/community-food-bank/", address:"2901 E Alejo Road, Palm Spring, CA", special:"Thurs 5-7PM"},
-    {name:"Murrieta Senior Center", phone:"951-304-7275", website:"https://murrietaca.gov/facilities/facility/details/Senior-Center-7", address:"5 Town Square, Murrieta, CA"}
+    {name:"Murrieta United Methodist Church", phone:"951-677-6174", website:"https://murrietaca.gov/facilities/facility/details/Senior-Center-7", address:"5 Town Square, Murrieta, CA"}
   ],
   legal:[
     {name:"Community Connect",phone:"211",special:"General Referrals"},
