@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 <style>
 /* ══════════════════════════════════════════════════════
    ND STUDIO: ELITE DESIGN TOKENS (City Net Unified)
@@ -442,9 +443,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .hub-card::before { content:''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, transparent 100%); opacity: 0; transition: opacity var(--dur-base); z-index: 0; pointer-events: none; }
 @media (prefers-color-scheme: dark) { .hub-card::before { background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, transparent 100%); } }
 .hub-card > * { position: relative; z-index: 1; }
-.hub-card:hover { border-color: var(--accent); box-shadow: var(--shadow-lg), var(--inner-glow); transform: translateY(-6px) scale(1.01); }
+.hub-card:hover { border-color: var(--accent); box-shadow: var(--shadow-lg), var(--inner-glow); transform: translateY(-4px) scale(1.01); }
 .hub-card:hover::before { opacity: 1; }
-.hub-card:active { transform: translateY(0) scale(0.98); }
+.hub-card:active { transform: translateY(0) scale(0.97); transition-duration: 100ms; }
 
 .hub-card__icon { width: 52px; height: 52px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; transition: transform var(--dur-base) var(--ease-spring); box-shadow: inset 0 1px 0 rgba(255,255,255,0.5); }
 .hub-card:hover .hub-card__icon { transform: scale(1.1) translateY(-4px); }
@@ -495,6 +496,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .cm-card { background: var(--surface-card); border: 1px solid var(--border-glass); border-radius: var(--radius-xl); padding: 1.5rem; transition: all var(--dur-base) var(--ease-spring); display: flex; flex-direction: column; box-shadow: var(--shadow-sm), var(--inner-glow); backdrop-filter: blur(32px) saturate(200%); }
 .cm-card:hover { border-color: var(--accent); box-shadow: var(--shadow-md), var(--inner-glow); transform: translateY(-4px); }
+.cm-card:active { transform: translateY(0) scale(0.97); transition-duration: 100ms; }
 .cm-card__head { display: flex; align-items: center; gap: 16px; margin-bottom: 1.25rem; }
 
 .cm-card__name { font-family: var(--f-display); font-size: var(--size-md); font-weight: 600; color: var(--text-primary); line-height: 1.1; letter-spacing: -0.01em; }
@@ -544,10 +546,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 /* ══════════════════════════════════════════════════════
    SEGMENTED CONTROLS (Pills & Tabs)
 ══════════════════════════════════════════════════════ */
-.pill-row { display: inline-flex; gap: 4px; padding: 4px; background: var(--surface-card); border: 1px solid var(--border-glass); border-radius: 100px; box-shadow: var(--shadow-sm), inset 0 2px 4px rgba(0,0,0,0.02); backdrop-filter: blur(20px); margin-bottom: 2rem; overflow-x: auto; max-width: 100%; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.pill-row { display: inline-flex; gap: 4px; padding: 4px; background: var(--surface-card); border: 1px solid var(--border-glass); border-radius: 100px; box-shadow: var(--shadow-sm), inset 0 2px 4px rgba(0,0,0,0.02); backdrop-filter: blur(20px); margin-bottom: 2rem; overflow-x: auto; max-width: 100%; scrollbar-width: none; -webkit-overflow-scrolling: touch; scroll-snap-type: x mandatory; }
 .pill-row::-webkit-scrollbar { display: none; }
-.pill, .tab { padding: 10px 20px; font-size: 13px; font-weight: 600; border: none; border-radius: 100px; background: transparent; color: var(--text-secondary); cursor: pointer; transition: all var(--dur-fast); white-space: nowrap; }
+.pill, .tab { padding: 10px 20px; font-size: 13px; font-weight: 600; border: none; border-radius: 100px; background: transparent; color: var(--text-secondary); cursor: pointer; transition: all var(--dur-fast); white-space: nowrap; scroll-snap-align: start; min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; justify-content: center; }
 .pill:hover, .tab:hover { color: var(--text-primary); }
+.pill:active, .tab:active { transform: scale(0.95); }
 .pill.on, .tab.on { background: var(--btn-bg); color: var(--btn-text); box-shadow: 0 2px 8px rgba(2,119,182,0.25); }
 
 /* ══════════════════════════════════════════════════════
@@ -682,6 +685,29 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .rc-row a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
 .rc:hover .rc-row svg { color: var(--accent); }
 
+/* Resource Card Hover Lift & Press */
+.rc:hover { box-shadow: var(--shadow-md), var(--inner-glow); transform: translateY(-4px); border-color: var(--accent); }
+.rc:active { transform: translateY(0) scale(0.98); transition-duration: 100ms; }
+
+/* Quick Action Buttons */
+.rc-actions { display: flex; gap: 8px; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-light); }
+.rc-action { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 8px; font-family: var(--f-body); font-size: 12px; font-weight: 700; border-radius: 10px; cursor: pointer; transition: all var(--dur-fast) var(--ease-spring); text-decoration: none; min-height: 44px; letter-spacing: 0.02em; border: none; }
+.rc-action:active { transform: scale(0.93); }
+.rc-action svg { width: 16px; height: 16px; flex-shrink: 0; }
+.rc-action--call { background: rgba(15, 118, 110, 0.1); color: var(--signal-green); }
+.rc-action--call:hover { background: var(--signal-green); color: #fff; transform: translateY(-1px); }
+.rc-action--web { background: var(--accent-pale); color: var(--accent); }
+.rc-action--web:hover { background: var(--accent); color: #fff; transform: translateY(-1px); }
+.rc-action--map { background: var(--signal-purple-pale); color: var(--signal-purple); }
+.rc-action--map:hover { background: var(--signal-purple); color: #fff; transform: translateY(-1px); }
+@media (prefers-color-scheme: dark) {
+  .rc-action--call { background: rgba(52, 211, 153, 0.15); color: var(--signal-green); }
+  .rc-action--call:hover { background: var(--signal-green); color: #020617; }
+  .rc-action--web:hover { color: var(--btn-text); }
+  .rc-action--map { background: rgba(167, 139, 250, 0.15); color: var(--signal-purple); }
+  .rc-action--map:hover { background: var(--signal-purple); color: #fff; }
+}
+
 /* ══════════════════════════════════════════════════════
    CTA BLOCK
 ══════════════════════════════════════════════════════ */
@@ -721,6 +747,90 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .footer .logo__sub { font-size: var(--size-xs); }
 
 /* ══════════════════════════════════════════════════════
+   INTAKE WIZARD MODAL
+══════════════════════════════════════════════════════ */
+.intake-overlay { display: none; position: fixed; inset: 0; z-index: 2000; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); align-items: center; justify-content: center; padding: 1rem; }
+.intake-overlay.open { display: flex; animation: intakeIn 0.35s var(--ease-out) forwards; }
+@keyframes intakeIn { from { opacity: 0; } to { opacity: 1; } }
+.intake-modal { background: var(--surface-float); border: 1px solid var(--border-glass); border-radius: var(--radius-xl); width: 100%; max-width: 560px; max-height: 90vh; overflow-y: auto; box-shadow: var(--shadow-float); position: relative; animation: intakeSlideIn 0.4s var(--ease-spring) forwards; }
+@keyframes intakeSlideIn { from { opacity: 0; transform: translateY(20px) scale(0.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+.intake-modal__header { display: flex; align-items: center; justify-content: space-between; padding: 24px 28px 0; }
+.intake-modal__title { font-family: var(--f-display); font-size: var(--size-xl); font-weight: 600; color: var(--text-primary); letter-spacing: -0.02em; }
+.intake-modal__close { width: 40px; height: 40px; min-height: 44px; min-width: 44px; display: flex; align-items: center; justify-content: center; border-radius: 50%; color: var(--text-secondary); transition: all var(--dur-fast); background: var(--surface-warm); border: 1px solid var(--border-light); cursor: pointer; }
+.intake-modal__close:hover { background: var(--border-light); color: var(--text-primary); }
+.intake-modal__close:active { transform: scale(0.9); }
+.intake-modal__close svg { width: 18px; height: 18px; }
+
+/* Step Dots */
+.intake-dots { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 20px 28px 8px; }
+.intake-dot { width: 10px; height: 10px; border-radius: 100px; background: var(--border); transition: all 0.4s var(--ease-spring); }
+.intake-dot.completed { background: var(--signal-green); width: 10px; }
+.intake-dot.active { background: var(--accent); width: 28px; }
+.intake-dot.upcoming { background: var(--border); }
+
+.intake-modal__body { padding: 20px 28px 28px; }
+.intake-step { display: none; }
+.intake-step.active { display: block; animation: intakeStepIn 0.35s var(--ease-out); }
+@keyframes intakeStepIn { from { opacity: 0; transform: translateX(10px); } to { opacity: 1; transform: translateX(0); } }
+.intake-step__label { font-size: var(--size-sm); color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.5; }
+.intake-options { display: flex; flex-direction: column; gap: 8px; }
+.intake-option { display: flex; align-items: center; gap: 14px; padding: 16px 20px; border: 1px solid var(--border); border-radius: var(--radius-md); cursor: pointer; transition: all var(--dur-fast) var(--ease-spring); min-height: 52px; position: relative; overflow: hidden; background: transparent; font-family: var(--f-body); font-size: var(--size-sm); color: var(--text-primary); font-weight: 500; text-align: left; width: 100%; }
+.intake-option:hover { border-color: var(--accent); background: var(--accent-pale); }
+.intake-option:active { transform: scale(0.97); }
+.intake-option.selected { border-color: var(--accent); background: linear-gradient(135deg, var(--accent-pale), rgba(2,119,182,0.15)); box-shadow: 0 0 0 2px var(--accent); }
+.intake-option__icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: var(--surface-warm); transition: all var(--dur-fast); }
+.intake-option.selected .intake-option__icon { background: var(--accent); color: #fff; }
+.intake-option__icon svg { width: 18px; height: 18px; }
+
+.intake-nav { display: flex; gap: 10px; margin-top: 1.5rem; }
+.intake-nav .btn { flex: 1; justify-content: center; min-height: 48px; }
+
+/* ══════════════════════════════════════════════════════
+   DYNAMIC RESOURCE MAP
+══════════════════════════════════════════════════════ */
+.map-container { display: flex; flex-direction: column; height: calc(100vh - 80px); position: relative; }
+.map-toolbar { display: flex; align-items: center; gap: 8px; padding: 12px clamp(1rem, 3vw, 2rem); background: var(--surface-float); border-bottom: 1px solid var(--border-light); overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; scroll-snap-type: x mandatory; flex-shrink: 0; backdrop-filter: blur(20px); }
+.map-toolbar::-webkit-scrollbar { display: none; }
+.map-pill { padding: 8px 18px; font-size: 12px; font-weight: 700; border: 1px solid var(--border); border-radius: 100px; background: var(--surface-card); color: var(--text-secondary); cursor: pointer; transition: all var(--dur-fast); white-space: nowrap; scroll-snap-align: start; min-height: 44px; display: inline-flex; align-items: center; gap: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
+.map-pill:hover { border-color: var(--accent); color: var(--accent); }
+.map-pill:active { transform: scale(0.95); }
+.map-pill.on { background: var(--btn-bg); color: var(--btn-text); border-color: var(--btn-bg); }
+.map-pill__dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.map-body { display: flex; flex: 1; min-height: 0; }
+.map-sidebar { width: 360px; flex-shrink: 0; overflow-y: auto; background: var(--surface); border-right: 1px solid var(--border-light); }
+.map-sidebar__item { display: flex; flex-direction: column; gap: 4px; padding: 14px 20px; border-bottom: 1px solid var(--border-light); cursor: pointer; transition: background var(--dur-fast); }
+.map-sidebar__item:hover { background: var(--surface-warm); }
+.map-sidebar__item.active { background: var(--accent-pale); border-left: 3px solid var(--accent); }
+.map-sidebar__name { font-size: var(--size-sm); font-weight: 600; color: var(--text-primary); }
+.map-sidebar__addr { font-size: 12px; color: var(--text-secondary); }
+.map-sidebar__cat { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2px; }
+#mapCanvas { flex: 1; min-height: 300px; z-index: 1; }
+
+/* Leaflet Popup Overrides */
+.leaflet-popup-content-wrapper { border-radius: var(--radius-md) !important; box-shadow: var(--shadow-md) !important; font-family: var(--f-body) !important; }
+.leaflet-popup-content { margin: 14px 16px !important; font-size: 13px !important; line-height: 1.5 !important; }
+.map-popup__name { font-weight: 700; font-size: 14px; color: var(--text-primary); margin-bottom: 4px; }
+.map-popup__addr { color: var(--text-secondary); font-size: 12px; margin-bottom: 6px; }
+.map-popup__links { display: flex; gap: 8px; margin-top: 6px; }
+.map-popup__link { font-size: 12px; font-weight: 600; color: var(--accent); text-decoration: none; }
+.map-popup__link:hover { text-decoration: underline; }
+
+/* ══════════════════════════════════════════════════════
+   BACK TO TOP BUTTON
+══════════════════════════════════════════════════════ */
+.back-to-top { position: fixed; bottom: 24px; right: 24px; z-index: 100; width: 48px; height: 48px; border-radius: 50%; background: var(--btn-bg); color: var(--btn-text); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-md); transition: all var(--dur-fast) var(--ease-spring); opacity: 0; transform: translateY(20px); pointer-events: none; }
+.back-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.back-to-top:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.back-to-top:active { transform: scale(0.9); }
+.back-to-top svg { width: 20px; height: 20px; }
+
+/* ══════════════════════════════════════════════════════
+   LOADING SKELETON
+══════════════════════════════════════════════════════ */
+.skeleton { background: linear-gradient(90deg, var(--surface-warm) 25%, var(--border-light) 50%, var(--surface-warm) 75%); background-size: 200% 100%; animation: shimmer 1.5s ease-in-out infinite; border-radius: var(--radius-md); }
+@keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+/* ══════════════════════════════════════════════════════
    RESPONSIVE DESIGN
 ══════════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
@@ -730,27 +840,52 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
   .resource-grid { grid-template-columns: 1fr; }
   .footer__grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
   .stats-strip__grid, .page-stats__grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .map-sidebar { width: 280px; }
 }
 @media (max-width: 768px) {
   .nav { display: none !important; }
   .nav-toggle { display: flex; }
-  .hub-grid, .team-grid { grid-template-columns: 1fr; }
+  /* Single column on small screens */
+  .hub-grid, .team-grid, .resource-grid { grid-template-columns: 1fr; }
   .emp-sidebar { grid-template-columns: 1fr; }
   .footer__grid { grid-template-columns: 1fr; }
+  /* Stats become 2x2 */
+  .stats-strip__grid, .page-stats__grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
   .topbar { display: none; }
-  
+
   .hub-card, .cm-card, .rc { padding: 1.5rem; }
   .stats-strip, .page-stats { padding: 2rem 1.5rem; }
-  
+
+  /* Hero CTAs stack vertically */
+  .hero__actions { width: 100%; flex-direction: column; }
+  .hero__actions .btn { justify-content: center; width: 100%; }
   .cta-block__actions { width: 100%; flex-direction: column; }
   .cta-block__actions .btn { justify-content: center; width: 100%; }
-  
+
   .job-row { grid-template-columns: auto minmax(0, 1fr); padding: 16px; gap: 12px; }
   .job-right { flex-direction: row; align-items: center; justify-content: space-between; grid-column: 1 / -1; margin-top: 8px; flex-wrap: wrap; gap: 8px; }
-  
+
+  /* Footer stacks */
   .footer__bottom { flex-direction: column; align-items: flex-start; gap: 12px; }
   .controls-row { flex-direction: column; align-items: stretch; }
   .searchbox { max-width: 100%; }
+
+  /* Map sidebar hides on mobile, full width map */
+  .map-sidebar { display: none; }
+  #mapCanvas { min-height: 400px; }
+
+  /* Job cards vertical section dividers */
+  .city-block { margin-bottom: 1rem; }
+  .city-block + .city-block { border-top: 2px solid var(--border); }
+
+  /* 44px min touch targets */
+  .pill, .tab, .map-pill { min-height: 44px; min-width: 44px; }
+  .btn { min-height: 48px; }
+  .nav-link, .mobile-nav__link { min-height: 44px; }
+  .cm-btn { min-height: 44px; }
+  .rc-action { min-height: 44px; }
+  .footer__links a { min-height: 44px; display: inline-flex; align-items: center; }
+  .res-link { min-height: 44px; }
 }
 </style>
 </head>
@@ -803,6 +938,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
           </div>
         </div>
         <button class="nav-link" onclick="goTo('employment')" data-page="employment">Employment</button>
+        <button class="nav-link" onclick="goTo('map')" data-page="map">Map</button>
         <button class="nav-link" onclick="goTo('home','team-section')" data-page="team">Case Managers</button>
         <button class="btn btn--solid btn-cta" onclick="window.location.href='tel:9513903567'" aria-label="Call outreach line">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"></path></svg>
@@ -844,6 +980,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
     <div style="height:1px; background:rgba(255,255,255,0.1); margin:1rem 20px;"></div>
     
     <div class="mobile-nav__link" onclick="goTo('employment');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('employment');closeMobileNav()}" tabindex="0" role="menuitem" data-mpage="employment">Employment</div>
+    <div class="mobile-nav__link" onclick="goTo('map');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('map');closeMobileNav()}" tabindex="0" role="menuitem" data-mpage="map">Resource Map</div>
     <div class="mobile-nav__link" onclick="goTo('home','team-section');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('home','team-section');closeMobileNav()}" tabindex="0" role="menuitem">Case Managers</div>
   </div>
   <div class="mobile-nav__footer">
@@ -865,7 +1002,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
         <h1 class="hero__headline reveal">Your partner on<br>the path to <em>housing.</em></h1>
         <p class="hero__sub reveal reveal-delay-1">Explore housing resources, find local job opportunities, and connect with your case manager — all in one place.</p>
         <div class="hero__actions reveal reveal-delay-2">
-          <button class="btn btn--solid" onclick="goTo('housing')">
+          <button class="btn btn--solid" onclick="openIntake()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Get Started
+          </button>
+          <button class="btn btn--outline" onclick="goTo('housing')">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
             Housing Resources
           </button>
@@ -1141,7 +1282,130 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
       </div>
     </section>
   </div>
+
+  <!-- ═══ MAP PAGE ═══ -->
+  <div class="page" id="page-map">
+    <div class="map-container">
+      <div class="map-toolbar" id="mapFilters">
+        <button class="map-pill on" data-cat="all"><span class="map-pill__dot" style="background:var(--accent)"></span>All</button>
+        <button class="map-pill" data-cat="housing"><span class="map-pill__dot" style="background:var(--badge-bg-1)"></span>Housing</button>
+        <button class="map-pill" data-cat="healthcare"><span class="map-pill__dot" style="background:var(--signal-red)"></span>Healthcare</button>
+        <button class="map-pill" data-cat="food"><span class="map-pill__dot" style="background:var(--signal-green)"></span>Food</button>
+        <button class="map-pill" data-cat="legal"><span class="map-pill__dot" style="background:var(--signal-amber)"></span>Legal</button>
+        <button class="map-pill" data-cat="basic"><span class="map-pill__dot" style="background:var(--signal-purple)"></span>Basic Needs</button>
+      </div>
+      <div class="map-body">
+        <div class="map-sidebar" id="mapSidebar"></div>
+        <div id="mapCanvas"></div>
+      </div>
+    </div>
+  </div>
 </main>
+
+<!-- ═══ INTAKE WIZARD MODAL ═══ -->
+<div class="intake-overlay" id="intakeOverlay" role="dialog" aria-modal="true" aria-label="Get Started Wizard">
+  <div class="intake-modal">
+    <div class="intake-modal__header">
+      <div class="intake-modal__title">How can we help?</div>
+      <button class="intake-modal__close" onclick="closeIntake()" aria-label="Close wizard">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="intake-dots" id="intakeDots">
+      <div class="intake-dot active"></div>
+      <div class="intake-dot upcoming"></div>
+      <div class="intake-dot upcoming"></div>
+    </div>
+    <div class="intake-modal__body">
+      <!-- Step 1: Primary Need -->
+      <div class="intake-step active" id="intakeStep1">
+        <div class="intake-step__label">What do you need help with right now?</div>
+        <div class="intake-options">
+          <button class="intake-option" data-need="crisis" onclick="selectNeed(this)">
+            <div class="intake-option__icon" style="color:var(--signal-red)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+            I'm in crisis / need immediate help
+          </button>
+          <button class="intake-option" data-need="housing" onclick="selectNeed(this)">
+            <div class="intake-option__icon" style="color:var(--accent)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+            Housing / Shelter
+          </button>
+          <button class="intake-option" data-need="employment" onclick="selectNeed(this)">
+            <div class="intake-option__icon" style="color:var(--signal-green)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+            Employment / Jobs
+          </button>
+          <button class="intake-option" data-need="healthcare" onclick="selectNeed(this)">
+            <div class="intake-option__icon" style="color:var(--signal-purple)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+            Healthcare
+          </button>
+          <button class="intake-option" data-need="food" onclick="selectNeed(this)">
+            <div class="intake-option__icon" style="color:var(--signal-amber)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
+            Food Assistance
+          </button>
+          <button class="intake-option" data-need="legal" onclick="selectNeed(this)">
+            <div class="intake-option__icon" style="color:var(--text-secondary)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+            Legal / Benefits
+          </button>
+        </div>
+      </div>
+      <!-- Step 2: Situation Details (Housing only) -->
+      <div class="intake-step" id="intakeStep2">
+        <div class="intake-step__label">What kind of housing support do you need?</div>
+        <div class="intake-options">
+          <button class="intake-option" data-sub="emergency" onclick="selectSub(this)">
+            <div class="intake-option__icon" style="color:var(--signal-red)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg></div>
+            Emergency Shelter (tonight)
+          </button>
+          <button class="intake-option" data-sub="transitional" onclick="selectSub(this)">
+            <div class="intake-option__icon" style="color:var(--signal-purple)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+            Transitional / Rapid Re-Housing
+          </button>
+          <button class="intake-option" data-sub="affordable" onclick="selectSub(this)">
+            <div class="intake-option__icon" style="color:var(--signal-green)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg></div>
+            Affordable Apartments
+          </button>
+          <button class="intake-option" data-sub="sober" onclick="selectSub(this)">
+            <div class="intake-option__icon" style="color:var(--signal-amber)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+            Sober Living
+          </button>
+        </div>
+        <div class="intake-nav">
+          <button class="btn btn--outline" onclick="intakeBack()">Back</button>
+        </div>
+      </div>
+      <!-- Step 3: Special Circumstances -->
+      <div class="intake-step" id="intakeStep3">
+        <div class="intake-step__label">Do any of these apply to you? (Optional - helps us connect you with specialized resources)</div>
+        <div class="intake-options">
+          <button class="intake-option" data-circ="veteran" onclick="toggleCirc(this)">
+            <div class="intake-option__icon" style="color:var(--accent)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+            Veteran
+          </button>
+          <button class="intake-option" data-circ="lgbtq" onclick="toggleCirc(this)">
+            <div class="intake-option__icon" style="color:var(--signal-purple)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+            LGBTQ+
+          </button>
+          <button class="intake-option" data-circ="youth" onclick="toggleCirc(this)">
+            <div class="intake-option__icon" style="color:var(--signal-green)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+            Youth (16-25)
+          </button>
+          <button class="intake-option" data-circ="family" onclick="toggleCirc(this)">
+            <div class="intake-option__icon" style="color:var(--signal-amber)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            Women / Families
+          </button>
+        </div>
+        <div class="intake-nav">
+          <button class="btn btn--outline" onclick="intakeBack()">Back</button>
+          <button class="btn btn--solid" onclick="intakeFinish()">Find Resources</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Back to Top -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
 
 <footer class="footer" role="contentinfo">
   <div class="container">
@@ -1166,6 +1430,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
           <a onclick="goTo('healthcare')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('healthcare')" tabindex="0" role="link">Healthcare</a>
           <a onclick="goTo('resources')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('resources')" tabindex="0" role="link">Additional Resources</a>
           <a onclick="goTo('employment')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('employment')" tabindex="0" role="link">Employment</a>
+          <a onclick="goTo('map')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('map')" tabindex="0" role="link">Resource Map</a>
           <a onclick="goTo('home','team-section')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('home','team-section')" tabindex="0" role="link">Case Managers</a>
         </div>
       </div>
@@ -1197,6 +1462,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
   </div>
 </footer>
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
 'use strict';
 
@@ -1564,15 +1830,22 @@ const ico = k => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" str
 function buildCard(item, colorClass, defaultLabel) {
   const badgeClass = item.special ? 'rcb--special' : `rcb--${colorClass}`;
   const label      = item.special || defaultLabel;
+  const phoneClean = item.phone ? item.phone.replace(/[^0-9]/g,'') : '';
+  const addrEncoded = item.address ? encodeURIComponent(item.address) : '';
   return `
     <div class="rc rc--${colorClass} reveal">
       <div class="rc-badge ${badgeClass}">${label}</div>
       <div class="rc-name">${item.name}</div>
       <div class="rc-details">
         ${item.address ? `<div class="rc-row">${ico('addr')}<span>${item.address}</span></div>` : ''}
-        ${item.phone   ? `<div class="rc-row">${ico('phone')}<a href="tel:${item.phone.replace(/[^0-9]/g,'')}">${item.phone}</a></div>` : ''}
+        ${item.phone   ? `<div class="rc-row">${ico('phone')}<a href="tel:${phoneClean}">${item.phone}</a></div>` : ''}
         ${item.email   ? `<div class="rc-row">${ico('email')}<a href="mailto:${item.email}">${item.email}</a></div>` : ''}
         ${item.website ? `<div class="rc-row">${ico('web')}<a href="${item.website}" target="_blank" rel="noopener noreferrer">Visit Website ↗</a></div>` : ''}
+      </div>
+      <div class="rc-actions">
+        ${item.phone ? `<a class="rc-action rc-action--call" href="tel:${phoneClean}" aria-label="Call ${item.name}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg>Call</a>` : ''}
+        ${item.website ? `<a class="rc-action rc-action--web" href="${item.website}" target="_blank" rel="noopener noreferrer" aria-label="Visit ${item.name} website"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Website</a>` : ''}
+        ${item.address ? `<a class="rc-action rc-action--map" href="https://www.google.com/maps/search/?api=1&query=${addrEncoded}" target="_blank" rel="noopener noreferrer" aria-label="Directions to ${item.name}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Map</a>` : ''}
       </div>
     </div>`;
 }
@@ -1652,26 +1925,26 @@ document.querySelectorAll('#empFilters .pill').forEach(btn => {
 });
 
 /* ─── NAVIGATION ─────────────────────────────────────── */
-function goTo(page, scrollTo) {
+function goTo(page, scrollTo, activateTab) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   const target = document.getElementById('page-'+page);
   if (target) target.classList.add('active');
 
   const resPages = ['housing','healthcare','resources'];
-  
+
   // Desktop Nav Links
   document.querySelectorAll('.nav-link[data-page]').forEach(l => {
     const match = l.dataset.page === page || (resPages.includes(page) && l.dataset.page === 'resources-group');
     l.classList.toggle('active', match);
   });
-  
+
   // Mobile Nav Links
   document.querySelectorAll('.mobile-nav__link[data-mpage]').forEach(l => {
     l.classList.toggle('active', l.dataset.mpage === page);
   });
 
   closeMobileNav();
-  
+
   if (scrollTo) {
     requestAnimationFrame(() => {
       setTimeout(() => {
@@ -1683,6 +1956,21 @@ function goTo(page, scrollTo) {
     window.scrollTo({top:0, behavior:'smooth'});
   }
   setTimeout(attachReveal, 150);
+
+  // Auto-activate a specific tab if requested
+  if (activateTab) {
+    setTimeout(() => {
+      const tabMap = { housing: 'housingTabs', healthcare: 'hcTabs', resources: 'resTabs' };
+      const tabRowId = tabMap[page];
+      if (tabRowId) {
+        const btn = document.querySelector(`#${tabRowId} .pill[data-tab="${activateTab}"]`);
+        if (btn) btn.click();
+      }
+    }, 200);
+  }
+
+  // Initialize map when navigating to map page
+  if (page === 'map') { setTimeout(initMap, 100); }
 }
 
 /* ─── MOBILE NAV ─────────────────────────────────────── */
@@ -1856,6 +2144,243 @@ async function fetchAndPopulateJobs() {
 fetchAndPopulateJobs();
 // Auto-update every 5 minutes (300,000 ms) to poll proxy
 setInterval(fetchAndPopulateJobs, 300000);
+
+/* ═══════════════════════════════════════════════════════
+   INTAKE WIZARD
+═══════════════════════════════════════════════════════ */
+let intakeStep = 1, intakeNeed = '', intakeSub = '', intakeCircs = [];
+
+function openIntake() {
+  intakeStep = 1; intakeNeed = ''; intakeSub = ''; intakeCircs = [];
+  updateIntakeUI();
+  document.getElementById('intakeOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeIntake() {
+  document.getElementById('intakeOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function selectNeed(el) {
+  document.querySelectorAll('#intakeStep1 .intake-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  intakeNeed = el.dataset.need;
+
+  // Smart routing
+  const skipToStep3 = ['crisis'];
+  const skipStep2 = ['employment', 'food', 'legal'];
+
+  setTimeout(() => {
+    if (skipToStep3.includes(intakeNeed)) {
+      // Crisis: skip steps 2 and 3, go directly to resources
+      intakeFinish();
+    } else if (skipStep2.includes(intakeNeed)) {
+      intakeStep = 3;
+      updateIntakeUI();
+    } else if (intakeNeed === 'housing') {
+      intakeStep = 2;
+      updateIntakeUI();
+    } else {
+      // healthcare etc -> step 3
+      intakeStep = 3;
+      updateIntakeUI();
+    }
+  }, 250);
+}
+
+function selectSub(el) {
+  document.querySelectorAll('#intakeStep2 .intake-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  intakeSub = el.dataset.sub;
+  setTimeout(() => { intakeStep = 3; updateIntakeUI(); }, 250);
+}
+
+function toggleCirc(el) {
+  el.classList.toggle('selected');
+  const c = el.dataset.circ;
+  if (intakeCircs.includes(c)) { intakeCircs = intakeCircs.filter(x => x !== c); }
+  else { intakeCircs.push(c); }
+}
+
+function intakeBack() {
+  if (intakeStep === 3) {
+    const skipStep2 = ['employment', 'food', 'legal', 'healthcare'];
+    intakeStep = skipStep2.includes(intakeNeed) ? 1 : 2;
+  } else if (intakeStep === 2) {
+    intakeStep = 1;
+  }
+  updateIntakeUI();
+}
+
+function updateIntakeUI() {
+  document.querySelectorAll('.intake-step').forEach(s => s.classList.remove('active'));
+  const step = document.getElementById('intakeStep' + intakeStep);
+  if (step) step.classList.add('active');
+
+  const dots = document.querySelectorAll('#intakeDots .intake-dot');
+  dots.forEach((d, i) => {
+    d.className = 'intake-dot';
+    if (i + 1 < intakeStep) d.classList.add('completed');
+    else if (i + 1 === intakeStep) d.classList.add('active');
+    else d.classList.add('upcoming');
+  });
+}
+
+function intakeFinish() {
+  closeIntake();
+  const routeMap = {
+    crisis:     { page: 'resources', tab: 'crisis' },
+    housing:    { page: 'housing',   tab: intakeSub || 'emergency' },
+    employment: { page: 'employment' },
+    healthcare: { page: 'healthcare', tab: 'medical' },
+    food:       { page: 'resources', tab: 'food' },
+    legal:      { page: 'resources', tab: 'legal' }
+  };
+  const route = routeMap[intakeNeed] || { page: 'home' };
+  goTo(route.page, null, route.tab || null);
+}
+
+// Close modal on overlay click
+document.getElementById('intakeOverlay').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeIntake();
+});
+
+/* ═══════════════════════════════════════════════════════
+   DYNAMIC RESOURCE MAP (Leaflet.js)
+═══════════════════════════════════════════════════════ */
+let mapInstance = null, mapMarkers = [], mapFilter = 'all';
+
+// Geocode data for resources with addresses
+const mapResources = [];
+function buildMapResources() {
+  if (mapResources.length > 0) return;
+  const cats = [
+    { data: housing, category: 'housing', color: '#0277b6' },
+    { data: healthcare, category: 'healthcare', color: '#b91c1c' },
+    { data: { food: resources.food }, category: 'food', color: '#0f766e' },
+    { data: { legal: resources.legal }, category: 'legal', color: '#b45309' },
+    { data: { basic: resources.basic, animals: resources.animals, crisis: resources.crisis }, category: 'basic', color: '#6d28d9' }
+  ];
+  // Approximate geocoding for known addresses using city-based coords
+  const cityCoords = {
+    'murrieta': [33.5539, -117.2139], 'temecula': [33.4936, -117.1484],
+    'lake elsinore': [33.6681, -117.3273], 'menifee': [33.6781, -117.1854],
+    'wildomar': [33.5950, -117.2798], 'riverside': [33.9533, -117.3962],
+    'moreno valley': [33.9375, -117.2306], 'corona': [33.8753, -117.5664],
+    'hemet': [33.7475, -116.9719], 'indio': [33.7206, -116.2156],
+    'perris': [33.7825, -117.2286], 'palm springs': [33.8303, -116.5453],
+    'thousand palms': [33.8200, -116.3700], 'march air': [33.8808, -117.2600],
+    'san bernardino': [34.1083, -117.2898]
+  };
+  function approxCoords(addr) {
+    if (!addr) return null;
+    const lower = addr.toLowerCase();
+    for (const [city, coords] of Object.entries(cityCoords)) {
+      if (lower.includes(city)) {
+        return [coords[0] + (Math.random()-0.5)*0.008, coords[1] + (Math.random()-0.5)*0.008];
+      }
+    }
+    return null;
+  }
+  for (const catDef of cats) {
+    for (const [type, items] of Object.entries(catDef.data)) {
+      for (const item of items) {
+        const coords = approxCoords(item.address);
+        if (coords) {
+          mapResources.push({
+            ...item, lat: coords[0], lng: coords[1],
+            category: catDef.category, mapColor: catDef.color
+          });
+        }
+      }
+    }
+  }
+}
+
+function initMap() {
+  buildMapResources();
+  if (mapInstance) { mapInstance.invalidateSize(); renderMapMarkers(); return; }
+
+  const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const tileUrl = isDark
+    ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
+    : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
+
+  mapInstance = L.map('mapCanvas', { zoomControl: true }).setView([33.65, -117.20], 10);
+  L.tileLayer(tileUrl, {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    maxZoom: 18
+  }).addTo(mapInstance);
+
+  renderMapMarkers();
+
+  // Filter pills
+  document.querySelectorAll('#mapFilters .map-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      document.querySelectorAll('#mapFilters .map-pill').forEach(p => p.classList.remove('on'));
+      pill.classList.add('on');
+      mapFilter = pill.dataset.cat;
+      renderMapMarkers();
+    });
+  });
+}
+
+function renderMapMarkers() {
+  if (!mapInstance) return;
+  mapMarkers.forEach(m => mapInstance.removeLayer(m));
+  mapMarkers = [];
+
+  const filtered = mapFilter === 'all' ? mapResources : mapResources.filter(r => r.category === mapFilter);
+  const sidebar = document.getElementById('mapSidebar');
+  let sidebarHtml = '';
+
+  const catColors = { housing: '#0277b6', healthcare: '#b91c1c', food: '#0f766e', legal: '#b45309', basic: '#6d28d9' };
+  const catLabels = { housing: 'Housing', healthcare: 'Healthcare', food: 'Food', legal: 'Legal', basic: 'Basic Needs' };
+
+  filtered.forEach((r, i) => {
+    const color = catColors[r.category] || '#0277b6';
+    const icon = L.divIcon({
+      className: '',
+      html: `<div style="width:14px;height:14px;border-radius:50%;background:${color};border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.3);"></div>`,
+      iconSize: [14, 14], iconAnchor: [7, 7]
+    });
+    const phoneClean = r.phone ? r.phone.replace(/[^0-9]/g, '') : '';
+    let popupHtml = `<div class="map-popup__name">${r.name}</div>`;
+    if (r.address) popupHtml += `<div class="map-popup__addr">${r.address}</div>`;
+    popupHtml += `<div class="map-popup__links">`;
+    if (r.phone) popupHtml += `<a class="map-popup__link" href="tel:${phoneClean}">${r.phone}</a>`;
+    if (r.website) popupHtml += `<a class="map-popup__link" href="${r.website}" target="_blank" rel="noopener noreferrer">Website</a>`;
+    popupHtml += `</div>`;
+
+    const marker = L.marker([r.lat, r.lng], { icon }).addTo(mapInstance).bindPopup(popupHtml);
+    mapMarkers.push(marker);
+
+    sidebarHtml += `<div class="map-sidebar__item" data-idx="${i}" onclick="flyToMapItem(${r.lat},${r.lng},${i})">
+      <div class="map-sidebar__cat" style="color:${color}">${catLabels[r.category] || r.category}</div>
+      <div class="map-sidebar__name">${r.name}</div>
+      ${r.address ? `<div class="map-sidebar__addr">${r.address}</div>` : ''}
+    </div>`;
+  });
+
+  if (sidebar) sidebar.innerHTML = sidebarHtml || '<div style="padding:20px;text-align:center;color:var(--text-tertiary);">No resources with addresses in this category.</div>';
+}
+
+function flyToMapItem(lat, lng, idx) {
+  if (!mapInstance) return;
+  mapInstance.flyTo([lat, lng], 15, { duration: 0.8 });
+  if (mapMarkers[idx]) mapMarkers[idx].openPopup();
+  document.querySelectorAll('.map-sidebar__item').forEach(el => el.classList.remove('active'));
+  const item = document.querySelector(`.map-sidebar__item[data-idx="${idx}"]`);
+  if (item) item.classList.add('active');
+}
+
+/* ═══════════════════════════════════════════════════════
+   BACK TO TOP
+═══════════════════════════════════════════════════════ */
+const btt = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  if (btt) btt.classList.toggle('visible', window.scrollY > 400);
+}, { passive: true });
 
 </script>
 </body>
