@@ -59,6 +59,9 @@
   --size-xs: 0.8rem; --size-sm: 0.925rem; --size-base: 1.05rem; --size-md: 1.15rem; --size-lg: 1.35rem; --size-xl: 1.75rem; --size-2xl: 2.5rem; --size-3xl: 3.5rem; --size-hero: clamp(3rem, 7vw, 6rem);
   --space-sm: 0.5rem; --space-md: 1rem; --space-lg: 1.5rem;
   --radius-sm: 8px; --radius-md: 14px; --radius-lg: 20px; --radius-xl: 32px;
+
+  /* Bottom nav mobile */
+  --bottom-nav-h: 0px;
   
   /* Elevation & Animation */
   --shadow-sm: 0 4px 16px rgba(15,23,42,0.04);
@@ -202,7 +205,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
    LAYOUT COMPONENTS (Hero, Stats, Sections, Cards)
 ══════════════════════════════════════════════════════ */
 .page { display: none; } .page.active { display: block; animation: pageFadeIn 0.5s var(--ease-out) forwards; }
-@keyframes pageFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pageFadeIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 
 .hero { padding: clamp(4rem, 10vw, 8rem) 0 clamp(3rem, 8vw, 5rem); position: relative; overflow: visible; display: flex; flex-direction: column; align-items: center; text-align: center; }
 .hero::before { content:''; position: absolute; top: -20%; right: 10%; width: 60vw; height: 60vw; max-width: 800px; max-height: 800px; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%); pointer-events: none; animation: float-bg 20s ease-in-out infinite; z-index: -1; }
@@ -499,6 +502,584 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
   .map-sidebar { border-right: none; border-bottom: 1px solid var(--border-light); max-height: 200px; } 
   #map-container { height: 450px; }
 }
+
+/* ══════════════════════════════════════════════════════
+   UX/UI IMPROVEMENTS: MOBILE BOTTOM NAV
+══════════════════════════════════════════════════════ */
+.bottom-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: var(--surface-float);
+  backdrop-filter: blur(32px) saturate(200%);
+  -webkit-backdrop-filter: blur(32px) saturate(200%);
+  border-top: 1px solid var(--border-light);
+  padding: 6px 0 max(6px, env(safe-area-inset-bottom));
+  box-shadow: 0 -4px 24px rgba(0,0,0,0.08);
+}
+@media (prefers-color-scheme: dark) {
+  .bottom-nav { box-shadow: 0 -4px 24px rgba(0,0,0,0.4); }
+}
+.bottom-nav__inner {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.bottom-nav__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  transition: all var(--dur-fast) var(--ease-out);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  min-width: 56px;
+}
+.bottom-nav__item svg {
+  width: 22px;
+  height: 22px;
+  stroke-width: 2;
+  transition: all var(--dur-fast);
+}
+.bottom-nav__item.active {
+  color: var(--accent);
+}
+.bottom-nav__item.active svg {
+  stroke: var(--accent);
+}
+.bottom-nav__item:active {
+  transform: scale(0.9);
+}
+@media (max-width: 768px) {
+  .bottom-nav { display: block; }
+  :root { --bottom-nav-h: 68px; }
+  body { padding-bottom: var(--bottom-nav-h); }
+  .footer { margin-bottom: var(--bottom-nav-h); }
+}
+
+/* ══════════════════════════════════════════════════════
+   UX/UI IMPROVEMENTS: SCROLLABLE PILL TABS
+══════════════════════════════════════════════════════ */
+.pill-row {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.pill-row::-webkit-scrollbar { display: none; }
+@media (max-width: 768px) {
+  .pill-row {
+    overflow-x: auto;
+    flex-wrap: nowrap !important;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
+    margin: 0 -1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    scroll-snap-type: x proximity;
+  }
+  .pill-row .pill {
+    flex-shrink: 0;
+    white-space: nowrap;
+    scroll-snap-align: start;
+  }
+}
+
+/* ══════════════════════════════════════════════════════
+   UX/UI IMPROVEMENTS: BACK TO TOP BUTTON
+══════════════════════════════════════════════════════ */
+.back-to-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 140;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--btn-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(2, 119, 182, 0.35);
+  opacity: 0;
+  transform: translateY(20px) scale(0.8);
+  transition: all 0.3s var(--ease-out);
+  pointer-events: none;
+  border: none;
+}
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+.back-to-top:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 12px 32px rgba(2, 119, 182, 0.45);
+}
+.back-to-top:active {
+  transform: scale(0.9);
+}
+.back-to-top svg {
+  width: 22px;
+  height: 22px;
+}
+@media (max-width: 768px) {
+  .back-to-top {
+    bottom: calc(var(--bottom-nav-h) + 16px);
+    right: 16px;
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* Page transitions already handled by pageFadeIn keyframe */
+
+/* ══════════════════════════════════════════════════════
+   UX/UI IMPROVEMENTS: ENHANCED RESOURCE CARDS
+══════════════════════════════════════════════════════ */
+.rc {
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+}
+.rc:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+.rc-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-light);
+}
+.rc-action-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  transition: all var(--dur-fast) var(--ease-out);
+  cursor: pointer;
+  text-decoration: none;
+  min-height: 44px;
+}
+.rc-action-btn svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+.rc-action-btn--call {
+  background: var(--signal-green-pale);
+  color: var(--signal-green);
+}
+.rc-action-btn--call:hover {
+  background: var(--signal-green);
+  color: #fff;
+}
+.rc-action-btn--web {
+  background: var(--accent-pale);
+  color: var(--accent);
+}
+.rc-action-btn--web:hover {
+  background: var(--accent);
+  color: #fff;
+}
+.rc-action-btn--directions {
+  background: var(--signal-purple-pale);
+  color: var(--signal-purple);
+}
+.rc-action-btn--directions:hover {
+  background: var(--signal-purple);
+  color: #fff;
+}
+
+/* ══════════════════════════════════════════════════════
+   UX/UI IMPROVEMENTS: MAP MOBILE LAYOUT
+══════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .map-layout {
+    flex-direction: column-reverse !important;
+    height: auto !important;
+  }
+  .map-sidebar {
+    width: 100% !important;
+    max-height: 300px;
+    border-right: none !important;
+    border-top: 1px solid var(--border-light);
+  }
+  #map-container {
+    height: 50vh !important;
+    min-height: 300px;
+    border-radius: var(--radius-md) !important;
+  }
+  .map-sidebar__head {
+    position: sticky;
+    top: 0;
+    background: var(--surface-float);
+    backdrop-filter: blur(16px);
+    z-index: 2;
+    padding-bottom: 12px;
+  }
+  .map-filters {
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+  .map-filters::-webkit-scrollbar { display: none; }
+  .map-pill {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+}
+
+/* Map search box */
+.map-search {
+  position: relative;
+  margin-bottom: 12px;
+}
+.map-search input {
+  width: 100%;
+  padding: 10px 12px 10px 36px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text-primary);
+  font-family: var(--f-body);
+  font-size: var(--size-sm);
+  transition: all var(--dur-fast);
+}
+.map-search input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-pale);
+}
+.map-search svg {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: var(--text-tertiary);
+}
+
+/* Geolocation button */
+.map-locate-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 500;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-float);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: all var(--dur-fast);
+  box-shadow: var(--shadow-sm);
+}
+.map-locate-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.map-locate-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ══════════════════════════════════════════════════════
+   UX/UI IMPROVEMENTS: BETTER INTAKE WIZARD
+══════════════════════════════════════════════════════ */
+.intake-prog {
+  position: relative;
+  overflow: hidden;
+}
+.intake-prog-bar {
+  transition: width 0.5s var(--ease-out) !important;
+}
+.intake-opt {
+  transition: all 0.25s var(--ease-out) !important;
+  position: relative;
+  overflow: hidden;
+}
+.intake-opt::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.25s;
+  pointer-events: none;
+  background: linear-gradient(135deg, var(--accent-pale), transparent);
+}
+.intake-opt.selected::before {
+  opacity: 1;
+}
+.intake-opt:active {
+  transform: scale(0.97);
+}
+
+/* Step indicator dots */
+.intake-steps {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 1.5rem;
+}
+.intake-step-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border);
+  transition: all 0.3s var(--ease-out);
+}
+.intake-step-dot.active {
+  background: var(--accent);
+  width: 32px;
+  border-radius: 5px;
+}
+.intake-step-dot.done {
+  background: var(--signal-green);
+}
+
+/* ══════════════════════════════════════════════════════
+   UX/UI IMPROVEMENTS: BETTER JOB CARDS MOBILE
+══════════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  .job-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    padding: 16px !important;
+  }
+  .job-right {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 8px;
+    border-top: 1px solid var(--border-light);
+  }
+  .job-initials {
+    display: none;
+  }
+  .emp-layout {
+    grid-template-columns: 1fr !important;
+  }
+  .emp-sidebar {
+    order: -1;
+  }
+}
+
+/* ══════════════════════════════════════════════════════
+   UX/UI IMPROVEMENTS: ENHANCED TOUCH TARGETS
+══════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .nav-toggle {
+    min-width: 48px;
+    min-height: 48px;
+  }
+  .pill {
+    min-height: 44px;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  .map-pill {
+    min-height: 40px;
+  }
+  .cm-btn {
+    min-height: 44px;
+    padding: 10px 20px !important;
+  }
+  .breadcrumb a, .page-hero__crumb a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+/* ══════════════════════════════════════════════════════
+   UX/UI IMPROVEMENTS: LOADING SKELETON
+══════════════════════════════════════════════════════ */
+.skeleton {
+  background: linear-gradient(90deg, var(--surface-warm) 25%, var(--surface-card) 50%, var(--surface-warm) 75%);
+  background-size: 200% 100%;
+  animation: skeletonPulse 1.5s ease-in-out infinite;
+  border-radius: var(--radius-sm);
+}
+@keyframes skeletonPulse {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+.skeleton-job {
+  height: 80px;
+  margin-bottom: 8px;
+  border-radius: var(--radius-md);
+}
+
+/* ══════════════════════════════════════════════════════
+   UX/UI IMPROVEMENTS: TOPBAR MOBILE
+══════════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  .topbar__inner {
+    justify-content: center;
+    text-align: center;
+  }
+  .topbar__left {
+    display: none;
+  }
+  .topbar__right {
+    gap: 1rem;
+  }
+}
+
+/* ══════════════════════════════════════════════════════
+   UX/UI IMPROVEMENTS: HERO CTA MOBILE STACKING
+══════════════════════════════════════════════════════ */
+@media (max-width: 480px) {
+  .hero__actions {
+    flex-direction: column !important;
+    width: 100%;
+  }
+  .hero__actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .cta-block__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .cta-block__actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ══════════════════════════════════════════════════════
+   UX/UI IMPROVEMENTS: RESOURCE GRID MOBILE
+══════════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  .resource-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .hub-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .team-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .stats-strip__grid, .page-stats__grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════
+   UX/UI IMPROVEMENTS: SMOOTH ACTIVE STATES
+══════════════════════════════════════════════════════ */
+.hub-card {
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out) !important;
+}
+.hub-card:active {
+  transform: scale(0.97) !important;
+}
+.cm-card {
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+}
+.cm-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ══════════════════════════════════════════════════════
+   UX/UI IMPROVEMENTS: EMPTY STATES
+══════════════════════════════════════════════════════ */
+.empty-state {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  color: var(--text-tertiary);
+}
+.empty-state svg {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 1rem;
+  opacity: 0.4;
+}
+.empty-state__title {
+  font-family: var(--f-display);
+  font-size: var(--size-lg);
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+.empty-state__text {
+  font-size: var(--size-sm);
+}
+
+/* ══════════════════════════════════════════════════════
+   UX/UI IMPROVEMENTS: FOOTER MOBILE
+══════════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  .footer__grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+  .footer__bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+}
+
+/* ══════════════════════════════════════════════════════
+   UX/UI IMPROVEMENTS: SCROLL HINT FOR PILL TABS
+══════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .pill-row-wrapper {
+    position: relative;
+  }
+  .pill-row-wrapper::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 48px;
+    background: linear-gradient(to right, transparent, var(--surface));
+    pointer-events: none;
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    opacity: 1;
+    transition: opacity 0.3s;
+  }
+  .pill-row-wrapper.scrolled-end::after {
+    opacity: 0;
+  }
+}
+
+/* ══════════════════════════════════════════════════════
+   UX/UI IMPROVEMENTS: MAP CONTAINER WRAPPER
+══════════════════════════════════════════════════════ */
+.map-container-wrapper {
+  position: relative;
+}
 </style>
 </head>
 <body>
@@ -702,6 +1283,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
     </div>
     <section class="section" style="padding-top:0;">
       <div class="container" style="max-width: 900px;">
+        <div class="intake-steps reveal reveal-delay-2" id="intakeSteps">
+          <div class="intake-step-dot active" data-step="1"></div>
+          <div class="intake-step-dot" data-step="2"></div>
+          <div class="intake-step-dot" data-step="3"></div>
+        </div>
         <div class="intake-prog reveal reveal-delay-2"><div class="intake-prog-bar" id="wizBar" style="width: 33%;"></div></div>
         <div id="intakeDynamic" class="reveal reveal-delay-2"></div>
       </div>
@@ -888,6 +1474,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
           <div class="map-sidebar" role="complementary" aria-label="Resource filter and list">
             <div class="map-sidebar__head">
               <h3>Filter by Category</h3>
+              <div class="map-search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="text" id="mapSearch" placeholder="Search resources…" aria-label="Search map resources" autocomplete="off">
+              </div>
               <div class="map-filters" id="mapFilters" role="group" aria-label="Category filters">
                 <button class="map-pill on" data-cat="all" aria-pressed="true">All</button>
                 <button class="map-pill" data-cat="housing" aria-pressed="false">Housing</button>
@@ -900,12 +1490,48 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
             </div>
             <div class="map-list" id="mapList" role="list" aria-label="Resource listings"></div>
           </div>
-          <div id="map-container" aria-label="Map showing resource locations"></div>
+          <div class="map-container-wrapper">
+            <div id="map-container" aria-label="Map showing resource locations"></div>
+            <button class="map-locate-btn" id="mapLocateBtn" aria-label="Find my location" title="Find my location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>
+            </button>
+          </div>
         </div>
       </div>
     </section>
   </div>
 </main>
+
+<!-- Bottom Navigation (Mobile) -->
+<nav class="bottom-nav" id="bottomNav" aria-label="Quick navigation">
+  <div class="bottom-nav__inner">
+    <div class="bottom-nav__item active" onclick="goTo('home')" data-bnav="home" role="button" tabindex="0" aria-label="Home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span>Home</span>
+    </div>
+    <div class="bottom-nav__item" onclick="goTo('housing')" data-bnav="housing" role="button" tabindex="0" aria-label="Housing">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+      <span>Housing</span>
+    </div>
+    <div class="bottom-nav__item" onclick="goTo('employment')" data-bnav="employment" role="button" tabindex="0" aria-label="Jobs">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+      <span>Jobs</span>
+    </div>
+    <div class="bottom-nav__item" onclick="goTo('map')" data-bnav="map" role="button" tabindex="0" aria-label="Map">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+      <span>Map</span>
+    </div>
+    <div class="bottom-nav__item" onclick="window.location.href='tel:9513903567'" role="button" tabindex="0" aria-label="Call outreach">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg>
+      <span>Call</span>
+    </div>
+  </div>
+</nav>
+
+<!-- Back to Top Button -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
 
 <footer class="footer" role="contentinfo">
   <div class="container">
@@ -1302,8 +1928,16 @@ let qState = { step: 1, need: null, sub: null, special: null };
 function renderQStep() {
   const container = document.getElementById('intakeDynamic');
   const bar = document.getElementById('wizBar');
-  
+
   if (!container || !bar) return;
+
+  // Update step dots
+  document.querySelectorAll('.intake-step-dot').forEach(dot => {
+    const s = parseInt(dot.dataset.step);
+    dot.classList.remove('active', 'done');
+    if (s === qState.step) dot.classList.add('active');
+    else if (s < qState.step) dot.classList.add('done');
+  });
 
   if (qState.step === 1) {
     bar.style.width = '33%';
@@ -1573,6 +2207,12 @@ function removeDuplicates(jobArray) {
 async function fetchAndPopulateJobs() {
   const ls = document.getElementById('lastSync');
   if (ls) ls.textContent = 'Syncing...';
+
+  // Show loading skeleton if listings are empty
+  const empEl = document.getElementById('empListings');
+  if (empEl && !empEl.innerHTML.trim()) {
+    empEl.innerHTML = Array(5).fill('<div class="skeleton skeleton-job"></div>').join('');
+  }
   
   const liveListings = await fetchGoogleJobs();
   let allJobs = [...liveListings];
@@ -1626,6 +2266,17 @@ const buildSvgIcon = k => `<svg viewBox="0 0 24 24" fill="none" stroke="currentC
 function buildCard(item, colorClass, defaultLabel) {
   const badgeClass = item.special ? 'rcb--special' : `rcb--${colorClass}`;
   const label      = item.special || defaultLabel;
+  const callSvg = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"></path></svg>`;
+  const webSvg = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`;
+  const dirSvg = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`;
+
+  const hasActions = item.phone || item.website || item.address;
+  const actions = hasActions ? `<div class="rc-actions">
+    ${item.phone ? `<a class="rc-action-btn rc-action-btn--call" href="tel:${item.phone.replace(/[^0-9]/g,'')}" aria-label="Call ${item.name}">${callSvg} Call</a>` : ''}
+    ${item.website ? `<a class="rc-action-btn rc-action-btn--web" href="${item.website}" target="_blank" rel="noopener noreferrer" aria-label="Visit ${item.name} website">${webSvg} Website</a>` : ''}
+    ${item.address ? `<a class="rc-action-btn rc-action-btn--directions" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.address)}" target="_blank" rel="noopener noreferrer" aria-label="Get directions to ${item.name}">${dirSvg} Map</a>` : ''}
+  </div>` : '';
+
   return `
     <div class="rc rc--${colorClass} reveal">
       <div class="rc-badge ${badgeClass}">${label}</div>
@@ -1636,6 +2287,7 @@ function buildCard(item, colorClass, defaultLabel) {
         ${item.email   ? `<div class="rc-row">${buildSvgIcon('email')}<a href="mailto:${item.email}">${item.email}</a></div>` : ''}
         ${item.website ? `<div class="rc-row">${buildSvgIcon('web')}<a href="${item.website}" target="_blank" rel="noopener noreferrer">Visit Website ↗</a></div>` : ''}
       </div>
+      ${actions}
     </div>`;
 }
 
@@ -1954,6 +2606,7 @@ function goTo(page, scrollTo) {
   });
 
   closeMobileNav();
+  if (typeof updateBottomNav === 'function') updateBottomNav(page);
 
   if (scrollTo) {
     requestAnimationFrame(() => {
@@ -1995,7 +2648,113 @@ document.getElementById('mobileNav').addEventListener('click', e => {
 /* ─── DYNAMIC ISLAND SCROLL ──────────────────────────── */
 window.addEventListener('scroll', () => {
   document.getElementById('headerWrapper').classList.toggle('scrolled', window.scrollY > 40);
+
+  // Back to top button visibility
+  const btt = document.getElementById('backToTop');
+  if (btt) btt.classList.toggle('visible', window.scrollY > 400);
 }, {passive: true});
+
+/* ─── BACK TO TOP ──────────────────────────────────── */
+document.getElementById('backToTop')?.addEventListener('click', () => {
+  window.scrollTo({top: 0, behavior: 'smooth'});
+});
+
+/* ─── BOTTOM NAV ACTIVE STATE ──────────────────────── */
+function updateBottomNav(page) {
+  const navMap = { home: 'home', housing: 'housing', healthcare: 'housing', resources: 'housing', employment: 'employment', map: 'map' };
+  const active = navMap[page] || 'home';
+  document.querySelectorAll('.bottom-nav__item[data-bnav]').forEach(item => {
+    item.classList.toggle('active', item.dataset.bnav === active);
+  });
+}
+
+/* ─── MAP SEARCH ───────────────────────────────────── */
+document.getElementById('mapSearch')?.addEventListener('input', function(e) {
+  const query = e.target.value.toLowerCase().trim();
+  if (!query) {
+    renderMapMarkers(activeMapCat);
+    renderMapList(activeMapCat);
+    return;
+  }
+  const filtered = mapAllResources.filter(r => {
+    const catMatch = activeMapCat === 'all' || r.cat === activeMapCat;
+    const textMatch = r.name.toLowerCase().includes(query) ||
+                      (r.address && r.address.toLowerCase().includes(query)) ||
+                      (r.special && r.special.toLowerCase().includes(query));
+    return catMatch && textMatch;
+  });
+
+  // Render filtered markers
+  mapMarkers.forEach(m => m.remove());
+  mapMarkers = [];
+  filtered.forEach(res => {
+    const color = MAP_COLORS[res.cat] || '#64748b';
+    const phone = res.phone ? `<div class="map-popup__detail">📞&nbsp;<a href="tel:${res.phone.replace(/[^0-9]/g,'')}" style="color:var(--accent)">${res.phone}</a></div>` : '';
+    const addr  = res.address ? `<div class="map-popup__detail">📍&nbsp;${res.address}</div>` : '';
+    const webBtn  = res.website ? `<a class="map-popup__link" href="${res.website}" target="_blank" rel="noopener noreferrer">Website ↗</a>` : '';
+    const callBtn = res.phone ? `<a class="map-popup__call" href="tel:${res.phone.replace(/[^0-9]/g,'')}">Call</a>` : '';
+    const marker = L.marker(res.coords, {icon: makeMapIcon(color)});
+    marker.bindPopup(`<div class="map-popup">
+      <div class="map-popup__cat">${MAP_LABELS[res.cat]||res.cat}${res.special ? ' &middot; '+res.special : ''}</div>
+      <div class="map-popup__name">${res.name}</div>
+      ${addr}${phone}
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px">${webBtn}${callBtn}</div>
+    </div>`, {maxWidth:310});
+    marker.addTo(mapInstance);
+    mapMarkers.push(marker);
+  });
+
+  // Render filtered list
+  const list = document.getElementById('mapList');
+  if (list) {
+    if (!filtered.length) {
+      list.innerHTML = '<div class="empty-state"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><div class="empty-state__title">No results</div><div class="empty-state__text">Try a different search term or category.</div></div>';
+    } else {
+      list.innerHTML = filtered.map(res => {
+        const cityPart = res.address ? res.address.split(',').slice(-2).join(',').trim() : '';
+        return `<div class="map-item" role="listitem" tabindex="0"
+          onclick="focusMapItem(${mapAllResources.indexOf(res)})"
+          onkeydown="if(event.key==='Enter'||event.key===' ')focusMapItem(${mapAllResources.indexOf(res)})">
+          <div class="map-item__dot" style="background:${MAP_COLORS[res.cat]||'#64748b'}"></div>
+          <div>
+            <div class="map-item__name">${res.name}</div>
+            <div class="map-item__meta">${MAP_LABELS[res.cat]||res.cat}${cityPart ? ' &middot; '+cityPart : ''}</div>
+          </div>
+        </div>`;
+      }).join('');
+    }
+    const badge = document.getElementById('mapTotalCount');
+    if (badge) badge.textContent = `${filtered.length} resource${filtered.length!==1?'s':''} shown`;
+  }
+});
+
+/* ─── MAP GEOLOCATION ──────────────────────────────── */
+document.getElementById('mapLocateBtn')?.addEventListener('click', function() {
+  if (!navigator.geolocation || !mapInstance) return;
+  this.style.color = 'var(--accent)';
+  navigator.geolocation.getCurrentPosition(
+    (pos) => {
+      const lat = pos.coords.latitude;
+      const lng = pos.coords.longitude;
+      mapInstance.setView([lat, lng], 13, {animate: true});
+
+      // Add user location marker
+      const userIcon = L.divIcon({
+        html: `<div style="width:18px;height:18px;background:var(--accent,#0277b6);border-radius:50%;border:3px solid white;box-shadow:0 2px 8px rgba(0,0,0,0.3),0 0 0 6px rgba(2,119,182,0.2)"></div>`,
+        className: 'map-marker-icon',
+        iconSize: [18, 18],
+        iconAnchor: [9, 9]
+      });
+      L.marker([lat, lng], {icon: userIcon}).addTo(mapInstance)
+        .bindPopup('<div class="map-popup"><div class="map-popup__name">Your Location</div></div>');
+    },
+    () => {
+      this.style.color = 'var(--signal-red)';
+      setTimeout(() => { this.style.color = ''; }, 2000);
+    },
+    { enableHighAccuracy: true, timeout: 10000 }
+  );
+});
 
 /* ─── INITIAL REVEAL ─────────────────────────────────── */
 attachReveal();
