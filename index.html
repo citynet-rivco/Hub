@@ -8,6 +8,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN/WLs=" crossorigin=""></script>
 <style>
 /* ══════════════════════════════════════════════════════
    ND STUDIO: ELITE DESIGN TOKENS (City Net Unified)
@@ -752,6 +754,74 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
   .controls-row { flex-direction: column; align-items: stretch; }
   .searchbox { max-width: 100%; }
 }
+
+/* ══════════════════════════════════════════════════════
+   RESOURCE MAP PAGE
+══════════════════════════════════════════════════════ */
+.map-layout { display: grid; grid-template-columns: 300px 1fr; gap: 0; height: calc(100vh - 200px); min-height: 520px; border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-lg); border: 1px solid var(--border-glass); }
+.map-sidebar { background: var(--surface-card); backdrop-filter: blur(32px); border-right: 1px solid var(--border-light); display: flex; flex-direction: column; overflow: hidden; }
+.map-sidebar__head { padding: 16px; border-bottom: 1px solid var(--border-light); background: var(--surface-warm); }
+.map-sidebar__head h3 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-primary); margin-bottom: 10px; }
+.map-filters { display: flex; flex-wrap: wrap; gap: 4px; }
+.map-pill { padding: 6px 12px; font-size: 11px; font-weight: 700; border-radius: 100px; background: var(--surface); border: 1px solid var(--border); color: var(--text-secondary); cursor: pointer; transition: all var(--dur-fast); white-space: nowrap; font-family: var(--f-body); }
+.map-pill:hover { color: var(--text-primary); border-color: var(--accent); }
+.map-pill.on { background: var(--btn-bg); color: var(--btn-text); border-color: var(--btn-bg); }
+.map-list { flex: 1; overflow-y: auto; padding: 8px; scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
+.map-list::-webkit-scrollbar { width: 4px; }
+.map-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+.map-item { display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; border-radius: var(--radius-md); cursor: pointer; transition: all var(--dur-fast); border: 1px solid transparent; margin-bottom: 4px; }
+.map-item:hover { background: var(--surface-warm); border-color: var(--border-light); }
+.map-item.active { background: var(--accent-pale); border-color: var(--accent-glow); }
+.map-item__dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; border: 2px solid rgba(255,255,255,0.8); box-shadow: 0 1px 4px rgba(0,0,0,0.2); }
+.map-item__name { font-size: 12px; font-weight: 600; color: var(--text-primary); line-height: 1.3; }
+.map-item__meta { font-size: 11px; color: var(--text-tertiary); margin-top: 2px; }
+#map-container { flex: 1; min-height: 400px; z-index: 1; background: var(--surface-warm); }
+.map-popup { padding: 14px 16px; min-width: 200px; max-width: 280px; font-family: var(--f-body); }
+.map-popup__cat { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 4px; }
+.map-popup__name { font-family: var(--f-display); font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 8px; line-height: 1.2; }
+.map-popup__detail { font-size: 12px; color: var(--text-secondary); margin-bottom: 4px; display: flex; gap: 6px; align-items: flex-start; line-height: 1.4; }
+.map-popup__link { display: inline-flex; align-items: center; gap: 4px; margin-top: 8px; padding: 6px 12px; background: var(--btn-bg); color: #fff; border-radius: 100px; font-size: 11px; font-weight: 700; text-decoration: none; transition: all var(--dur-fast); }
+.map-popup__link:hover { background: var(--btn-hover); }
+.map-popup__call { display: inline-flex; align-items: center; gap: 4px; margin-top: 4px; margin-left: 4px; padding: 6px 12px; background: var(--signal-green-pale); color: var(--signal-green); border-radius: 100px; font-size: 11px; font-weight: 700; text-decoration: none; transition: all var(--dur-fast); }
+.leaflet-popup-content-wrapper { border-radius: 14px !important; box-shadow: 0 16px 48px rgba(15,23,42,0.12) !important; border: 1px solid var(--border-glass) !important; }
+.leaflet-popup-content { margin: 0 !important; }
+.leaflet-popup-tip-container { opacity: 0.8; }
+.map-count-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: var(--surface-card); border: 1px solid var(--border-glass); border-radius: 100px; font-size: 12px; font-weight: 600; color: var(--text-secondary); margin-bottom: 1rem; }
+@media (max-width: 1024px) { .map-layout { grid-template-columns: 240px 1fr; } }
+@media (max-width: 768px) { .map-layout { grid-template-columns: 1fr; grid-template-rows: 200px 1fr; height: auto; } .map-sidebar { border-right: none; border-bottom: 1px solid var(--border-light); max-height: 200px; } #map-container { height: 450px; } }
+
+/* ══════════════════════════════════════════════════════
+   INTAKE QUESTIONNAIRE MODAL
+══════════════════════════════════════════════════════ */
+.q-overlay { display: none; position: fixed; inset: 0; z-index: 2000; background: rgba(15,23,42,0.72); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); align-items: center; justify-content: center; padding: 1.5rem; }
+.q-overlay.open { display: flex; animation: qFadeIn 0.3s var(--ease-out) forwards; }
+@keyframes qFadeIn { from { opacity: 0; } to { opacity: 1; } }
+.q-modal { background: var(--surface-float); backdrop-filter: blur(40px) saturate(200%); -webkit-backdrop-filter: blur(40px) saturate(200%); border: 1px solid var(--border-glass); border-radius: var(--radius-xl); box-shadow: var(--shadow-float), var(--inner-glow); max-width: 580px; width: 100%; max-height: 90vh; overflow-y: auto; animation: qSlideUp 0.4s var(--ease-spring) forwards; }
+@keyframes qSlideUp { from { opacity: 0; transform: translateY(30px) scale(0.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
+.q-modal__head { padding: 24px 28px 0; display: flex; align-items: center; justify-content: space-between; }
+.q-step-ind { display: flex; gap: 6px; align-items: center; }
+.q-step-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border); transition: all var(--dur-base) var(--ease-spring); }
+.q-step-dot.active { background: var(--accent); width: 20px; border-radius: 3px; }
+.q-close { width: 32px; height: 32px; border-radius: 50%; background: var(--surface-warm); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text-tertiary); transition: all var(--dur-fast); flex-shrink: 0; }
+.q-close:hover { background: var(--surface-card); color: var(--text-primary); transform: scale(1.05); }
+.q-modal__body { padding: 20px 28px 28px; }
+.q-eyebrow { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 0.5rem; }
+.q-title { font-family: var(--f-display); font-size: 1.65rem; font-weight: 500; color: var(--text-primary); letter-spacing: -0.02em; margin-bottom: 0.35rem; line-height: 1.2; }
+.q-sub { font-size: var(--size-sm); color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.5; }
+.q-options { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 1.5rem; }
+.q-option { display: flex; flex-direction: column; align-items: flex-start; gap: 5px; padding: 14px 16px; background: var(--surface-card); border: 1.5px solid var(--border-glass); border-radius: var(--radius-lg); cursor: pointer; transition: all var(--dur-fast) var(--ease-spring); text-align: left; font-family: var(--f-body); }
+.q-option:hover { border-color: var(--accent); background: var(--accent-pale); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+.q-option.selected { border-color: var(--accent); background: var(--accent-pale); box-shadow: 0 0 0 3px var(--accent-glow); }
+.q-option__icon { font-size: 1.4rem; line-height: 1; }
+.q-option__label { font-size: var(--size-sm); font-weight: 700; color: var(--text-primary); }
+.q-option__sub { font-size: 11px; color: var(--text-tertiary); line-height: 1.3; }
+.q-actions { display: flex; gap: 10px; justify-content: flex-end; align-items: center; }
+.q-back { padding: 10px 20px; background: var(--surface-warm); color: var(--text-secondary); border-radius: 100px; font-size: var(--size-sm); font-weight: 600; cursor: pointer; border: 1px solid var(--border); transition: all var(--dur-fast); font-family: var(--f-body); }
+.q-back:hover { color: var(--text-primary); background: var(--surface-card); }
+.q-next { padding: 10px 24px; background: var(--btn-bg); color: var(--btn-text); border-radius: 100px; font-size: var(--size-sm); font-weight: 600; cursor: pointer; transition: all var(--dur-fast) var(--ease-spring); display: flex; align-items: center; gap: 6px; border: none; font-family: var(--f-body); }
+.q-next:hover:not(:disabled) { background: var(--btn-hover); transform: translateY(-1px); box-shadow: var(--shadow-sm); }
+.q-next:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
+@media (max-width: 520px) { .q-options { grid-template-columns: 1fr; } .q-modal__body { padding: 16px 20px 24px; } .q-modal__head { padding: 20px 20px 0; } }
 </style>
 </head>
 <body>
@@ -800,6 +870,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
               <div class="ndi-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
               <div><div class="ndi-title">Additional Resources</div><div class="ndi-sub">Food, legal, education &amp; more</div></div>
             </div>
+            <div class="nav-drop-item" onclick="goTo('map')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('map')" tabindex="0" role="menuitem">
+              <div class="ndi-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg></div>
+              <div><div class="ndi-title">Resource Map</div><div class="ndi-sub">Find nearby resources visually</div></div>
+            </div>
           </div>
         </div>
         <button class="nav-link" onclick="goTo('employment')" data-page="employment">Employment</button>
@@ -841,6 +915,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
     <div class="mobile-nav__link" onclick="goTo('housing');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('housing');closeMobileNav()}" tabindex="0" role="menuitem" data-mpage="housing" style="padding-left:32px">Housing</div>
     <div class="mobile-nav__link" onclick="goTo('healthcare');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('healthcare');closeMobileNav()}" tabindex="0" role="menuitem" data-mpage="healthcare" style="padding-left:32px">Healthcare</div>
     <div class="mobile-nav__link" onclick="goTo('resources');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('resources');closeMobileNav()}" tabindex="0" role="menuitem" data-mpage="resources" style="padding-left:32px">Additional Resources</div>
+    <div class="mobile-nav__link" onclick="goTo('map');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('map');closeMobileNav()}" tabindex="0" role="menuitem" data-mpage="map" style="padding-left:32px">Resource Map</div>
     <div style="height:1px; background:rgba(255,255,255,0.1); margin:1rem 20px;"></div>
     
     <div class="mobile-nav__link" onclick="goTo('employment');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('employment');closeMobileNav()}" tabindex="0" role="menuitem" data-mpage="employment">Employment</div>
@@ -865,12 +940,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
         <h1 class="hero__headline reveal">Your partner on<br>the path to <em>housing.</em></h1>
         <p class="hero__sub reveal reveal-delay-1">Explore housing resources, find local job opportunities, and connect with your case manager — all in one place.</p>
         <div class="hero__actions reveal reveal-delay-2">
-          <button class="btn btn--solid" onclick="goTo('housing')">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+          <button class="btn btn--solid" onclick="openQuestionnaire()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            Find My Resources
+          </button>
+          <button class="btn btn--outline" onclick="goTo('housing')">
             Housing Resources
           </button>
           <button class="btn btn--outline" onclick="goTo('employment')">
-            Browse Job Openings
+            Browse Jobs
           </button>
         </div>
       </div>
@@ -1141,6 +1219,47 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
       </div>
     </section>
   </div>
+
+  <!-- ═══════════════════════════════════════════════════ RESOURCE MAP PAGE -->
+  <div class="page" id="page-map">
+    <div class="page-hero">
+      <div class="container page-hero__inner">
+        <nav class="page-hero__crumb" aria-label="Breadcrumb">
+          <a onclick="goTo('home')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('home')" tabindex="0" role="link">Home</a>
+          <span style="margin:0 4px" aria-hidden="true">/</span>
+          <span aria-current="page">Resource Map</span>
+        </nav>
+        <h1 class="page-hero__title reveal">Resource <em>Map</em></h1>
+        <p class="page-hero__sub reveal reveal-delay-1">Explore housing, healthcare, and community support near you across Riverside County. Filter by category and click any pin to view details.</p>
+      </div>
+    </div>
+    <section class="section" style="padding-top:1rem">
+      <div class="container">
+        <div class="map-count-badge reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+          <span id="mapTotalCount">Loading resources…</span>
+        </div>
+        <div class="map-layout reveal reveal-delay-1" role="application" aria-label="Interactive resource map">
+          <div class="map-sidebar" role="complementary" aria-label="Resource filter and list">
+            <div class="map-sidebar__head">
+              <h3>Filter by Category</h3>
+              <div class="map-filters" id="mapFilters" role="group" aria-label="Category filters">
+                <button class="map-pill on" data-cat="all" aria-pressed="true">All</button>
+                <button class="map-pill" data-cat="housing" aria-pressed="false">Housing</button>
+                <button class="map-pill" data-cat="healthcare" aria-pressed="false">Healthcare</button>
+                <button class="map-pill" data-cat="crisis" aria-pressed="false">Crisis</button>
+                <button class="map-pill" data-cat="food" aria-pressed="false">Food</button>
+                <button class="map-pill" data-cat="legal" aria-pressed="false">Legal</button>
+                <button class="map-pill" data-cat="basic" aria-pressed="false">Basic Needs</button>
+              </div>
+            </div>
+            <div class="map-list" id="mapList" role="list" aria-label="Resource listings"></div>
+          </div>
+          <div id="map-container" aria-label="Map showing resource locations"></div>
+        </div>
+      </div>
+    </section>
+  </div>
 </main>
 
 <footer class="footer" role="contentinfo">
@@ -1165,6 +1284,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
           <a onclick="goTo('housing')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('housing')" tabindex="0" role="link">Housing Resources</a>
           <a onclick="goTo('healthcare')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('healthcare')" tabindex="0" role="link">Healthcare</a>
           <a onclick="goTo('resources')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('resources')" tabindex="0" role="link">Additional Resources</a>
+          <a onclick="goTo('map')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('map')" tabindex="0" role="link">Resource Map</a>
           <a onclick="goTo('employment')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('employment')" tabindex="0" role="link">Employment</a>
           <a onclick="goTo('home','team-section')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('home','team-section')" tabindex="0" role="link">Case Managers</a>
         </div>
@@ -1196,6 +1316,23 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
     </div>
   </div>
 </footer>
+
+<!-- ═══════════════════════════════════════════════════ INTAKE QUESTIONNAIRE MODAL -->
+<div class="q-overlay" id="qOverlay" role="dialog" aria-modal="true" aria-labelledby="qTitle">
+  <div class="q-modal" role="document">
+    <div class="q-modal__head">
+      <div class="q-step-ind" role="progressbar" aria-label="Step progress">
+        <div class="q-step-dot active" id="qDot1"></div>
+        <div class="q-step-dot" id="qDot2"></div>
+        <div class="q-step-dot" id="qDot3"></div>
+      </div>
+      <button class="q-close" id="qClose" aria-label="Close questionnaire">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="q-modal__body" id="qBody" aria-live="polite"></div>
+  </div>
+</div>
 
 <script>
 'use strict';
@@ -1657,21 +1794,21 @@ function goTo(page, scrollTo) {
   const target = document.getElementById('page-'+page);
   if (target) target.classList.add('active');
 
-  const resPages = ['housing','healthcare','resources'];
-  
+  const resPages = ['housing','healthcare','resources','map'];
+
   // Desktop Nav Links
   document.querySelectorAll('.nav-link[data-page]').forEach(l => {
     const match = l.dataset.page === page || (resPages.includes(page) && l.dataset.page === 'resources-group');
     l.classList.toggle('active', match);
   });
-  
+
   // Mobile Nav Links
   document.querySelectorAll('.mobile-nav__link[data-mpage]').forEach(l => {
     l.classList.toggle('active', l.dataset.mpage === page);
   });
 
   closeMobileNav();
-  
+
   if (scrollTo) {
     requestAnimationFrame(() => {
       setTimeout(() => {
@@ -1683,6 +1820,9 @@ function goTo(page, scrollTo) {
     window.scrollTo({top:0, behavior:'smooth'});
   }
   setTimeout(attachReveal, 150);
+
+  // Initialize map lazily when map page is first opened
+  if (page === 'map') { setTimeout(initMap, 200); }
 }
 
 /* ─── MOBILE NAV ─────────────────────────────────────── */
@@ -1723,7 +1863,7 @@ async function fetchGoogleJobs() {
   }
 
   try {
-    const response = await fetch(PROXY_URL);
+    const response = await fetch(`${PROXY_URL}?action=get_cache`);
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     const data = await response.json();
     
@@ -1856,6 +1996,427 @@ async function fetchAndPopulateJobs() {
 fetchAndPopulateJobs();
 // Auto-update every 5 minutes (300,000 ms) to poll proxy
 setInterval(fetchAndPopulateJobs, 300000);
+
+/* ─────────────────────────────────────────────────────
+   RESOURCE MAP (Leaflet.js)
+───────────────────────────────────────────────────── */
+const MAP_COLORS = {
+  housing:    '#0277b6',
+  healthcare: '#0f766e',
+  crisis:     '#b91c1c',
+  food:       '#b45309',
+  legal:      '#6d28d9',
+  basic:      '#0096c7'
+};
+
+const MAP_LABELS = {
+  housing:'Housing', healthcare:'Healthcare', crisis:'Crisis Support',
+  food:'Food Pantry', legal:'Legal & Social', basic:'Basic Needs'
+};
+
+const CITY_BASE_COORDS = {
+  'murrieta':               [33.5537, -117.2137],
+  'temecula':               [33.4936, -117.1484],
+  'lake elsinore':          [33.6681, -117.3273],
+  'menifee':                [33.6971, -117.1853],
+  'wildomar':               [33.5989, -117.2795],
+  'riverside':              [33.9533, -117.3962],
+  'hemet':                  [33.7475, -116.9719],
+  'moreno valley':          [33.9374, -117.2306],
+  'corona':                 [33.8753, -117.5664],
+  'palm springs':           [33.8303, -116.5453],
+  'perris':                 [33.7825, -117.2286],
+  'indio':                  [33.7205, -116.2156],
+  'march air reserve base': [33.8818, -117.2597],
+  'thousand palms':         [33.8261, -116.3717],
+  'san bernardino':         [34.1083, -117.2898]
+};
+
+// Deterministic offset so marker positions are stable across reloads
+function nameHash(str) {
+  let h = 0;
+  for (let i = 0; i < str.length; i++) { h = ((h << 5) - h) + str.charCodeAt(i); h |= 0; }
+  return h;
+}
+
+function getCoords(item) {
+  if (!item.address) return null;
+  const addr = item.address.toLowerCase();
+  for (const [city, base] of Object.entries(CITY_BASE_COORDS)) {
+    if (addr.includes(city)) {
+      const h = nameHash(item.name);
+      const offLat = (((h & 0xFF) / 255) - 0.5) * 0.014;
+      const offLng = ((((h >> 8) & 0xFF) / 255) - 0.5) * 0.014;
+      return [base[0] + offLat, base[1] + offLng];
+    }
+  }
+  return null;
+}
+
+function buildMapResources() {
+  const all = [];
+  // Housing
+  ['referrals','emergency','transitional','psh','affordable','sober'].forEach(type => {
+    (housing[type]||[]).forEach(item => {
+      const coords = getCoords(item);
+      if (coords) all.push({...item, cat:'housing', coords});
+    });
+  });
+  // Healthcare
+  ['medical','behavioral','specialty'].forEach(type => {
+    (healthcare[type]||[]).forEach(item => {
+      const coords = getCoords(item);
+      if (coords) all.push({...item, cat:'healthcare', coords});
+    });
+  });
+  // Crisis
+  (resources.crisis||[]).forEach(item => {
+    const coords = getCoords(item);
+    if (coords) all.push({...item, cat:'crisis', coords});
+  });
+  // Food
+  (resources.food||[]).forEach(item => {
+    const coords = getCoords(item);
+    if (coords) all.push({...item, cat:'food', coords});
+  });
+  // Legal
+  (resources.legal||[]).forEach(item => {
+    const coords = getCoords(item);
+    if (coords) all.push({...item, cat:'legal', coords});
+  });
+  // Basic Needs
+  (resources.basic||[]).forEach(item => {
+    const coords = getCoords(item);
+    if (coords) all.push({...item, cat:'basic', coords});
+  });
+  return all;
+}
+
+let mapInstance = null;
+let mapMarkers = [];
+let mapAllResources = [];
+let activeMapCat = 'all';
+
+function makeMapIcon(color) {
+  return L.divIcon({
+    html: `<div style="width:14px;height:14px;background:${color};border-radius:50%;border:2.5px solid rgba(255,255,255,0.95);box-shadow:0 2px 8px rgba(0,0,0,0.35)"></div>`,
+    className: 'map-marker-icon',
+    iconSize: [14, 14],
+    iconAnchor: [7, 7],
+    popupAnchor: [0, -10]
+  });
+}
+
+function renderMapMarkers(cat) {
+  mapMarkers.forEach(m => m.remove());
+  mapMarkers = [];
+  const filtered = cat === 'all' ? mapAllResources : mapAllResources.filter(r => r.cat === cat);
+  filtered.forEach(res => {
+    const color = MAP_COLORS[res.cat] || '#64748b';
+    const phone = res.phone ? `<div class="map-popup__detail">📞&nbsp;<a href="tel:${res.phone.replace(/[^0-9]/g,'')}" style="color:var(--accent)">${res.phone}</a></div>` : '';
+    const addr  = res.address ? `<div class="map-popup__detail">📍&nbsp;${res.address}</div>` : '';
+    const webBtn  = res.website ? `<a class="map-popup__link" href="${res.website}" target="_blank" rel="noopener noreferrer">Website ↗</a>` : '';
+    const callBtn = res.phone ? `<a class="map-popup__call" href="tel:${res.phone.replace(/[^0-9]/g,'')}">Call</a>` : '';
+    const marker = L.marker(res.coords, {icon: makeMapIcon(color)});
+    marker.bindPopup(`<div class="map-popup">
+      <div class="map-popup__cat">${MAP_LABELS[res.cat]||res.cat}${res.special ? ' &middot; '+res.special : ''}</div>
+      <div class="map-popup__name">${res.name}</div>
+      ${addr}${phone}
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px">${webBtn}${callBtn}</div>
+    </div>`, {maxWidth:310});
+    marker.addTo(mapInstance);
+    mapMarkers.push(marker);
+  });
+}
+
+function renderMapList(cat) {
+  const list = document.getElementById('mapList');
+  if (!list) return;
+  const filtered = cat === 'all' ? mapAllResources : mapAllResources.filter(r => r.cat === cat);
+  if (!filtered.length) {
+    list.innerHTML = '<div style="padding:24px 16px;text-align:center;color:var(--text-tertiary);font-size:13px;">No resources in this category with a known address.</div>';
+    return;
+  }
+  list.innerHTML = filtered.map((res, i) => {
+    const cityPart = res.address ? res.address.split(',').slice(-2).join(',').trim() : '';
+    return `<div class="map-item" role="listitem" tabindex="0"
+      onclick="focusMapItem(${mapAllResources.indexOf(res)})"
+      onkeydown="if(event.key==='Enter'||event.key===' ')focusMapItem(${mapAllResources.indexOf(res)})">
+      <div class="map-item__dot" style="background:${MAP_COLORS[res.cat]||'#64748b'}"></div>
+      <div>
+        <div class="map-item__name">${res.name}</div>
+        <div class="map-item__meta">${MAP_LABELS[res.cat]||res.cat}${cityPart ? ' &middot; '+cityPart : ''}</div>
+      </div>
+    </div>`;
+  }).join('');
+  // Update count badge
+  const badge = document.getElementById('mapTotalCount');
+  if (badge) badge.textContent = `${filtered.length} resource${filtered.length!==1?'s':''} shown`;
+}
+
+function focusMapItem(idx) {
+  const res = mapAllResources[idx];
+  if (!res || !mapInstance) return;
+  mapInstance.setView(res.coords, 14, {animate:true});
+  // Find the marker at these coords and open its popup
+  mapMarkers.forEach(m => {
+    const ll = m.getLatLng();
+    if (Math.abs(ll.lat - res.coords[0]) < 0.0001 && Math.abs(ll.lng - res.coords[1]) < 0.0001) {
+      m.openPopup();
+    }
+  });
+  // Highlight in list
+  document.querySelectorAll('.map-item').forEach((el, i) => {
+    const filtered = activeMapCat === 'all' ? mapAllResources : mapAllResources.filter(r => r.cat === activeMapCat);
+    el.classList.toggle('active', filtered[i] === res);
+  });
+}
+
+function setupMapFilters() {
+  document.querySelectorAll('#mapFilters .map-pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#mapFilters .map-pill').forEach(b => {
+        b.classList.remove('on');
+        b.setAttribute('aria-pressed','false');
+      });
+      btn.classList.add('on');
+      btn.setAttribute('aria-pressed','true');
+      activeMapCat = btn.dataset.cat;
+      renderMapMarkers(activeMapCat);
+      renderMapList(activeMapCat);
+    });
+  });
+}
+
+function initMap() {
+  if (mapInstance) { mapInstance.invalidateSize(); return; }
+
+  const darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const tileUrl = darkMode
+    ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
+    : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
+
+  mapInstance = L.map('map-container', {zoomControl:true}).setView([33.65, -117.28], 10);
+  L.tileLayer(tileUrl, {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+    maxZoom: 19,
+    subdomains: 'abcd'
+  }).addTo(mapInstance);
+
+  mapAllResources = buildMapResources();
+  renderMapMarkers('all');
+  renderMapList('all');
+  setupMapFilters();
+
+  // Update count badge initial
+  const badge = document.getElementById('mapTotalCount');
+  if (badge) badge.textContent = `${mapAllResources.length} resource${mapAllResources.length!==1?'s':''} shown`;
+}
+
+/* ─────────────────────────────────────────────────────
+   INTAKE QUESTIONNAIRE
+───────────────────────────────────────────────────── */
+const Q_STEPS = {
+  need: {
+    eyebrow: 'Step 1 of 3',
+    title: 'What do you need help with?',
+    sub: 'Select your most urgent need and we\'ll guide you to the right resources.',
+    opts: [
+      {icon:'🏠', label:'Housing',          sub:'Shelters, transitional, affordable',  val:'housing'},
+      {icon:'🏥', label:'Healthcare',        sub:'Medical, mental health, recovery',    val:'healthcare'},
+      {icon:'💼', label:'Employment',        sub:'Job listings, staffing, career help', val:'employment'},
+      {icon:'🍎', label:'Food & Basics',     sub:'Food pantries, clothing, essentials', val:'food'},
+      {icon:'🆘', label:'Crisis Support',    sub:'Hotlines, immediate safety help',     val:'crisis'},
+      {icon:'⚖️', label:'Legal & Benefits',  sub:'Legal aid, public benefits, rights',  val:'legal'}
+    ]
+  },
+  housing_sub: {
+    eyebrow: 'Step 2 of 3 — Housing',
+    title: 'What\'s your current situation?',
+    sub: 'This helps us show you the most relevant housing options.',
+    opts: [
+      {icon:'🚨', label:'Need shelter tonight',       sub:'Emergency — I need a safe place now',        val:'emergency'},
+      {icon:'🏡', label:'Transitional / Sober Living', sub:'Short-term stable housing support',           val:'transitional'},
+      {icon:'🏘️', label:'Affordable Housing',          sub:'Longer-term affordable apartment search',     val:'affordable'},
+      {icon:'🤝', label:'Talk to a Case Manager',      sub:'Get personalized, one-on-one guidance',       val:'casemgr'}
+    ]
+  },
+  healthcare_sub: {
+    eyebrow: 'Step 2 of 3 — Healthcare',
+    title: 'What type of care do you need?',
+    sub: 'We\'ll connect you with the most appropriate providers.',
+    opts: [
+      {icon:'🩺', label:'Medical / Primary Care',     sub:'Clinics, urgent care, check-ups',             val:'medical'},
+      {icon:'🧠', label:'Mental Health',              sub:'Counseling, psychiatry, crisis support',       val:'behavioral'},
+      {icon:'💊', label:'Substance Use Recovery',     sub:'Treatment programs, MAT, sober living',        val:'behavioral'},
+      {icon:'✨', label:'Specialty Care',              sub:'Autism, HIV, IHSS, other specialty',           val:'specialty'}
+    ]
+  },
+  special: {
+    eyebrow: 'Step 3 of 3',
+    title: 'Any special circumstances?',
+    sub: 'We have targeted resources for specific communities.',
+    opts: [
+      {icon:'🎖️', label:'Veteran',              sub:'VA services & veteran programs',       val:'veteran'},
+      {icon:'🌈', label:'LGBTQ+',               sub:'Affirming, identity-safe services',    val:'lgbtq'},
+      {icon:'🌱', label:'Youth (16–25)',         sub:'Youth-specific housing & support',     val:'youth'},
+      {icon:'👨‍👩‍👧', label:'Women & Families',    sub:'Family shelter & safety resources',   val:'family'},
+      {icon:'🌟', label:'None of the above',     sub:'Show me all matching resources',       val:'none'}
+    ]
+  }
+};
+
+const qState = {step:1, need:null, sub:null, special:null};
+
+function openQuestionnaire() {
+  qState.step = 1; qState.need = null; qState.sub = null; qState.special = null;
+  document.getElementById('qOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  renderQStep();
+}
+
+function closeQuestionnaire() {
+  document.getElementById('qOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function updateQDots(step) {
+  [1,2,3].forEach(i => {
+    const d = document.getElementById('qDot'+i);
+    if (d) d.classList.toggle('active', i === step);
+  });
+}
+
+function renderQOptions(stepDef, answerKey) {
+  const body = document.getElementById('qBody');
+  const showBack = qState.step > 1;
+  const isLast   = qState.step === 3;
+  body.innerHTML = `
+    <div class="q-eyebrow">${stepDef.eyebrow}</div>
+    <h2 class="q-title" id="qTitle">${stepDef.title}</h2>
+    <p class="q-sub">${stepDef.sub}</p>
+    <div class="q-options" role="radiogroup" aria-label="${stepDef.title}">
+      ${stepDef.opts.map(o => `
+        <button class="q-option${qState[answerKey]===o.val?' selected':''}" data-val="${o.val}"
+          role="radio" aria-checked="${qState[answerKey]===o.val}"
+          onclick="selectQOption(this,'${answerKey}')">
+          <span class="q-option__icon" aria-hidden="true">${o.icon}</span>
+          <span class="q-option__label">${o.label}</span>
+          <span class="q-option__sub">${o.sub}</span>
+        </button>`).join('')}
+    </div>
+    <div class="q-actions">
+      ${showBack ? '<button class="q-back" onclick="qGoBack()">← Back</button>' : ''}
+      <button class="q-next" id="qNext" onclick="qAdvance()" ${!qState[answerKey]?'disabled':''}>
+        ${isLast ? 'Show My Resources' : 'Continue'} →
+      </button>
+    </div>`;
+}
+
+function renderQStep() {
+  updateQDots(qState.step);
+  if (qState.step === 1) {
+    renderQOptions(Q_STEPS.need, 'need');
+  } else if (qState.step === 2) {
+    const subKey = qState.need + '_sub';
+    if (Q_STEPS[subKey]) {
+      renderQOptions(Q_STEPS[subKey], 'sub');
+    } else {
+      // No sub-step for this need, skip to special
+      qState.step = 3;
+      renderQStep();
+    }
+  } else if (qState.step === 3) {
+    renderQOptions(Q_STEPS.special, 'special');
+  }
+}
+
+function selectQOption(el, key) {
+  el.closest('.q-options').querySelectorAll('.q-option').forEach(o => {
+    o.classList.remove('selected');
+    o.setAttribute('aria-checked','false');
+  });
+  el.classList.add('selected');
+  el.setAttribute('aria-checked','true');
+  qState[key] = el.dataset.val;
+  const btn = document.getElementById('qNext');
+  if (btn) btn.disabled = false;
+}
+
+function qAdvance() {
+  if (qState.step === 1) {
+    // Employment, food, crisis, legal → skip sub-step, go to special
+    if (['employment','food','crisis','legal'].includes(qState.need)) {
+      qState.step = 3;
+    } else {
+      qState.step = 2;
+    }
+  } else if (qState.step === 2) {
+    qState.step = 3;
+  } else {
+    navigateQResult();
+    return;
+  }
+  renderQStep();
+}
+
+function qGoBack() {
+  if (qState.step === 3 && ['employment','food','crisis','legal'].includes(qState.need)) {
+    qState.step = 1;
+  } else {
+    qState.step = Math.max(1, qState.step - 1);
+  }
+  renderQStep();
+}
+
+function activateResourceTab(tabRowId, tabVal, panelsId) {
+  const tabs = document.querySelectorAll(`#${tabRowId} .pill`);
+  tabs.forEach(t => { t.classList.remove('on'); t.setAttribute('aria-selected','false'); });
+  const target = [...tabs].find(t => t.dataset.tab === tabVal);
+  if (target) {
+    target.classList.add('on');
+    target.setAttribute('aria-selected','true');
+    document.querySelectorAll(`#${panelsId} .panel`).forEach(p => p.classList.remove('on'));
+    const panel = document.getElementById(`${panelsId.replace('Panels','')}panel-${tabVal}`);
+    if (panel) { panel.classList.add('on'); attachReveal(); }
+  }
+}
+
+function navigateQResult() {
+  closeQuestionnaire();
+  const {need, sub} = qState;
+
+  if (need === 'employment') { goTo('employment'); return; }
+  if (need === 'crisis')     { goTo('resources'); setTimeout(() => activateResourceTab('resTabs','crisis','resPanels'), 350); return; }
+  if (need === 'food')       { goTo('resources'); setTimeout(() => activateResourceTab('resTabs','food','resPanels'),  350); return; }
+  if (need === 'legal')      { goTo('resources'); setTimeout(() => activateResourceTab('resTabs','legal','resPanels'), 350); return; }
+
+  if (need === 'housing') {
+    if (sub === 'casemgr') { goTo('home','team-section'); return; }
+    goTo('housing');
+    const tabMap = {emergency:'emergency', transitional:'transitional', affordable:'affordable'};
+    if (tabMap[sub]) setTimeout(() => activateResourceTab('housingTabs', tabMap[sub], 'housingPanels'), 350);
+    return;
+  }
+
+  if (need === 'healthcare') {
+    goTo('healthcare');
+    const tabMap = {medical:'medical', behavioral:'behavioral', specialty:'specialty'};
+    if (tabMap[sub]) setTimeout(() => activateResourceTab('hcTabs', tabMap[sub], 'hcPanels'), 350);
+    return;
+  }
+
+  goTo('housing'); // Default fallback
+}
+
+// Questionnaire close handlers
+document.getElementById('qClose').addEventListener('click', closeQuestionnaire);
+document.getElementById('qOverlay').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeQuestionnaire();
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && document.getElementById('qOverlay').classList.contains('open')) closeQuestionnaire();
+});
 
 </script>
 </body>
