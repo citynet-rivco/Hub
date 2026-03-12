@@ -8,12 +8,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN/WLs=" crossorigin=""></script>
 <style>
 /* ══════════════════════════════════════════════════════
    ND STUDIO: ELITE DESIGN TOKENS (City Net Unified)
 ══════════════════════════════════════════════════════ */
 :root {
-  /* Core Colors - Clean, uplifting slate-white background */
+  /* Core Colors */
   --ink: #0f172a; 
   --ink-soft: #1e293b;
   --ink-muted: #64748b;
@@ -22,85 +24,51 @@
   --surface-card: rgba(255, 255, 255, 0.85); 
   --surface-float: rgba(255, 255, 255, 0.95); 
   
-  /* Brand Accents - City Net Cohesive Blue */
+  /* Brand Accents */
   --accent: #0277b6; 
   --accent-light: #0096c7; 
   --accent-pale: rgba(2, 119, 182, 0.08);
   --accent-glow: rgba(2, 119, 182, 0.2);
   
-  /* Buttons & High Contrast Elements */
+  /* Buttons & Signals */
   --btn-bg: #0277b6;
   --btn-hover: #025a8a;
   --btn-text: #ffffff;
+  --signal-green: #0f766e; --signal-green-pale: rgba(15, 118, 110, 0.1);
+  --signal-amber: #b45309; --signal-amber-pale: rgba(180, 83, 9, 0.1);
+  --signal-red: #b91c1c;   --signal-red-pale: rgba(185, 28, 28, 0.1);
+  --signal-purple: #6d28d9;--signal-purple-pale: rgba(109, 40, 217, 0.1);
   
-  /* Semantic Signals - Harmonized Jewel Tones */
-  --signal-green: #0f766e; 
-  --signal-green-pale: rgba(15, 118, 110, 0.1);
-  --signal-amber: #b45309; 
-  --signal-amber-pale: rgba(180, 83, 9, 0.1);
-  --signal-red: #b91c1c; 
-  --signal-red-pale: rgba(185, 28, 28, 0.1);
-  --signal-purple: #6d28d9; 
-  --signal-purple-pale: rgba(109, 40, 217, 0.1);
-  
-  /* Structural / Lines */
+  /* Structural */
   --border: rgba(15, 23, 42, 0.12);
   --border-light: rgba(15, 23, 42, 0.06);
   --border-glass: rgba(255, 255, 255, 0.9);
   
-  /* Typography Variables */
+  /* Typography */
   --text-primary: #0f172a;
   --text-secondary: #475569;
   --text-tertiary: #64748b;
   --text-on-accent: #ffffff; 
   
-  /* Badge/Circle Specific Colors (Deep tones for bright white text) */
-  --badge-bg-1: #0277b6; 
-  --badge-bg-2: #0f766e; 
-  --badge-bg-3: #6d28d9; 
-  --badge-bg-4: #b45309; 
-  --badge-bg-5: #b91c1c; 
+  /* Badges */
+  --badge-bg-1: #0277b6; --badge-bg-2: #0f766e; --badge-bg-3: #6d28d9; --badge-bg-4: #b45309; --badge-bg-5: #b91c1c; 
   
-  /* Fonts */
+  /* Fonts & Sizing */
   --f-display: 'Fraunces', Georgia, serif;
   --f-body: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --size-xs: 0.8rem; --size-sm: 0.925rem; --size-base: 1.05rem; --size-md: 1.15rem; --size-lg: 1.35rem; --size-xl: 1.75rem; --size-2xl: 2.5rem; --size-3xl: 3.5rem; --size-hero: clamp(3rem, 7vw, 6rem);
+  --space-sm: 0.5rem; --space-md: 1rem; --space-lg: 1.5rem;
+  --radius-sm: 8px; --radius-md: 14px; --radius-lg: 20px; --radius-xl: 32px;
   
-  /* Fluid Scaling */
-  --size-xs: 0.8rem; 
-  --size-sm: 0.925rem; 
-  --size-base: 1.05rem; 
-  --size-md: 1.15rem; 
-  --size-lg: 1.35rem;
-  --size-xl: 1.75rem;
-  --size-2xl: 2.5rem;
-  --size-3xl: 3.5rem;
-  --size-hero: clamp(3rem, 7vw, 6rem);
-  
-  /* Spacing */
-  --space-sm: 0.5rem;
-  --space-md: 1rem;
-  --space-lg: 1.5rem;
-
-  /* Radii */
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
-  --radius-xl: 32px;
-  
-  /* Elevation */
+  /* Elevation & Animation */
   --shadow-sm: 0 4px 16px rgba(15,23,42,0.04);
   --shadow-md: 0 16px 48px rgba(15,23,42,0.08);
   --shadow-lg: 0 32px 96px rgba(15,23,42,0.12);
   --shadow-float: 0 40px 100px rgba(2,119,182,0.15), 0 0 0 1px var(--border);
   --inner-glow: inset 0 1px 0 0 rgba(255,255,255,0.9);
-  
-  /* Easing & Physics */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-spring: cubic-bezier(0.25, 1.2, 0.5, 1);
-  --dur-fast: 200ms;
-  --dur-base: 400ms;
-  --dur-slow: 700ms;
-  --dur-spring: 500ms;
+  --dur-fast: 200ms; --dur-base: 400ms; --dur-slow: 700ms; --dur-spring: 500ms;
 }
 
 /* ══════════════════════════════════════════════════════
@@ -108,134 +76,69 @@
 ══════════════════════════════════════════════════════ */
 @media (prefers-color-scheme: dark) {
   :root {
-    --ink: #f8fafc;
-    --ink-soft: #e2e8f0;
-    --ink-muted: #94a3b8;
-    --surface: #020617; 
-    --surface-warm: #0f172a;
-    --surface-card: rgba(30, 41, 59, 0.6); 
-    --surface-float: rgba(15, 23, 42, 0.9); 
-    
-    --text-primary: #f8fafc;
-    --text-secondary: #cbd5e1;
-    --text-tertiary: #94a3b8;
-    --text-on-accent: #ffffff; 
-    
-    --accent: #38bdf8; 
-    --accent-light: #7dd3fc;
-    --accent-pale: rgba(56, 189, 248, 0.15);
-    --accent-glow: rgba(56, 189, 248, 0.25);
-    
-    --btn-bg: #38bdf8;
-    --btn-hover: #7dd3fc;
-    --btn-text: #020617;
-    
-    --signal-green: #34d399;
-    --signal-green-pale: rgba(52, 211, 153, 0.15);
-    --signal-amber: #fbbf24;
-    --signal-amber-pale: rgba(251, 191, 36, 0.15);
-    --signal-red: #f87171;
-    --signal-red-pale: rgba(248, 113, 113, 0.15);
-    --signal-purple: #a78bfa;
-    --signal-purple-pale: rgba(167, 139, 250, 0.15);
-    
-    --badge-bg-1: #0277b6; 
-    --badge-bg-2: #0f766e;
-    --badge-bg-3: #6d28d9;
-    --badge-bg-4: #b45309;
-    --badge-bg-5: #b91c1c;
-    
-    --border: rgba(255, 255, 255, 0.12);
-    --border-light: rgba(255, 255, 255, 0.06);
-    --border-glass: rgba(255, 255, 255, 0.05);
-    
-    --shadow-sm: 0 4px 12px rgba(0,0,0,0.5);
-    --shadow-md: 0 16px 48px rgba(0,0,0,0.7);
-    --shadow-lg: 0 32px 96px rgba(0,0,0,0.9);
+    --ink: #f8fafc; --ink-soft: #e2e8f0; --ink-muted: #94a3b8;
+    --surface: #020617; --surface-warm: #0f172a; --surface-card: rgba(30, 41, 59, 0.6); --surface-float: rgba(15, 23, 42, 0.9); 
+    --text-primary: #f8fafc; --text-secondary: #cbd5e1; --text-tertiary: #94a3b8; --text-on-accent: #ffffff; 
+    --accent: #38bdf8; --accent-light: #7dd3fc; --accent-pale: rgba(56, 189, 248, 0.15); --accent-glow: rgba(56, 189, 248, 0.25);
+    --btn-bg: #38bdf8; --btn-hover: #7dd3fc; --btn-text: #020617;
+    --signal-green: #34d399; --signal-green-pale: rgba(52, 211, 153, 0.15);
+    --signal-amber: #fbbf24; --signal-amber-pale: rgba(251, 191, 36, 0.15);
+    --signal-red: #f87171; --signal-red-pale: rgba(248, 113, 113, 0.15);
+    --signal-purple: #a78bfa; --signal-purple-pale: rgba(167, 139, 250, 0.15);
+    --border: rgba(255, 255, 255, 0.12); --border-light: rgba(255, 255, 255, 0.06); --border-glass: rgba(255, 255, 255, 0.05);
+    --shadow-sm: 0 4px 12px rgba(0,0,0,0.5); --shadow-md: 0 16px 48px rgba(0,0,0,0.7); --shadow-lg: 0 32px 96px rgba(0,0,0,0.9);
     --shadow-float: 0 40px 100px rgba(0,0,0,0.9), 0 0 0 1px var(--border);
     --inner-glow: inset 0 1px 0 0 rgba(255,255,255,0.05);
   }
 }
 
 /* ══════════════════════════════════════════════════════
-   GLOBAL RESET & BASE
+   GLOBAL BASE & ANIMATIONS
 ══════════════════════════════════════════════════════ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
-
-body {
-  font-family: var(--f-body); font-size: var(--size-base); color: var(--text-primary);
-  background-color: var(--surface); line-height: 1.6; overflow-x: hidden;
-  transition: background-color 0.4s ease, color 0.4s ease;
-  position: relative;
-}
-
+body { font-family: var(--f-body); font-size: var(--size-base); color: var(--text-primary); background-color: var(--surface); line-height: 1.6; overflow-x: hidden; transition: background-color 0.4s ease, color 0.4s ease; position: relative; }
 img { display: block; max-width: 100%; }
 a, button { touch-action: manipulation; }
 a { color: inherit; text-decoration: none; transition: all var(--dur-fast); }
 button { font-family: var(--f-body); border: none; background: none; cursor: pointer; }
 ::selection { background: var(--accent); color: var(--text-primary); }
 @media (prefers-color-scheme: light) { ::selection { color: #fff; } }
-
-a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:focus-visible, div[role="menuitem"]:focus-visible, div[role="tab"]:focus-visible {
-  outline: 2px solid var(--accent); outline-offset: 4px; border-radius: var(--radius-sm);
-}
+a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:focus-visible, div[role="menuitem"]:focus-visible, div[role="tab"]:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: var(--radius-sm); }
 .container { width: 100%; max-width: 1320px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 3rem); }
 
 @keyframes pulse-live { 0% { box-shadow: 0 0 0 0 rgba(15, 118, 110, 0.6); } 70% { box-shadow: 0 0 0 8px rgba(15, 118, 110, 0); } 100% { box-shadow: 0 0 0 0 rgba(15, 118, 110, 0); } }
 @media (prefers-color-scheme: dark) { @keyframes pulse-live { 0% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.6); } 70% { box-shadow: 0 0 0 8px rgba(52, 211, 153, 0); } 100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); } } }
-
 @keyframes float-bg { 0% { transform: translate(0, 0) scale(1); opacity: 0.5; } 33% { transform: translate(30px, -50px) scale(1.1); opacity: 0.7; } 66% { transform: translate(-20px, 20px) scale(0.9); opacity: 0.6; } 100% { transform: translate(0, 0) scale(1); opacity: 0.5; } }
 
-/* ══════════════════════════════════════════════════════
-   SCROLL-REVEAL SYSTEM
-══════════════════════════════════════════════════════ */
 .reveal { opacity: 0; transform: translateY(30px) scale(0.98); transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-spring); }
 .reveal.visible { opacity: 1; transform: translateY(0) scale(1); }
 .reveal-delay-1 { transition-delay: 0.05s; } .reveal-delay-2 { transition-delay: 0.1s; } .reveal-delay-3 { transition-delay: 0.15s; }
 
 /* ══════════════════════════════════════════════════════
-   TOPBAR
+   HEADER & NAV
 ══════════════════════════════════════════════════════ */
 .topbar { background: var(--badge-bg-1); color: #fff; padding: 8px 0; font-size: var(--size-xs); font-weight: 600; letter-spacing: 0.04em; position: relative; z-index: 200; text-transform: uppercase; transition: background 0.4s; }
 .topbar__inner { display: flex; align-items: center; justify-content: space-between; gap: var(--space-md); flex-wrap: wrap; }
-.topbar__left { opacity: 0.9; }
-.topbar__right { display: flex; gap: 1.5rem; align-items: center; }
-.topbar__right a { opacity: 0.9; }
-.topbar__right a:hover { opacity: 1; filter: brightness(1.2); }
+.topbar__left { opacity: 0.9; } .topbar__right { display: flex; gap: 1.5rem; align-items: center; } .topbar__right a { opacity: 0.9; } .topbar__right a:hover { opacity: 1; filter: brightness(1.2); }
 .topbar__sep { width: 1px; height: 12px; background: currentColor; opacity: 0.4; }
 
-/* ══════════════════════════════════════════════════════
-   HEADER (Dynamic Island Style)
-══════════════════════════════════════════════════════ */
 .header-wrapper { position: sticky; top: 0; z-index: 150; padding: 0; transition: padding 0.5s var(--ease-out); }
 .header-wrapper.scrolled { padding: 1rem 1.5rem; pointer-events: none; }
-
-.header { background: var(--surface-float); backdrop-filter: blur(32px) saturate(200%); -webkit-backdrop-filter: blur(32px) saturate(200%); border-bottom: 1px solid var(--border-light); transition: border-radius 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out), background 0.5s var(--ease-out), max-width 0.5s var(--ease-out); pointer-events: auto; }
-.header-wrapper.scrolled .header { 
-  border-radius: 100px; 
-  border: 1px solid var(--border-glass); 
-  box-shadow: var(--shadow-lg), var(--inner-glow); 
-  background: var(--surface-float);
-  margin: 0 auto;
-  max-width: 1200px;
-}
-.header__inner { display: flex; align-items: center; justify-content: space-between; height: 76px; padding: 0 clamp(1.5rem, 5vw, 3rem); transition: padding 0.5s var(--ease-out), height 0.5s var(--ease-out); }
+.header { background: var(--surface-float); backdrop-filter: blur(32px) saturate(200%); -webkit-backdrop-filter: blur(32px) saturate(200%); border-bottom: 1px solid var(--border-light); transition: all 0.5s var(--ease-out); pointer-events: auto; }
+.header-wrapper.scrolled .header { border-radius: 100px; border: 1px solid var(--border-glass); box-shadow: var(--shadow-lg), var(--inner-glow); margin: 0 auto; max-width: 1200px; }
+.header__inner { display: flex; align-items: center; justify-content: space-between; height: 76px; padding: 0 clamp(1.5rem, 5vw, 3rem); transition: all 0.5s var(--ease-out); }
 .header-wrapper.scrolled .header__inner { padding: 0 1rem 0 1.5rem; height: 64px; }
 
-/* Logo */
 .logo { display: flex; align-items: center; gap: 12px; cursor: pointer; transition: transform var(--dur-spring); }
-.logo:hover { transform: scale(1.02); }
-.logo:active { transform: scale(0.96); }
+.logo:hover { transform: scale(1.02); } .logo:active { transform: scale(0.96); }
 .logo__mark { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 8px; }
 .logo__mark img { width: 100%; height: 100%; object-fit: contain; }
-
 .logo__info { display: flex; align-items: baseline; gap: 8px; }
 .logo__text { font-family: var(--f-display); font-size: 1.4rem; font-weight: 600; color: var(--text-primary); letter-spacing: -0.02em; }
 .logo__sub { font-family: var(--f-body); color: var(--text-tertiary); font-weight: 500; font-size: var(--size-sm); }
 .logo__sub::before { content: '| '; margin-right: 6px; opacity: 0.3; }
 
-/* Nav */
 .nav { display: flex; align-items: center; gap: 4px; }
 .nav-link { padding: 8px 16px; font-size: var(--size-sm); font-weight: 600; color: var(--text-secondary); border-radius: 100px; transition: all var(--dur-fast) var(--ease-out); cursor: pointer; position: relative; }
 .nav-link:hover { color: var(--text-primary); background: var(--border-light); }
@@ -243,43 +146,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .nav-link.active { color: var(--accent); }
 .nav-link.active::after { content:''; position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%); width: 16px; height: 2px; background: var(--accent); border-radius: 2px; }
 
-/* Nav Dropdown (Fixed Hover/Bridge) */
 .nav-drop { position: relative; padding-bottom: 16px; margin-bottom: -16px; } 
-.nav-drop-menu { 
-  display: block; 
-  visibility: hidden;
-  opacity: 0;
-  position: absolute; 
-  top: calc(100% + 4px); 
-  left: 50%; 
-  transform: translateX(-50%) translateY(-10px) scale(0.98); 
-  background: var(--surface-float); 
-  min-width: 320px; 
-  border-radius: var(--radius-lg); 
-  padding: 8px; 
-  backdrop-filter: blur(40px) saturate(200%); 
-  box-shadow: var(--shadow-float), var(--inner-glow); 
-  border: 1px solid var(--border-glass); 
-  transition: all 0.3s var(--ease-spring);
-  transform-origin: top center; 
-  pointer-events: none;
-}
-.nav-drop:hover .nav-drop-menu, .nav-drop:focus-within .nav-drop-menu { 
-  visibility: visible;
-  opacity: 1;
-  transform: translateX(-50%) translateY(0) scale(1);
-  pointer-events: auto;
-}
-
+.nav-drop-menu { display: block; visibility: hidden; opacity: 0; position: absolute; top: calc(100% + 4px); left: 50%; transform: translateX(-50%) translateY(-10px) scale(0.98); background: var(--surface-float); min-width: 320px; border-radius: var(--radius-lg); padding: 8px; backdrop-filter: blur(40px) saturate(200%); box-shadow: var(--shadow-float), var(--inner-glow); border: 1px solid var(--border-glass); transition: all 0.3s var(--ease-spring); transform-origin: top center; pointer-events: none; }
+.nav-drop:hover .nav-drop-menu, .nav-drop:focus-within .nav-drop-menu { visibility: visible; opacity: 1; transform: translateX(-50%) translateY(0) scale(1); pointer-events: auto; }
 .nav-drop-item { display: flex; align-items: center; gap: 16px; padding: 12px; border-radius: var(--radius-md); cursor: pointer; transition: all var(--dur-fast) var(--ease-out); opacity: 0; transform: translateY(-6px); }
 .nav-drop:hover .nav-drop-item, .nav-drop:focus-within .nav-drop-item { opacity: 1; transform: translateY(0); }
-
-.nav-drop-item:nth-child(1) { transition-delay: 0.05s; }
-.nav-drop-item:nth-child(2) { transition-delay: 0.1s; }
-.nav-drop-item:nth-child(3) { transition-delay: 0.15s; }
-
+.nav-drop-item:nth-child(1) { transition-delay: 0.05s; } .nav-drop-item:nth-child(2) { transition-delay: 0.1s; } .nav-drop-item:nth-child(3) { transition-delay: 0.15s; }
 .nav-drop-item:hover { background: var(--surface-warm); transform: translateX(4px) !important; transition-delay: 0s; } 
-
 .ndi-icon { width: 44px; height: 44px; border-radius: 10px; background: var(--surface); box-shadow: var(--shadow-sm); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all var(--dur-spring); border: 1px solid var(--border-light); }
 .nav-drop-item:hover .ndi-icon { background: var(--accent); border-color: var(--accent); transform: scale(1.05); }
 .ndi-icon svg { width: 20px; height: 20px; color: var(--text-secondary); transition: color var(--dur-fast); }
@@ -289,82 +162,51 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .nav-drop-item:hover .ndi-title { color: var(--accent); }
 .ndi-sub { font-size: var(--size-xs); color: var(--text-tertiary); font-weight: 400; line-height: 1.3; }
 
-/* Modern Button Classes */
 .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; font-family: var(--f-body); font-size: var(--size-sm); font-weight: 600; border-radius: 100px; border: 1px solid transparent; cursor: pointer; transition: all var(--dur-fast) var(--ease-spring); letter-spacing: -0.01em; position: relative; overflow: hidden; }
 .btn svg { width: 18px; height: 18px; flex-shrink: 0; transition: transform var(--dur-fast); }
-.btn:hover svg { transform: translateX(2px); }
-.btn:active { transform: scale(0.96) !important; }
-
-/* Button Hover Shine */
+.btn:hover svg { transform: translateX(2px); } .btn:active { transform: scale(0.96) !important; }
 .btn::after { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent); transform: skewX(-20deg); transition: left 0.6s var(--ease-out); }
 .btn:hover::after { left: 150%; }
-
 .btn--solid { background: var(--btn-bg); color: var(--btn-text); box-shadow: var(--shadow-md), inset 0 1px 0 rgba(255,255,255,0.2); }
 .btn--solid:hover { background: var(--btn-hover); box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255,255,255,0.2); transform: translateY(-2px); }
 .btn--outline { background: transparent; color: var(--text-primary); border-color: var(--border); backdrop-filter: blur(10px); }
 .btn--outline:hover { border-color: var(--accent); color: var(--accent); background: var(--surface-card); transform: translateY(-2px); }
-
-/* Header CTA */
 .btn-cta { margin-left: var(--space-sm); padding: 10px 20px !important; }
 
-/* Mobile hamburger */
 .nav-toggle { display: none; background: none; border: 1px solid var(--border-light); width: 44px; height: 44px; cursor: pointer; border-radius: 50%; transition: background var(--dur-fast); align-items: center; justify-content: center; }
-.nav-toggle:hover { background: var(--surface-warm); }
-.nav-toggle:active { transform: scale(0.92); }
+.nav-toggle:hover { background: var(--surface-warm); } .nav-toggle:active { transform: scale(0.92); }
 .hamburger { display: flex; flex-direction: column; gap: 4px; }
 .hamburger span { display: block; width: 18px; height: 2px; background: var(--text-primary); border-radius: 2px; }
 
-/* ══════════════════════════════════════════════════════
-   MOBILE NAV OVERLAY
-══════════════════════════════════════════════════════ */
+/* Mobile Nav Overlay */
 .mobile-nav { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(40px) saturate(200%); -webkit-backdrop-filter: blur(40px) saturate(200%); flex-direction: column; padding: 0; overflow-y: auto; color: #fff; }
 .mobile-nav.open { display: flex; animation: mobileNavIn 0.4s var(--ease-out) forwards; }
 @keyframes mobileNavIn { from { opacity:0; transform: translateY(15px); } to { opacity:1; transform: translateY(0); } }
-
 .mobile-nav__head { display: flex; align-items: center; justify-content: space-between; padding: 24px clamp(1.5rem,5vw,3rem); border-bottom: 1px solid rgba(255,255,255,0.1); }
 .mobile-nav__close { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 50%; color: #fff; transition: all var(--dur-fast); background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1); }
 .mobile-nav__close:active { transform: scale(0.9); }
-
 .mobile-nav__links { flex: 1; padding: clamp(1.5rem,5vw,3rem); display: flex; flex-direction: column; gap: 4px; }
 .mobile-nav__link { padding: 16px 20px; font-size: 1.25rem; font-weight: 500; color: rgba(255,255,255,0.7); border-radius: var(--radius-md); transition: all var(--dur-fast); display: block; cursor: pointer; letter-spacing: -0.01em; opacity: 0; transform: translateX(-10px); }
 .mobile-nav.open .mobile-nav__link { animation: mobileLinkIn 0.4s var(--ease-out) forwards; }
 @keyframes mobileLinkIn { to { opacity: 1; transform: translateX(0); } }
-
-/* Stagger Mobile Links */
 .mobile-nav__link:nth-child(1) { animation-delay: 0.05s; }
 .mobile-nav__group-label { animation-delay: 0.1s; opacity: 0; animation: mobileLinkIn 0.4s var(--ease-out) forwards; padding: 12px 20px 4px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); }
-.mobile-nav__link:nth-child(3) { animation-delay: 0.15s; }
-.mobile-nav__link:nth-child(4) { animation-delay: 0.20s; }
-.mobile-nav__link:nth-child(5) { animation-delay: 0.25s; }
-.mobile-nav__link:nth-child(7) { animation-delay: 0.30s; }
-.mobile-nav__link:nth-child(8) { animation-delay: 0.35s; }
-
 .mobile-nav__link:hover, .mobile-nav__link:active { background: rgba(255,255,255,0.1); color: #fff; transform: translateX(4px) !important; }
 .mobile-nav__link.active { color: #fff; font-weight: 600; background: rgba(255,255,255,0.05); }
-
 .mobile-nav__footer { padding: clamp(1.5rem,5vw,3rem); border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: center; }
 .mobile-nav__call { display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 100%; max-width: 320px; padding: 14px 24px; background: #38bdf8; color: #020617; border-radius: 100px; font-size: 1.05rem; font-weight: 600; box-shadow: var(--shadow-sm); transition: transform var(--dur-spring); }
 .mobile-nav__call:active { transform: scale(0.96); }
-
-/* Logo classes for inverted backgrounds */
-.logo--white .logo__text { color: #fff; }
-.logo--white .logo__sub { color: rgba(255,255,255,0.6); }
+.logo--white .logo__text { color: #fff; } .logo--white .logo__sub { color: rgba(255,255,255,0.6); }
 
 /* ══════════════════════════════════════════════════════
-   PAGE SYSTEM
+   LAYOUT COMPONENTS (Hero, Stats, Sections, Cards)
 ══════════════════════════════════════════════════════ */
-.page { display: none; }
-.page.active { display: block; animation: pageFadeIn 0.5s var(--ease-out) forwards; }
+.page { display: none; } .page.active { display: block; animation: pageFadeIn 0.5s var(--ease-out) forwards; }
 @keyframes pageFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-/* ══════════════════════════════════════════════════════
-   HERO (Home)
-══════════════════════════════════════════════════════ */
 .hero { padding: clamp(4rem, 10vw, 8rem) 0 clamp(3rem, 8vw, 5rem); position: relative; overflow: visible; display: flex; flex-direction: column; align-items: center; text-align: center; }
-/* Volumetric glowing orbs behind hero */
 .hero::before { content:''; position: absolute; top: -20%; right: 10%; width: 60vw; height: 60vw; max-width: 800px; max-height: 800px; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%); pointer-events: none; animation: float-bg 20s ease-in-out infinite; z-index: -1; }
 .hero::after { content:''; position: absolute; bottom: 0; left: 10%; width: 50vw; height: 50vw; max-width: 600px; max-height: 600px; background: radial-gradient(circle, var(--signal-green-pale) 0%, transparent 60%); pointer-events: none; animation: float-bg 25s ease-in-out infinite reverse; z-index: -1; }
-
 .hero__inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; }
 .hero__badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px 6px 12px; background: var(--surface-card); border: 1px solid var(--border-glass); border-radius: 100px; font-size: 12px; font-weight: 700; color: var(--text-primary); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2rem; backdrop-filter: blur(16px) saturate(200%); box-shadow: var(--shadow-sm), var(--inner-glow); transition: transform var(--dur-fast); }
 .hero__badge-live { width: 8px; height: 8px; border-radius: 50%; background: var(--signal-green); animation: pulse-live 2.5s infinite; }
@@ -373,165 +215,81 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .hero__sub { margin-top: 1.5rem; font-size: var(--size-lg); line-height: 1.6; color: var(--text-secondary); max-width: 680px; font-weight: 400; letter-spacing: -0.01em; }
 .hero__actions { margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
 
-/* ══════════════════════════════════════════════════════
-   STUNNING STAT STRIPS (Dynamic Floating Pill)
-══════════════════════════════════════════════════════ */
-.stats-strip-wrapper, .page-stats-wrapper {
-  padding: 2rem clamp(1.5rem, 5vw, 3rem);
-  position: relative;
-}
-.stats-strip, .page-stats {
-  background: linear-gradient(135deg, var(--surface-float), var(--surface-card));
-  border: 1px solid var(--border-glass);
-  border-radius: var(--radius-xl);
-  padding: 3rem 2rem;
-  box-shadow: var(--shadow-lg), var(--inner-glow);
-  backdrop-filter: blur(40px) saturate(150%);
-  position: relative;
-  overflow: hidden;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.stats-strip::before, .page-stats::before {
-  content: ''; position: absolute; top: -50%; left: 50%; transform: translateX(-50%); 
-  width: 800px; height: 400px; background: radial-gradient(ellipse, var(--accent-glow) 0%, transparent 70%); 
-  pointer-events: none; z-index: 0;
-}
-.stats-strip__grid, .page-stats__grid {
-  position: relative; z-index: 1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
-}
+.stats-strip-wrapper, .page-stats-wrapper { padding: 2rem clamp(1.5rem, 5vw, 3rem); position: relative; }
+.stats-strip, .page-stats { background: linear-gradient(135deg, var(--surface-float), var(--surface-card)); border: 1px solid var(--border-glass); border-radius: var(--radius-xl); padding: 3rem 2rem; box-shadow: var(--shadow-lg), var(--inner-glow); backdrop-filter: blur(40px) saturate(150%); position: relative; overflow: hidden; max-width: 1200px; margin: 0 auto; }
+.stats-strip::before, .page-stats::before { content: ''; position: absolute; top: -50%; left: 50%; transform: translateX(-50%); width: 800px; height: 400px; background: radial-gradient(ellipse, var(--accent-glow) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+.stats-strip__grid, .page-stats__grid { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
 .stat-cell, .ps-cell { text-align: center; position: relative; }
+.stat-cell__num, .ps-cell__num { font-family: var(--f-display); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 500; background: linear-gradient(135deg, var(--text-primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.04em; line-height: 1; filter: drop-shadow(0 4px 12px rgba(2,119,182,0.1)); }
+.stat-cell__label, .ps-cell__label { margin-top: 0.5rem; font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; }
 
-/* Metallic Gradient Numbers */
-.stat-cell__num, .ps-cell__num { 
-  font-family: var(--f-display); 
-  font-size: clamp(2.5rem, 5vw, 4rem); 
-  font-weight: 500; 
-  background: linear-gradient(135deg, var(--text-primary), var(--accent));
-  -webkit-background-clip: text; 
-  -webkit-text-fill-color: transparent;
-  letter-spacing: -0.04em; 
-  line-height: 1;
-  filter: drop-shadow(0 4px 12px rgba(2,119,182,0.1));
-}
-.stat-cell__label, .ps-cell__label { 
-  margin-top: 0.5rem; font-size: 12px; color: var(--text-secondary); text-transform: uppercase; 
-  letter-spacing: 0.1em; font-weight: 700; 
-}
-
-/* ══════════════════════════════════════════════════════
-   SECTION BASE
-══════════════════════════════════════════════════════ */
 .section { padding: clamp(3rem, 6vw, 5rem) 0; position: relative; }
 .section--alt { background: var(--surface-warm); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); }
 .s-eyebrow { display: flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 1rem; }
 .s-eyebrow::before { content:''; width: 24px; height: 2px; background: var(--accent); border-radius: 2px; }
-.s-eyebrow--center { justify-content: center; }
-.s-eyebrow--center::before { display: none; }
+.s-eyebrow--center { justify-content: center; } .s-eyebrow--center::before { display: none; }
 .s-title { font-family: var(--f-display); font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1.1; color: var(--text-primary); }
 .s-title em { font-style: italic; color: transparent; background: linear-gradient(135deg, var(--accent), var(--signal-green)); -webkit-background-clip: text; padding-right: 0.1em; }
 .s-desc { margin-top: 1rem; font-size: var(--size-md); color: var(--text-secondary); line-height: 1.6; max-width: 600px; }
-.s-header { margin-bottom: 3rem; }
-.s-header--center { text-align: center; display: flex; flex-direction: column; align-items: center; }
+.s-header { margin-bottom: 3rem; } .s-header--center { text-align: center; display: flex; flex-direction: column; align-items: center; }
 
-/* ══════════════════════════════════════════════════════
-   HUB CARDS (The "Apple" Glass Cards)
-══════════════════════════════════════════════════════ */
 .hub-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .hub-card { background: var(--surface-card); border: 1px solid var(--border-glass); border-radius: var(--radius-xl); padding: 2.5rem; transition: all var(--dur-base) var(--ease-spring); cursor: pointer; display: flex; flex-direction: column; box-shadow: var(--shadow-sm), var(--inner-glow); backdrop-filter: blur(32px) saturate(200%); -webkit-backdrop-filter: blur(32px) saturate(200%); position: relative; overflow: hidden; }
 .hub-card::before { content:''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, transparent 100%); opacity: 0; transition: opacity var(--dur-base); z-index: 0; pointer-events: none; }
 @media (prefers-color-scheme: dark) { .hub-card::before { background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, transparent 100%); } }
 .hub-card > * { position: relative; z-index: 1; }
 .hub-card:hover { border-color: var(--accent); box-shadow: var(--shadow-lg), var(--inner-glow); transform: translateY(-6px) scale(1.01); }
-.hub-card:hover::before { opacity: 1; }
-.hub-card:active { transform: translateY(0) scale(0.98); }
-
+.hub-card:hover::before { opacity: 1; } .hub-card:active { transform: translateY(0) scale(0.98); }
 .hub-card__icon { width: 52px; height: 52px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; transition: transform var(--dur-base) var(--ease-spring); box-shadow: inset 0 1px 0 rgba(255,255,255,0.5); }
 .hub-card:hover .hub-card__icon { transform: scale(1.1) translateY(-4px); }
 .hub-card__icon svg { width: 24px; height: 24px; stroke-width: 2; } 
-
 .hub-card--housing .hub-card__icon { background: linear-gradient(135deg, var(--badge-bg-1), #0096c7); color: #fff; }
 .hub-card--employment .hub-card__icon { background: linear-gradient(135deg, var(--badge-bg-2), #14b8a6); color: #fff; }
 .hub-card--team .hub-card__icon { background: linear-gradient(135deg, var(--badge-bg-4), #d97706); color: #fff; }
-@media (prefers-color-scheme: dark) { 
-  .hub-card__icon { color: #fff; } /* Keep icons white on deep badges in dark mode */
-}
-
+@media (prefers-color-scheme: dark) { .hub-card__icon { color: #fff; } }
 .hub-card__title { font-family: var(--f-display); font-size: var(--size-xl); font-weight: 600; color: var(--text-primary); letter-spacing: -0.02em; margin-bottom: 0.5rem; transition: color var(--dur-fast); }
 .hub-card:hover .hub-card__title { color: var(--accent); }
 .hub-card__desc { font-size: var(--size-sm); color: var(--text-secondary); line-height: 1.6; margin-bottom: 2rem; flex-grow: 1; }
 .hub-card__cta { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: var(--text-primary); transition: gap var(--dur-fast), color var(--dur-fast); text-transform: uppercase; letter-spacing: 0.05em; }
 .hub-card__cta svg { width: 16px; height: 16px; stroke-width: 2.5; transition: transform var(--dur-fast); color: var(--text-tertiary); } 
-.hub-card:hover .hub-card__cta { color: var(--accent); }
-.hub-card:hover .hub-card__cta svg { transform: translateX(4px); color: var(--accent); }
+.hub-card:hover .hub-card__cta { color: var(--accent); } .hub-card:hover .hub-card__cta svg { transform: translateX(4px); color: var(--accent); }
 
-/* ══════════════════════════════════════════════════════
-   AVATARS / INITIALS BADGES (Readability Fix)
-══════════════════════════════════════════════════════ */
-.job-initials, .cm-avatar { 
-  width: 48px; height: 48px; 
-  border-radius: 50%; 
-  display: flex; align-items: center; justify-content: center; 
-  font-family: var(--f-display); font-weight: 600; font-size: 16px; 
-  color: var(--text-on-accent) !important; 
-  flex-shrink: 0; 
-  box-shadow: inset 0 2px 4px rgba(255,255,255,0.3), var(--shadow-sm);
-  text-shadow: 0 1px 2px rgba(0,0,0,0.2); 
-}
-
-/* Staggered deep backgrounds to ensure PURE WHITE text is always legible */
+/* Avatars & Team */
+.job-initials, .cm-avatar { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--f-display); font-weight: 600; font-size: 16px; color: var(--text-on-accent) !important; flex-shrink: 0; box-shadow: inset 0 2px 4px rgba(255,255,255,0.3), var(--shadow-sm); text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
 .job-initials, .cm-card:nth-child(5n+1) .cm-avatar { background-color: var(--badge-bg-1); } 
 .city-block:nth-of-type(2n) .job-initials, .cm-card:nth-child(5n+2) .cm-avatar { background-color: var(--badge-bg-2); } 
 .city-block:nth-of-type(3n) .job-initials, .cm-card:nth-child(5n+3) .cm-avatar { background-color: var(--badge-bg-3); } 
 .cm-card:nth-child(5n+4) .cm-avatar { background-color: var(--badge-bg-4); } 
 .cm-card:nth-child(5n+5) .cm-avatar { background-color: var(--badge-bg-5); } 
-
-/* employment specific smaller initials */
 .job-initials { width: 40px; height: 40px; border-radius: 8px; font-size: 14px; }
 
-/* ══════════════════════════════════════════════════════
-   TEAM GRID
-══════════════════════════════════════════════════════ */
 .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .cm-card { background: var(--surface-card); border: 1px solid var(--border-glass); border-radius: var(--radius-xl); padding: 1.5rem; transition: all var(--dur-base) var(--ease-spring); display: flex; flex-direction: column; box-shadow: var(--shadow-sm), var(--inner-glow); backdrop-filter: blur(32px) saturate(200%); }
 .cm-card:hover { border-color: var(--accent); box-shadow: var(--shadow-md), var(--inner-glow); transform: translateY(-4px); }
 .cm-card__head { display: flex; align-items: center; gap: 16px; margin-bottom: 1.25rem; }
-
 .cm-card__name { font-family: var(--f-display); font-size: var(--size-md); font-weight: 600; color: var(--text-primary); line-height: 1.1; letter-spacing: -0.01em; }
 .cm-card__role { font-size: 11px; color: var(--accent); margin-top: 4px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
 .cm-card__contacts { display: flex; flex-direction: column; gap: 10px; font-size: var(--size-sm); color: var(--text-secondary); padding: 1.25rem 0; border-top: 1px solid var(--border-light); margin-bottom: 0; flex-grow: 1; }
-.cm-contact { display: flex; align-items: center; gap: 12px; font-weight: 500; }
-.cm-contact svg { width: 16px; height: 16px; color: var(--text-tertiary); }
+.cm-contact { display: flex; align-items: center; gap: 12px; font-weight: 500; } .cm-contact svg { width: 16px; height: 16px; color: var(--text-tertiary); }
 .cm-contact a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
 .cm-card__actions { display: flex; gap: 8px; margin-top: 1rem; }
 .cm-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 10px; font-family: var(--f-body); font-size: 13px; font-weight: 600; border-radius: 8px; cursor: pointer; transition: all var(--dur-fast); }
-.cm-btn--primary { background: var(--btn-bg); color: var(--btn-text); }
-.cm-btn--primary:hover { background: var(--btn-hover); transform: translateY(-1px); }
-.cm-btn--primary:active { transform: scale(0.95); }
-.cm-btn--secondary { background: var(--surface-warm); color: var(--text-primary); }
-.cm-btn--secondary:hover { border-color: var(--accent); color: var(--accent); background: var(--surface-card); transform: translateY(-1px); }
-.cm-btn--secondary:active { transform: scale(0.95); }
+.cm-btn--primary { background: var(--btn-bg); color: var(--btn-text); } .cm-btn--primary:hover { background: var(--btn-hover); transform: translateY(-1px); }
+.cm-btn--secondary { background: var(--surface-warm); color: var(--text-primary); } .cm-btn--secondary:hover { border-color: var(--accent); color: var(--accent); background: var(--surface-card); transform: translateY(-1px); }
 
 /* Case Manager Controls */
 .status-bar { display: flex; align-items: center; justify-content: space-between; background: var(--surface-card); border: 1px solid var(--border-glass); border-radius: var(--radius-lg); padding: 16px 24px; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 16px; box-shadow: var(--shadow-sm), var(--inner-glow); backdrop-filter: blur(24px); }
 .status-ind { display: flex; align-items: center; gap: 12px; font-size: var(--size-sm); color: var(--text-primary); font-weight: 600; }
-.sdot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-.sdot.on { background: var(--signal-green); box-shadow: 0 0 0 4px var(--signal-green-pale); }
-.sdot.off { background: var(--text-tertiary); box-shadow: 0 0 0 4px var(--border-light); }
+.sdot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; } .sdot.on { background: var(--signal-green); box-shadow: 0 0 0 4px var(--signal-green-pale); } .sdot.off { background: var(--text-tertiary); box-shadow: 0 0 0 4px var(--border-light); }
 .status-hours { font-size: 13px; color: var(--text-secondary); font-weight: 500; }
-
 .controls-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem; gap: 1rem; flex-wrap: wrap; }
 .searchbox { display: flex; align-items: center; gap: 12px; padding: 14px 20px; background: var(--surface-card); border: 1px solid var(--border); border-radius: 100px; width: 100%; max-width: 400px; transition: all var(--dur-fast); box-shadow: inset 0 2px 4px rgba(0,0,0,0.02), var(--inner-glow); backdrop-filter: blur(20px); }
 .searchbox:focus-within { border-color: var(--accent); box-shadow: 0 4px 16px rgba(2,119,182,0.15); }
-.searchbox svg { width: 18px; height: 18px; color: var(--text-tertiary); flex-shrink: 0; transition: color var(--dur-fast); }
-.searchbox:focus-within svg { color: var(--accent); }
-.searchbox input { border: none; background: none; font-family: var(--f-body); font-size: var(--size-sm); color: var(--text-primary); outline: none; width: 100%; }
-.searchbox input::placeholder { color: var(--text-tertiary); }
+.searchbox svg { width: 18px; height: 18px; color: var(--text-tertiary); flex-shrink: 0; transition: color var(--dur-fast); } .searchbox:focus-within svg { color: var(--accent); }
+.searchbox input { border: none; background: none; font-family: var(--f-body); font-size: var(--size-sm); color: var(--text-primary); outline: none; width: 100%; } .searchbox input::placeholder { color: var(--text-tertiary); }
 .result-count { font-size: 13px; color: var(--text-secondary); font-weight: 500; }
 
-/* ══════════════════════════════════════════════════════
-   INNER PAGES HERO (Centered)
-══════════════════════════════════════════════════════ */
+/* Inner Page & Resource Elements */
 .page-hero { padding: clamp(3rem, 6vw, 5rem) 0 1rem; position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; }
 .page-hero__inner { display: flex; flex-direction: column; align-items: center; text-align: center; }
 .page-hero__crumb { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-tertiary); margin-bottom: 1.5rem; justify-content: center; }
@@ -541,107 +299,23 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .page-hero__title em { font-style: italic; color: transparent; background: linear-gradient(135deg, var(--accent), var(--accent-light)); -webkit-background-clip: text; }
 .page-hero__sub { margin-top: 1rem; font-size: var(--size-lg); color: var(--text-secondary); line-height: 1.5; max-width: 600px; font-weight: 400; margin-left: auto; margin-right: auto; }
 
-/* ══════════════════════════════════════════════════════
-   SEGMENTED CONTROLS (Pills & Tabs)
-══════════════════════════════════════════════════════ */
 .pill-row { display: inline-flex; gap: 4px; padding: 4px; background: var(--surface-card); border: 1px solid var(--border-glass); border-radius: 100px; box-shadow: var(--shadow-sm), inset 0 2px 4px rgba(0,0,0,0.02); backdrop-filter: blur(20px); margin-bottom: 2rem; overflow-x: auto; max-width: 100%; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
 .pill-row::-webkit-scrollbar { display: none; }
 .pill, .tab { padding: 10px 20px; font-size: 13px; font-weight: 600; border: none; border-radius: 100px; background: transparent; color: var(--text-secondary); cursor: pointer; transition: all var(--dur-fast); white-space: nowrap; }
-.pill:hover, .tab:hover { color: var(--text-primary); }
-.pill.on, .tab.on { background: var(--btn-bg); color: var(--btn-text); box-shadow: 0 2px 8px rgba(2,119,182,0.25); }
+.pill:hover, .tab:hover { color: var(--text-primary); } .pill.on, .tab.on { background: var(--btn-bg); color: var(--btn-text); box-shadow: 0 2px 8px rgba(2,119,182,0.25); }
 
-/* ══════════════════════════════════════════════════════
-   EMPLOYMENT (Linear App Style List)
-══════════════════════════════════════════════════════ */
-.emp-layout { display: grid; grid-template-columns: 1fr 340px; gap: 2rem; align-items: start; }
-.emp-layout > div { min-width: 0; }
-.emp-sidebar { position: sticky; top: 100px; display: flex; flex-direction: column; gap: 24px; }
-
-.sync-bar { display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; background: var(--accent-pale); border-radius: var(--radius-md); font-size: 13px; color: var(--accent); font-weight: 600; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 8px; }
-.live-dot { display: flex; align-items: center; gap: 8px; }
-.live-pip { width: 8px; height: 8px; background: var(--signal-green); border-radius: 50%; animation: pulse-live 2s infinite; }
-.sync-time { font-family: var(--f-body); font-size: 11px; opacity: 0.8; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; }
-
-.city-block { margin-bottom: 1.5rem; border-radius: var(--radius-lg); border: 1px solid var(--border-light); background: var(--surface-card); box-shadow: var(--shadow-sm), var(--inner-glow); backdrop-filter: blur(20px); overflow: hidden; }
-.city-block__header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; cursor: pointer; user-select: none; background: var(--surface-warm); border-bottom: 1px solid var(--border-light); transition: background var(--dur-fast); }
-.city-block__header:hover { background: var(--border-light); }
-.city-block__left { display: flex; align-items: center; gap: 12px; }
-.city-pip { width: 8px; height: 8px; border-radius: 50%; background: var(--text-tertiary); transition: background var(--dur-fast); }
-.city-block__header:hover .city-pip { background: var(--accent); }
-.city-name { font-size: 14px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-primary); transition: color var(--dur-fast); }
-.city-block__header:hover .city-name { color: var(--accent); }
-.city-count { font-size: 12px; color: var(--text-secondary); background: var(--surface); padding: 4px 10px; font-weight: 600; border-radius: 100px; border: 1px solid var(--border); }
-.city-chev { color: var(--text-tertiary); transition: transform var(--dur-spring); width: 16px; height: 16px; }
-.city-block.closed .city-chev { transform: rotate(-90deg); }
-.city-block.closed .city-block__body { display: none; }
-.city-block__body { background: transparent; }
-
-.job-row { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; padding: 16px 20px; gap: 16px; border-bottom: 1px solid var(--border-light); cursor: pointer; transition: all var(--dur-fast); text-decoration: none; }
-.job-row:last-child { border-bottom: none; }
-.job-row:hover { background: var(--surface-warm); padding-left: 24px; padding-right: 16px; }
-
-.job-info { min-width: 0; }
-.job-title { font-size: var(--size-sm); font-weight: 600; color: var(--text-primary); display: flex; align-items: flex-start; gap: 8px; margin-bottom: 2px; transition: color var(--dur-fast); flex-wrap: wrap; word-break: break-word; }
-.job-arrow { font-size: 14px; opacity: 0; transform: translateX(-4px); transition: all var(--dur-fast); color: var(--text-tertiary); }
-.job-row:hover .job-title { color: var(--accent); }
-.job-row:hover .job-arrow { opacity: 1; transform: translateX(0); color: var(--accent); }
-.job-meta { display: flex; align-items: center; gap: 12px; font-size: 12px; color: var(--text-secondary); flex-wrap: wrap; }
-.job-employer { font-weight: 500; }
-.job-time { display: flex; align-items: center; gap: 4px; color: var(--text-tertiary); }
-.job-time svg { width: 12px; height: 12px; }
-.job-right { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
-.job-wage { font-family: var(--f-body); font-size: 14px; font-weight: 600; color: var(--text-primary); }
-.badge { font-size: 10px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 4px 10px; border-radius: 100px; border: 1px solid; }
-.badge--ft { background: var(--signal-green-pale); color: var(--signal-green); border-color: rgba(15,118,110,0.2); }
-.badge--pt { background: var(--surface-warm); color: var(--text-secondary); border-color: var(--border); }
-.badge--new { background: var(--accent); color: var(--btn-text); border-color: var(--accent); }
-@media (prefers-color-scheme: dark) { 
-  .badge--ft { border-color: rgba(52,211,153,0.2); } 
-}
-
-/* Sidebar Cards */
-.scard { background: var(--surface-card); backdrop-filter: blur(32px) saturate(200%); border: 1px solid var(--border-glass); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm), var(--inner-glow); }
-.scard__head { padding: 16px 20px; border-bottom: 1px solid var(--border-light); background: var(--surface-warm); }
-.scard__head h3 { font-size: 12px; font-weight: 700; color: var(--text-primary); letter-spacing: 0.1em; text-transform: uppercase; margin: 0; }
-.step-item { display: flex; gap: 12px; align-items: flex-start; padding: 16px 20px; border-bottom: 1px solid var(--border-light); }
-.step-item:last-child { border-bottom: none; }
-.step-num { width: 24px; height: 24px; border-radius: 50%; background: var(--btn-bg); color: var(--btn-text); font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
-.step-title { font-size: 13px; font-weight: 600; color: var(--text-primary); margin-bottom: 2px; }
-.step-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
-.res-link { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--border-light); transition: background var(--dur-fast); }
-.res-link:last-child { border-bottom: none; }
-.res-link:hover { background: var(--surface-warm); }
-.res-link__cat { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 2px; }
-.res-link__name { font-size: 13px; font-weight: 600; color: var(--text-primary); transition: color var(--dur-fast); }
-.res-link:hover .res-link__name { color: var(--accent); }
-.res-link__arrow { color: var(--text-tertiary); font-size: 14px; font-weight: 700; transition: color var(--dur-fast); }
-.res-link:hover .res-link__arrow { color: var(--accent); }
-
-/* ══════════════════════════════════════════════════════
-   RESOURCE CARDS (Housing, Healthcare, More)
-══════════════════════════════════════════════════════ */
-.panel { display: none; }
-.panel.on { display: block; animation: panelIn 0.5s var(--ease-spring) forwards; }
+/* Resource Cards */
+.panel { display: none; } .panel.on { display: block; animation: panelIn 0.5s var(--ease-spring) forwards; }
 @keyframes panelIn { from { opacity:0; transform: translateY(10px) scale(0.99); } to { opacity:1; transform: translateY(0) scale(1); } }
-
 .resource-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; }
 .rc { background: var(--surface-card); border: 1px solid var(--border-glass); border-radius: var(--radius-lg); padding: 24px; transition: all var(--dur-base) var(--ease-spring); position: relative; overflow: hidden; display: flex; flex-direction: column; box-shadow: var(--shadow-sm), var(--inner-glow); backdrop-filter: blur(24px); }
 .rc::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; transition: width var(--dur-spring); }
-.rc:hover { box-shadow: var(--shadow-md), var(--inner-glow); transform: translateY(-4px); border-color: var(--accent); }
-.rc:hover::before { width: 6px; }
+.rc:hover { box-shadow: var(--shadow-md), var(--inner-glow); transform: translateY(-4px); border-color: var(--accent); } .rc:hover::before { width: 6px; }
 
-/* Sub-branding colors for resources */
-.rc--emergency::before   { background: var(--signal-red); }
-.rc--transitional::before{ background: var(--signal-purple); }
-.rc--affordable::before  { background: var(--signal-green); }
-.rc--medical::before     { background: var(--accent); }
-.rc--behavioral::before  { background: var(--signal-purple); }
-.rc--specialty::before   { background: var(--signal-amber); }
-.rc--basic::before       { background: var(--accent); }
-.rc--food::before        { background: var(--signal-green); }
-.rc--legal::before       { background: var(--signal-amber); }
-.rc--education::before   { background: var(--accent); }
-.rc--animals::before     { background: var(--signal-red); }
+.rc--emergency::before   { background: var(--signal-red); } .rc--transitional::before{ background: var(--signal-purple); } .rc--affordable::before  { background: var(--signal-green); }
+.rc--medical::before     { background: var(--accent); } .rc--behavioral::before  { background: var(--signal-purple); } .rc--specialty::before   { background: var(--signal-amber); }
+.rc--basic::before       { background: var(--accent); } .rc--food::before        { background: var(--signal-green); } .rc--legal::before       { background: var(--signal-amber); }
+.rc--education::before   { background: var(--accent); } .rc--animals::before     { background: var(--signal-red); }
 
 .rc-badge { display: inline-flex; align-items: center; padding: 4px 12px; border-radius: 100px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; border: 1px solid; }
 .rcb--emergency   { background: var(--signal-red-pale); color: var(--signal-red); border-color: rgba(185,28,28,0.2); }
@@ -657,20 +331,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .rcb--education   { background: var(--accent-pale); color: var(--accent); border-color: rgba(2,119,182,0.2); }
 .rcb--animals     { background: var(--signal-red-pale); color: var(--signal-red); border-color: rgba(185,28,28,0.2); }
 
-/* Update dark mode borders */
 @media (prefers-color-scheme: dark) {
-  .rcb--emergency   { border-color: rgba(248,113,113,0.2); }
-  .rcb--transitional{ border-color: rgba(167,139,250,0.2); }
-  .rcb--affordable  { border-color: rgba(52,211,153,0.2); }
-  .rcb--special     { border-color: rgba(251,191,36,0.2); }
-  .rcb--medical     { border-color: rgba(56,189,248,0.2); }
-  .rcb--behavioral  { border-color: rgba(167,139,250,0.2); }
-  .rcb--specialty   { border-color: rgba(251,191,36,0.2); }
-  .rcb--basic       { border-color: rgba(56,189,248,0.2); }
-  .rcb--food        { border-color: rgba(52,211,153,0.2); }
-  .rcb--legal       { border-color: rgba(251,191,36,0.2); }
-  .rcb--education   { border-color: rgba(56,189,248,0.2); }
-  .rcb--animals     { border-color: rgba(248,113,113,0.2); }
+  .rcb--emergency   { border-color: rgba(248,113,113,0.2); } .rcb--transitional{ border-color: rgba(167,139,250,0.2); } .rcb--affordable  { border-color: rgba(52,211,153,0.2); }
+  .rcb--special     { border-color: rgba(251,191,36,0.2); } .rcb--medical     { border-color: rgba(56,189,248,0.2); } .rcb--behavioral  { border-color: rgba(167,139,250,0.2); }
+  .rcb--specialty   { border-color: rgba(251,191,36,0.2); } .rcb--basic       { border-color: rgba(56,189,248,0.2); } .rcb--food        { border-color: rgba(52,211,153,0.2); }
+  .rcb--legal       { border-color: rgba(251,191,36,0.2); } .rcb--education   { border-color: rgba(56,189,248,0.2); } .rcb--animals     { border-color: rgba(248,113,113,0.2); }
 }
 
 .rc-name { font-family: var(--f-display); font-size: var(--size-lg); font-weight: 600; color: var(--text-primary); line-height: 1.2; margin-bottom: 0.5rem; letter-spacing: -0.01em; transition: color var(--dur-fast); }
@@ -678,51 +343,135 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .rc-details { display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--border-light); }
 .rc-row { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; font-weight: 500; color: var(--text-secondary); line-height: 1.5; }
 .rc-row svg { width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px; color: var(--text-tertiary); transition: color var(--dur-fast); }
-.rc-row a { transition: color var(--dur-fast); }
-.rc-row a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
+.rc-row a { transition: color var(--dur-fast); } .rc-row a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
 .rc:hover .rc-row svg { color: var(--accent); }
 
-/* ══════════════════════════════════════════════════════
-   CTA BLOCK
-══════════════════════════════════════════════════════ */
+/* Employment Lists */
+.emp-layout { display: grid; grid-template-columns: 1fr 340px; gap: 2rem; align-items: start; }
+.emp-layout > div { min-width: 0; }
+.emp-sidebar { position: sticky; top: 100px; display: flex; flex-direction: column; gap: 24px; }
+.sync-bar { display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; background: var(--accent-pale); border-radius: var(--radius-md); font-size: 13px; color: var(--accent); font-weight: 600; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 8px; border: 1px solid rgba(2,119,182,0.15); }
+.live-dot { display: flex; align-items: center; gap: 8px; }
+.live-pip { width: 8px; height: 8px; background: var(--signal-green); border-radius: 50%; animation: pulse-live 2s infinite; }
+.sync-time { font-family: var(--f-body); font-size: 11px; opacity: 0.8; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; display: flex; gap: 12px; align-items: center; }
+
+.source-status { display: flex; align-items: center; gap: 4px; }
+.source-icon { width: 12px; height: 12px; color: var(--signal-green); }
+
+.city-block { margin-bottom: 1.5rem; border-radius: var(--radius-lg); border: 1px solid var(--border-light); background: var(--surface-card); box-shadow: var(--shadow-sm), var(--inner-glow); backdrop-filter: blur(20px); overflow: hidden; }
+.city-block__header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; cursor: pointer; user-select: none; background: var(--surface-warm); border-bottom: 1px solid var(--border-light); transition: background var(--dur-fast); }
+.city-block__header:hover { background: var(--border-light); }
+.city-block__left { display: flex; align-items: center; gap: 12px; }
+.city-pip { width: 8px; height: 8px; border-radius: 50%; background: var(--text-tertiary); transition: background var(--dur-fast); }
+.city-block__header:hover .city-pip { background: var(--accent); }
+.city-name { font-size: 14px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-primary); transition: color var(--dur-fast); }
+.city-block__header:hover .city-name { color: var(--accent); }
+.city-count { font-size: 12px; color: var(--text-secondary); background: var(--surface); padding: 4px 10px; font-weight: 600; border-radius: 100px; border: 1px solid var(--border); }
+.city-chev { color: var(--text-tertiary); transition: transform var(--dur-spring); width: 16px; height: 16px; }
+.city-block.closed .city-chev { transform: rotate(-90deg); } .city-block.closed .city-block__body { display: none; }
+.city-block__body { background: transparent; }
+
+.job-row { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; padding: 16px 20px; gap: 16px; border-bottom: 1px solid var(--border-light); cursor: pointer; transition: all var(--dur-fast); text-decoration: none; }
+.job-row:last-child { border-bottom: none; } .job-row:hover { background: var(--surface-warm); padding-left: 24px; padding-right: 16px; }
+.job-info { min-width: 0; }
+.job-title { font-size: var(--size-sm); font-weight: 600; color: var(--text-primary); display: flex; align-items: flex-start; gap: 8px; margin-bottom: 2px; transition: color var(--dur-fast); flex-wrap: wrap; word-break: break-word; }
+.job-arrow { font-size: 14px; opacity: 0; transform: translateX(-4px); transition: all var(--dur-fast); color: var(--text-tertiary); }
+.job-row:hover .job-title { color: var(--accent); } .job-row:hover .job-arrow { opacity: 1; transform: translateX(0); color: var(--accent); }
+.job-meta { display: flex; align-items: center; gap: 12px; font-size: 12px; color: var(--text-secondary); flex-wrap: wrap; }
+.job-employer { font-weight: 500; }
+.job-time { display: flex; align-items: center; gap: 4px; color: var(--text-tertiary); } .job-time svg { width: 12px; height: 12px; }
+.job-right { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+.job-wage { font-family: var(--f-body); font-size: 14px; font-weight: 600; color: var(--text-primary); }
+.badge { font-size: 10px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 4px 10px; border-radius: 100px; border: 1px solid; }
+.badge--ft { background: var(--signal-green-pale); color: var(--signal-green); border-color: rgba(15,118,110,0.2); }
+.badge--pt { background: var(--surface-warm); color: var(--text-secondary); border-color: var(--border); }
+.badge--new { background: var(--accent); color: var(--btn-text); border-color: var(--accent); }
+@media (prefers-color-scheme: dark) { .badge--ft { border-color: rgba(52,211,153,0.2); } }
+
+.scard { background: var(--surface-card); backdrop-filter: blur(32px) saturate(200%); border: 1px solid var(--border-glass); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm), var(--inner-glow); }
+.scard__head { padding: 16px 20px; border-bottom: 1px solid var(--border-light); background: var(--surface-warm); }
+.scard__head h3 { font-size: 12px; font-weight: 700; color: var(--text-primary); letter-spacing: 0.1em; text-transform: uppercase; margin: 0; }
+.step-item { display: flex; gap: 12px; align-items: flex-start; padding: 16px 20px; border-bottom: 1px solid var(--border-light); }
+.step-item:last-child { border-bottom: none; }
+.step-num { width: 24px; height: 24px; border-radius: 50%; background: var(--btn-bg); color: var(--btn-text); font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+.step-title { font-size: 13px; font-weight: 600; color: var(--text-primary); margin-bottom: 2px; }
+.step-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
+.res-link { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--border-light); transition: background var(--dur-fast); }
+.res-link:last-child { border-bottom: none; } .res-link:hover { background: var(--surface-warm); }
+.res-link__cat { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 2px; }
+.res-link__name { font-size: 13px; font-weight: 600; color: var(--text-primary); transition: color var(--dur-fast); }
+.res-link:hover .res-link__name { color: var(--accent); }
+.res-link__arrow { color: var(--text-tertiary); font-size: 14px; font-weight: 700; transition: color var(--dur-fast); }
+.res-link:hover .res-link__arrow { color: var(--accent); }
+
+/* Intake Questionnaire Styles */
+.intake-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 2rem 0; }
+.intake-opt { background: var(--surface-card); border: 2px solid var(--border-light); border-radius: var(--radius-lg); padding: 1.5rem; text-align: left; cursor: pointer; transition: all 0.2s var(--ease-spring); box-shadow: var(--shadow-sm), var(--inner-glow); backdrop-filter: blur(20px); display: flex; flex-direction: column; font-family: var(--f-body); }
+.intake-opt:hover, .intake-opt.selected { border-color: var(--accent); background: var(--accent-pale); transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.intake-opt.selected { box-shadow: 0 0 0 2px var(--accent-glow); }
+.intake-opt__icon { font-size: 2rem; margin-bottom: 0.75rem; line-height: 1; }
+.intake-opt__label { font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.25rem; }
+.intake-opt__sub { font-size: 0.85rem; color: var(--text-secondary); font-weight: 500; line-height: 1.4; }
+.intake-prog { height: 4px; background: var(--border-light); border-radius: 4px; width: 100%; max-width: 400px; margin: 0 auto 3rem auto; overflow: hidden; }
+.intake-prog-bar { height: 100%; background: var(--accent); width: 0%; transition: width 0.4s var(--ease-out); }
+
+/* Map Page Styles */
+.map-layout { display: grid; grid-template-columns: 300px 1fr; gap: 0; height: calc(100vh - 200px); min-height: 520px; border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-lg); border: 1px solid var(--border-glass); }
+.map-sidebar { background: var(--surface-card); backdrop-filter: blur(32px); border-right: 1px solid var(--border-light); display: flex; flex-direction: column; overflow: hidden; }
+.map-sidebar__head { padding: 16px; border-bottom: 1px solid var(--border-light); background: var(--surface-warm); }
+.map-sidebar__head h3 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-primary); margin-bottom: 10px; }
+.map-filters { display: flex; flex-wrap: wrap; gap: 4px; }
+.map-pill { padding: 6px 12px; font-size: 11px; font-weight: 700; border-radius: 100px; background: var(--surface); border: 1px solid var(--border); color: var(--text-secondary); cursor: pointer; transition: all var(--dur-fast); white-space: nowrap; font-family: var(--f-body); }
+.map-pill:hover { color: var(--text-primary); border-color: var(--accent); }
+.map-pill.on { background: var(--btn-bg); color: var(--btn-text); border-color: var(--btn-bg); }
+.map-list { flex: 1; overflow-y: auto; padding: 8px; scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
+.map-list::-webkit-scrollbar { width: 4px; }
+.map-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+.map-item { display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; border-radius: var(--radius-md); cursor: pointer; transition: all var(--dur-fast); border: 1px solid transparent; margin-bottom: 4px; }
+.map-item:hover { background: var(--surface-warm); border-color: var(--border-light); }
+.map-item.active { background: var(--accent-pale); border-color: var(--accent-glow); }
+.map-item__dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; border: 2px solid rgba(255,255,255,0.8); box-shadow: 0 1px 4px rgba(0,0,0,0.2); }
+.map-item__name { font-size: 12px; font-weight: 600; color: var(--text-primary); line-height: 1.3; }
+.map-item__meta { font-size: 11px; color: var(--text-tertiary); margin-top: 2px; }
+#map-container { flex: 1; min-height: 400px; z-index: 1; background: var(--surface-warm); }
+.map-popup { padding: 14px 16px; min-width: 200px; max-width: 280px; font-family: var(--f-body); }
+.map-popup__cat { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 4px; }
+.map-popup__name { font-family: var(--f-display); font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 8px; line-height: 1.2; }
+.map-popup__detail { font-size: 12px; color: var(--text-secondary); margin-bottom: 4px; display: flex; gap: 6px; align-items: flex-start; line-height: 1.4; }
+.map-popup__link { display: inline-flex; align-items: center; gap: 4px; margin-top: 8px; padding: 6px 12px; background: var(--btn-bg); color: #fff; border-radius: 100px; font-size: 11px; font-weight: 700; text-decoration: none; transition: all var(--dur-fast); }
+.map-popup__link:hover { background: var(--btn-hover); }
+.map-popup__call { display: inline-flex; align-items: center; gap: 4px; margin-top: 4px; margin-left: 4px; padding: 6px 12px; background: var(--signal-green-pale); color: var(--signal-green); border-radius: 100px; font-size: 11px; font-weight: 700; text-decoration: none; transition: all var(--dur-fast); }
+.map-popup__call:hover { background: rgba(15, 118, 110, 0.2); }
+.leaflet-popup-content-wrapper { border-radius: 14px !important; box-shadow: 0 16px 48px rgba(15,23,42,0.12) !important; border: 1px solid var(--border-glass) !important; }
+.leaflet-popup-content { margin: 0 !important; }
+.leaflet-popup-tip-container { opacity: 0.8; }
+.map-count-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: var(--surface-card); border: 1px solid var(--border-glass); border-radius: 100px; font-size: 12px; font-weight: 600; color: var(--text-secondary); margin-bottom: 1rem; }
+
+/* Custom Leaflet Dark Mode Resets */
+@media (prefers-color-scheme: dark) {
+  .leaflet-layer, .leaflet-control-zoom-in, .leaflet-control-zoom-out, .leaflet-control-attribution { filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%); }
+  .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: var(--surface-float) !important; color: var(--text-primary) !important; box-shadow: var(--shadow-md) !important; border: 1px solid var(--border-glass) !important; backdrop-filter: blur(20px); }
+  .leaflet-popup-content { font-family: var(--f-body); }
+}
+
 .cta-block { margin: 2rem 0; padding: clamp(3rem, 6vw, 5rem) 2rem; background: var(--badge-bg-1); border-radius: var(--radius-xl); text-align: center; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255,255,255,0.05); color: #fff; }
 .cta-block::before { content: ''; position: absolute; top: -50%; left: -20%; width: 1000px; height: 1000px; background: radial-gradient(circle, rgba(255,255,255,0.04), transparent 60%); pointer-events: none; border-radius: 50%; }
 .cta-block__title { font-family: var(--f-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 500; line-height: 1.1; margin-bottom: 1rem; letter-spacing: -0.02em; color: #fff; }
 .cta-block__text { font-size: var(--size-md); color: rgba(255,255,255,0.85); max-width: 600px; line-height: 1.6; }
 .cta-block__actions { margin-top: 2rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; position: relative; z-index: 1; }
-.cta-block .btn--outline { color: #fff; border-color: rgba(255,255,255,0.3); }
-.cta-block .btn--outline:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
-.cta-block .btn--solid { background: #fff; color: var(--badge-bg-1); }
-.cta-block .btn--solid:hover { background: rgba(255,255,255,0.9); }
+.cta-block .btn--outline { color: #fff; border-color: rgba(255,255,255,0.3); } .cta-block .btn--outline:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
+.cta-block .btn--solid { background: #fff; color: var(--badge-bg-1); } .cta-block .btn--solid:hover { background: rgba(255,255,255,0.9); }
+@media (prefers-color-scheme: dark) { .cta-block { background: var(--surface-warm); } .cta-block .btn--solid { background: var(--accent); color: var(--btn-text); } .cta-block .btn--solid:hover { background: var(--accent-light); } }
 
-@media (prefers-color-scheme: dark) {
-  .cta-block { background: var(--surface-warm); }
-  .cta-block .btn--solid { background: var(--accent); color: var(--btn-text); }
-  .cta-block .btn--solid:hover { background: var(--accent-light); }
-}
-
-/* ══════════════════════════════════════════════════════
-   FOOTER
-══════════════════════════════════════════════════════ */
 .footer { background: var(--surface-warm); padding: 4rem 0 2rem; border-top: 1px solid var(--border-light); font-size: 13px; }
 .footer__grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid var(--border-light); }
 .footer__brand-desc { color: var(--text-secondary); line-height: 1.6; max-width: 320px; margin-top: 16px; }
 .footer__col-label { font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-primary); margin-bottom: 1.25rem; font-size: 11px; }
-.footer__links { display: flex; flex-direction: column; gap: 12px; }
-.footer__links a { color: var(--text-secondary); cursor: pointer; transition: color var(--dur-fast); }
-.footer__links a:hover { color: var(--accent); }
+.footer__links { display: flex; flex-direction: column; gap: 12px; } .footer__links a { color: var(--text-secondary); cursor: pointer; transition: color var(--dur-fast); } .footer__links a:hover { color: var(--accent); }
 .footer__bottom { padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; color: var(--text-tertiary); }
-.footer__legal { display: flex; gap: 1.5rem; }
-.footer__legal a:hover { color: var(--accent); }
+.footer__legal { display: flex; gap: 1.5rem; } .footer__legal a:hover { color: var(--accent); }
+.footer .logo__mark { width: 32px; height: 32px; border-radius: 6px; } .footer .logo__text { font-size: 1.2rem; } .footer .logo__sub { font-size: var(--size-xs); }
 
-/* Footer specific logo override */
-.footer .logo__mark { width: 32px; height: 32px; border-radius: 6px; }
-.footer .logo__text { font-size: 1.2rem; }
-.footer .logo__sub { font-size: var(--size-xs); }
-
-/* ══════════════════════════════════════════════════════
-   RESPONSIVE DESIGN
-══════════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
   .hub-grid, .team-grid { grid-template-columns: repeat(2, 1fr); }
   .emp-layout { grid-template-columns: 1fr; }
@@ -730,27 +479,25 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
   .resource-grid { grid-template-columns: 1fr; }
   .footer__grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
   .stats-strip__grid, .page-stats__grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .map-layout { grid-template-columns: 240px 1fr; }
 }
 @media (max-width: 768px) {
-  .nav { display: none !important; }
-  .nav-toggle { display: flex; }
+  .nav { display: none !important; } .nav-toggle { display: flex; }
   .hub-grid, .team-grid { grid-template-columns: 1fr; }
   .emp-sidebar { grid-template-columns: 1fr; }
   .footer__grid { grid-template-columns: 1fr; }
   .topbar { display: none; }
-  
   .hub-card, .cm-card, .rc { padding: 1.5rem; }
   .stats-strip, .page-stats { padding: 2rem 1.5rem; }
-  
-  .cta-block__actions { width: 100%; flex-direction: column; }
-  .cta-block__actions .btn { justify-content: center; width: 100%; }
-  
+  .cta-block__actions { width: 100%; flex-direction: column; } .cta-block__actions .btn { justify-content: center; width: 100%; }
   .job-row { grid-template-columns: auto minmax(0, 1fr); padding: 16px; gap: 12px; }
   .job-right { flex-direction: row; align-items: center; justify-content: space-between; grid-column: 1 / -1; margin-top: 8px; flex-wrap: wrap; gap: 8px; }
-  
   .footer__bottom { flex-direction: column; align-items: flex-start; gap: 12px; }
   .controls-row { flex-direction: column; align-items: stretch; }
   .searchbox { max-width: 100%; }
+  .map-layout { grid-template-columns: 1fr; grid-template-rows: 200px 1fr; height: auto; } 
+  .map-sidebar { border-right: none; border-bottom: 1px solid var(--border-light); max-height: 200px; } 
+  #map-container { height: 450px; }
 }
 </style>
 </head>
@@ -758,9 +505,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 
 <div class="topbar">
   <div class="container topbar__inner">
-    <div class="topbar__left">
-      Official resource of City Net Homeless Services
-    </div>
+    <div class="topbar__left">Official resource of City Net Homeless Services</div>
     <div class="topbar__right">
       <a href="tel:9513903567">Outreach Line: (951) 390-3567</a>
       <div class="topbar__sep"></div>
@@ -773,9 +518,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
   <header class="header" id="header">
     <div class="container header__inner">
       <div class="logo" onclick="goTo('home')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('home')" tabindex="0" role="button" aria-label="City Net home">
-        <div class="logo__mark">
-          <img src="https://images.squarespace-cdn.com/content/v1/5d7aabbf20f74311abd10693/1572561367590-17GJRM1XSH3Q4SSRBEAZ/City+Net+Logo+Icon+Full+Color.png" alt="City Net logo">
-        </div>
+        <div class="logo__mark"><img src="https://images.squarespace-cdn.com/content/v1/5d7aabbf20f74311abd10693/1572561367590-17GJRM1XSH3Q4SSRBEAZ/City+Net+Logo+Icon+Full+Color.png" alt="City Net logo"></div>
         <div class="logo__info">
           <div class="logo__text" style="font-family: var(--f-display);">City Net</div>
           <div class="logo__sub" style="font-family: var(--f-body);">Client Hub</div>
@@ -784,7 +527,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 
       <nav class="nav" id="mainNav" role="navigation" aria-label="Primary Desktop Navigation">
         <button class="nav-link active" onclick="goTo('home')" data-page="home">Home</button>
-        
+        <button class="nav-link" onclick="goTo('intake')" data-page="intake">Get Started</button>
         <div class="nav-drop">
           <button class="nav-link" data-page="resources-group" aria-haspopup="true">Resources ▾</button>
           <div class="nav-drop-menu" role="menu">
@@ -800,6 +543,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
               <div class="ndi-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
               <div><div class="ndi-title">Additional Resources</div><div class="ndi-sub">Food, legal, education &amp; more</div></div>
             </div>
+            <div class="nav-drop-item" onclick="goTo('map')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('map')" tabindex="0" role="menuitem">
+              <div class="ndi-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg></div>
+              <div><div class="ndi-title">Resource Map</div><div class="ndi-sub">Find nearby resources visually</div></div>
+            </div>
           </div>
         </div>
         <button class="nav-link" onclick="goTo('employment')" data-page="employment">Employment</button>
@@ -811,9 +558,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
       </nav>
 
       <button class="nav-toggle" id="menuBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileNav">
-        <div class="hamburger" aria-hidden="true">
-          <span></span><span></span><span></span>
-        </div>
+        <div class="hamburger" aria-hidden="true"><span></span><span></span><span></span></div>
       </button>
     </div>
   </header>
@@ -822,27 +567,20 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 <div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Mobile Navigation Menu" aria-modal="true">
   <div class="mobile-nav__head">
     <div class="logo logo--white">
-      <div class="logo__mark">
-        <img src="https://images.squarespace-cdn.com/content/v1/5d7aabbf20f74311abd10693/1572561367590-17GJRM1XSH3Q4SSRBEAZ/City+Net+Logo+Icon+Full+Color.png" alt="City Net logo">
-      </div>
-      <div class="logo__info">
-        <div class="logo__text" style="font-family: var(--f-display);">City Net</div>
-        <div class="logo__sub" style="font-family: var(--f-body);">Client Hub</div>
-      </div>
+      <div class="logo__mark"><img src="https://images.squarespace-cdn.com/content/v1/5d7aabbf20f74311abd10693/1572561367590-17GJRM1XSH3Q4SSRBEAZ/City+Net+Logo+Icon+Full+Color.png" alt="City Net logo"></div>
+      <div class="logo__info"><div class="logo__text" style="font-family: var(--f-display);">City Net</div><div class="logo__sub" style="font-family: var(--f-body);">Client Hub</div></div>
     </div>
-    <button class="mobile-nav__close" id="mobileClose" aria-label="Close navigation menu">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
+    <button class="mobile-nav__close" id="mobileClose" aria-label="Close navigation menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
   </div>
   <div class="mobile-nav__links" role="menu">
     <div class="mobile-nav__link active" onclick="goTo('home');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('home');closeMobileNav()}" tabindex="0" role="menuitem" data-mpage="home">Home</div>
-    
+    <div class="mobile-nav__link" onclick="goTo('intake');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('intake');closeMobileNav()}" tabindex="0" role="menuitem" data-mpage="intake">Get Started (Assessment)</div>
     <div class="mobile-nav__group-label">Resources</div>
     <div class="mobile-nav__link" onclick="goTo('housing');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('housing');closeMobileNav()}" tabindex="0" role="menuitem" data-mpage="housing" style="padding-left:32px">Housing</div>
     <div class="mobile-nav__link" onclick="goTo('healthcare');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('healthcare');closeMobileNav()}" tabindex="0" role="menuitem" data-mpage="healthcare" style="padding-left:32px">Healthcare</div>
     <div class="mobile-nav__link" onclick="goTo('resources');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('resources');closeMobileNav()}" tabindex="0" role="menuitem" data-mpage="resources" style="padding-left:32px">Additional Resources</div>
+    <div class="mobile-nav__link" onclick="goTo('map');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('map');closeMobileNav()}" tabindex="0" role="menuitem" data-mpage="map" style="padding-left:32px">Resource Map</div>
     <div style="height:1px; background:rgba(255,255,255,0.1); margin:1rem 20px;"></div>
-    
     <div class="mobile-nav__link" onclick="goTo('employment');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('employment');closeMobileNav()}" tabindex="0" role="menuitem" data-mpage="employment">Employment</div>
     <div class="mobile-nav__link" onclick="goTo('home','team-section');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('home','team-section');closeMobileNav()}" tabindex="0" role="menuitem">Case Managers</div>
   </div>
@@ -858,19 +596,17 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
   <div class="page active" id="page-home">
     <section class="hero" aria-label="Welcome section">
       <div class="container hero__inner">
-        <div class="hero__badge">
-          <span class="hero__badge-live" aria-hidden="true"></span>
-          Riverside County
-        </div>
+        <div class="hero__badge"><span class="hero__badge-live" aria-hidden="true"></span> Riverside County</div>
         <h1 class="hero__headline reveal">Your partner on<br>the path to <em>housing.</em></h1>
         <p class="hero__sub reveal reveal-delay-1">Explore housing resources, find local job opportunities, and connect with your case manager — all in one place.</p>
         <div class="hero__actions reveal reveal-delay-2">
-          <button class="btn btn--solid" onclick="goTo('housing')">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
-            Housing Resources
+          <button class="btn btn--solid" onclick="goTo('intake')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            Take Assessment
           </button>
-          <button class="btn btn--outline" onclick="goTo('employment')">
-            Browse Job Openings
+          <button class="btn btn--outline" onclick="goTo('map')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+            View Resource Map
           </button>
         </div>
       </div>
@@ -879,22 +615,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
     <div class="stats-strip-wrapper">
       <div class="stats-strip">
         <div class="stats-strip__grid">
-          <div class="stat-cell reveal">
-            <div class="stat-cell__num"><span class="counter" data-target="25">0</span>+</div>
-            <div class="stat-cell__label">Housing Resources</div>
-          </div>
-          <div class="stat-cell reveal reveal-delay-1">
-            <div class="stat-cell__num"><span class="counter" data-target="30">0</span>+</div>
-            <div class="stat-cell__label">Active Job Openings</div>
-          </div>
-          <div class="stat-cell reveal reveal-delay-2">
-            <div class="stat-cell__num"><span class="counter" data-target="11">0</span></div>
-            <div class="stat-cell__label">Case Managers</div>
-          </div>
-          <div class="stat-cell reveal reveal-delay-3">
-            <div class="stat-cell__num"><span class="counter" data-target="5">0</span>+</div>
-            <div class="stat-cell__label">Cities Served</div>
-          </div>
+          <div class="stat-cell reveal"><div class="stat-cell__num"><span class="counter" data-target="25">0</span>+</div><div class="stat-cell__label">Housing Resources</div></div>
+          <div class="stat-cell reveal reveal-delay-1"><div class="stat-cell__num"><span class="counter" data-target="30">0</span>+</div><div class="stat-cell__label">Active Job Openings</div></div>
+          <div class="stat-cell reveal reveal-delay-2"><div class="stat-cell__num"><span class="counter" data-target="11">0</span></div><div class="stat-cell__label">Case Managers</div></div>
+          <div class="stat-cell reveal reveal-delay-3"><div class="stat-cell__num"><span class="counter" data-target="5">0</span>+</div><div class="stat-cell__label">Cities Served</div></div>
         </div>
       </div>
     </div>
@@ -908,37 +632,22 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
         </div>
         <div class="hub-grid">
           <div class="hub-card hub-card--housing reveal reveal-delay-1" onclick="goTo('housing')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('housing')" tabindex="0" role="button" aria-label="View housing resources">
-            <div class="hub-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-            </div>
+            <div class="hub-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
             <h3 class="hub-card__title">Housing</h3>
             <p class="hub-card__desc">Find emergency shelters, transitional housing, and affordable apartments across Riverside County.</p>
-            <div class="hub-card__cta">
-              View housing
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </div>
+            <div class="hub-card__cta">View housing <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
           </div>
           <div class="hub-card hub-card--employment reveal reveal-delay-2" onclick="goTo('employment')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('employment')" tabindex="0" role="button" aria-label="Browse employment opportunities">
-            <div class="hub-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-            </div>
+            <div class="hub-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
             <h3 class="hub-card__title">Employment</h3>
             <p class="hub-card__desc">Browse current job opportunities in Murrieta, Temecula, Lake Elsinore, Menifee, and Wildomar.</p>
-            <div class="hub-card__cta">
-              Browse jobs
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </div>
+            <div class="hub-card__cta">Browse jobs <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
           </div>
           <div class="hub-card hub-card--team reveal reveal-delay-3" onclick="goTo('home','team-section')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('home','team-section')" tabindex="0" role="button" aria-label="Meet your case management team">
-            <div class="hub-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            </div>
+            <div class="hub-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
             <h3 class="hub-card__title">Case Managers</h3>
             <p class="hub-card__desc">Find your assigned case manager and contact them directly by email or phone.</p>
-            <div class="hub-card__cta">
-              Meet the team
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </div>
+            <div class="hub-card__cta">Meet the team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
           </div>
         </div>
       </div>
@@ -953,10 +662,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
         </div>
 
         <div class="status-bar reveal reveal-delay-1">
-          <div class="status-ind" id="statusInd">
-            <span class="sdot" id="statusDot" aria-hidden="true"></span>
-            <span id="statusTxt">Checking availability…</span>
-          </div>
+          <div class="status-ind" id="statusInd"><span class="sdot" id="statusDot" aria-hidden="true"></span><span id="statusTxt">Checking availability…</span></div>
           <div class="status-hours">Available Mon–Fri, 7:00 AM – 3:30 PM</div>
         </div>
 
@@ -978,13 +684,26 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
           <div class="cta-block__title">Don't know where to start?</div>
           <p class="cta-block__text">Whether you need housing, employment, or case management support, we’re here to help.</p>
           <div class="cta-block__actions">
-            <button class="btn btn--solid" onclick="window.location.href='tel:9513903567'">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"></path></svg>
-              Call Outreach Line
-            </button>
-            <button class="btn btn--outline" onclick="window.open('https://www.citynet.org','_blank','noopener noreferrer')">Visit citynet.org ↗</button>
+            <button class="btn btn--solid" onclick="goTo('intake')">Take the Assessment</button>
+            <button class="btn btn--outline" onclick="window.location.href='tel:9513903567'">Call Outreach Line</button>
           </div>
         </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="page" id="page-intake">
+    <div class="page-hero">
+      <div class="container page-hero__inner">
+        <nav class="page-hero__crumb"><a onclick="goTo('home')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('home')" tabindex="0" role="link">Home</a> <span style="margin:0 4px" aria-hidden="true">/</span> <span aria-current="page">Get Started</span></nav>
+        <h1 class="page-hero__title reveal">Client <em>Assessment</em></h1>
+        <p class="page-hero__sub reveal reveal-delay-1">Answer a few quick questions to instantly filter and find the exact resources you need.</p>
+      </div>
+    </div>
+    <section class="section" style="padding-top:0;">
+      <div class="container" style="max-width: 900px;">
+        <div class="intake-prog reveal reveal-delay-2"><div class="intake-prog-bar" id="wizBar" style="width: 33%;"></div></div>
+        <div id="intakeDynamic" class="reveal reveal-delay-2"></div>
       </div>
     </section>
   </div>
@@ -1043,8 +762,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
     <section class="section">
       <div class="container">
         <div class="pill-row reveal reveal-delay-1" id="hcTabs" role="tablist">
-          <button class="pill on" data-tab="medical" role="tab" aria-selected="true">Medical &amp; Clinics</button>
-          <button class="pill" data-tab="behavioral" role="tab" aria-selected="false">Mental Health &amp; Recovery</button>
+          <button class="pill on" data-tab="medical" role="tab" aria-selected="true">Medical & Clinics</button>
+          <button class="pill" data-tab="behavioral" role="tab" aria-selected="false">Mental Health & Recovery</button>
           <button class="pill" data-tab="specialty" role="tab" aria-selected="false">Specialty Care</button>
         </div>
         <div id="hcPanels" class="reveal reveal-delay-2"></div>
@@ -1073,10 +792,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
     <section class="section">
       <div class="container">
         <div class="pill-row reveal reveal-delay-1" id="resTabs" role="tablist">
-          <button class="pill on" data-tab="crisis" role="tab" aria-selected="true">Emergency &amp; Crisis</button>
+          <button class="pill on" data-tab="crisis" role="tab" aria-selected="true">Emergency & Crisis</button>
           <button class="pill" data-tab="basic" role="tab" aria-selected="false">Basic Needs</button>
           <button class="pill" data-tab="food" role="tab" aria-selected="false">Food Pantries</button>
-          <button class="pill" data-tab="legal" role="tab" aria-selected="false">Social &amp; Legal</button>
+          <button class="pill" data-tab="legal" role="tab" aria-selected="false">Social & Legal</button>
           <button class="pill" data-tab="education" role="tab" aria-selected="false">Education</button>
           <button class="pill" data-tab="animals" role="tab" aria-selected="false">Animal Care</button>
         </div>
@@ -1092,7 +811,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
           <a onclick="goTo('home')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('home')" tabindex="0" role="link">Home</a> <span style="margin:0 4px" aria-hidden="true">/</span> <span aria-current="page">Employment</span>
         </nav>
         <h1 class="page-hero__title reveal">Employment <em>Opportunities</em></h1>
-        <p class="page-hero__sub reveal reveal-delay-1">Current job openings across Riverside County. Click any listing to apply securely on Indeed or LinkedIn.</p>
+        <p class="page-hero__sub reveal reveal-delay-1">Current job openings across Riverside County. Click any listing to apply securely on Indeed, LinkedIn, or Google Jobs.</p>
       </div>
     </div>
     <div class="page-stats-wrapper">
@@ -1110,8 +829,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
         <div class="emp-layout">
           <div class="reveal reveal-delay-1">
             <div class="sync-bar" id="empSyncBar">
-              <div class="live-dot"><div class="live-pip" aria-hidden="true"></div> Live updates</div>
-              <div class="sync-time" id="lastSync" aria-live="polite">Syncing...</div>
+              <div class="live-dot"><div class="live-pip" aria-hidden="true"></div> <span>Network Sync Active</span></div>
+              <div class="sync-time" id="sourceStatus">
+                <span class="source-status"><svg class="source-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> Indeed</span>
+                <span class="source-status"><svg class="source-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> LinkedIn</span>
+                <span class="source-status"><svg class="source-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> Google</span>
+                <span id="lastSync" aria-live="polite" style="margin-left: 8px; opacity: 0.8;">Syncing...</span>
+              </div>
             </div>
             <div class="pill-row" id="empFilters" role="tablist">
               <button class="pill on" data-filter="all" role="tab" aria-selected="true">All Positions</button>
@@ -1125,10 +849,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
           <aside class="emp-sidebar reveal reveal-delay-2">
             <div class="scard">
               <div class="scard__head"><h3>How to Apply</h3></div>
-              <div class="step-item"><div class="step-num" aria-hidden="true">1</div><div><div class="step-title">Click any job title</div><div class="step-desc">Opens an Indeed or LinkedIn search for that specific role.</div></div></div>
+              <div class="step-item"><div class="step-num" aria-hidden="true">1</div><div><div class="step-title">Click any job title</div><div class="step-desc">Opens the exact application page on the source network.</div></div></div>
               <div class="step-item"><div class="step-num" aria-hidden="true">2</div><div><div class="step-title">Create an Account</div><div class="step-desc">Free — upload a resume and apply in one click.</div></div></div>
               <div class="step-item"><div class="step-num" aria-hidden="true">3</div><div><div class="step-title">Tailor your resume</div><div class="step-desc">Match keywords from the job description.</div></div></div>
-              <div class="step-item"><div class="step-num" aria-hidden="true">4</div><div><div class="step-title">Apply same-day</div><div class="step-desc">Positions close on a rolling basis.</div></div></div>
+              <div class="step-item"><div class="step-num" aria-hidden="true">4</div><div><div class="step-title">Apply same-day</div><div class="step-desc">Positions automatically rotate and close based on real-time availability.</div></div></div>
             </div>
             <div class="scard">
               <div class="scard__head"><h3>Job Search Resources</h3></div>
@@ -1137,6 +861,46 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
               <a class="res-link" href="https://www.caljobs.ca.gov" target="_blank" rel="noopener noreferrer"><div><div class="res-link__cat">State of California</div><div class="res-link__name">CalJOBS</div></div><span class="res-link__arrow" aria-hidden="true">↗</span></a>
             </div>
           </aside>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="page" id="page-map">
+    <div class="page-hero">
+      <div class="container page-hero__inner">
+        <nav class="page-hero__crumb" aria-label="Breadcrumb">
+          <a onclick="goTo('home')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('home')" tabindex="0" role="link">Home</a>
+          <span style="margin:0 4px" aria-hidden="true">/</span>
+          <span aria-current="page">Resource Map</span>
+        </nav>
+        <h1 class="page-hero__title reveal">Resource <em>Map</em></h1>
+        <p class="page-hero__sub reveal reveal-delay-1">Explore housing, healthcare, and community support near you across Riverside County. Filter by category and click any pin to view details.</p>
+      </div>
+    </div>
+    <section class="section" style="padding-top:1rem">
+      <div class="container">
+        <div class="map-count-badge reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+          <span id="mapTotalCount">Loading resources…</span>
+        </div>
+        <div class="map-layout reveal reveal-delay-1" role="application" aria-label="Interactive resource map">
+          <div class="map-sidebar" role="complementary" aria-label="Resource filter and list">
+            <div class="map-sidebar__head">
+              <h3>Filter by Category</h3>
+              <div class="map-filters" id="mapFilters" role="group" aria-label="Category filters">
+                <button class="map-pill on" data-cat="all" aria-pressed="true">All</button>
+                <button class="map-pill" data-cat="housing" aria-pressed="false">Housing</button>
+                <button class="map-pill" data-cat="healthcare" aria-pressed="false">Healthcare</button>
+                <button class="map-pill" data-cat="crisis" aria-pressed="false">Crisis</button>
+                <button class="map-pill" data-cat="food" aria-pressed="false">Food</button>
+                <button class="map-pill" data-cat="legal" aria-pressed="false">Legal</button>
+                <button class="map-pill" data-cat="basic" aria-pressed="false">Basic Needs</button>
+              </div>
+            </div>
+            <div class="map-list" id="mapList" role="list" aria-label="Resource listings"></div>
+          </div>
+          <div id="map-container" aria-label="Map showing resource locations"></div>
         </div>
       </div>
     </section>
@@ -1165,6 +929,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
           <a onclick="goTo('housing')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('housing')" tabindex="0" role="link">Housing Resources</a>
           <a onclick="goTo('healthcare')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('healthcare')" tabindex="0" role="link">Healthcare</a>
           <a onclick="goTo('resources')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('resources')" tabindex="0" role="link">Additional Resources</a>
+          <a onclick="goTo('map')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('map')" tabindex="0" role="link">Resource Map</a>
           <a onclick="goTo('employment')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('employment')" tabindex="0" role="link">Employment</a>
           <a onclick="goTo('home','team-section')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('home','team-section')" tabindex="0" role="link">Case Managers</a>
         </div>
@@ -1220,8 +985,8 @@ const jobs = {
   "Murrieta":[
     {title:"Client Engagement Specialist",employer:"The Grey Legal Group",wage:"$23.00/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Client+Engagement+Specialist+Grey+Legal+Group&l=Murrieta%2C+CA",posted:new Date(D-2*PD).toISOString(),status:"open", source:"Indeed"},
     {title:"Welcome Team Coordinator",employer:"Shoup Legal",wage:"$21.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/search/?keywords=Welcome+Team+Coordinator+Shoup+Legal",posted:new Date(D-5*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Tire and Battery Service Advisor",employer:"Sam's Club",wage:"$19.00/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Tire+Battery+Service+Advisor+Sams+Club&l=Murrieta%2C+CA",posted:new Date(D-16*PD).toISOString(),status:"open", source:"Indeed"}, // Filtered out (> 14 days)
-    {title:"Cashier",employer:"Panera Bread",wage:"$20.00/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Cashier+Panera+Bread&l=Murrieta%2C+CA",posted:new Date(D-0.5*PD).toISOString(),status:"closed", source:"Indeed"}, // Filtered out (Closed)
+    {title:"Tire and Battery Service Advisor",employer:"Sam's Club",wage:"$19.00/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Tire+Battery+Service+Advisor+Sams+Club&l=Murrieta%2C+CA",posted:new Date(D-16*PD).toISOString(),status:"open", source:"Indeed"},
+    {title:"Cashier",employer:"Panera Bread",wage:"$20.00/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Cashier+Panera+Bread&l=Murrieta%2C+CA",posted:new Date(D-0.5*PD).toISOString(),status:"closed", source:"Indeed"},
     {title:"Corporate Trainer",employer:"Tech Solutions",wage:"$28.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/search/?keywords=Corporate+Trainer+Tech+Solutions",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
     {title:"Security Specialist",employer:"Target",wage:"$20.50/hr",type:"pt",url:"https://www.indeed.com/jobs?q=Security+Specialist+Target&l=Murrieta%2C+CA",posted:new Date(D-1*PD).toISOString(),status:"open", source:"Indeed"},
     {title:"Specialty Sales",employer:"Target",wage:"$18.25/hr",type:"pt",url:"https://www.indeed.com/jobs?q=Specialty+Sales+Target&l=Murrieta%2C+CA",posted:new Date(D-4*PD).toISOString(),status:"open", source:"Indeed"},
@@ -1230,7 +995,7 @@ const jobs = {
   "Wildomar":[
     {title:"Membership Sales Associate",employer:"Super Star Car Wash",wage:"$18.50/hr",type:"pt",url:"https://www.indeed.com/jobs?q=Membership+Sales+Associate+Super+Star+Car+Wash&l=Wildomar%2C+CA",posted:new Date(D-3*PD).toISOString(),status:"open", source:"Indeed"},
     {title:"Restaurant Crew",employer:"Dunkin'",wage:"$20.00/hr",type:"pt",url:"https://www.indeed.com/jobs?q=Restaurant+Crew+Dunkin&l=Wildomar%2C+CA",posted:new Date(D-7*PD).toISOString(),status:"open", source:"Indeed"},
-    {title:"Store Manager",employer:"AutoZone",wage:"$24.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/search/?keywords=Store+Manager+AutoZone",posted:new Date(D-15*PD).toISOString(),status:"open", source:"LinkedIn"}, // Filtered out (> 14 days)
+    {title:"Store Manager",employer:"AutoZone",wage:"$24.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/search/?keywords=Store+Manager+AutoZone",posted:new Date(D-15*PD).toISOString(),status:"open", source:"LinkedIn"},
   ],
   "Menifee":[
     {title:"Seasonal Retail Sales Associate",employer:"Lowe's",wage:"$16.90/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Seasonal+Retail+Sales+Associate+Lowes&l=Menifee%2C+CA",posted:new Date(D-1.5*PD).toISOString(),status:"open", source:"Indeed"},
@@ -1243,7 +1008,7 @@ const jobs = {
     {title:"Service Team",employer:"Panda Express",wage:"$21.00/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Service+Team+Panda+Express&l=Lake+Elsinore%2C+CA",posted:new Date(D-4*PD).toISOString(),status:"open", source:"Indeed"},
     {title:"Receptionist",employer:"H&R Block",wage:"$16.50/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Receptionist+HR+Block&l=Lake+Elsinore%2C+CA",posted:new Date(D-0.4*PD).toISOString(),status:"open", source:"Indeed"},
     {title:"Guest Advocate",employer:"Target",wage:"$18.25/hr",type:"pt",url:"https://www.indeed.com/jobs?q=Guest+Advocate+Target&l=Lake+Elsinore%2C+CA",posted:new Date(D-9*PD).toISOString(),status:"open", source:"Indeed"},
-    {title:"Customer Service Representative",employer:"Chevron",wage:"$18.25/hr",type:"pt",url:"https://www.indeed.com/jobs?q=Customer+Service+Representative+Chevron&l=Lake+Elsinore%2C+CA",posted:new Date(D-11*PD).toISOString(),status:"closed", source:"Indeed"}, // Filtered out (Closed)
+    {title:"Customer Service Representative",employer:"Chevron",wage:"$18.25/hr",type:"pt",url:"https://www.indeed.com/jobs?q=Customer+Service+Representative+Chevron&l=Lake+Elsinore%2C+CA",posted:new Date(D-11*PD).toISOString(),status:"closed", source:"Indeed"},
     {title:"Marketing Assistant",employer:"Local Agency",wage:"$20.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/search/?keywords=Marketing+Assistant",posted:new Date(D-3*PD).toISOString(),status:"open", source:"LinkedIn"},
   ],
   "Temecula":[
@@ -1405,10 +1170,9 @@ const resources = {
   ]
 };
 
-/* ─── UTILITIES ─────────────────────────────────────── */
+/* ─── UTILITIES & SCROLL REVEAL ─────────────────────────────────────── */
 function initials(n) { return n.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase(); }
 
-/* ─── SCROLL REVEAL & JS COUNTER ANIMATIONS ─────────── */
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
@@ -1420,17 +1184,12 @@ const countObserver = new IntersectionObserver((entries) => {
       const el = entry.target;
       const target = parseInt(el.getAttribute('data-target'));
       let count = 0;
-      const duration = 1200; // ms
-      const increment = target / (duration / 16);
+      const increment = target / (1200 / 16);
       
       const update = () => {
         count += increment;
-        if (count < target) {
-          el.innerText = Math.ceil(count);
-          requestAnimationFrame(update);
-        } else {
-          el.innerText = target;
-        }
+        if (count < target) { el.innerText = Math.ceil(count); requestAnimationFrame(update); } 
+        else { el.innerText = target; }
       };
       update();
       countObserver.unobserve(el);
@@ -1439,7 +1198,7 @@ const countObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 document.querySelectorAll('.counter').forEach(c => countObserver.observe(c));
 
-/* ─── TEAM STATUS ────────────────────────────────────── */
+/* ─── TEAM STATUS & RENDER ────────────────────────────────────── */
 function updateStatus() {
   const dot = document.getElementById('statusDot');
   const txt = document.getElementById('statusTxt');
@@ -1453,7 +1212,6 @@ function updateStatus() {
 }
 updateStatus();setInterval(updateStatus, 60000);
 
-/* ─── TEAM RENDER ────────────────────────────────────── */
 function renderTeam(q='') {
   const grid = document.getElementById('teamGrid');
   const cnt  = document.getElementById('cmCount');
@@ -1488,7 +1246,199 @@ function renderTeam(q='') {
 document.getElementById('cmSearch')?.addEventListener('input', e => renderTeam(e.target.value));
 renderTeam();
 
-/* ─── JOB ENGINE ─────────────────────────────────────── */
+/* ─── INTAKE QUESTIONNAIRE WIZARD (V2 UPGRADE) ────────────────────── */
+const Q_STEPS = {
+  need: {
+    eyebrow: 'Step 1 of 3',
+    title: 'What do you need help with?',
+    sub: 'Select your most urgent need and we\'ll guide you to the right resources.',
+    opts: [
+      {icon:'🏠', label:'Housing',          sub:'Shelters, transitional, affordable',  val:'housing'},
+      {icon:'🏥', label:'Healthcare',        sub:'Medical, mental health, recovery',    val:'healthcare'},
+      {icon:'💼', label:'Employment',        sub:'Job listings, staffing, career help', val:'employment'},
+      {icon:'🍎', label:'Food & Basics',     sub:'Food pantries, clothing, essentials', val:'food'},
+      {icon:'🆘', label:'Crisis Support',    sub:'Hotlines, immediate safety help',     val:'crisis'},
+      {icon:'⚖️', label:'Legal & Benefits',  sub:'Legal aid, public benefits, rights',  val:'legal'}
+    ]
+  },
+  housing_sub: {
+    eyebrow: 'Step 2 of 3 — Housing',
+    title: 'What\'s your current situation?',
+    sub: 'This helps us show you the most relevant housing options.',
+    opts: [
+      {icon:'🚨', label:'Need shelter tonight',       sub:'Emergency — I need a safe place now',        val:'emergency'},
+      {icon:'🏡', label:'Transitional / Sober Living', sub:'Short-term stable housing support',          val:'transitional'},
+      {icon:'🏘️', label:'Affordable Housing',          sub:'Longer-term affordable apartment search',     val:'affordable'},
+      {icon:'🤝', label:'Talk to a Case Manager',      sub:'Get personalized, one-on-one guidance',       val:'casemgr'}
+    ]
+  },
+  healthcare_sub: {
+    eyebrow: 'Step 2 of 3 — Healthcare',
+    title: 'What type of care do you need?',
+    sub: 'We\'ll connect you with the most appropriate providers.',
+    opts: [
+      {icon:'🩺', label:'Medical / Primary Care',     sub:'Clinics, urgent care, check-ups',             val:'medical'},
+      {icon:'🧠', label:'Mental Health',              sub:'Counseling, psychiatry, crisis support',       val:'behavioral'},
+      {icon:'💊', label:'Substance Use Recovery',     sub:'Treatment programs, MAT, sober living',        val:'behavioral'},
+      {icon:'✨', label:'Specialty Care',              sub:'Autism, HIV, IHSS, other specialty',           val:'specialty'}
+    ]
+  },
+  special: {
+    eyebrow: 'Step 3 of 3',
+    title: 'Any special circumstances?',
+    sub: 'We have targeted resources for specific communities.',
+    opts: [
+      {icon:'🎖️', label:'Veteran',              sub:'VA services & veteran programs',       val:'veteran'},
+      {icon:'🌈', label:'LGBTQ+',               sub:'Affirming, identity-safe services',    val:'lgbtq'},
+      {icon:'🌱', label:'Youth (16–25)',         sub:'Youth-specific housing & support',     val:'youth'},
+      {icon:'👨‍👩‍👧', label:'Women & Families',    sub:'Family shelter & safety resources',   val:'family'},
+      {icon:'🌟', label:'None of the above',     sub:'Show me all matching resources',       val:'none'}
+    ]
+  }
+};
+
+let qState = { step: 1, need: null, sub: null, special: null };
+
+function renderQStep() {
+  const container = document.getElementById('intakeDynamic');
+  const bar = document.getElementById('wizBar');
+  
+  if (!container || !bar) return;
+
+  if (qState.step === 1) {
+    bar.style.width = '33%';
+    renderQOptions(container, Q_STEPS.need, 'need');
+  } else if (qState.step === 2) {
+    bar.style.width = '66%';
+    const stepDef = Q_STEPS[qState.need + '_sub'];
+    renderQOptions(container, stepDef, 'sub');
+  } else if (qState.step === 3) {
+    bar.style.width = '100%';
+    renderQOptions(container, Q_STEPS.special, 'special');
+  } else if (qState.step === 4) {
+    generateWizResults();
+  }
+}
+
+function renderQOptions(container, stepDef, answerKey) {
+  const showBack = qState.step > 1;
+  container.innerHTML = `
+    <div class="s-header s-header--center" style="animation: pageFadeIn 0.4s ease-out forwards;">
+      <div class="s-eyebrow s-eyebrow--center">${stepDef.eyebrow}</div>
+      <h2 class="s-title">${stepDef.title}</h2>
+      <p class="s-desc">${stepDef.sub}</p>
+    </div>
+    <div class="intake-grid" style="animation: pageFadeIn 0.4s ease-out forwards;" role="radiogroup" aria-label="${stepDef.title}">
+      ${stepDef.opts.map(o => `
+        <div class="intake-opt ${qState[answerKey]===o.val?'selected':''}" role="radio" aria-checked="${qState[answerKey]===o.val}" tabindex="0" onclick="selectQOption('${o.val}', '${answerKey}')" onkeydown="if(event.key==='Enter'||event.key===' ')selectQOption('${o.val}', '${answerKey}')">
+          <div class="intake-opt__icon" aria-hidden="true">${o.icon}</div>
+          <div class="intake-opt__label">${o.label}</div>
+          <div class="intake-opt__sub">${o.sub}</div>
+        </div>
+      `).join('')}
+    </div>
+    <div style="display:flex; justify-content: space-between; margin-top: 2rem;">
+      ${showBack ? `<button class="btn btn--outline" onclick="qGoBack()">← Back</button>` : `<div></div>`}
+    </div>
+  `;
+}
+
+function selectQOption(val, key) {
+  qState[key] = val;
+
+  // Immediate Skip Logic for Emergency
+  if (key === 'need' && val === 'crisis') {
+    qState.step = 4; 
+    renderQStep();
+    return;
+  }
+  if (key === 'sub' && val === 'emergency') {
+    qState.step = 4; 
+    renderQStep();
+    return;
+  }
+  
+  // Instant Route for Case Manager
+  if (key === 'sub' && val === 'casemgr') {
+    goTo('home', 'team-section');
+    return;
+  }
+
+  // Automatically advance with micro-delay for UX feel
+  setTimeout(() => {
+    if (key === 'need') {
+      if (['employment', 'food', 'legal'].includes(val)) {
+        qState.step = 3;
+      } else {
+        qState.step = 2;
+      }
+    } else if (key === 'sub') {
+      qState.step = 3;
+    } else if (key === 'special') {
+      qState.step = 4;
+    }
+    renderQStep();
+  }, 150);
+}
+
+function qGoBack() {
+  if (qState.step === 3 && ['employment', 'food', 'legal'].includes(qState.need)) {
+    qState.step = 1;
+  } else {
+    qState.step = Math.max(1, qState.step - 1);
+  }
+  renderQStep();
+}
+
+function generateWizResults() {
+  const container = document.getElementById('intakeDynamic');
+  container.innerHTML = `
+    <div class="s-header s-header--center" style="animation: pageFadeIn 0.4s ease-out forwards;">
+      <h2 class="s-title">Your <em>Matches</em></h2>
+      <p class="s-desc">Based on your answers, here are the best starting points for you.</p>
+      <button class="btn btn--outline" style="margin-top:1rem" onclick="qState.step=1; qState.need=null; qState.sub=null; qState.special=null; renderQStep()">Start Over</button>
+    </div>
+    <div id="wizResults" class="resource-grid" style="animation: pageFadeIn 0.4s ease-out forwards;"></div>
+  `;
+  
+  const c = document.getElementById('wizResults');
+  let results = [];
+
+  if (qState.need === 'crisis') results = [...(resources.crisis||[])];
+  else if (qState.need === 'housing') {
+    if (qState.sub === 'emergency') results = [...(housing.emergency||[])];
+    else if (qState.sub === 'transitional') results = [...(housing.transitional||[]), ...(housing.sober||[])];
+    else if (qState.sub === 'affordable') results = [...(housing.affordable||[])];
+    else results = [...(housing.affordable||[]), ...(housing.transitional||[])];
+  }
+  else if (qState.need === 'healthcare') {
+    if (qState.sub === 'medical') results = [...(healthcare.medical||[])];
+    else if (qState.sub === 'behavioral') results = [...(healthcare.behavioral||[])];
+    else if (qState.sub === 'specialty') results = [...(healthcare.specialty||[])];
+    else results = [...(healthcare.medical||[]), ...(healthcare.behavioral||[])];
+  }
+  else if (qState.need === 'food') results = [...(resources.food||[])];
+  else if (qState.need === 'legal') results = [...(resources.legal||[])];
+  else if (qState.need === 'employment') {
+    goTo('employment');
+    return;
+  }
+
+  // Filter by Circumstance if not empty/none
+  if (qState.special && qState.special !== 'none') {
+    const tailored = results.filter(r => r.special && r.special.toLowerCase().includes(qState.special.toLowerCase()));
+    if (tailored.length > 0) results = tailored;
+  }
+
+  // Fallback
+  if (results.length === 0) results = [...(housing.emergency||[]), ...(resources.crisis||[])];
+
+  c.innerHTML = results.slice(0, 6).map(item => buildCard(item, 'medical', item.special||'Resource')).join('');
+  attachReveal();
+}
+
+
+/* ─── JOB ENGINE & PROXY ─────────────────────────────────────── */
 let activeJobs = {}, totalJobs = 0;
 let empFilter = 'all';
 
@@ -1506,6 +1456,8 @@ function renderJobs() {
     const filtered = (empFilter==='all' ? [...list] : list.filter(j=>j.type===empFilter))
       .sort((a,b)=> new Date(b.posted) - new Date(a.posted));
       
+    if (!filtered.length) continue;
+
     const id = city.toLowerCase().replace(/\s+/g,'-');
     
     html += `<div class="city-block" id="emp-${id}">
@@ -1520,46 +1472,156 @@ function renderJobs() {
       </div>
       <div class="city-block__body">`;
       
-    if (!filtered.length) {
-      html += `<div style="padding:32px 20px;text-align:center;color:var(--text-tertiary);font-size:14px;font-weight:500;">No ${empFilter==='ft'?'full-time':'part-time'} openings listed in ${city}.</div>`;
-    } else {
-      filtered.forEach(j => {
-        const ta = timeAgo(j.posted);
-        html += `<div class="job-row" tabindex="0" role="link" aria-label="${j.title} at ${j.employer}"
-                   onclick="window.open('${j.url}','_blank','noopener noreferrer')"
-                   onkeydown="if(event.key==='Enter'||event.key===' ')window.open('${j.url}','_blank','noopener noreferrer')">
-          <div class="job-initials" aria-hidden="true">${initials(j.employer)}</div>
-          <div class="job-info">
-            <div class="job-title">${j.title}<span class="job-arrow" aria-hidden="true">↗</span></div>
-            <div class="job-meta">
-              <span class="job-employer">${j.employer}</span>
-              <span class="job-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>${ta.text} <span style="margin-left:4px; opacity:0.75; font-weight:600;">via ${j.source || 'Local'}</span></span>
-            </div>
+    filtered.forEach(j => {
+      const ta = timeAgo(j.posted);
+      html += `<div class="job-row" tabindex="0" role="link" aria-label="${j.title} at ${j.employer}"
+                  onclick="window.open('${j.url}','_blank','noopener noreferrer')"
+                  onkeydown="if(event.key==='Enter'||event.key===' ')window.open('${j.url}','_blank','noopener noreferrer')">
+        <div class="job-initials" aria-hidden="true">${initials(j.employer)}</div>
+        <div class="job-info">
+          <div class="job-title">${j.title}<span class="job-arrow" aria-hidden="true">↗</span></div>
+          <div class="job-meta">
+            <span class="job-employer">${j.employer}</span>
+            <span class="job-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>${ta.text} <span style="margin-left:4px; opacity:0.75; font-weight:600;">via ${j.source || 'Local'}</span></span>
           </div>
-          <div class="job-right">
-            <span class="job-wage">${j.wage}</span>
-            <div style="display:flex;gap:6px;align-items:center">
-              <span class="badge badge--${j.type}">${j.type==='ft'?'Full-Time':'Part-Time'}</span>
-              ${ta.isNew?'<span class="badge badge--new">New</span>':''}
-            </div>
+        </div>
+        <div class="job-right">
+          <span class="job-wage">${j.wage}</span>
+          <div style="display:flex;gap:6px;align-items:center">
+            <span class="badge badge--${j.type}">${j.type==='ft'?'Full-Time':'Part-Time'}</span>
+            ${ta.isNew?'<span class="badge badge--new">New</span>':''}
           </div>
-        </div>`;
-      });
-    }
+        </div>
+      </div>`;
+    });
     html += '</div></div>';
   }
   c.innerHTML = html;
 }
 
+const PROXY_URL = "https://hub-phi-bice.vercel.app/api/jobs";
+
+async function fetchGoogleJobs() {
+  if (!PROXY_URL) return [];
+  try {
+    const response = await fetch(`${PROXY_URL}?action=get_cache`);
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    const data = await response.json();
+    if (data.error) throw new Error(data.error);
+    if (!data.jobs_results || !Array.isArray(data.jobs_results)) return [];
+    return data.jobs_results.map(job => normalizeGoogleJob(job));
+  } catch (error) {
+    console.error('Failed to fetch jobs from proxy:', error);
+    return [];
+  }
+}
+
+function normalizeGoogleJob(data) {
+  let city = 'Riverside County';
+  const knownCities = ['Murrieta', 'Temecula', 'Menifee', 'Lake Elsinore', 'Wildomar'];
+  if (data.location) {
+      for (const known of knownCities) {
+          if (data.location.toLowerCase().includes(known.toLowerCase())) { city = known; break; }
+      }
+  }
+
+  let postedDate = new Date().toISOString();
+  if (data.detected_extensions && data.detected_extensions.posted_at) {
+      const postedStr = data.detected_extensions.posted_at.toLowerCase();
+      const match = postedStr.match(/(\d+)\s+(day|hour|minute)s?\s+ago/);
+      if (match) {
+          const amount = parseInt(match[1], 10);
+          const unit = match[2];
+          const now = Date.now();
+          if (unit === 'day') postedDate = new Date(now - amount * 86400000).toISOString();
+          if (unit === 'hour') postedDate = new Date(now - amount * 360000).toISOString();
+          if (unit === 'minute') postedDate = new Date(now - amount * 60000).toISOString();
+      }
+  }
+
+  let jobType = 'ft';
+  if (data.detected_extensions && data.detected_extensions.schedule_type) {
+      if (data.detected_extensions.schedule_type.toLowerCase().includes('part')) jobType = 'pt';
+  }
+
+  let wage = 'Competitive';
+  if (data.detected_extensions && data.detected_extensions.salary) wage = data.detected_extensions.salary;
+
+  return {
+    title: data.title || 'Open Position',
+    employer: data.company_name || 'Local Business',
+    wage: wage,
+    type: jobType,
+    url: data.share_link || data.related_links?.[0]?.link || '#', 
+    posted: postedDate,
+    status: 'open', 
+    location: city,
+    source: 'Google Jobs'
+  };
+}
+
+function removeDuplicates(jobArray) {
+  const seen = new Set();
+  return jobArray.filter(job => {
+    const key = `${job.title.toLowerCase().trim()}|${job.employer.toLowerCase().trim()}|${job.location.toLowerCase().trim()}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+async function fetchAndPopulateJobs() {
+  const ls = document.getElementById('lastSync');
+  if (ls) ls.textContent = 'Syncing...';
+  
+  const liveListings = await fetchGoogleJobs();
+  let allJobs = [...liveListings];
+  for (const city in jobs) {
+    allJobs.push(...jobs[city].map(j => ({ ...j, location: city })));
+  }
+
+  const now = Date.now();
+  const MAX_AGE_MS = 14 * 86400000;
+  
+  let validJobs = allJobs.filter(j => {
+    const isClosed = j.status === 'closed' || j.status === 'expired';
+    const jobAge = now - new Date(j.posted).getTime();
+    return !isClosed && (jobAge <= MAX_AGE_MS);
+  });
+
+  validJobs = removeDuplicates(validJobs);
+
+  activeJobs = {};
+  totalJobs = 0;
+  
+  validJobs.forEach(job => {
+    const loc = job.location;
+    const targetLoc = ['Murrieta', 'Temecula', 'Menifee', 'Lake Elsinore', 'Wildomar'].includes(loc) ? loc : 'Riverside County';
+    
+    if (!activeJobs[targetLoc]) activeJobs[targetLoc] = [];
+    activeJobs[targetLoc].push(job);
+    totalJobs++;
+  });
+
+  if (ls) { 
+    const n = new Date(); 
+    ls.textContent = 'Live • ' + n.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}); 
+  }
+  
+  renderJobs();
+}
+
+fetchAndPopulateJobs();
+setInterval(fetchAndPopulateJobs, 300000);
+
 /* ─── RESOURCE CARD BUILDER ──────────────────────────── */
-const SVG = {
+const SVG_ICONS = {
   addr:  `<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>`,
-  /* Standard Phone Icon Update */
   phone: `<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"></path>`,
   email: `<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>`,
   web:   `<circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>`,
 };
-const ico = k => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${SVG[k]}</svg>`;
+const buildSvgIcon = k => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${SVG_ICONS[k]}</svg>`;
 
 function buildCard(item, colorClass, defaultLabel) {
   const badgeClass = item.special ? 'rcb--special' : `rcb--${colorClass}`;
@@ -1569,10 +1631,10 @@ function buildCard(item, colorClass, defaultLabel) {
       <div class="rc-badge ${badgeClass}">${label}</div>
       <div class="rc-name">${item.name}</div>
       <div class="rc-details">
-        ${item.address ? `<div class="rc-row">${ico('addr')}<span>${item.address}</span></div>` : ''}
-        ${item.phone   ? `<div class="rc-row">${ico('phone')}<a href="tel:${item.phone.replace(/[^0-9]/g,'')}">${item.phone}</a></div>` : ''}
-        ${item.email   ? `<div class="rc-row">${ico('email')}<a href="mailto:${item.email}">${item.email}</a></div>` : ''}
-        ${item.website ? `<div class="rc-row">${ico('web')}<a href="${item.website}" target="_blank" rel="noopener noreferrer">Visit Website ↗</a></div>` : ''}
+        ${item.address ? `<div class="rc-row">${buildSvgIcon('addr')}<span>${item.address}</span></div>` : ''}
+        ${item.phone   ? `<div class="rc-row">${buildSvgIcon('phone')}<a href="tel:${item.phone.replace(/[^0-9]/g,'')}">${item.phone}</a></div>` : ''}
+        ${item.email   ? `<div class="rc-row">${buildSvgIcon('email')}<a href="mailto:${item.email}">${item.email}</a></div>` : ''}
+        ${item.website ? `<div class="rc-row">${buildSvgIcon('web')}<a href="${item.website}" target="_blank" rel="noopener noreferrer">Visit Website ↗</a></div>` : ''}
       </div>
     </div>`;
 }
@@ -1617,10 +1679,9 @@ buildPanels(healthcare, 'hcPanels',
 
 buildPanels(resources, 'resPanels',
   {crisis:'emergency', basic:'basic', food:'food', legal:'legal', education:'education', animals:'animals'},
-  {crisis:'Emergency & Crisis', basic:'Basic Needs', food:'Food Pantries', legal:'Social & Legal Services', education:'Education', animals:'Animal Care'},
+  {crisis:'Emergency & Crisis', Basic:'Basic Needs', food:'Food Pantries', legal:'Social & Legal Services', education:'Education', animals:'Animal Care'},
   'resTabs');
 
-/* STAFFING AGENCIES (Employment Page logic override) */
 function renderAgencies() {
   const c = document.getElementById('agencyListings');
   if (!c) return;
@@ -1651,27 +1712,249 @@ document.querySelectorAll('#empFilters .pill').forEach(btn => {
   });
 });
 
+/* ─── RESOURCE MAP ───────────────────────────── */
+const MAP_COLORS = {
+  housing:    '#0277b6',
+  healthcare: '#0f766e',
+  crisis:     '#b91c1c',
+  food:       '#b45309',
+  legal:      '#6d28d9',
+  basic:      '#0096c7'
+};
+
+const MAP_LABELS = {
+  housing:'Housing', healthcare:'Healthcare', crisis:'Crisis Support',
+  food:'Food Pantry', legal:'Legal & Social', basic:'Basic Needs'
+};
+
+// Riverside County Limit Constraints 
+const CITY_BASE_COORDS = {
+  'murrieta':               [33.5537, -117.2137],
+  'temecula':               [33.4936, -117.1484],
+  'lake elsinore':          [33.6681, -117.3273],
+  'menifee':                [33.6971, -117.1853],
+  'wildomar':               [33.5989, -117.2795],
+  'riverside':              [33.9533, -117.3962],
+  'hemet':                  [33.7475, -116.9719],
+  'moreno valley':          [33.9374, -117.2306],
+  'corona':                 [33.8753, -117.5664],
+  'palm springs':           [33.8303, -116.5453],
+  'perris':                 [33.7825, -117.2286],
+  'indio':                  [33.7205, -116.2156],
+  'march air reserve base': [33.8818, -117.2597],
+  'thousand palms':         [33.8261, -116.3717]
+};
+
+function nameHash(str) {
+  let h = 0;
+  for (let i = 0; i < str.length; i++) { h = ((h << 5) - h) + str.charCodeAt(i); h |= 0; }
+  return h;
+}
+
+function getCoords(item) {
+  if (!item.address) return null;
+  const addr = item.address.toLowerCase();
+  
+  // Enforce Riverside County limit
+  let isRiversideCounty = false; 
+  let matchedCity = null; 
+  for (const city of Object.keys(CITY_BASE_COORDS)) {
+      if (addr.includes(city)) {
+          isRiversideCounty = true; 
+          matchedCity = city; 
+          break;
+      }
+  }
+  if(!isRiversideCounty) return null; 
+
+  const base = CITY_BASE_COORDS[matchedCity];
+  const h = nameHash(item.name);
+  const offLat = (((h & 0xFF) / 255) - 0.5) * 0.014;
+  const offLng = ((((h >> 8) & 0xFF) / 255) - 0.5) * 0.014;
+  return [base[0] + offLat, base[1] + offLng];
+}
+
+function buildMapResources() {
+  const all = [];
+  ['referrals','emergency','transitional','psh','affordable','sober'].forEach(type => {
+    (housing[type]||[]).forEach(item => {
+      const coords = getCoords(item);
+      if (coords) all.push({...item, cat:'housing', coords});
+    });
+  });
+  ['medical','behavioral','specialty'].forEach(type => {
+    (healthcare[type]||[]).forEach(item => {
+      const coords = getCoords(item);
+      if (coords) all.push({...item, cat:'healthcare', coords});
+    });
+  });
+  (resources.crisis||[]).forEach(item => {
+    const coords = getCoords(item);
+    if (coords) all.push({...item, cat:'crisis', coords});
+  });
+  (resources.food||[]).forEach(item => {
+    const coords = getCoords(item);
+    if (coords) all.push({...item, cat:'food', coords});
+  });
+  (resources.legal||[]).forEach(item => {
+    const coords = getCoords(item);
+    if (coords) all.push({...item, cat:'legal', coords});
+  });
+  (resources.basic||[]).forEach(item => {
+    const coords = getCoords(item);
+    if (coords) all.push({...item, cat:'basic', coords});
+  });
+  return all;
+}
+
+let mapInstance = null;
+let mapMarkers = [];
+let mapAllResources = [];
+let activeMapCat = 'all';
+
+function makeMapIcon(color) {
+  return L.divIcon({
+    html: `<div style="width:14px;height:14px;background:${color};border-radius:50%;border:2.5px solid rgba(255,255,255,0.95);box-shadow:0 2px 8px rgba(0,0,0,0.35)"></div>`,
+    className: 'map-marker-icon',
+    iconSize: [14, 14],
+    iconAnchor: [7, 7],
+    popupAnchor: [0, -10]
+  });
+}
+
+function renderMapMarkers(cat) {
+  mapMarkers.forEach(m => m.remove());
+  mapMarkers = [];
+  const filtered = cat === 'all' ? mapAllResources : mapAllResources.filter(r => r.cat === cat);
+  filtered.forEach(res => {
+    const color = MAP_COLORS[res.cat] || '#64748b';
+    const phone = res.phone ? `<div class="map-popup__detail">📞&nbsp;<a href="tel:${res.phone.replace(/[^0-9]/g,'')}" style="color:var(--accent)">${res.phone}</a></div>` : '';
+    const addr  = res.address ? `<div class="map-popup__detail">📍&nbsp;${res.address}</div>` : '';
+    const webBtn  = res.website ? `<a class="map-popup__link" href="${res.website}" target="_blank" rel="noopener noreferrer">Website ↗</a>` : '';
+    const callBtn = res.phone ? `<a class="map-popup__call" href="tel:${res.phone.replace(/[^0-9]/g,'')}">Call</a>` : '';
+    const marker = L.marker(res.coords, {icon: makeMapIcon(color)});
+    marker.bindPopup(`<div class="map-popup">
+      <div class="map-popup__cat">${MAP_LABELS[res.cat]||res.cat}${res.special ? ' &middot; '+res.special : ''}</div>
+      <div class="map-popup__name">${res.name}</div>
+      ${addr}${phone}
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px">${webBtn}${callBtn}</div>
+    </div>`, {maxWidth:310});
+    marker.addTo(mapInstance);
+    mapMarkers.push(marker);
+  });
+}
+
+function renderMapList(cat) {
+  const list = document.getElementById('mapList');
+  if (!list) return;
+  const filtered = cat === 'all' ? mapAllResources : mapAllResources.filter(r => r.cat === cat);
+  if (!filtered.length) {
+    list.innerHTML = '<div style="padding:24px 16px;text-align:center;color:var(--text-tertiary);font-size:13px;">No resources in this category with a known address.</div>';
+    return;
+  }
+  list.innerHTML = filtered.map((res, i) => {
+    const cityPart = res.address ? res.address.split(',').slice(-2).join(',').trim() : '';
+    return `<div class="map-item" role="listitem" tabindex="0"
+      onclick="focusMapItem(${mapAllResources.indexOf(res)})"
+      onkeydown="if(event.key==='Enter'||event.key===' ')focusMapItem(${mapAllResources.indexOf(res)})">
+      <div class="map-item__dot" style="background:${MAP_COLORS[res.cat]||'#64748b'}"></div>
+      <div>
+        <div class="map-item__name">${res.name}</div>
+        <div class="map-item__meta">${MAP_LABELS[res.cat]||res.cat}${cityPart ? ' &middot; '+cityPart : ''}</div>
+      </div>
+    </div>`;
+  }).join('');
+  
+  const badge = document.getElementById('mapTotalCount');
+  if (badge) badge.textContent = `${filtered.length} resource${filtered.length!==1?'s':''} shown`;
+}
+
+function focusMapItem(idx) {
+  const res = mapAllResources[idx];
+  if (!res || !mapInstance) return;
+  mapInstance.setView(res.coords, 14, {animate:true});
+  
+  mapMarkers.forEach(m => {
+    const ll = m.getLatLng();
+    if (Math.abs(ll.lat - res.coords[0]) < 0.0001 && Math.abs(ll.lng - res.coords[1]) < 0.0001) {
+      m.openPopup();
+    }
+  });
+  
+  document.querySelectorAll('.map-item').forEach((el, i) => {
+    const filtered = activeMapCat === 'all' ? mapAllResources : mapAllResources.filter(r => r.cat === activeMapCat);
+    el.classList.toggle('active', filtered[i] === res);
+  });
+}
+
+function setupMapFilters() {
+  document.querySelectorAll('#mapFilters .map-pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#mapFilters .map-pill').forEach(b => {
+        b.classList.remove('on');
+        b.setAttribute('aria-pressed','false');
+      });
+      btn.classList.add('on');
+      btn.setAttribute('aria-pressed','true');
+      activeMapCat = btn.dataset.cat;
+      renderMapMarkers(activeMapCat);
+      renderMapList(activeMapCat);
+    });
+  });
+}
+
+function initMap() {
+  if (mapInstance) { mapInstance.invalidateSize(); return; }
+
+  // Riverside County map bounds limit
+  const rcBounds = L.latLngBounds(
+      [33.30, -117.80], 
+      [34.20, -114.40]  
+  );
+
+  mapInstance = L.map('map-container', {
+      zoomControl:true,
+      maxBounds: rcBounds, 
+      maxBoundsViscosity: 1.0, 
+      minZoom: 9 
+  }).setView([33.75, -117.15], 10);
+  
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+    maxZoom: 19,
+    subdomains: 'abcd'
+  }).addTo(mapInstance);
+
+  mapAllResources = buildMapResources();
+  renderMapMarkers('all');
+  renderMapList('all');
+  setupMapFilters();
+
+  const badge = document.getElementById('mapTotalCount');
+  if (badge) badge.textContent = `${mapAllResources.length} resource${mapAllResources.length!==1?'s':''} shown`;
+}
+
 /* ─── NAVIGATION ─────────────────────────────────────── */
 function goTo(page, scrollTo) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   const target = document.getElementById('page-'+page);
   if (target) target.classList.add('active');
 
-  const resPages = ['housing','healthcare','resources'];
-  
+  const resPages = ['housing','healthcare','resources','map'];
+
   // Desktop Nav Links
   document.querySelectorAll('.nav-link[data-page]').forEach(l => {
     const match = l.dataset.page === page || (resPages.includes(page) && l.dataset.page === 'resources-group');
     l.classList.toggle('active', match);
   });
-  
+
   // Mobile Nav Links
   document.querySelectorAll('.mobile-nav__link[data-mpage]').forEach(l => {
     l.classList.toggle('active', l.dataset.mpage === page);
   });
 
   closeMobileNav();
-  
+
   if (scrollTo) {
     requestAnimationFrame(() => {
       setTimeout(() => {
@@ -1682,6 +1965,10 @@ function goTo(page, scrollTo) {
   } else {
     window.scrollTo({top:0, behavior:'smooth'});
   }
+  
+  if (page === 'intake') { qState.step = 1; renderQStep(); }
+  if (page === 'map') { setTimeout(initMap, 200); }
+  
   setTimeout(attachReveal, 150);
 }
 
@@ -1712,151 +1999,6 @@ window.addEventListener('scroll', () => {
 
 /* ─── INITIAL REVEAL ─────────────────────────────────── */
 attachReveal();
-
-/* ─── REAL-TIME API INTEGRATION (SerpAPI Google Jobs via Vercel Proxy) ─── */
-const PROXY_URL = "https://hub-phi-bice.vercel.app/api/jobs";
-
-async function fetchGoogleJobs() {
-  if (!PROXY_URL) {
-      console.warn('No proxy URL provided. Falling back to local data.');
-      return [];
-  }
-
-  try {
-    const response = await fetch(PROXY_URL);
-    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-    const data = await response.json();
-    
-    if (data.error) throw new Error(data.error);
-    if (!data.jobs_results || !Array.isArray(data.jobs_results)) return [];
-
-    return data.jobs_results.map(job => normalizeGoogleJob(job));
-
-  } catch (error) {
-    console.error('Failed to fetch jobs from proxy:', error);
-    return [];
-  }
-}
-
-function normalizeGoogleJob(data) {
-  // Extract city from location string
-  let city = 'Riverside County';
-  const knownCities = ['Murrieta', 'Temecula', 'Menifee', 'Lake Elsinore', 'Wildomar'];
-  if (data.location) {
-      for (const known of knownCities) {
-          if (data.location.toLowerCase().includes(known.toLowerCase())) {
-              city = known;
-              break;
-          }
-      }
-  }
-
-  // Attempt to parse "X days ago" into an ISO string
-  let postedDate = new Date().toISOString();
-  if (data.detected_extensions && data.detected_extensions.posted_at) {
-      const postedStr = data.detected_extensions.posted_at.toLowerCase();
-      const match = postedStr.match(/(\d+)\s+(day|hour|minute)s?\s+ago/);
-      if (match) {
-          const amount = parseInt(match[1], 10);
-          const unit = match[2];
-          const now = Date.now();
-          if (unit === 'day') postedDate = new Date(now - amount * 86400000).toISOString();
-          if (unit === 'hour') postedDate = new Date(now - amount * 3600000).toISOString();
-          if (unit === 'minute') postedDate = new Date(now - amount * 60000).toISOString();
-      }
-  }
-
-  // Determine full-time vs part-time
-  let jobType = 'ft';
-  if (data.detected_extensions && data.detected_extensions.schedule_type) {
-      if (data.detected_extensions.schedule_type.toLowerCase().includes('part')) {
-          jobType = 'pt';
-      }
-  }
-
-  // Extract Salary
-  let wage = 'Competitive';
-  if (data.detected_extensions && data.detected_extensions.salary) {
-      wage = data.detected_extensions.salary;
-  }
-
-  return {
-    title: data.title || 'Open Position',
-    employer: data.company_name || 'Local Business',
-    wage: wage,
-    type: jobType,
-    url: data.share_link || data.related_links?.[0]?.link || '#', 
-    posted: postedDate,
-    status: 'open', 
-    location: city,
-    source: 'Google Jobs'
-  };
-}
-
-function removeDuplicates(jobArray) {
-  const seen = new Set();
-  return jobArray.filter(job => {
-    const key = `${job.title.toLowerCase().trim()}|${job.employer.toLowerCase().trim()}|${job.location.toLowerCase().trim()}`;
-    if (seen.has(key)) return false;
-    seen.add(key);
-    return true;
-  });
-}
-
-async function fetchAndPopulateJobs() {
-  const ls = document.getElementById('lastSync');
-  if (ls) ls.textContent = 'Syncing live feeds...';
-  
-  // 1. Fetch real-time data from Proxy
-  const liveListings = await fetchGoogleJobs();
-  
-  // 2. Combine with local backup dataset
-  let allJobs = [...liveListings];
-  for (const city in jobs) {
-    allJobs.push(...jobs[city].map(j => ({ ...j, location: city })));
-  }
-
-  // 3. Apply Data Rules (14-day limit, remove closed status)
-  const now = Date.now();
-  const MAX_AGE_MS = 14 * 86400000;
-  
-  let validJobs = allJobs.filter(j => {
-    const isClosed = j.status === 'closed' || j.status === 'expired';
-    const jobAge = now - new Date(j.posted).getTime();
-    const isExpired = jobAge > MAX_AGE_MS;
-    
-    return !isClosed && !isExpired;
-  });
-
-  // 4. Deduplicate
-  validJobs = removeDuplicates(validJobs);
-
-  // 5. Structure for UI (Group by Location)
-  activeJobs = {};
-  totalJobs = 0;
-  
-  validJobs.forEach(job => {
-    const loc = job.location;
-    const targetLoc = ['Murrieta', 'Temecula', 'Menifee', 'Lake Elsinore', 'Wildomar'].includes(loc) ? loc : 'Riverside County';
-    
-    if (!activeJobs[targetLoc]) activeJobs[targetLoc] = [];
-    activeJobs[targetLoc].push(job);
-    totalJobs++;
-  });
-
-  if (ls) { 
-    const n = new Date(); 
-    ls.textContent = 'Live • ' + n.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}); 
-  }
-  
-  renderJobs();
-}
-
-// Initialize real-time job sync on load
-fetchAndPopulateJobs();
-// Auto-update every 5 minutes (300,000 ms) to poll proxy
-setInterval(fetchAndPopulateJobs, 300000);
-
 </script>
 </body>
 </html>
