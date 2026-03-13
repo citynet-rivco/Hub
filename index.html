@@ -336,8 +336,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .mobile-nav__link:nth-child(3) { animation-delay: 0.15s; }
 .mobile-nav__link:nth-child(4) { animation-delay: 0.20s; }
 .mobile-nav__link:nth-child(5) { animation-delay: 0.25s; }
-.mobile-nav__link:nth-child(7) { animation-delay: 0.30s; }
+.mobile-nav__link:nth-child(6) { animation-delay: 0.30s; }
 .mobile-nav__link:nth-child(8) { animation-delay: 0.35s; }
+.mobile-nav__link:nth-child(9) { animation-delay: 0.40s; }
 
 .mobile-nav__link:hover, .mobile-nav__link:active { background: rgba(255,255,255,0.1); color: #fff; transform: translateX(4px) !important; }
 .mobile-nav__link.active { color: #fff; font-weight: 600; background: rgba(255,255,255,0.05); }
@@ -721,7 +722,37 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .footer .logo__sub { font-size: var(--size-xs); }
 
 /* ══════════════════════════════════════════════════════
-   RESPONSIVE DESIGN
+   RAPID INTAKE WIZARD (Questionnaire)
+══════════════════════════════════════════════════════ */
+.intake-overlay { display: none; position: fixed; inset: 0; z-index: 2000; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); align-items: center; justify-content: center; padding: 1rem; opacity: 0; transition: opacity 0.3s; will-change: opacity; }
+.intake-overlay.open { display: flex; opacity: 1; }
+.intake-modal { background: var(--surface-float); border: 1px solid var(--border-glass); border-radius: 32px; width: 100%; max-width: 560px; max-height: 90dvh; overflow: hidden; box-shadow: var(--shadow-float); position: relative; transform: translateY(20px) scale(0.97); transition: transform 0.4s var(--ease-spring); will-change: transform; }
+.intake-overlay.open .intake-modal { transform: translateY(0) scale(1); }
+.intake-modal__header { display: flex; align-items: center; justify-content: space-between; padding: 24px 28px 0; }
+.intake-modal__close { width: 44px; height: 44px; border-radius: 50%; background: var(--surface-warm); border: 1px solid var(--border-light); display: flex; align-items: center; justify-content: center; color: var(--text-secondary); transition: all var(--dur-fast); cursor: pointer; }
+.intake-modal__close:hover { background: var(--border-light); color: var(--text-primary); }
+.intake-modal__close:active { transform: scale(0.9); }
+.intake-modal__body { padding: 20px 28px 28px; position: relative; min-height: 300px; }
+
+.q-step-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); transition: all 0.4s var(--ease-spring); }
+.q-step-dot.active { background: var(--accent); width: 24px; border-radius: 4px; }
+.q-eyebrow { font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+.q-title { font-family: var(--f-display); font-size: 1.5rem; font-weight: 600; color: var(--text-primary); margin-bottom: 8px; line-height: 1.2; letter-spacing: -0.01em; }
+.q-sub { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 24px; line-height: 1.5; }
+.q-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.q-btn { display: flex; align-items: center; gap: 16px; padding: 14px 20px; border: 1px solid var(--border); border-radius: 16px; background: var(--surface); cursor: pointer; transition: all var(--dur-fast); text-align: left; width: 100%; }
+.q-btn:hover { border-color: var(--accent); background: var(--accent-pale); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(2,119,182,0.1); }
+.q-btn:active { transform: scale(0.98); }
+.q-btn.selected { border-color: var(--accent); background: linear-gradient(135deg, var(--accent-pale), rgba(2,119,182,0.15)); box-shadow: 0 0 0 2px var(--accent); }
+.q-icon { font-size: 1.25rem; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: var(--surface-warm); border-radius: 12px; flex-shrink: 0; transition: all var(--dur-fast); }
+.q-btn.selected .q-icon { background: var(--surface-card); box-shadow: var(--shadow-sm); }
+.q-label { font-family: var(--f-body); font-weight: 600; font-size: 0.95rem; color: var(--text-primary); margin-bottom: 2px; }
+.q-desc { font-family: var(--f-body); font-size: 0.8rem; color: var(--text-secondary); }
+.q-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 24px; gap: 16px; }
+.q-nav .btn { min-height: 44px; }
+
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE DESIGN (Master + Map Adjustments)
 ══════════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
   .hub-grid, .team-grid { grid-template-columns: repeat(2, 1fr); }
@@ -752,6 +783,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
   .controls-row { flex-direction: column; align-items: stretch; }
   .searchbox { max-width: 100%; }
 }
+@media (max-width: 600px) {
+  .intake-modal { border-radius: 24px; }
+  .q-grid { grid-template-columns: 1fr; gap: 6px; }
+  .q-btn { padding: 8px 12px; border-radius: 12px; gap: 12px; }
+  .q-icon { width: 32px; height: 32px; font-size: 1rem; border-radius: 8px; }
+  .q-title { font-size: 1.25rem; margin-bottom: 4px; }
+  .q-sub { font-size: 0.85rem; margin-bottom: 12px; }
+  .intake-modal__body { padding: 12px 20px 20px; }
+  .q-nav { margin-top: 16px; }
+}
 </style>
 </head>
 <body>
@@ -774,7 +815,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
     <div class="container header__inner">
       <div class="logo" onclick="goTo('home')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('home')" tabindex="0" role="button" aria-label="City Net home">
         <div class="logo__mark">
-          <img src="https://images.squarespace-cdn.com/content/v1/5d7aabbf20f74311abd10693/1572561367590-17GJRM1XSH3Q4SSRBEAZ/City+Net+Logo+Icon+Full+Color.png" alt="City Net logo">
+          <img src="https://images.squarespace-cdn.com/content/v1/5d7aabbf20f74311abd10693/1572561367590-17GJRM1XSH3Q4SSRBEAZ/City+Net+Logo+Icon+Full+Color.png" alt="City Net logo" loading="lazy">
         </div>
         <div class="logo__info">
           <div class="logo__text" style="font-family: var(--f-display);">City Net</div>
@@ -792,6 +833,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
               <div class="ndi-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
               <div><div class="ndi-title">Housing</div><div class="ndi-sub">Shelters &amp; affordable homes</div></div>
             </div>
+            <div class="nav-drop-item" onclick="goTo('employment')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('employment')" tabindex="0" role="menuitem">
+              <div class="ndi-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7h-3V5a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M8 7h8"/></svg></div>
+              <div><div class="ndi-title">Employment</div><div class="ndi-sub">Current openings &amp; job support</div></div>
+            </div>
             <div class="nav-drop-item" onclick="goTo('healthcare')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('healthcare')" tabindex="0" role="menuitem">
               <div class="ndi-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
               <div><div class="ndi-title">Healthcare</div><div class="ndi-sub">Clinics &amp; behavioral health</div></div>
@@ -802,7 +847,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
             </div>
           </div>
         </div>
-        <button class="nav-link" onclick="goTo('employment')" data-page="employment">Employment</button>
         <button class="nav-link" onclick="goTo('home','team-section')" data-page="team">Case Managers</button>
         <button class="btn btn--solid btn-cta" onclick="window.location.href='tel:9513903567'" aria-label="Call outreach line">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"></path></svg>
@@ -823,7 +867,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
   <div class="mobile-nav__head">
     <div class="logo logo--white">
       <div class="logo__mark">
-        <img src="https://images.squarespace-cdn.com/content/v1/5d7aabbf20f74311abd10693/1572561367590-17GJRM1XSH3Q4SSRBEAZ/City+Net+Logo+Icon+Full+Color.png" alt="City Net logo">
+        <img src="https://images.squarespace-cdn.com/content/v1/5d7aabbf20f74311abd10693/1572561367590-17GJRM1XSH3Q4SSRBEAZ/City+Net+Logo+Icon+Full+Color.png" alt="City Net logo" loading="lazy">
       </div>
       <div class="logo__info">
         <div class="logo__text" style="font-family: var(--f-display);">City Net</div>
@@ -839,11 +883,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
     
     <div class="mobile-nav__group-label">Resources</div>
     <div class="mobile-nav__link" onclick="goTo('housing');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('housing');closeMobileNav()}" tabindex="0" role="menuitem" data-mpage="housing" style="padding-left:32px">Housing</div>
+    <div class="mobile-nav__link" onclick="goTo('employment');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('employment');closeMobileNav()}" tabindex="0" role="menuitem" data-mpage="employment" style="padding-left:32px">Employment</div>
     <div class="mobile-nav__link" onclick="goTo('healthcare');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('healthcare');closeMobileNav()}" tabindex="0" role="menuitem" data-mpage="healthcare" style="padding-left:32px">Healthcare</div>
     <div class="mobile-nav__link" onclick="goTo('resources');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('resources');closeMobileNav()}" tabindex="0" role="menuitem" data-mpage="resources" style="padding-left:32px">Additional Resources</div>
     <div style="height:1px; background:rgba(255,255,255,0.1); margin:1rem 20px;"></div>
     
-    <div class="mobile-nav__link" onclick="goTo('employment');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('employment');closeMobileNav()}" tabindex="0" role="menuitem" data-mpage="employment">Employment</div>
     <div class="mobile-nav__link" onclick="goTo('home','team-section');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('home','team-section');closeMobileNav()}" tabindex="0" role="menuitem">Case Managers</div>
   </div>
   <div class="mobile-nav__footer">
@@ -865,12 +909,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
         <h1 class="hero__headline reveal">Your partner on<br>the path to <em>housing.</em></h1>
         <p class="hero__sub reveal reveal-delay-1">Explore housing resources, find local job opportunities, and connect with your case manager — all in one place.</p>
         <div class="hero__actions reveal reveal-delay-2">
-          <button class="btn btn--solid" onclick="goTo('housing')">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
-            Housing Resources
-          </button>
-          <button class="btn btn--outline" onclick="goTo('employment')">
-            Browse Job Openings
+          <button class="btn btn--solid" onclick="openQuestionnaire()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Get Started
           </button>
         </div>
       </div>
@@ -1057,7 +1098,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
       <div class="container page-hero__inner">
         <nav class="page-hero__crumb" aria-label="Breadcrumb"><a onclick="goTo('home')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('home')" tabindex="0" role="link">Home</a> <span style="margin:0 4px" aria-hidden="true">/</span> <span aria-current="page">Additional Resources</span></nav>
         <h1 class="page-hero__title reveal">Additional <em>Resources</em></h1>
-        <p class="page-hero__sub reveal reveal-delay-1">Community support ranging from food pantries to legal services, education, and pet care.</p>
       </div>
     </div>
     <div class="page-stats-wrapper">
@@ -1149,7 +1189,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
       <div>
         <div class="logo logo--white" style="cursor:default; transform:none; margin-bottom: 12px;">
           <div class="logo__mark" style="box-shadow:none;">
-            <img src="https://images.squarespace-cdn.com/content/v1/5d7aabbf20f74311abd10693/1572561367590-17GJRM1XSH3Q4SSRBEAZ/City+Net+Logo+Icon+Full+Color.png" alt="City Net logo">
+            <img src="https://images.squarespace-cdn.com/content/v1/5d7aabbf20f74311abd10693/1572561367590-17GJRM1XSH3Q4SSRBEAZ/City+Net+Logo+Icon+Full+Color.png" alt="City Net logo" loading="lazy">
           </div>
           <div class="logo__info">
             <div class="logo__text" style="font-family: var(--f-display); color: var(--text-primary);">City Net</div>
@@ -1163,9 +1203,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
         <div class="footer__links">
           <a onclick="goTo('home')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('home')" tabindex="0" role="link">Home</a>
           <a onclick="goTo('housing')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('housing')" tabindex="0" role="link">Housing Resources</a>
+          <a onclick="goTo('employment')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('employment')" tabindex="0" role="link">Employment</a>
           <a onclick="goTo('healthcare')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('healthcare')" tabindex="0" role="link">Healthcare</a>
           <a onclick="goTo('resources')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('resources')" tabindex="0" role="link">Additional Resources</a>
-          <a onclick="goTo('employment')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('employment')" tabindex="0" role="link">Employment</a>
           <a onclick="goTo('home','team-section')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('home','team-section')" tabindex="0" role="link">Case Managers</a>
         </div>
       </div>
@@ -1197,8 +1237,28 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
   </div>
 </footer>
 
+<div class="intake-overlay" id="qOverlay" role="dialog" aria-modal="true" aria-label="Get Started Questionnaire">
+  <div class="intake-modal">
+    <div class="intake-modal__header" style="border-bottom: none; padding-bottom: 0;">
+      <div class="q-step-ind" style="display:flex; gap:6px; align-items:center;"></div>
+      <button class="intake-modal__close" onclick="closeQuestionnaire()" aria-label="Close wizard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="intake-modal__body" id="qBody" style="padding-top: 12px;"></div>
+  </div>
+</div>
+
 <script>
 'use strict';
+
+/* ─── UTILITY FUNCTIONS ────────────────────────────── */
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => { clearTimeout(timeout); func(...args); };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
 
 /* ─── DATA ─────────────────────────────────────────── */
 const caseManagers = [
@@ -1485,7 +1545,7 @@ function renderTeam(q='') {
       </div>
     </div>`).join('');
 }
-document.getElementById('cmSearch')?.addEventListener('input', e => renderTeam(e.target.value));
+document.getElementById('cmSearch')?.addEventListener('input', debounce(e => renderTeam(e.target.value), 300));
 renderTeam();
 
 /* ─── JOB ENGINE ─────────────────────────────────────── */
@@ -1554,7 +1614,6 @@ function renderJobs() {
 /* ─── RESOURCE CARD BUILDER ──────────────────────────── */
 const SVG = {
   addr:  `<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>`,
-  /* Standard Phone Icon Update */
   phone: `<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"></path>`,
   email: `<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>`,
   web:   `<circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>`,
@@ -1652,26 +1711,26 @@ document.querySelectorAll('#empFilters .pill').forEach(btn => {
 });
 
 /* ─── NAVIGATION ─────────────────────────────────────── */
-function goTo(page, scrollTo) {
+function goTo(page, scrollTo, activateTab) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   const target = document.getElementById('page-'+page);
   if (target) target.classList.add('active');
 
   const resPages = ['housing','healthcare','resources'];
-  
+
   // Desktop Nav Links
   document.querySelectorAll('.nav-link[data-page]').forEach(l => {
     const match = l.dataset.page === page || (resPages.includes(page) && l.dataset.page === 'resources-group');
     l.classList.toggle('active', match);
   });
-  
+
   // Mobile Nav Links
   document.querySelectorAll('.mobile-nav__link[data-mpage]').forEach(l => {
     l.classList.toggle('active', l.dataset.mpage === page);
   });
 
   closeMobileNav();
-  
+
   if (scrollTo) {
     requestAnimationFrame(() => {
       setTimeout(() => {
@@ -1683,6 +1742,17 @@ function goTo(page, scrollTo) {
     window.scrollTo({top:0, behavior:'smooth'});
   }
   setTimeout(attachReveal, 150);
+
+  if (activateTab) {
+    setTimeout(() => {
+      const tabMap = { housing: 'housingTabs', healthcare: 'hcTabs', resources: 'resTabs' };
+      const tabRowId = tabMap[page];
+      if (tabRowId) {
+         const btn = document.querySelector(`#${tabRowId} .pill[data-tab="${activateTab}"]`);
+         if (btn) btn.click();
+      }
+    }, 200);
+  }
 }
 
 /* ─── MOBILE NAV ─────────────────────────────────────── */
@@ -1723,7 +1793,7 @@ async function fetchGoogleJobs() {
   }
 
   try {
-    const response = await fetch(PROXY_URL);
+    const response = await fetch(`${PROXY_URL}?action=get_cache`);
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     const data = await response.json();
     
@@ -1739,7 +1809,6 @@ async function fetchGoogleJobs() {
 }
 
 function normalizeGoogleJob(data) {
-  // Extract city from location string
   let city = 'Riverside County';
   const knownCities = ['Murrieta', 'Temecula', 'Menifee', 'Lake Elsinore', 'Wildomar'];
   if (data.location) {
@@ -1751,7 +1820,6 @@ function normalizeGoogleJob(data) {
       }
   }
 
-  // Attempt to parse "X days ago" into an ISO string
   let postedDate = new Date().toISOString();
   if (data.detected_extensions && data.detected_extensions.posted_at) {
       const postedStr = data.detected_extensions.posted_at.toLowerCase();
@@ -1766,7 +1834,6 @@ function normalizeGoogleJob(data) {
       }
   }
 
-  // Determine full-time vs part-time
   let jobType = 'ft';
   if (data.detected_extensions && data.detected_extensions.schedule_type) {
       if (data.detected_extensions.schedule_type.toLowerCase().includes('part')) {
@@ -1774,7 +1841,6 @@ function normalizeGoogleJob(data) {
       }
   }
 
-  // Extract Salary
   let wage = 'Competitive';
   if (data.detected_extensions && data.detected_extensions.salary) {
       wage = data.detected_extensions.salary;
@@ -1807,16 +1873,13 @@ async function fetchAndPopulateJobs() {
   const ls = document.getElementById('lastSync');
   if (ls) ls.textContent = 'Syncing live feeds...';
   
-  // 1. Fetch real-time data from Proxy
   const liveListings = await fetchGoogleJobs();
   
-  // 2. Combine with local backup dataset
   let allJobs = [...liveListings];
   for (const city in jobs) {
     allJobs.push(...jobs[city].map(j => ({ ...j, location: city })));
   }
 
-  // 3. Apply Data Rules (14-day limit, remove closed status)
   const now = Date.now();
   const MAX_AGE_MS = 14 * 86400000;
   
@@ -1828,10 +1891,8 @@ async function fetchAndPopulateJobs() {
     return !isClosed && !isExpired;
   });
 
-  // 4. Deduplicate
   validJobs = removeDuplicates(validJobs);
 
-  // 5. Structure for UI (Group by Location)
   activeJobs = {};
   totalJobs = 0;
   
@@ -1852,10 +1913,201 @@ async function fetchAndPopulateJobs() {
   renderJobs();
 }
 
-// Initialize real-time job sync on load
 fetchAndPopulateJobs();
-// Auto-update every 5 minutes (300,000 ms) to poll proxy
 setInterval(fetchAndPopulateJobs, 300000);
+
+/* ─────────────────────────────────────────────────────
+   RAPID INTAKE WIZARD (Questionnaire)
+───────────────────────────────────────────────────── */
+const Q_STEPS = {
+  need: {
+    eyebrow: 'STEP 1',
+    title: 'What do you need help with today?',
+    sub: 'Select your most urgent need and we\'ll guide you to the right resources.',
+    opts: [
+      {icon:'🆘', label:'Crisis Support',          sub:'Hotlines, immediate help',          val:'crisis'},
+      {icon:'🏠', label:'Housing',                 sub:'Shelters, transitional, apartments',  val:'housing'},
+      {icon:'💼', label:'Employment',              sub:'Job listings, staffing agencies',     val:'employment'},
+      {icon:'🏥', label:'Healthcare',              sub:'Medical, mental health, recovery',    val:'healthcare'},
+      {icon:'🍎', label:'Food & Essentials',           sub:'Food pantries, clothing, essentials', val:'food'},
+      {icon:'⚖️', label:'Legal & Social Services', sub:'Legal aid, public benefits',          val:'legal'}
+    ]
+  },
+  housing_sub: {
+    eyebrow: 'STEP 2 OF 3 — HOUSING',
+    title: 'What\'s your current situation?',
+    sub: 'This helps us show you the most relevant housing options.',
+    opts: [
+      {icon:'🚨', label:'Need shelter tonight',   sub:'Emergency shelters',                           val:'emergency'},
+      {icon:'🏘️', label:'Transitional Housing',   sub:'Stable, short-term housing support',          val:'transitional'},
+      {icon:'🏡', label:'Affordable Housing',     sub:'Affordable, low-income apartments',           val:'affordable'},
+      {icon:'🤝', label:'Talk to a Case Manager', sub:'Personalized, one-on-one housing navigation', val:'casemgr'}
+    ]
+  },
+  healthcare_sub: {
+    eyebrow: 'STEP 2 OF 2 — HEALTHCARE',
+    title: 'What type of care do you need?',
+    sub: 'We\'ll direct you to the most appropriate providers.',
+    opts: [
+      {icon:'🩺', label:'Medical & Primary Care',     sub:'Hospitals, clinics, urgent care',             val:'medical'},
+      {icon:'🧠', label:'Mental Health',              sub:'Counseling, psychiatry, crisis support',      val:'behavioral'},
+      {icon:'💊', label:'Substance Use Recovery',     sub:'Rehab centers, treatment programs',            val:'recovery'},
+      {icon:'✨', label:'Specialty Care',             sub:'Autism, IHSS, other care',          val:'specialty'}
+    ]
+  },
+  special: {
+    eyebrow: 'STEP 3 OF 3',
+    title: 'Any special circumstances?',
+    sub: 'We have targeted resources for specific communities.',
+    opts: [
+      {icon:'🌟',  label:'Adult (Single)',       sub:'Show me all matching resources',      val:'none'},
+      {icon:'👨‍👩‍👧', label:'Women & Families',     sub:'Family shelter & housing resources',   val:'family'},
+      {icon:'🌱',  label:'Youth (16–25)',        sub:'Youth-specific housing & support',    val:'youth'},
+      {icon:'🌈',  label:'LGBTQ+',               sub:'Affirming, identity-safe services',   val:'lgbtq'},
+      {icon:'🎖️',  label:'Veteran',              sub:'Veteran services & programs',         val:'veteran'}
+    ]
+  }
+};
+
+let qState = {step:1, need:null, sub:null, special:null};
+
+function openQuestionnaire() {
+  qState = {step:1, need:null, sub:null, special:null};
+  document.getElementById('qOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  renderQStep();
+}
+
+function closeQuestionnaire() {
+  document.getElementById('qOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function updateQDots(step, totalSteps) {
+  const ind = document.querySelector('.q-step-ind');
+  if(ind) {
+    ind.innerHTML = Array.from({length: totalSteps}, (_, i) => 
+      `<div class="q-step-dot ${i+1 === step ? 'active' : ''}" id="qDot${i+1}"></div>`
+    ).join('');
+  }
+}
+
+function renderQStep() {
+  let stepDef, answerKey;
+  let totalSteps = 1;
+  
+  if (qState.need === 'housing') totalSteps = 3;
+  else if (qState.need === 'healthcare') totalSteps = 2;
+  
+  if (qState.step === 1) {
+    stepDef = Q_STEPS.need; answerKey = 'need';
+    stepDef.eyebrow = `STEP 1`;
+    if (qState.need) stepDef.eyebrow += ` OF ${totalSteps}`;
+  } else if (qState.step === 2) {
+    if (qState.need === 'housing') {
+      stepDef = Q_STEPS.housing_sub; answerKey = 'sub';
+      stepDef.eyebrow = `STEP 2 OF 3 — HOUSING`;
+    } else if (qState.need === 'healthcare') {
+      stepDef = Q_STEPS.healthcare_sub; answerKey = 'sub';
+      stepDef.eyebrow = `STEP 2 OF 2 — HEALTHCARE`;
+    }
+  } else if (qState.step === 3) {
+    stepDef = Q_STEPS.special; answerKey = 'special';
+    stepDef.eyebrow = `STEP 3 OF 3`;
+  }
+  
+  updateQDots(qState.step, totalSteps);
+  renderQOptions(stepDef, answerKey, totalSteps);
+}
+
+function renderQOptions(stepDef, answerKey, totalSteps) {
+  const body = document.getElementById('qBody');
+  const showBack = qState.step > 1;
+  const isLast = qState.step === totalSteps;
+  const btnText = isLast ? 'Show My Resources →' : 'Continue →';
+  
+  let html = `
+    <div class="q-eyebrow" aria-live="polite">${stepDef.eyebrow}</div>
+    <div class="q-title">${stepDef.title}</div>
+    <div class="q-sub">${stepDef.sub}</div>
+    <div class="q-grid" role="radiogroup">
+      ${stepDef.opts.map(opt => `
+        <button class="q-btn ${qState[answerKey] === opt.val ? 'selected' : ''}" 
+                role="radio" aria-checked="${qState[answerKey] === opt.val}"
+                onclick="qSelect('${answerKey}', '${opt.val}')">
+          <div class="q-icon" aria-hidden="true">${opt.icon}</div>
+          <div>
+            <div class="q-label">${opt.label}</div>
+            <div class="q-desc">${opt.sub}</div>
+          </div>
+        </button>
+      `).join('')}
+    </div>
+    <div class="q-nav">
+      ${showBack ? `<button class="btn btn--outline" onclick="qBack()" style="padding:10px 20px; border-color:transparent;">← Back</button>` : '<div></div>'}
+      <button class="btn btn--solid" onclick="qNext(${totalSteps})" ${!qState[answerKey] ? 'disabled style="opacity:0.5;cursor:not-allowed;"' : ''}>${btnText}</button>
+    </div>
+  `;
+  body.innerHTML = html;
+}
+
+function qSelect(key, val) {
+  qState[key] = val;
+  renderQStep();
+}
+
+function qBack() {
+  if (qState.step > 1) {
+    qState.step--;
+    if (qState.step === 1) {
+        qState.sub = null;
+        qState.special = null;
+    }
+    if (qState.step === 2) {
+        qState.special = null;
+    }
+    renderQStep();
+  }
+}
+
+function qNext(totalSteps) {
+  if (qState.step === totalSteps) {
+    finishQuestionnaire();
+  } else {
+    qState.step++;
+    renderQStep();
+  }
+}
+
+function finishQuestionnaire() {
+  closeQuestionnaire();
+  
+  if (qState.need === 'employment') return goTo('employment');
+  if (qState.need === 'food') return goTo('resources', null, 'food');
+  if (qState.need === 'legal') return goTo('resources', null, 'legal');
+  if (qState.need === 'crisis') return goTo('resources', null, 'crisis');
+  
+  if (qState.need === 'healthcare') {
+    if (qState.sub === 'medical') return goTo('healthcare', null, 'medical');
+    if (qState.sub === 'behavioral' || qState.sub === 'recovery') return goTo('healthcare', null, 'behavioral');
+    if (qState.sub === 'specialty') return goTo('healthcare', null, 'specialty');
+    return goTo('healthcare');
+  }
+  
+  if (qState.need === 'housing') {
+    if (qState.sub === 'emergency') return goTo('housing', null, 'emergency');
+    if (qState.sub === 'transitional') return goTo('housing', null, 'transitional');
+    if (qState.sub === 'affordable') return goTo('housing', null, 'affordable');
+    if (qState.sub === 'casemgr') return goTo('home', 'team-section');
+    return goTo('housing');
+  }
+  
+  goTo('home');
+}
+
+document.getElementById('qOverlay').addEventListener('click', e => { 
+    if (e.target === e.currentTarget) closeQuestionnaire(); 
+});
 
 </script>
 </body>
