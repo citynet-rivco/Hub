@@ -1096,7 +1096,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
         <div class="pill-row reveal reveal-delay-1" id="housingTabs" role="tablist">
           <button class="pill on" data-tab="referrals" role="tab" aria-selected="true">Referrals & Outreach</button>
           <button class="pill" data-tab="emergency" role="tab" aria-selected="false">Emergency Shelters</button>
-          <button class="pill" data-tab="transitional" role="tab" aria-selected="false">Transitional & RRH</button>
+          <button class="pill" data-tab="transitional" role="tab" aria-selected="false">Transitional</button>
           <button class="pill" data-tab="psh" role="tab" aria-selected="false">Permanent Supportive</button>
           <button class="pill" data-tab="affordable" role="tab" aria-selected="false">Affordable Housing</button>
           <button class="pill" data-tab="sober" role="tab" aria-selected="false">Sober Living</button>
@@ -1709,7 +1709,7 @@ function buildPanels(data, containerId, colorMap, labelMap, tabRowId) {
 
 buildPanels(housing, 'housingPanels',
   {referrals:'specialty', emergency:'emergency', transitional:'transitional', psh:'medical', affordable:'affordable', sober:'behavioral'},
-  {referrals:'Referrals & Outreach', emergency:'Emergency Shelters', transitional:'Transitional & RRH', psh:'Permanent Supportive', affordable:'Affordable Housing', sober:'Sober Living'},
+  {referrals:'Referrals & Outreach', emergency:'Emergency Shelters', transitional:'Transitional', psh:'Permanent Supportive', affordable:'Affordable Housing', sober:'Sober Living'},
   'housingTabs');
 
 buildPanels(healthcare, 'hcPanels',
@@ -1973,7 +1973,7 @@ const Q_STEPS = {
       {icon:'💼', label:'Employment',              sub:'Job listings, staffing agencies',     val:'employment'},
       {icon:'🏥', label:'Healthcare',              sub:'Medical, mental health, recovery',    val:'healthcare'},
       {icon:'🍎', label:'Food & Basics',           sub:'Food pantries, clothing, essentials', val:'food'},
-      {icon:'⚖️', label:'Social & Legal Services', sub:'Public benefits, legal aid',          val:'legal'}
+      {icon:'⚖️', label:'Social & Legal', sub:'Public benefits, legal aid',          val:'legal'}
     ]
   },
   housing_sub: {
