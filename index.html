@@ -1319,123 +1319,44 @@ const caseManagers = [
 ];
 
 const D = Date.now(), PD = 86400000;
-
 const jobs = {
-  "Murrieta": [
+  "Murrieta":[
     {title:"Client Engagement Specialist",employer:"The Grey Legal Group",wage:"$23.00/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Client+Engagement+Specialist+Grey+Legal+Group&l=Murrieta%2C+CA",posted:new Date(D-2*PD).toISOString(),status:"open", source:"Indeed"},
     {title:"Welcome Team Coordinator",employer:"Shoup Legal",wage:"$21.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/search/?keywords=Welcome+Team+Coordinator+Shoup+Legal",posted:new Date(D-5*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Tire and Battery Service Advisor",employer:"Sam's Club",wage:"$19.00/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Tire+Battery+Service+Advisor+Sams+Club&l=Murrieta%2C+CA",posted:new Date(D-16*PD).toISOString(),status:"open", source:"Indeed"},
-    {title:"Cashier",employer:"Panera Bread",wage:"$20.00/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Cashier+Panera+Bread&l=Murrieta%2C+CA",posted:new Date(D-0.5*PD).toISOString(),status:"closed", source:"Indeed"},
+    {title:"Tire and Battery Service Advisor",employer:"Sam's Club",wage:"$19.00/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Tire+Battery+Service+Advisor+Sams+Club&l=Murrieta%2C+CA",posted:new Date(D-16*PD).toISOString(),status:"open", source:"Indeed"}, // Filtered out (> 14 days)
+    {title:"Cashier",employer:"Panera Bread",wage:"$20.00/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Cashier+Panera+Bread&l=Murrieta%2C+CA",posted:new Date(D-0.5*PD).toISOString(),status:"closed", source:"Indeed"}, // Filtered out (Closed)
     {title:"Corporate Trainer",employer:"Tech Solutions",wage:"$28.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/search/?keywords=Corporate+Trainer+Tech+Solutions",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
     {title:"Security Specialist",employer:"Target",wage:"$20.50/hr",type:"pt",url:"https://www.indeed.com/jobs?q=Security+Specialist+Target&l=Murrieta%2C+CA",posted:new Date(D-1*PD).toISOString(),status:"open", source:"Indeed"},
     {title:"Specialty Sales",employer:"Target",wage:"$18.25/hr",type:"pt",url:"https://www.indeed.com/jobs?q=Specialty+Sales+Target&l=Murrieta%2C+CA",posted:new Date(D-4*PD).toISOString(),status:"open", source:"Indeed"},
     {title:"Customer Service",employer:"KFC",wage:"$20.00/hr",type:"pt",url:"https://www.indeed.com/jobs?q=Customer+Service+KFC&l=Murrieta%2C+CA",posted:new Date(D-12*PD).toISOString(),status:"open", source:"Indeed"},
-    {title:"Department Manager",employer:"McDonald's",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4320702040/",posted:new Date(D-0.2*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Shift Manager",employer:"McDonald's",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4320771796/",posted:new Date(D-0.25*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Station Cook",employer:"Remington Hospitality",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4321761987/",posted:new Date(D-0.2*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Merchandise and Stocking Associate",employer:"Sam's Club",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4332699598/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Receptionist",employer:"H&R Block",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4333856405/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Fitness Manager",employer:"EōS Fitness",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4334573194/",posted:new Date(D-0.3*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Cart Attendant",employer:"Sam's Club",wage:"Competitive",type:"pt",url:"https://www.linkedin.com/jobs/view/4337310391/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Cafe Associate",employer:"Sam's Club",wage:"Competitive",type:"pt",url:"https://www.linkedin.com/jobs/view/4337310886/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Prepared Meals Associate",employer:"Sam's Club",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4337320924/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Freezer and Deli Stocker Associate",employer:"Sam's Club",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4337390660/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Baker and Packager Associate",employer:"Sam's Club",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4337420235/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Maintenance Custodian Associate",employer:"Sam's Club",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4337420252/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Specialty Healthcare Coordinator",employer:"PDS Health",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4358784594/",posted:new Date(D-0.125*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Medical Receptionist",employer:"RadNet",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4382217549/",posted:new Date(D-3*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Swim Instructor",employer:"Swan Aquatics",wage:"Competitive",type:"pt",url:"https://www.linkedin.com/jobs/view/4382499722/",posted:new Date(D-2*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Retail Sales Associate",employer:"Best Buy",wage:"Competitive",type:"pt",url:"https://www.linkedin.com/jobs/view/4382562854/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Barista / Busser",employer:"Intazza",wage:"Competitive",type:"pt",url:"https://www.linkedin.com/jobs/view/4382562974/",posted:new Date(D-2*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Part-Time Maintenance",employer:"Palms Property Management, Inc.",wage:"Competitive",type:"pt",url:"https://www.linkedin.com/jobs/view/4382569651/",posted:new Date(D-2*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Facility Lifeguard",employer:"Swan Aquatics",wage:"Competitive",type:"pt",url:"https://www.linkedin.com/jobs/view/4382808621/",posted:new Date(D-2*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Retail Stocking Associate",employer:"Burlington",wage:"Competitive",type:"pt",url:"https://www.linkedin.com/jobs/view/4383759969/",posted:new Date(D-3*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Retail Shortage Control",employer:"Burlington",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4383768746/",posted:new Date(D-3*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Private Swim Instructor",employer:"InstaSwim",wage:"Competitive",type:"pt",url:"https://www.linkedin.com/jobs/view/4383903688/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Customer Service Representative",employer:"U-Haul",wage:"Competitive",type:"pt",url:"https://www.linkedin.com/jobs/view/4384517859/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Plumbing Installer",employer:"Big B's Plumbing, Electric, Heating & Air",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4384587961/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Plumbing Service Technician",employer:"Big B's Plumbing, Electric, Heating & Air",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4384898423/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Warehouse (Overnight)",employer:"Lowe's",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4385163721/",posted:new Date(D-0.8*PD).toISOString(),status:"open", source:"LinkedIn"}
   ],
-  "Wildomar": [
+  "Wildomar":[
     {title:"Membership Sales Associate",employer:"Super Star Car Wash",wage:"$18.50/hr",type:"pt",url:"https://www.indeed.com/jobs?q=Membership+Sales+Associate+Super+Star+Car+Wash&l=Wildomar%2C+CA",posted:new Date(D-3*PD).toISOString(),status:"open", source:"Indeed"},
     {title:"Restaurant Crew",employer:"Dunkin'",wage:"$20.00/hr",type:"pt",url:"https://www.indeed.com/jobs?q=Restaurant+Crew+Dunkin&l=Wildomar%2C+CA",posted:new Date(D-7*PD).toISOString(),status:"open", source:"Indeed"},
-    {title:"Store Manager",employer:"AutoZone",wage:"$24.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/search/?keywords=Store+Manager+AutoZone",posted:new Date(D-15*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Assistant General Manager",employer:"McDonald's",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4320741676/",posted:new Date(D-0.2*PD).toISOString(),status:"open", source:"LinkedIn"}
+    {title:"Store Manager",employer:"AutoZone",wage:"$24.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/search/?keywords=Store+Manager+AutoZone",posted:new Date(D-15*PD).toISOString(),status:"open", source:"LinkedIn"}, // Filtered out (> 14 days)
   ],
-  "Menifee": [
+  "Menifee":[
     {title:"Seasonal Retail Sales Associate",employer:"Lowe's",wage:"$16.90/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Seasonal+Retail+Sales+Associate+Lowes&l=Menifee%2C+CA",posted:new Date(D-1.5*PD).toISOString(),status:"open", source:"Indeed"},
     {title:"Front Desk Sales Associate",employer:"Massage Envy",wage:"$16.50/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Front+Desk+Sales+Associate+Massage+Envy&l=Menifee%2C+CA",posted:new Date(D-10*PD).toISOString(),status:"open", source:"Indeed"},
     {title:"Barista",employer:"Better Buzz Coffee",wage:"$21.00/hr",type:"pt",url:"https://www.indeed.com/jobs?q=Barista+Better+Buzz+Coffee&l=Menifee%2C+CA",posted:new Date(D-0.8*PD).toISOString(),status:"open", source:"Indeed"},
     {title:"CDL A Truck Driver",employer:"Updike Distribution Logistics",wage:"$15.50/hr",type:"pt",url:"https://www.indeed.com/jobs?q=CDL+A+Truck+Driver+Updike+Distribution+Logistics&l=Menifee%2C+CA",posted:new Date(D-5*PD).toISOString(),status:"open", source:"Indeed"},
     {title:"Logistics Coordinator",employer:"Amazon",wage:"$22.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/search/?keywords=Logistics+Coordinator+Amazon",posted:new Date(D-2*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Service Technician Trainee",employer:"Leslie's",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4374336867/",posted:new Date(D-0.3*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Field Sales Associate",employer:"Sherwin-Williams",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4375037515/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Deli Clerk",employer:"Sprouts Farmers Market",wage:"Competitive",type:"pt",url:"https://www.linkedin.com/jobs/view/4381540052/",posted:new Date(D-5*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Assistant Store Manager",employer:"Ross",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4382757338/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Grocery Clerk",employer:"Sprouts Farmers Market",wage:"Competitive",type:"pt",url:"https://www.linkedin.com/jobs/view/4383229662/",posted:new Date(D-2*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Customer Service Representative",employer:"Circle K",wage:"Competitive",type:"pt",url:"https://www.linkedin.com/jobs/view/4383278584/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Parts Specialist",employer:"O'Reilly Auto Parts",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4383318870/",posted:new Date(D-4*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Seasonal Cashier",employer:"Lowe's",wage:"Competitive",type:"pt",url:"https://www.linkedin.com/jobs/view/4383474534/",posted:new Date(D-3*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Sales Associate",employer:"Petco",wage:"Competitive",type:"pt",url:"https://www.linkedin.com/jobs/view/4383801335/",posted:new Date(D-3*PD).toISOString(),status:"open", source:"LinkedIn"}
   ],
-   "Winchester": [
-    {title:"Cook",employer:"Panda",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4330589006/",posted:new Date(D-2*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Service Team",employer:"Panda",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4330589007/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Kitchen Team",employer:"Panda",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4330601887/",posted:new Date(D-2*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Customer Service Associate",employer:"Dollar Tree Stores",wage:"Competitive",type:"pt",url:"https://www.linkedin.com/jobs/view/4358157282/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"}
-  ],
-   "Perris": [
-    {title:"Distribution Center Maintenance Manager",employer:"Ross Stores, Inc.",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4349673299/",posted:new Date(D-6*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Sales Associate",employer:"Five Below",wage:"Competitive",type:"pt",url:"https://www.linkedin.com/jobs/view/4356100102/",posted:new Date(D-3*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Lift Operator",employer:"Living Spaces Furniture",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4374147523/",posted:new Date(D-2*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Class B Truck Driver",employer:"CR&R Incorporated",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4381945448/",posted:new Date(D-3*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Billing Coordinator",employer:"SALT Dental Partners",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4382214228/",posted:new Date(D-4*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Team CDL-A Company Driver",employer:"Forward Air Corporation",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4382284692/",posted:new Date(D-3*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Lube Technician (Graveyard)",employer:"Power Plus",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4382308422/",posted:new Date(D-6*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Sales Coordinator",employer:"Clayton",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4384512571/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Utility Locator",employer:"UtiliQuest, LLC",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4384554428/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Customer Service Representative",employer:"Domino's",wage:"Competitive",type:"pt",url:"https://www.linkedin.com/jobs/view/4384560570/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Shift Warehouse",employer:"Lensa",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4385171774/",posted:new Date(D-0.66*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Warehouse Associate",employer:"Humano",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4385378255/",posted:new Date(D-0.87*PD).toISOString(),status:"open", source:"LinkedIn"}
-  ],
-  "Lake Elsinore": [
+  "Lake Elsinore":[
     {title:"Service Team",employer:"Panda Express",wage:"$21.00/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Service+Team+Panda+Express&l=Lake+Elsinore%2C+CA",posted:new Date(D-4*PD).toISOString(),status:"open", source:"Indeed"},
     {title:"Receptionist",employer:"H&R Block",wage:"$16.50/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Receptionist+HR+Block&l=Lake+Elsinore%2C+CA",posted:new Date(D-0.4*PD).toISOString(),status:"open", source:"Indeed"},
     {title:"Guest Advocate",employer:"Target",wage:"$18.25/hr",type:"pt",url:"https://www.indeed.com/jobs?q=Guest+Advocate+Target&l=Lake+Elsinore%2C+CA",posted:new Date(D-9*PD).toISOString(),status:"open", source:"Indeed"},
-    {title:"Customer Service Representative",employer:"Chevron",wage:"$18.25/hr",type:"pt",url:"https://www.indeed.com/jobs?q=Customer+Service+Representative+Chevron&l=Lake+Elsinore%2C+CA",posted:new Date(D-11*PD).toISOString(),status:"closed", source:"Indeed"},
+    {title:"Customer Service Representative",employer:"Chevron",wage:"$18.25/hr",type:"pt",url:"https://www.indeed.com/jobs?q=Customer+Service+Representative+Chevron&l=Lake+Elsinore%2C+CA",posted:new Date(D-11*PD).toISOString(),status:"closed", source:"Indeed"}, // Filtered out (Closed)
     {title:"Marketing Assistant",employer:"Local Agency",wage:"$20.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/search/?keywords=Marketing+Assistant",posted:new Date(D-3*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Retail Sales Associate",employer:"Skechers",wage:"Competitive",type:"pt",url:"https://www.linkedin.com/jobs/view/3977885772/",posted:new Date(D-3*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Team Member",employer:"Tractor Supply Company",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4180195298/",posted:new Date(D-2*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Team Member (Bilingual)",employer:"Tractor Supply Company",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4180197080/",posted:new Date(D-2*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Merchandising Sales Associate",employer:"Tractor Supply Company",wage:"Competitive",type:"pt",url:"https://www.linkedin.com/jobs/view/4213262690/",posted:new Date(D-3*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Assistant General Manager",employer:"McDonald's",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4320691772/",posted:new Date(D-0.2*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Customer Service Representative",employer:"Circle K",wage:"Competitive",type:"pt",url:"https://www.linkedin.com/jobs/view/4326317119/",posted:new Date(D-6*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Customer Experience Manager",employer:"Five Below",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4373407951/",posted:new Date(D-0.45*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Cart Attendant",employer:"Walmart",wage:"Competitive",type:"pt",url:"https://www.linkedin.com/jobs/view/4373512701/",posted:new Date(D-4*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Meat/Produce Team Associate",employer:"Walmart",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4373907843/",posted:new Date(D-3*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Groomer",employer:"Petco",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4382608328/",posted:new Date(D-6*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Youth Civic Engagement & Policy Leadership Intern",employer:"The Happier Life Project",wage:"Competitive",type:"pt",url:"https://www.linkedin.com/jobs/view/4383443423/",posted:new Date(D-3*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Automotive Service Manager",employer:"Big Brand Tire & Service",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4383887976/",posted:new Date(D-2*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Tire Technician",employer:"Big Brand Tire & Service",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4383898356/",posted:new Date(D-2*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Hair Stylist",employer:"Sport Clips Haircuts",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4384848926/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"}
   ],
-   "Hemet & San Jacinto": [
-    {title:"Team Member (Bilingual)",employer:"Tractor Supply Company",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4180190642/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Shift Manager",employer:"McDonald's",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4320791651/",posted:new Date(D-0.33*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Pharmacy Cashier",employer:"Walgreens",wage:"Competitive",type:"pt",url:"https://www.linkedin.com/jobs/view/4385362478/",posted:new Date(D-0.33*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Receptionist",employer:"H&R Block",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4333836706/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Online Order Filling Team Associate",employer:"Walmart",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4333733539/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Kitchen Team",employer:"Panda",wage:"Competitive",type:"ft",url:"https://www.linkedin.com/jobs/view/4366805176/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"}
-  ],
-  "Temecula": [
+  "Temecula":[
     {title:"HR Support Services Assistant",employer:"Southwest Healthcare",wage:"$24.99/hr",type:"ft",url:"https://www.indeed.com/jobs?q=HR+Support+Services+Assistant+Southwest+Healthcare&l=Temecula%2C+CA",posted:new Date(D-1*PD).toISOString(),status:"open", source:"Indeed"},
     {title:"Roofing Laborer",employer:"Westmax Roofing",wage:"$25.00/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Roofing+Laborer+Westmax+Roofing&l=Temecula%2C+CA",posted:new Date(D-4*PD).toISOString(),status:"open", source:"Indeed"},
     {title:"Cook",employer:"Buffalo Wild Wings",wage:"$18.00/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Cook+Buffalo+Wild+Wings&l=Temecula%2C+CA",posted:new Date(D-6*PD).toISOString(),status:"open", source:"Indeed"},
     {title:"Shift Leader",employer:"Panda Express",wage:"$23.00/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Shift+Leader+Panda+Express&l=Temecula%2C+CA",posted:new Date(D-13*PD).toISOString(),status:"open", source:"Indeed"},
     {title:"Retail Customer Service Associate",employer:"FedEx",wage:"$19.70/hr",type:"pt",url:"https://www.indeed.com/jobs?q=Retail+Customer+Service+Associate+FedEx&l=Temecula%2C+CA",posted:new Date(D-8*PD).toISOString(),status:"open", source:"Indeed"},
-    {title:"Software Engineer I",employer:"TechStart",wage:"$45.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/search/?keywords=Software+Engineer+I+TechStart",posted:new Date(D-2*PD).toISOString(),status:"open", source:"LinkedIn"}
-  ]
+    {title:"Software Engineer I",employer:"TechStart",wage:"$45.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/search/?keywords=Software+Engineer+I+TechStart",posted:new Date(D-2*PD).toISOString(),status:"open", source:"LinkedIn"},
+  ],
 };
 
 const staffingAgencies = [
@@ -1487,9 +1408,9 @@ const housing = {
     {name:"Starting Over, Inc.", phone:"951-898-0862", email:"office@startingoverinc.org", website:"https://www.startingoverinc.org/", address:"6355 Riverside Ave, Suite 100, Riverside, CA", special:"Justice-Involved"}
   ],
   psh: [
-    {name:"No Place Like Home", email:"HomeConnect@ruhealth.org", website:"https://ruhealth.org/behavioral-health/no-place-like-home", special:"Permanent Supportive"},
-    {name:"The Place Safehaven Program", phone:"951-779-3057", email:"HHOPE@ruhealth.org", website:"https://www.ruhealth.org/behavioral-health/housing", address:"2800 Hulen Place, Riverside, CA", special:"Permanent Supportive"},
-    {name:"The Path Safehaven Program", phone:"760-251-2346", email:"HHOPE@ruhealth.org", website:"https://www.ruhealth.org/behavioral-health/housing", address:"19531 McLane Street, Palm Springs, CA", special:"Permanent Supportive"}
+    {name:"No Place Like Home", email:"HomeConnect@ruhealth.org", website:"https://ruhealth.org/behavioral-health/no-place-like-home", special:"Permanent Supportive Housing"},
+    {name:"The Place Safehaven Program", phone:"951-779-3057", email:"HHOPE@ruhealth.org", website:"https://www.ruhealth.org/behavioral-health/housing", address:"2800 Hulen Place, Riverside, CA", special:"Permanent Supportive Housing"},
+    {name:"The Path Safehaven Program", phone:"760-251-2346", email:"HHOPE@ruhealth.org", website:"https://www.ruhealth.org/behavioral-health/housing", address:"19531 McLane Street, Palm Springs, CA", special:"Permanent Supportive Housing"}
   ],
   affordable: [
     {name:"Tres Lagos", phone:"951-877-5726", website:"https://www.treslagosapartments.com", address:"23345 Catt Road, Wildomar, CA"},
@@ -1507,9 +1428,9 @@ const housing = {
     {name:"Fountain Glen", phone:"951-677-8035", website:"https://www.fountainglengrandisle.com", address:"24405 Village Walk Place, Murrieta, CA", special:"Senior 55+"}
   ],
   sober: [
-    {name:"Village Care", phone:"858-761-3656", email:"Brittanyaina@care-villages.com", website:"https://www.care-villages.com/services", special:"Sober Living"},
-    {name:"The Lemonade House", phone:"760-272-6816", email:"Amy@TheLemonadeHouse.Org", website:"https://thelemonadehouse.org", special:"Sober Living"},
-    {name:"Alive Sober Living", website:"https://www.alivesoberliving.com", special:"Sober Living"}
+    {name:"Village Care", phone:"858-761-3656", email:"Brittanyaina@care-villages.com", website:"https://www.care-villages.com/services", special:"Substance Use"},
+    {name:"The Lemonade House", phone:"760-272-6816", email:"Amy@TheLemonadeHouse.Org", website:"https://thelemonadehouse.org", special:"Substance Use"},
+    {name:"Alive Sober Living", website:"https://www.alivesoberliving.com", special:"Substance Use"}
   ]
 };
 
