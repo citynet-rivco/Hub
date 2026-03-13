@@ -1127,8 +1127,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
     <section class="section">
       <div class="container">
         <div class="pill-row reveal reveal-delay-1" id="hcTabs" role="tablist">
-          <button class="pill on" data-tab="medical" role="tab" aria-selected="true">Medical &amp; Clinics</button>
-          <button class="pill" data-tab="behavioral" role="tab" aria-selected="false">Mental Health &amp; Recovery</button>
+          <button class="pill on" data-tab="medical" role="tab" aria-selected="true">Medical &amp; Primary Care</button>
+          <button class="pill" data-tab="behavioral" role="tab" aria-selected="false">Behavioral Health</button>
           <button class="pill" data-tab="specialty" role="tab" aria-selected="false">Specialty Care</button>
         </div>
         <div id="hcPanels" class="reveal reveal-delay-2"></div>
@@ -1429,7 +1429,7 @@ const housing = {
   ],
   sober: [
     {name:"Village Care", phone:"858-761-3656", email:"Brittanyaina@care-villages.com", website:"https://www.care-villages.com/services", special:"Substance Use"},
-    {name:"The Lemonade House", phone:"760-272-6816", email:"Amy@TheLemonadeHouse.Org", website:"https://thelemonadehouse.org", special:"Women, Substance Use"},
+    {name:"The Lemonade House", phone:"760-272-6816", email:"Amy@TheLemonadeHouse.Org", website:"https://thelemonadehouse.org", special:"Substance Use"},
     {name:"Alive Sober Living", website:"https://www.alivesoberliving.com", special:"Substance Use"}
   ]
 };
@@ -1446,12 +1446,12 @@ const healthcare = {
     {name:"Renewing Hope Family Counseling",phone:"951-465-3664",email:"office@renewing-hope.org",website:"https://www.renewinghopeinc.com/",address:"24910 Las Brisas Road, Unit 117, Murrieta, CA",special:"Behavioral Health"},
     {name:"Temecula Valley Comprehensive Treatment Center", phone:"855-553-2363", website:"https://www.ctcprograms.com/", address:"40700 California Oaks Road, Suite 202, Murrieta, CA", special:"Opioid Addiction Treatment"},
     {name:"Hill Alcohol & Drug Treatment",phone:"951-719-3685",email:"info@hillrecovery.com",website:"https://hillrecovery.com/treatment-center/",address:"41877 Enterprise Circle N, Suite 100, Temecula, CA",special:"Substance Use"},
-    {name:"TruEvolution - Behavioral Health", phone:"951-888-1346", email:"support@truevolution.org", website:"https://www.truevolution.org/behavioral-health", address:"3838 Brockton Avenue, Riverside, CA", special:"LGBTQIA+, Behavioral Health"}
+    {name:"TruEvolution", phone:"951-888-1346", email:"support@truevolution.org", website:"https://www.truevolution.org/behavioral-health", address:"3838 Brockton Avenue, Riverside, CA", special:"LGBTQIA+ Behavioral Health"}
   ],
   specialty:[
     {name:"Autism Society Inland Empire",phone:"951-220-6922",email:"info@ieautism.org",website:"https://ieautism.org/",address:"420 N McKinley, Suite 111-118, Corona CA",special:"Autism Services"},
-    {name:"TruEvolution — Sexual Health",phone:"951-888-1346",email:"care@truevolution.org",website:"https://www.truevolution.org/case-management",address:"3838 Brockton Avenue, Riverside, CA",special:"HIV Testing & PrEP"},
-    {name:"Riverside County - Department of Public Social Services", phone:"888-960-4477", website:"http://www.RiversideIHSS.org", address:"561 N San Jacinto Street, Hemet, CA", special:"In-Home Supportive Services"}
+    {name:"TruEvolution",phone:"951-888-1346",email:"care@truevolution.org",website:"https://www.truevolution.org/case-management",address:"3838 Brockton Avenue, Riverside, CA",special:"HIV Testing & PrEP"},
+    {name:"Riverside Department of Public Social Services", phone:"888-960-4477", website:"http://www.RiversideIHSS.org", address:"561 N San Jacinto Street, Hemet, CA", special:"In-Home Supportive Services"}
   ]
 };
 
@@ -1463,24 +1463,24 @@ const resources = {
     {name:"Mental Health Urgent Care - Riverside", phone:"951-509-2499", website:"https://ruhealth.org/behavioral-health/county-mental-health-triage-services", address:"9890 County Farm Road, Building 2, Riverside, CA", special:"Suicide & Crisis"},
     {name:"Mental Health Urgent Care - Perris", phone:"951-349-4195", website:"https://ruhealth.org/behavioral-health/county-mental-health-triage-services", address:"85 Ramona Expressway, Suite 1-3, Perris, CA", special:"Suicide & Crisis"},
     {name:"Mental Health Urgent Care - Palm Springs", phone:"760-424-5602", website:"https://ruhealth.org/behavioral-health/county-mental-health-triage-services", address:"2500 N Palm Canyon Drive, Suite A4, Palm Springs, CA", special:"Suicide & Crisis"},
-    {name:"The Trevor Project", phone:"866-488-7386", email:"info@thetrevorproject.org", website:"https://www.thetrevorproject.org/", special:"LGBTQIA+"},
-    {name:"Trans Lifeline", phone:"877-565-8860", website:"https://translifeline.org", special:"LGBTQIA+"},
-    {name:"Veterans Crisis Line", phone:"988 x1", special:"Veterans"},
+    {name:"The Trevor Project", phone:"866-488-7386", email:"info@thetrevorproject.org", website:"https://www.thetrevorproject.org/", special:"LGBTQIA+ Suicide & Crisis"},
+    {name:"Trans Lifeline", phone:"877-565-8860", website:"https://translifeline.org", special:"LGBTQIA+ Suicide & Crisis"},
+    {name:"Veterans Crisis Line", phone:"988 x1", special:"Veterans Suicide & Crisis"},
     {name:"National Human Trafficking Hotline", phone:"888-373-7888", email:"help@humantraffickinghotline.org", website:"https://humantraffickinghotline.org/en", special:"Human Trafficking"},
     {name:"Riverside County Anti-Human Trafficking", phone:"855-758-3733", website:"https://www.riversidesheriff.org/797/Anti-Human-Trafficking-Task-Force-RCAHT", address:"4095 Lemon Street, Riverside, CA", special:"Human Trafficking"},
-    {name:"NORA", phone:"951-686-7273", email:"info@callnora.org", website:"https://callnora.org", address:"1845 Chicago Avenue, Suite A, Riverside, CA", special:"Sexual Assault Crisis"},
+    {name:"NORA", phone:"951-686-7273", email:"info@callnora.org", website:"https://callnora.org", address:"1845 Chicago Avenue, Suite A, Riverside, CA", special:"Sexual Assault"},
     {name:"National Domestic Violence Hotline", phone:"800-339-7233", website:"https://www.thehotline.org/", special:"Domestic Violence"},
     {name:"SAFE Family Justice Center", phone:"951-587-3900", email:"info@safefamiliesca.org", website:"https://www.safefjc.org/", address:"28910 Pujol Street, Temecula, CA", special:"Domestic Violence"},
     {name:"REACH", phone:"866-373-8300", email:"info@reachus.org", website:"https://reachus.org/", address:"1600 E Florida, Suite 206, Hemet, CA", special:"Domestic Violence"},
     {name:"Alternatives to Domestic Violence", phone:"951-425-8900", email:"referrals@alternativestodomesticviolence.org", website:"https://www.alternativestodomesticviolence.org/", address:"4150 Latham Street, Suite A, Riverside, CA", special:"Domestic Violence"},
-    {name:"Adult Protective Services", phone:"800-491-7123", website:"https://rivcodpss.org/elder-and-dependent-adult-abuse", address:"3950 Reynolds Road, Riverside, CA", special:"Elder/Dependent Abuse"},
+    {name:"Adult Protective Services", phone:"800-491-7123", website:"https://rivcodpss.org/elder-and-dependent-adult-abuse", address:"3950 Reynolds Road, Riverside, CA", special:"Elder & Dependent Abuse"},
     {name:"Child Protective Services", phone:"800-442-4918", website:"https://rivcodpss.org/child-abuse", address:"2300 Market Street, Suite 100, Riverside, CA", special:"Child Abuse"}
   ],
   basic:[
     {name:"St. Martha's 2nd Hand Treasures",phone:"951-677-0078",website:"https://communityoutreachofmurrieta.com/thrift-store",address:"39793 Avenida Acacias, Murrieta, CA",special:"Clothing"},
     {name:"IE LGBTQ+ Center",phone:"951-888-1346",email:"IELGBTQ@truevolution.org",website:"https://www.truevolution.org/ie-lgbtq-center",address:"3838 Brockton Avenue, Riverside, CA",special:"LGBTQIA+ Basic Needs"},
     {name:"The LGBTQ Community Center of the Desert", phone:"760-416-7790", email:"info@thecentercv.org", website:"https://thecentercv.org/en/", address:"1301 North Palm Canyon Drive, 3rd Floor, Palm Springs, CA", special:"LGBTQIA+ Basic Needs"},
-    {name:"Transgender Health & Wellness Center", phone:"760-202-4308", email:"info@trans.health", website:"https://trans.health", address:"340 South Farrell Drive, Suite A208, Palm Springs, CA", special:"LGBTQIA+ Rental Assistance"}
+    {name:"Transgender Health & Wellness Center", phone:"760-202-4308", email:"info@trans.health", website:"https://trans.health", address:"340 South Farrell Drive, Suite A208, Palm Springs, CA", special:"LGBTQIA+ Basic Needs"}
   ],
   food:[
     {name:"Community Food Pantry of Murrieta",phone:"951-677-6347",website:"https://communityoutreachofmurrieta.com/pantry-hours",address:"39493 Los Alamos Road, Suite A, Murrieta, CA"},
@@ -1492,10 +1492,10 @@ const resources = {
   ],
   legal:[
     {name:"Community Connect",phone:"211",special:"General Referrals"},
-    {name:"Riverside County DPSS",phone:"877-410-8827",email:"DPSSComm@rivco.org",website:"https://rivcodpss.org/",address:"43264 Business Park Drive Suite 102, Temecula, CA",special:"Public Benefits (CalWORKs, CalFresh, etc)"},
-    {name:"Riverside Legal Aid",phone:"951-682-7968",email:"info@riversidelegalaid.org",website:"https://riversidelegalaid.org",address:"4129 Main Street, Suite 101, Riverside, CA",special:"Family Law & More"},
+    {name:"Riverside Department of Public Social Services",phone:"877-410-8827",email:"DPSSComm@rivco.org",website:"https://rivcodpss.org/",address:"43264 Business Park Drive Suite 102, Temecula, CA",special:"Public Benefits (CalWORKs, CalFresh, etc)"},
+    {name:"Riverside Legal Aid",phone:"951-682-7968",email:"info@riversidelegalaid.org",website:"https://riversidelegalaid.org",address:"4129 Main Street, Suite 101, Riverside, CA",special:"Family Law"},
     {name:"Riverside Legal Aid - Eviction Defense", phone:"951-888-2039", email:"info@riversidelegalaid.org", website:"https://riversidelegalaid.org/unsafe-housing-tenant-rights/", special:"Eviction Defense"},
-    {name:"Inland Coalition for Immigrant Justice", phone:"909-474-9996", email:"info@ic4ij.org", website:"https://ic4ij.org/", address:"2441 N Sierra Way, San Bernardino, CA", special:"Immigration & Deportation"}
+    {name:"Inland Coalition for Immigrant Justice", phone:"909-474-9996", email:"info@ic4ij.org", website:"https://ic4ij.org/", address:"2441 N Sierra Way, San Bernardino, CA", special:"Immigration"}
   ],
   education:[
     {name:"Federal Student Aid (FAFSA)",phone:"800-433-3243",website:"https://studentaid.gov/h/apply-for-aid/fafsa",special:"Students"},
@@ -1714,7 +1714,7 @@ buildPanels(housing, 'housingPanels',
 
 buildPanels(healthcare, 'hcPanels',
   {medical:'medical',behavioral:'behavioral',specialty:'specialty'},
-  {medical:'Medical & Clinics',behavioral:'Mental Health & Recovery',specialty:'Specialty Care'},
+  {medical:'Medical & Primary Care',behavioral:'Behavioral Health',specialty:'Specialty Care'},
   'hcTabs');
 
 buildPanels(resources, 'resPanels',
@@ -1971,7 +1971,7 @@ const Q_STEPS = {
       {icon:'🆘', label:'Crisis Support',          sub:'Hotlines, immediate help',          val:'crisis'},
       {icon:'🏠', label:'Housing',                 sub:'Shelters, transitional, apartments',  val:'housing'},
       {icon:'💼', label:'Employment',              sub:'Job listings, staffing agencies',     val:'employment'},
-      {icon:'🏥', label:'Healthcare',              sub:'Medical, mental health, recovery',    val:'healthcare'},
+      {icon:'🏥', label:'Healthcare',              sub:'Medical, behavioral health, recovery',    val:'healthcare'},
       {icon:'🍎', label:'Food & Basics',           sub:'Food pantries, clothing, essentials', val:'food'},
       {icon:'⚖️', label:'Social & Legal', sub:'Public benefits, legal aid',          val:'legal'}
     ]
@@ -1993,8 +1993,8 @@ const Q_STEPS = {
     sub: 'We\'ll direct you to the most appropriate providers.',
     opts: [
       {icon:'🩺', label:'Medical & Primary Care',     sub:'Hospitals, clinics, urgent care',             val:'medical'},
-      {icon:'🧠', label:'Mental Health',              sub:'Counseling, psychiatry, crisis support',      val:'behavioral'},
-      {icon:'💊', label:'Substance Use Recovery',     sub:'Rehab centers, treatment programs',            val:'recovery'},
+      {icon:'🧠', label:'Behavioral Health',              sub:'Counseling, therapy, psychiatry',      val:'behavioral'},
+      {icon:'💊', label:'Substance Use',     sub:'Recovery centers, treatment programs',            val:'recovery'},
       {icon:'✨', label:'Specialty Care',             sub:'Autism, IHSS, other care',          val:'specialty'}
     ]
   },
