@@ -1113,7 +1113,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
     <section class="section">
       <div class="container">
         <div class="pill-row reveal reveal-delay-1" id="resTabs" role="tablist">
-          <button class="pill on" data-tab="crisis" role="tab" aria-selected="true">Emergency &amp; Crisis</button>
+          <button class="pill on" data-tab="crisis" role="tab" aria-selected="true">Crisis Support</button>
           <button class="pill" data-tab="basic" role="tab" aria-selected="false">Basic Needs</button>
           <button class="pill" data-tab="food" role="tab" aria-selected="false">Food Pantries</button>
           <button class="pill" data-tab="legal" role="tab" aria-selected="false">Social &amp; Legal</button>
@@ -1415,7 +1415,7 @@ const healthcare = {
 const resources = {
   crisis: [
     {name:"National Suicide & Crisis Lifeline", phone:"988", special:"Suicide & Crisis"},
-    {name:"Mobile Crisis Unit", phone:"888-374-1113", website:"https://ruhealth.org/behavioral-health/crisis-support-system-care", special:"Suicide & Crisis"},
+    {name:"RUHS Mobile Crisis Unit", phone:"888-374-1113", website:"https://ruhealth.org/behavioral-health/crisis-support-system-care", special:"Suicide & Crisis"},
     {name:"Inland Southern California Crisis Helpline", phone:"951-686-4357", special:"Suicide & Crisis"},
     {name:"Mental Health Urgent Care - Riverside", phone:"951-509-2499", website:"https://ruhealth.org/behavioral-health/county-mental-health-triage-services", address:"9890 County Farm Road, Building 2, Riverside, CA", special:"Suicide & Crisis"},
     {name:"Mental Health Urgent Care - Perris", phone:"951-349-4195", website:"https://ruhealth.org/behavioral-health/county-mental-health-triage-services", address:"85 Ramona Expressway, Suite 1-3, Perris, CA", special:"Suicide & Crisis"},
@@ -1676,7 +1676,7 @@ buildPanels(healthcare, 'hcPanels',
 
 buildPanels(resources, 'resPanels',
   {crisis:'emergency', basic:'basic', food:'food', legal:'legal', education:'education', animals:'animals'},
-  {crisis:'Emergency & Crisis', basic:'Basic Needs', food:'Food Pantries', legal:'Social & Legal Services', education:'Education', animals:'Animal Care'},
+  {crisis:'Crisis Support', basic:'Basic Needs', food:'Food Pantries', legal:'Social & Legal Services', education:'Education', animals:'Animal Care'},
   'resTabs');
 
 /* STAFFING AGENCIES (Employment Page logic override) */
