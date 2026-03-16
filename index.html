@@ -733,7 +733,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .intake-overlay.open { display: flex; opacity: 1; }
 .intake-modal { 
   background: var(--surface-float); border: 1px solid var(--border-glass); 
-  border-radius: 32px; width: 100%; max-width: 560px; max-height: 90dvh; 
+  border-radius: 32px; width: 100%; max-width: 560px; max-height: 90vh; max-height: 90dvh; 
   display: flex; flex-direction: column; overflow: hidden; 
   box-shadow: var(--shadow-float); position: relative; 
   transform: translateY(20px) scale(0.97); transition: transform 0.4s var(--ease-spring); 
@@ -799,7 +799,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
   .cta-block__actions .btn { justify-content: center; width: 100%; }
   
   .job-row { grid-template-columns: auto minmax(0, 1fr); padding: 16px; gap: 12px; }
-  .job-right { flex-direction: row; align-items: center; justify-content: space-between; grid-column: 1 / -1; margin-top: 8px; flex-wrap: wrap; gap: 8px; }
+  .job-right { flex-direction: row; align-items: center; justify-content: space-between; grid-column: span 2; margin-top: 8px; flex-wrap: wrap; gap: 8px; }
   
   .footer__bottom { flex-direction: column; align-items: flex-start; gap: 12px; }
   .controls-row { flex-direction: column; align-items: stretch; }
@@ -808,7 +808,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 
 /* Optimized Mobile Intake (No Scrolling Needed) */
 @media (max-width: 600px) {
-  .intake-modal { border-radius: 24px; max-height: 95dvh; display: flex; flex-direction: column; }
+  .intake-modal { border-radius: 24px; max-height: 95vh; max-height: 95dvh; display: flex; flex-direction: column; }
   .intake-modal__header { padding: 16px 20px 0; flex-shrink: 0; }
   .intake-modal__body { padding: 12px 20px 20px; overflow-y: auto; flex-grow: 1; }
   .q-grid { grid-template-columns: 1fr; gap: 8px; }
@@ -2025,7 +2025,7 @@ async function fetchAndPopulateJobs() {
 
   if (ls) { 
     const n = new Date(); 
-    ls.textContent = 'Live • ' + n.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}); 
+    ls.textContent = 'Live • ' + n.toLocaleTimeString(undefined, {hour:'2-digit', minute:'2-digit'}); 
   }
   
   renderJobs();
