@@ -1674,11 +1674,11 @@ function renderJobs() {
       .sort((a,b)=> new Date(b.posted) - new Date(a.posted));
       
     const id = city.toLowerCase().replace(/\s+/g,'-');
-    
-    html += `<div class="city-block" id="emp-${id}">
-      <div class="city-block__header" onclick="this.closest('.city-block').classList.toggle('closed')"
-           onkeydown="if(event.key==='Enter'||event.key===' ')this.closest('.city-block').classList.toggle('closed')"
-           tabindex="0" role="button" aria-expanded="true">
+
+   html += `<div class="city-block closed" id="emp-${id}">
+      <div class="city-block__header" onclick="this.closest('.city-block').classList.toggle('closed'); this.setAttribute('aria-expanded', this.closest('.city-block').classList.contains('closed') ? 'false' : 'true')"
+           onkeydown="if(event.key==='Enter'||event.key===' '){this.closest('.city-block').classList.toggle('closed'); this.setAttribute('aria-expanded', this.closest('.city-block').classList.contains('closed') ? 'false' : 'true')}"
+           tabindex="0" role="button" aria-expanded="false">
         <div class="city-block__left"><div class="city-pip" aria-hidden="true"></div><span class="city-name">${city}</span></div>
         <div class="city-block__right">
           <span class="city-count">${filtered.length} opening${filtered.length!==1?'s':''}</span>
