@@ -1916,8 +1916,8 @@ async function fetchGoogleJobs() {
 }
 
 function normalizeGoogleJob(data) {
-  let city = 'Riverside County';
-  const knownCities = ['Murrieta', 'Temecula', 'Menifee', 'Lake Elsinore', 'Wildomar'];
+  let city = 'Hemet & San Jacinto';
+  const knownCities = ['Murrieta', 'Temecula', 'Menifee', 'Lake Elsinore', 'Wildomar', 'Perris', 'Winchester', 'Hemet', 'San Jacinto'];
   if (data.location) {
       for (const known of knownCities) {
           if (data.location.toLowerCase().includes(known.toLowerCase())) {
