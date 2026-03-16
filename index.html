@@ -947,7 +947,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
       <div class="container hero__inner">
         <div class="hero__badge">
           <span class="hero__badge-live" aria-hidden="true"></span>
-          Riverside County
+          Hemet & San Jacinto
         </div>
         <h1 class="hero__headline reveal">Your partner on<br>the path to <em>housing.</em></h1>
         <p class="hero__sub reveal reveal-delay-1">Explore housing resources, find local job opportunities, and connect with your case manager — all in one place.</p>
@@ -2005,7 +2005,7 @@ async function fetchAndPopulateJobs() {
   
   validJobs.forEach(job => {
     const loc = job.location;
-    const targetLoc = ['Murrieta', 'Temecula', 'Menifee', 'Lake Elsinore', 'Wildomar'].includes(loc) ? loc : 'Riverside County';
+    const targetLoc = ['Murrieta', 'Temecula', 'Menifee', 'Lake Elsinore', 'Wildomar', 'Perris', 'Winchester', 'Hemet', 'San Jacinto', 'Hemet & San Jacinto'].includes(loc) ? loc : 'Hemet & San Jacinto';
     
     if (!activeJobs[targetLoc]) activeJobs[targetLoc] = [];
     activeJobs[targetLoc].push(job);
