@@ -2340,8 +2340,14 @@ async function populateMap(f) {
   }
 
   // Prevent map from zooming too far in on small clusters
-  if (pointsAdded > 0 && resourceMap.getZoom() > 14) {
-    resourceMap.setZoom(14);
+  if (pointsAdded > 0) {
+    // We use a one-time 'idle' listener so this check happens AFTER fitBounds completes
+    const listener = google.maps.event.addListener(resourceMap, "idle", function() { 
+      if (resourceMap.getZoom() > 14) {
+        resourceMap.setZoom(14); 
+      }
+      google.maps.event.removeListener(listener); // Remove it so it doesn't break user zooming later
+    });
   }
 }
 
