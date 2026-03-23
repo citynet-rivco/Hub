@@ -2339,6 +2339,12 @@ async function populateMap(f) {
     }
   }
 
+  // Prevent map from zooming too far in on small clusters
+  if (pointsAdded > 0 && resourceMap.getZoom() > 14) {
+    resourceMap.setZoom(14);
+  }
+}
+
 const _originalGoTo = window.goTo;
 window.goTo = function(page, scrollTo, activateTab) {
   if (typeof _originalGoTo === 'function') {
