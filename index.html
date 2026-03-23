@@ -2283,24 +2283,49 @@ async function populateMap(f) {
         </div>
       `;
 
+// 1. The Master Click Event for the Marker
       marker.addListener('click', () => {
-        infoWindow.setContent(popupHTML);
-        infoWindow.open(resourceMap, marker);
+        // Smoothly pan to center the pin
         resourceMap.panTo(coords);
+        
+        // Add a tiny delay for a "swooping" zoom effect
+        setTimeout(() => {
+            resourceMap.setZoom(15);
+        }, 150);
+        
+        // Open the info bubble
+        infoWindow.setContent(popupHTML);
+        infoWindow.open({
+            anchor: marker,
+            map: resourceMap,
+            shouldFocus: false // Prevents the page from harshly snapping to the map
+        });
+
+        // Sync the carousel: Scroll the matching card into view and highlight it
+        const card = document.getElementById(`map-card-${i}`);
+        if (card) {
+          // Reset all cards to default shadow
+          document.querySelectorAll('.map-card').forEach(c => {
+              c.style.boxShadow = 'var(--shadow-sm)';
+              c.style.borderColor = 'var(--border-glass)';
+          });
+          
+          // Highlight the active card and smoothly scroll it to the center
+          card.style.boxShadow = '0 8px 24px rgba(2, 119, 182, 0.15)';
+          card.style.borderColor = 'var(--accent)';
+          card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
       });
 
       mapMarkers.push(marker);
       bounds.extend(coords);
       pointsAdded++;
 
-      // Link the specific Carousel Card to this Marker
+      // 2. Link the Carousel Card to trigger the exact same beautiful animation
       const card = document.getElementById(`map-card-${i}`);
       if (card) {
         card.addEventListener('click', () => {
-          resourceMap.panTo(coords);
-          resourceMap.setZoom(15);
-          google.maps.event.trigger(marker, 'click'); // Open popup
-          card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' }); // Keep card visible
+          google.maps.event.trigger(marker, 'click'); 
         });
       }
       
