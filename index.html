@@ -8,11 +8,10 @@
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9YT2688MQC"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-9YT2688MQC');
+  window.dataLayer = window.dataLayer ||[];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9YT2688MQC');
 </script>
 
 <!-- Open Graph preview -->
@@ -38,7 +37,6 @@
    ND STUDIO: ELITE DESIGN TOKENS (City Net Unified)
 ══════════════════════════════════════════════════════ */
 :root {
-  /* Core Colors - Clean, uplifting slate-white background */
   --ink: #0f172a; 
   --ink-soft: #1e293b;
   --ink-muted: #64748b;
@@ -47,18 +45,15 @@
   --surface-card: rgba(255, 255, 255, 0.85); 
   --surface-float: rgba(255, 255, 255, 0.95); 
   
-  /* Brand Accents - City Net Cohesive Blue */
   --accent: #0277b6; 
   --accent-light: #0096c7; 
   --accent-pale: rgba(2, 119, 182, 0.08);
   --accent-glow: rgba(2, 119, 182, 0.2);
   
-  /* Buttons & High Contrast Elements */
   --btn-bg: #0277b6;
   --btn-hover: #025a8a;
   --btn-text: #ffffff;
   
-  /* Semantic Signals - Harmonized Jewel Tones */
   --signal-green: #0f766e; 
   --signal-green-pale: rgba(15, 118, 110, 0.1);
   --signal-amber: #b45309; 
@@ -68,29 +63,24 @@
   --signal-purple: #6d28d9; 
   --signal-purple-pale: rgba(109, 40, 217, 0.1);
   
-  /* Structural / Lines */
   --border: rgba(15, 23, 42, 0.12);
   --border-light: rgba(15, 23, 42, 0.06);
   --border-glass: rgba(255, 255, 255, 0.9);
   
-  /* Typography Variables */
   --text-primary: #0f172a;
   --text-secondary: #475569;
   --text-tertiary: #64748b;
   --text-on-accent: #ffffff; 
   
-  /* Badge/Circle Specific Colors (Deep tones for bright white text) */
   --badge-bg-1: #0277b6; 
   --badge-bg-2: #0f766e; 
   --badge-bg-3: #6d28d9; 
   --badge-bg-4: #b45309; 
   --badge-bg-5: #b91c1c; 
   
-  /* Fonts */
   --f-display: 'Fraunces', Georgia, serif;
   --f-body: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   
-  /* Fluid Scaling */
   --size-xs: 0.8rem; 
   --size-sm: 0.925rem; 
   --size-base: 1.05rem; 
@@ -101,25 +91,21 @@
   --size-3xl: 3.5rem;
   --size-hero: clamp(3rem, 7vw, 6rem);
   
-  /* Spacing */
   --space-sm: 0.5rem;
   --space-md: 1rem;
   --space-lg: 1.5rem;
 
-  /* Radii */
   --radius-sm: 8px;
   --radius-md: 14px;
   --radius-lg: 20px;
   --radius-xl: 32px;
   
-  /* Elevation */
   --shadow-sm: 0 4px 16px rgba(15,23,42,0.04);
   --shadow-md: 0 16px 48px rgba(15,23,42,0.08);
   --shadow-lg: 0 32px 96px rgba(15,23,42,0.12);
   --shadow-float: 0 40px 100px rgba(2,119,182,0.15), 0 0 0 1px var(--border);
   --inner-glow: inset 0 1px 0 0 rgba(255,255,255,0.9);
   
-  /* Easing & Physics */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-spring: cubic-bezier(0.25, 1.2, 0.5, 1);
   --dur-fast: 200ms;
@@ -128,9 +114,6 @@
   --dur-spring: 500ms;
 }
 
-/* ══════════════════════════════════════════════════════
-   OLED-OPTIMIZED DARK MODE
-══════════════════════════════════════════════════════ */
 @media (prefers-color-scheme: dark) {
   :root {
     --ink: #f8fafc;
@@ -182,9 +165,6 @@
   }
 }
 
-/* ══════════════════════════════════════════════════════
-   GLOBAL RESET & BASE
-══════════════════════════════════════════════════════ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
 
@@ -209,19 +189,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 
 @keyframes pulse-live { 0% { box-shadow: 0 0 0 0 rgba(15, 118, 110, 0.6); } 70% { box-shadow: 0 0 0 8px rgba(15, 118, 110, 0); } 100% { box-shadow: 0 0 0 0 rgba(15, 118, 110, 0); } }
 @media (prefers-color-scheme: dark) { @keyframes pulse-live { 0% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.6); } 70% { box-shadow: 0 0 0 8px rgba(52, 211, 153, 0); } 100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); } } }
-
 @keyframes float-bg { 0% { transform: translate(0, 0) scale(1); opacity: 0.5; } 33% { transform: translate(30px, -50px) scale(1.1); opacity: 0.7; } 66% { transform: translate(-20px, 20px) scale(0.9); opacity: 0.6; } 100% { transform: translate(0, 0) scale(1); opacity: 0.5; } }
 
-/* ══════════════════════════════════════════════════════
-   SCROLL-REVEAL SYSTEM
-══════════════════════════════════════════════════════ */
 .reveal { opacity: 0; transform: translateY(30px) scale(0.98); transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-spring); }
 .reveal.visible { opacity: 1; transform: translateY(0) scale(1); }
 .reveal-delay-1 { transition-delay: 0.05s; } .reveal-delay-2 { transition-delay: 0.1s; } .reveal-delay-3 { transition-delay: 0.15s; }
 
-/* ══════════════════════════════════════════════════════
-   TOPBAR
-══════════════════════════════════════════════════════ */
 .topbar { background: var(--badge-bg-1); color: #fff; padding: 8px 0; font-size: var(--size-xs); font-weight: 600; letter-spacing: 0.04em; position: relative; z-index: 200; text-transform: uppercase; transition: background 0.4s; }
 .topbar__inner { display: flex; align-items: center; justify-content: space-between; gap: var(--space-md); flex-wrap: wrap; }
 .topbar__left { opacity: 0.9; }
@@ -230,25 +203,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .topbar__right a:hover { opacity: 1; filter: brightness(1.2); }
 .topbar__sep { width: 1px; height: 12px; background: currentColor; opacity: 0.4; }
 
-/* ══════════════════════════════════════════════════════
-   HEADER (Dynamic Island Style)
-══════════════════════════════════════════════════════ */
 .header-wrapper { position: sticky; top: 0; z-index: 150; padding: 0; transition: padding 0.5s var(--ease-out); }
 .header-wrapper.scrolled { padding: 1rem 1.5rem; pointer-events: none; }
-
 .header { background: var(--surface-float); backdrop-filter: blur(32px) saturate(200%); -webkit-backdrop-filter: blur(32px) saturate(200%); border-bottom: 1px solid var(--border-light); transition: border-radius 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out), background 0.5s var(--ease-out), max-width 0.5s var(--ease-out); pointer-events: auto; }
-.header-wrapper.scrolled .header { 
-  border-radius: 100px; 
-  border: 1px solid var(--border-glass); 
-  box-shadow: var(--shadow-lg), var(--inner-glow); 
-  background: var(--surface-float);
-  margin: 0 auto;
-  max-width: 1200px;
-}
+.header-wrapper.scrolled .header { border-radius: 100px; border: 1px solid var(--border-glass); box-shadow: var(--shadow-lg), var(--inner-glow); background: var(--surface-float); margin: 0 auto; max-width: 1200px; }
 .header__inner { display: flex; align-items: center; justify-content: space-between; height: 76px; padding: 0 clamp(1.5rem, 5vw, 3rem); transition: padding 0.5s var(--ease-out), height 0.5s var(--ease-out); }
 .header-wrapper.scrolled .header__inner { padding: 0 1rem 0 1.5rem; height: 64px; }
 
-/* Logo */
 .logo { display: flex; align-items: center; gap: 12px; cursor: pointer; transition: transform var(--dur-spring); }
 .logo:hover { transform: scale(1.02); }
 .logo:active { transform: scale(0.96); }
@@ -260,7 +221,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .logo__sub { font-family: var(--f-body); color: var(--text-tertiary); font-weight: 500; font-size: var(--size-sm); }
 .logo__sub::before { content: '| '; margin-right: 6px; opacity: 0.3; }
 
-/* Nav */
 .nav { display: flex; align-items: center; gap: 4px; }
 .nav-link { padding: 8px 16px; font-size: var(--size-sm); font-weight: 600; color: var(--text-secondary); border-radius: 100px; transition: all var(--dur-fast) var(--ease-out); cursor: pointer; position: relative; }
 .nav-link:hover { color: var(--text-primary); background: var(--border-light); }
@@ -268,33 +228,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .nav-link.active { color: var(--accent); }
 .nav-link.active::after { content:''; position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%); width: 16px; height: 2px; background: var(--accent); border-radius: 2px; }
 
-/* Nav Dropdown (Fixed Hover/Bridge) */
 .nav-drop { position: relative; padding-bottom: 16px; margin-bottom: -16px; } 
-.nav-drop-menu { 
-  display: block; 
-  visibility: hidden;
-  opacity: 0;
-  position: absolute; 
-  top: calc(100% + 4px); 
-  left: 50%; 
-  transform: translateX(-50%) translateY(-10px) scale(0.98); 
-  background: var(--surface-float); 
-  min-width: 320px; 
-  border-radius: var(--radius-lg); 
-  padding: 8px; 
-  backdrop-filter: blur(40px) saturate(200%); 
-  box-shadow: var(--shadow-float), var(--inner-glow); 
-  border: 1px solid var(--border-glass); 
-  transition: all 0.3s var(--ease-spring);
-  transform-origin: top center; 
-  pointer-events: none;
-}
-.nav-drop:hover .nav-drop-menu, .nav-drop:focus-within .nav-drop-menu { 
-  visibility: visible;
-  opacity: 1;
-  transform: translateX(-50%) translateY(0) scale(1);
-  pointer-events: auto;
-}
+.nav-drop-menu { display: block; visibility: hidden; opacity: 0; position: absolute; top: calc(100% + 4px); left: 50%; transform: translateX(-50%) translateY(-10px) scale(0.98); background: var(--surface-float); min-width: 320px; border-radius: var(--radius-lg); padding: 8px; backdrop-filter: blur(40px) saturate(200%); box-shadow: var(--shadow-float), var(--inner-glow); border: 1px solid var(--border-glass); transition: all 0.3s var(--ease-spring); transform-origin: top center; pointer-events: none; }
+.nav-drop:hover .nav-drop-menu, .nav-drop:focus-within .nav-drop-menu { visibility: visible; opacity: 1; transform: translateX(-50%) translateY(0) scale(1); pointer-events: auto; }
 
 .nav-drop-item { display: flex; align-items: center; gap: 16px; padding: 12px; border-radius: var(--radius-md); cursor: pointer; transition: all var(--dur-fast) var(--ease-out); opacity: 0; transform: translateY(-6px); }
 .nav-drop:hover .nav-drop-item, .nav-drop:focus-within .nav-drop-item { opacity: 1; transform: translateY(0); }
@@ -314,13 +250,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .nav-drop-item:hover .ndi-title { color: var(--accent); }
 .ndi-sub { font-size: var(--size-xs); color: var(--text-tertiary); font-weight: 400; line-height: 1.3; }
 
-/* Modern Button Classes */
 .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; font-family: var(--f-body); font-size: var(--size-sm); font-weight: 600; border-radius: 100px; border: 1px solid transparent; cursor: pointer; transition: all var(--dur-fast) var(--ease-spring); letter-spacing: -0.01em; position: relative; overflow: hidden; }
 .btn svg { width: 18px; height: 18px; flex-shrink: 0; transition: transform var(--dur-fast); }
 .btn:hover svg { transform: translateX(2px); }
 .btn:active { transform: scale(0.96) !important; }
 
-/* Button Hover Shine */
 .btn::after { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent); transform: skewX(-20deg); transition: left 0.6s var(--ease-out); }
 .btn:hover::after { left: 150%; }
 
@@ -329,19 +263,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .btn--outline { background: transparent; color: var(--text-primary); border-color: var(--border); backdrop-filter: blur(10px); }
 .btn--outline:hover { border-color: var(--accent); color: var(--accent); background: var(--surface-card); transform: translateY(-2px); }
 
-/* Header CTA */
 .btn-cta { margin-left: var(--space-sm); padding: 10px 20px !important; }
 
-/* Mobile hamburger */
 .nav-toggle { display: none; background: none; border: 1px solid var(--border-light); width: 44px; height: 44px; cursor: pointer; border-radius: 50%; transition: background var(--dur-fast); align-items: center; justify-content: center; }
 .nav-toggle:hover { background: var(--surface-warm); }
 .nav-toggle:active { transform: scale(0.92); }
 .hamburger { display: flex; flex-direction: column; gap: 4px; }
 .hamburger span { display: block; width: 18px; height: 2px; background: var(--text-primary); border-radius: 2px; }
 
-/* ══════════════════════════════════════════════════════
-   MOBILE NAV OVERLAY
-══════════════════════════════════════════════════════ */
 .mobile-nav { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(40px) saturate(200%); -webkit-backdrop-filter: blur(40px) saturate(200%); flex-direction: column; padding: 0; overflow-y: auto; color: #fff; }
 .mobile-nav.open { display: flex; animation: mobileNavIn 0.4s var(--ease-out) forwards; }
 @keyframes mobileNavIn { from { opacity:0; transform: translateY(15px); } to { opacity:1; transform: translateY(0); } }
@@ -355,7 +284,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .mobile-nav.open .mobile-nav__link { animation: mobileLinkIn 0.4s var(--ease-out) forwards; }
 @keyframes mobileLinkIn { to { opacity: 1; transform: translateX(0); } }
 
-/* Stagger Mobile Links */
 .mobile-nav__link:nth-child(1) { animation-delay: 0.05s; }
 .mobile-nav__group-label { animation-delay: 0.1s; opacity: 0; animation: mobileLinkIn 0.4s var(--ease-out) forwards; padding: 12px 20px 4px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); }
 .mobile-nav__link:nth-child(3) { animation-delay: 0.15s; }
@@ -372,22 +300,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .mobile-nav__call { display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 100%; max-width: 320px; padding: 14px 24px; background: #38bdf8; color: #020617; border-radius: 100px; font-size: 1.05rem; font-weight: 600; box-shadow: var(--shadow-sm); transition: transform var(--dur-spring); }
 .mobile-nav__call:active { transform: scale(0.96); }
 
-/* Logo classes for inverted backgrounds */
 .logo--white .logo__text { color: #fff; }
 .logo--white .logo__sub { color: rgba(255,255,255,0.6); }
 
-/* ══════════════════════════════════════════════════════
-   PAGE SYSTEM
-══════════════════════════════════════════════════════ */
 .page { display: none; }
 .page.active { display: block; animation: pageFadeIn 0.5s var(--ease-out) forwards; }
 @keyframes pageFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-/* ══════════════════════════════════════════════════════
-   HERO (Home)
-══════════════════════════════════════════════════════ */
 .hero { padding: clamp(4rem, 10vw, 8rem) 0 clamp(3rem, 8vw, 5rem); position: relative; overflow: visible; display: flex; flex-direction: column; align-items: center; text-align: center; }
-/* Volumetric glowing orbs behind hero */
 .hero::before { content:''; position: absolute; top: -20%; right: 10%; width: 60vw; height: 60vw; max-width: 800px; max-height: 800px; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%); pointer-events: none; animation: float-bg 20s ease-in-out infinite; z-index: -1; }
 .hero::after { content:''; position: absolute; bottom: 0; left: 10%; width: 50vw; height: 50vw; max-width: 600px; max-height: 600px; background: radial-gradient(circle, var(--signal-green-pale) 0%, transparent 60%); pointer-events: none; animation: float-bg 25s ease-in-out infinite reverse; z-index: -1; }
 
@@ -399,55 +319,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .hero__sub { margin-top: 1.5rem; font-size: var(--size-lg); line-height: 1.6; color: var(--text-secondary); max-width: 680px; font-weight: 400; letter-spacing: -0.01em; }
 .hero__actions { margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
 
-/* ══════════════════════════════════════════════════════
-   STUNNING STAT STRIPS (Dynamic Floating Pill)
-══════════════════════════════════════════════════════ */
-.stats-strip-wrapper, .page-stats-wrapper {
-  padding: 2rem clamp(1.5rem, 5vw, 3rem);
-  position: relative;
-}
-.stats-strip, .page-stats {
-  background: linear-gradient(135deg, var(--surface-float), var(--surface-card));
-  border: 1px solid var(--border-glass);
-  border-radius: var(--radius-xl);
-  padding: 3rem 2rem;
-  box-shadow: var(--shadow-lg), var(--inner-glow);
-  backdrop-filter: blur(40px) saturate(150%);
-  position: relative;
-  overflow: hidden;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.stats-strip::before, .page-stats::before {
-  content: ''; position: absolute; top: -50%; left: 50%; transform: translateX(-50%); 
-  width: 800px; height: 400px; background: radial-gradient(ellipse, var(--accent-glow) 0%, transparent 70%); 
-  pointer-events: none; z-index: 0;
-}
-.stats-strip__grid, .page-stats__grid {
-  position: relative; z-index: 1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
-}
+.stats-strip-wrapper, .page-stats-wrapper { padding: 2rem clamp(1.5rem, 5vw, 3rem); position: relative; }
+.stats-strip, .page-stats { background: linear-gradient(135deg, var(--surface-float), var(--surface-card)); border: 1px solid var(--border-glass); border-radius: var(--radius-xl); padding: 3rem 2rem; box-shadow: var(--shadow-lg), var(--inner-glow); backdrop-filter: blur(40px) saturate(150%); position: relative; overflow: hidden; max-width: 1200px; margin: 0 auto; }
+.stats-strip::before, .page-stats::before { content: ''; position: absolute; top: -50%; left: 50%; transform: translateX(-50%); width: 800px; height: 400px; background: radial-gradient(ellipse, var(--accent-glow) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+.stats-strip__grid, .page-stats__grid { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
 .stat-cell, .ps-cell { text-align: center; position: relative; }
 
-/* Metallic Gradient Numbers */
-.stat-cell__num, .ps-cell__num { 
-  font-family: var(--f-display); 
-  font-size: clamp(2.5rem, 5vw, 4rem); 
-  font-weight: 500; 
-  background: linear-gradient(135deg, var(--text-primary), var(--accent));
-  -webkit-background-clip: text; 
-  -webkit-text-fill-color: transparent;
-  letter-spacing: -0.04em; 
-  line-height: 1;
-  filter: drop-shadow(0 4px 12px rgba(2,119,182,0.1));
-}
-.stat-cell__label, .ps-cell__label { 
-  margin-top: 0.5rem; font-size: 12px; color: var(--text-secondary); text-transform: uppercase; 
-  letter-spacing: 0.1em; font-weight: 700; 
-}
+.stat-cell__num, .ps-cell__num { font-family: var(--f-display); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 500; background: linear-gradient(135deg, var(--text-primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.04em; line-height: 1; filter: drop-shadow(0 4px 12px rgba(2,119,182,0.1)); }
+.stat-cell__label, .ps-cell__label { margin-top: 0.5rem; font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; }
 
-/* ══════════════════════════════════════════════════════
-   SECTION BASE
-══════════════════════════════════════════════════════ */
 .section { padding: clamp(3rem, 6vw, 5rem) 0; position: relative; }
 .section--alt { background: var(--surface-warm); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); }
 .s-eyebrow { display: flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 1rem; }
@@ -460,9 +340,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .s-header { margin-bottom: 3rem; }
 .s-header--center { text-align: center; display: flex; flex-direction: column; align-items: center; }
 
-/* ══════════════════════════════════════════════════════
-   HUB CARDS (The "Apple" Glass Cards)
-══════════════════════════════════════════════════════ */
 .hub-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .hub-card { background: var(--surface-card); border: 1px solid var(--border-glass); border-radius: var(--radius-xl); padding: 2.5rem; transition: all var(--dur-base) var(--ease-spring); cursor: pointer; display: flex; flex-direction: column; box-shadow: var(--shadow-sm), var(--inner-glow); backdrop-filter: blur(32px) saturate(200%); -webkit-backdrop-filter: blur(32px) saturate(200%); position: relative; overflow: hidden; }
 .hub-card::before { content:''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, transparent 100%); opacity: 0; transition: opacity var(--dur-base); z-index: 0; pointer-events: none; }
@@ -479,9 +356,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .hub-card--housing .hub-card__icon { background: linear-gradient(135deg, var(--badge-bg-1), #0096c7); color: #fff; }
 .hub-card--employment .hub-card__icon { background: linear-gradient(135deg, var(--badge-bg-2), #14b8a6); color: #fff; }
 .hub-card--team .hub-card__icon { background: linear-gradient(135deg, var(--badge-bg-4), #d97706); color: #fff; }
-@media (prefers-color-scheme: dark) { 
-  .hub-card__icon { color: #fff; } /* Keep icons white on deep badges in dark mode */
-}
+@media (prefers-color-scheme: dark) { .hub-card__icon { color: #fff; } }
 
 .hub-card__title { font-family: var(--f-display); font-size: var(--size-xl); font-weight: 600; color: var(--text-primary); letter-spacing: -0.02em; margin-bottom: 0.5rem; transition: color var(--dur-fast); }
 .hub-card:hover .hub-card__title { color: var(--accent); }
@@ -491,38 +366,18 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .hub-card:hover .hub-card__cta { color: var(--accent); }
 .hub-card:hover .hub-card__cta svg { transform: translateX(4px); color: var(--accent); }
 
-/* ══════════════════════════════════════════════════════
-   AVATARS / INITIALS BADGES (Readability Fix)
-══════════════════════════════════════════════════════ */
-.job-initials, .cm-avatar { 
-  width: 48px; height: 48px; 
-  border-radius: 50%; 
-  display: flex; align-items: center; justify-content: center; 
-  font-family: var(--f-display); font-weight: 600; font-size: 16px; 
-  color: var(--text-on-accent) !important; 
-  flex-shrink: 0; 
-  box-shadow: inset 0 2px 4px rgba(255,255,255,0.3), var(--shadow-sm);
-  text-shadow: 0 1px 2px rgba(0,0,0,0.2); 
-}
-
-/* Staggered deep backgrounds to ensure PURE WHITE text is always legible */
+.job-initials, .cm-avatar { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--f-display); font-weight: 600; font-size: 16px; color: var(--text-on-accent) !important; flex-shrink: 0; box-shadow: inset 0 2px 4px rgba(255,255,255,0.3), var(--shadow-sm); text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
 .job-initials, .cm-card:nth-child(5n+1) .cm-avatar { background-color: var(--badge-bg-1); } 
 .city-block:nth-of-type(2n) .job-initials, .cm-card:nth-child(5n+2) .cm-avatar { background-color: var(--badge-bg-2); } 
 .city-block:nth-of-type(3n) .job-initials, .cm-card:nth-child(5n+3) .cm-avatar { background-color: var(--badge-bg-3); } 
 .cm-card:nth-child(5n+4) .cm-avatar { background-color: var(--badge-bg-4); } 
 .cm-card:nth-child(5n+5) .cm-avatar { background-color: var(--badge-bg-5); } 
-
-/* employment specific smaller initials */
 .job-initials { width: 40px; height: 40px; border-radius: 8px; font-size: 14px; }
 
-/* ══════════════════════════════════════════════════════
-   TEAM GRID
-══════════════════════════════════════════════════════ */
 .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .cm-card { background: var(--surface-card); border: 1px solid var(--border-glass); border-radius: var(--radius-xl); padding: 1.5rem; transition: all var(--dur-base) var(--ease-spring); display: flex; flex-direction: column; box-shadow: var(--shadow-sm), var(--inner-glow); backdrop-filter: blur(32px) saturate(200%); }
 .cm-card:hover { border-color: var(--accent); box-shadow: var(--shadow-md), var(--inner-glow); transform: translateY(-4px); }
 .cm-card__head { display: flex; align-items: center; gap: 16px; margin-bottom: 1.25rem; }
-
 .cm-card__name { font-family: var(--f-display); font-size: var(--size-md); font-weight: 600; color: var(--text-primary); line-height: 1.1; letter-spacing: -0.01em; }
 .cm-card__role { font-size: 11px; color: var(--accent); margin-top: 4px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
 .cm-card__contacts { display: flex; flex-direction: column; gap: 10px; font-size: var(--size-sm); color: var(--text-secondary); padding: 1.25rem 0; border-top: 1px solid var(--border-light); margin-bottom: 0; flex-grow: 1; }
@@ -538,7 +393,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .cm-btn--secondary:hover { border-color: var(--accent); color: var(--accent); background: var(--surface-card); transform: translateY(-1px); }
 .cm-btn--secondary:active { transform: scale(0.95); }
 
-/* Case Manager Controls */
 .status-bar { display: flex; align-items: center; justify-content: space-between; background: var(--surface-card); border: 1px solid var(--border-glass); border-radius: var(--radius-lg); padding: 16px 24px; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 16px; box-shadow: var(--shadow-sm), var(--inner-glow); backdrop-filter: blur(24px); }
 .status-ind { display: flex; align-items: center; gap: 12px; font-size: var(--size-sm); color: var(--text-primary); font-weight: 600; }
 .sdot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
@@ -555,9 +409,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .searchbox input::placeholder { color: var(--text-tertiary); }
 .result-count { font-size: 13px; color: var(--text-secondary); font-weight: 500; }
 
-/* ══════════════════════════════════════════════════════
-   INNER PAGES HERO (Centered)
-══════════════════════════════════════════════════════ */
 .page-hero { padding: clamp(3rem, 6vw, 5rem) 0 1rem; position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; }
 .page-hero__inner { display: flex; flex-direction: column; align-items: center; text-align: center; }
 .page-hero__crumb { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-tertiary); margin-bottom: 1.5rem; justify-content: center; }
@@ -567,18 +418,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .page-hero__title em { font-style: italic; color: transparent; background: linear-gradient(135deg, var(--accent), var(--accent-light)); -webkit-background-clip: text; }
 .page-hero__sub { margin-top: 1rem; font-size: var(--size-lg); color: var(--text-secondary); line-height: 1.5; max-width: 600px; font-weight: 400; margin-left: auto; margin-right: auto; }
 
-/* ══════════════════════════════════════════════════════
-   SEGMENTED CONTROLS (Pills & Tabs)
-══════════════════════════════════════════════════════ */
 .pill-row { display: inline-flex; gap: 4px; padding: 4px; background: var(--surface-card); border: 1px solid var(--border-glass); border-radius: 100px; box-shadow: var(--shadow-sm), inset 0 2px 4px rgba(0,0,0,0.02); backdrop-filter: blur(20px); margin-bottom: 2rem; overflow-x: auto; max-width: 100%; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
 .pill-row::-webkit-scrollbar { display: none; }
 .pill, .tab { padding: 10px 20px; font-size: 13px; font-weight: 600; border: none; border-radius: 100px; background: transparent; color: var(--text-secondary); cursor: pointer; transition: all var(--dur-fast); white-space: nowrap; }
 .pill:hover, .tab:hover { color: var(--text-primary); }
 .pill.on, .tab.on { background: var(--btn-bg); color: var(--btn-text); box-shadow: 0 2px 8px rgba(2,119,182,0.25); }
 
-/* ══════════════════════════════════════════════════════
-   EMPLOYMENT (Linear App Style List)
-══════════════════════════════════════════════════════ */
 .emp-layout { display: grid; grid-template-columns: 1fr 340px; gap: 2rem; align-items: start; }
 .emp-layout > div { min-width: 0; }
 .emp-sidebar { position: sticky; top: 100px; display: flex; flex-direction: column; gap: 24px; }
@@ -625,7 +470,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
   .badge--ft { border-color: rgba(52,211,153,0.2); } 
 }
 
-/* Sidebar Cards */
 .scard { background: var(--surface-card); backdrop-filter: blur(32px) saturate(200%); border: 1px solid var(--border-glass); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm), var(--inner-glow); }
 .scard__head { padding: 16px 20px; border-bottom: 1px solid var(--border-light); background: var(--surface-warm); }
 .scard__head h3 { font-size: 12px; font-weight: 700; color: var(--text-primary); letter-spacing: 0.1em; text-transform: uppercase; margin: 0; }
@@ -643,9 +487,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .res-link__arrow { color: var(--text-tertiary); font-size: 14px; font-weight: 700; transition: color var(--dur-fast); }
 .res-link:hover .res-link__arrow { color: var(--accent); }
 
-/* ══════════════════════════════════════════════════════
-   RESOURCE CARDS (Housing, Healthcare, More)
-══════════════════════════════════════════════════════ */
 .panel { display: none; }
 .panel.on { display: block; animation: panelIn 0.5s var(--ease-spring) forwards; }
 @keyframes panelIn { from { opacity:0; transform: translateY(10px) scale(0.99); } to { opacity:1; transform: translateY(0) scale(1); } }
@@ -656,7 +497,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .rc:hover { box-shadow: var(--shadow-md), var(--inner-glow); transform: translateY(-4px); border-color: var(--accent); }
 .rc:hover::before { width: 6px; }
 
-/* Sub-branding colors for resources */
 .rc--emergency::before   { background: var(--signal-red); }
 .rc--transitional::before{ background: var(--signal-purple); }
 .rc--affordable::before  { background: var(--signal-green); }
@@ -683,7 +523,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .rcb--education   { background: var(--accent-pale); color: var(--accent); border-color: rgba(2,119,182,0.2); }
 .rcb--animals     { background: var(--signal-red-pale); color: var(--signal-red); border-color: rgba(185,28,28,0.2); }
 
-/* Update dark mode borders */
 @media (prefers-color-scheme: dark) {
   .rcb--emergency   { border-color: rgba(248,113,113,0.2); }
   .rcb--transitional{ border-color: rgba(167,139,250,0.2); }
@@ -708,9 +547,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .rc-row a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
 .rc:hover .rc-row svg { color: var(--accent); }
 
-/* ══════════════════════════════════════════════════════
-   CTA BLOCK
-══════════════════════════════════════════════════════ */
 .cta-block { margin: 2rem 0; padding: clamp(3rem, 6vw, 5rem) 2rem; background: var(--badge-bg-1); border-radius: var(--radius-xl); text-align: center; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255,255,255,0.05); color: #fff; }
 .cta-block::before { content: ''; position: absolute; top: -50%; left: -20%; width: 1000px; height: 1000px; background: radial-gradient(circle, rgba(255,255,255,0.04), transparent 60%); pointer-events: none; border-radius: 50%; }
 .cta-block__title { font-family: var(--f-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 500; line-height: 1.1; margin-bottom: 1rem; letter-spacing: -0.02em; color: #fff; }
@@ -727,9 +563,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
   .cta-block .btn--solid:hover { background: var(--accent-light); }
 }
 
-/* ══════════════════════════════════════════════════════
-   FOOTER
-══════════════════════════════════════════════════════ */
 .footer { background: var(--surface-warm); padding: 4rem 0 2rem; border-top: 1px solid var(--border-light); font-size: 13px; }
 .footer__grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid var(--border-light); }
 .footer__brand-desc { color: var(--text-secondary); line-height: 1.6; max-width: 320px; margin-top: 16px; }
@@ -741,44 +574,19 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .footer__legal { display: flex; gap: 1.5rem; }
 .footer__legal a:hover { color: var(--accent); }
 
-/* Footer specific logo override */
 .footer .logo__mark { width: 32px; height: 32px; border-radius: 6px; }
 .footer .logo__text { font-size: 1.2rem; }
 .footer .logo__sub { font-size: var(--size-xs); }
 
-/* ══════════════════════════════════════════════════════
-   RAPID INTAKE WIZARD (Questionnaire)
-══════════════════════════════════════════════════════ */
-.intake-overlay { 
-  display: none; position: fixed; inset: 0; z-index: 2000; 
-  background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); 
-  align-items: center; justify-content: center; padding: 1rem; 
-  opacity: 0; transition: opacity 0.3s; will-change: opacity; 
-}
+.intake-overlay { display: none; position: fixed; inset: 0; z-index: 2000; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); align-items: center; justify-content: center; padding: 1rem; opacity: 0; transition: opacity 0.3s; will-change: opacity; }
 .intake-overlay.open { display: flex; opacity: 1; }
-.intake-modal { 
-  background: var(--surface-float); border: 1px solid var(--border-glass); 
-  border-radius: 32px; width: 100%; max-width: 560px; max-height: 90vh; max-height: 90dvh; 
-  display: flex; flex-direction: column; overflow: hidden; 
-  box-shadow: var(--shadow-float); position: relative; 
-  transform: translateY(20px) scale(0.97); transition: transform 0.4s var(--ease-spring); 
-  will-change: transform; 
-}
+.intake-modal { background: var(--surface-float); border: 1px solid var(--border-glass); border-radius: 32px; width: 100%; max-width: 560px; max-height: 90vh; max-height: 90dvh; display: flex; flex-direction: column; overflow: hidden; box-shadow: var(--shadow-float); position: relative; transform: translateY(20px) scale(0.97); transition: transform 0.4s var(--ease-spring); will-change: transform; }
 .intake-overlay.open .intake-modal { transform: translateY(0) scale(1); }
-.intake-modal__header { 
-  display: flex; align-items: center; justify-content: space-between; 
-  padding: 24px 28px 0; flex-shrink: 0;
-}
-.intake-modal__close { 
-  width: 44px; height: 44px; border-radius: 50%; background: var(--surface-warm); 
-  border: 1px solid var(--border-light); display: flex; align-items: center; 
-  justify-content: center; color: var(--text-secondary); transition: all var(--dur-fast); cursor: pointer; 
-}
+.intake-modal__header { display: flex; align-items: center; justify-content: space-between; padding: 24px 28px 0; flex-shrink: 0; }
+.intake-modal__close { width: 44px; height: 44px; border-radius: 50%; background: var(--surface-warm); border: 1px solid var(--border-light); display: flex; align-items: center; justify-content: center; color: var(--text-secondary); transition: all var(--dur-fast); cursor: pointer; }
 .intake-modal__close:hover { background: var(--border-light); color: var(--text-primary); }
 .intake-modal__close:active { transform: scale(0.9); }
-.intake-modal__body { 
-  padding: 12px 28px 28px; position: relative; overflow-y: auto; flex-grow: 1;
-}
+.intake-modal__body { padding: 12px 28px 28px; position: relative; overflow-y: auto; flex-grow: 1; }
 
 .q-step-ind { display: flex; gap: 6px; align-items: center; }
 .q-step-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); transition: all 0.4s var(--ease-spring); }
@@ -798,9 +606,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .q-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 24px; gap: 16px; }
 .q-nav .btn { min-height: 44px; }
 
-/* ══════════════════════════════════════════════════════
-   RESPONSIVE DESIGN (Master + Map Adjustments)
-══════════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
   .hub-grid, .team-grid { grid-template-columns: repeat(2, 1fr); }
   .emp-layout { grid-template-columns: 1fr; }
@@ -831,7 +636,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
   .searchbox { max-width: 100%; }
 }
 
-/* Optimized Mobile Intake (No Scrolling Needed) */
 @media (max-width: 600px) {
   .intake-modal { border-radius: 24px; max-height: 95vh; max-height: 95dvh; display: flex; flex-direction: column; }
   .intake-modal__header { padding: 16px 20px 0; flex-shrink: 0; }
@@ -844,7 +648,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
   .q-nav { margin-top: 16px; gap: 12px; }
 }
 
-/* Extreme Compact Mode for Short Mobile Screens (e.g. iPhone SE) */
 @media (max-height: 720px) and (max-width: 600px) {
   .intake-overlay { padding: 0.5rem; }
   .intake-modal__header { padding: 12px 16px 0; }
@@ -860,6 +663,22 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
   .q-eyebrow { margin-bottom: 4px; }
   .q-nav { margin-top: 12px; gap: 8px; }
   .q-nav .btn { min-height: 38px; padding: 6px 12px; font-size: 0.85rem; }
+}
+
+/* NEW: RESOURCE MAP STYLES */
+#resourceMap { width: 100%; height: 500px; border-radius: var(--radius-lg); border: 1px solid var(--border-glass); box-shadow: var(--shadow-md); z-index: 1; overflow: hidden; }
+.map-filter-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1rem; }
+.map-filter-btn { padding: 8px 16px; font-size: 12px; font-weight: 600; border: 1px solid var(--border); border-radius: 100px; background: var(--surface-card); color: var(--text-secondary); cursor: pointer; transition: all var(--dur-fast); backdrop-filter: blur(10px); }
+.map-filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+.map-filter-btn.active { background: var(--btn-bg); color: var(--btn-text); border-color: var(--btn-bg); }
+
+.map-popup-name { font-family: var(--f-display); font-weight: 600; font-size: 15px; color: #0f172a; margin-bottom: 4px; }
+.map-popup-type { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #0277b6; margin-bottom: 8px; }
+.map-popup-detail { font-size: 13px; color: #475569; line-height: 1.5; }
+.map-popup-detail a { color: #0277b6; text-decoration: underline; text-underline-offset: 2px; }
+
+@media (max-width: 768px) {
+  #resourceMap { height: 400px; }
 }
 </style>
 </head>
@@ -980,6 +799,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
           <button class="btn btn--solid" onclick="openQuestionnaire()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
             Get Started
+          </button>
+          <!-- NEW: View Resource Map button -->
+          <button class="btn btn--outline" onclick="goTo('map')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            View Resource Map
           </button>
         </div>
       </div>
@@ -1250,6 +1074,30 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
       </div>
     </section>
   </div>
+  
+  <!-- NEW: RESOURCE MAP PAGE -->
+  <div class="page" id="page-map">
+    <div class="page-hero">
+      <div class="container page-hero__inner">
+        <nav class="page-hero__crumb" aria-label="Breadcrumb"><a onclick="goTo('home')" tabindex="0" role="link">Home</a> <span style="margin:0 4px" aria-hidden="true">/</span> <span aria-current="page">Resource Map</span></nav>
+        <h1 class="page-hero__title reveal">Resource <em>Map</em></h1>
+        <p class="page-hero__sub reveal reveal-delay-1">Find the nearest shelters, clinics, food pantries, and services across Riverside County.</p>
+      </div>
+    </div>
+    <section class="section">
+      <div class="container">
+        <div class="map-filter-row reveal" id="mapFilters">
+          <button class="map-filter-btn active" data-filter="all">All Resources</button>
+          <button class="map-filter-btn" data-filter="housing">Housing</button>
+          <button class="map-filter-btn" data-filter="healthcare">Healthcare</button>
+          <button class="map-filter-btn" data-filter="food">Food</button>
+          <button class="map-filter-btn" data-filter="crisis">Crisis</button>
+          <button class="map-filter-btn" data-filter="legal">Legal & Social</button>
+        </div>
+        <div id="resourceMap" class="reveal reveal-delay-1"></div>
+      </div>
+    </section>
+  </div>
 </main>
 
 <footer class="footer" role="contentinfo">
@@ -1316,10 +1164,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
   </div>
 </div>
 
+<!-- 1. MAIN APP SCRIPT -->
 <script>
 'use strict';
 
-/* ─── UTILITY FUNCTIONS ────────────────────────────── */
 function debounce(func, wait) {
   let timeout;
   return function executedFunction(...args) {
@@ -1329,8 +1177,7 @@ function debounce(func, wait) {
   };
 }
 
-/* ─── DATA ─────────────────────────────────────────── */
-const caseManagers = [
+const caseManagers =[
   {name:"Adrian Labastida",email:"adrian.labastida@citynet.org",    phone:"951-203-1293", role:"Lead Case Manager"},
   {name:"Aileen Magana",   email:"aileen.magana@citynet.org",       phone:"951-897-7685", role:"Lead Case Manager"},
   {name:"Alex Nunez",      email:"alex.nunez@citynet.org",          phone:"951-212-6726"},
@@ -1347,114 +1194,114 @@ const caseManagers = [
 const D = Date.now(), PD = 86400000;
 
 const jobs = {
-  "Murrieta": [
-    {title:"Pharmacy Customer Service Associate",employer:"Walgreens",wage:"$17.90/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4388362946",posted:new Date(D-0.08*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Supervisor",employer:"Lucky Strike Entertainment",wage:"$24.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4387891598/",posted:new Date(D-0.79*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Client Engagement Specialist",employer:"The Grey Legal Group",wage:"$23.00/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Client+Engagement+Specialist+Grey+Legal+Group&l=Murrieta%2C+CA",posted:new Date(D-2*PD).toISOString(),status:"open", source:"Indeed"},
-    {title:"Security Specialist",employer:"Target",wage:"$20.50/hr",type:"pt",url:"https://www.indeed.com/jobs?q=Security+Specialist+Target&l=Murrieta%2C+CA",posted:new Date(D-1*PD).toISOString(),status:"open", source:"Indeed"},
-    {title:"Specialty Sales",employer:"Target",wage:"$18.25/hr",type:"pt",url:"https://www.indeed.com/jobs?q=Specialty+Sales+Target&l=Murrieta%2C+CA",posted:new Date(D-4*PD).toISOString(),status:"open", source:"Indeed"},
-    {title:"Customer Service",employer:"KFC",wage:"$20.00/hr",type:"pt",url:"https://www.indeed.com/jobs?q=Customer+Service+KFC&l=Murrieta%2C+CA",posted:new Date(D-12*PD).toISOString(),status:"open", source:"Indeed"},
-    {title:"Department Manager",employer:"McDonald's",wage:"$22.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4320702040/",posted:new Date(D-0.2*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Shift Manager",employer:"McDonald's",wage:"$22.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4320771796/",posted:new Date(D-0.25*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Merchandise and Stocking Associate",employer:"Sam's Club",wage:"$19.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4332699598/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Receptionist",employer:"H&R Block",wage:"$16.50/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4333856405/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Fitness Manager",employer:"EōS Fitness",wage:"$25.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4334573194/",posted:new Date(D-0.3*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Cart Attendant",employer:"Sam's Club",wage:"$19.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4337310391/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Cafe Associate",employer:"Sam's Club",wage:"$19.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4337310886/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Prepared Meals Associate",employer:"Sam's Club",wage:"$19.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4337320924/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Freezer and Deli Stocker Associate",employer:"Sam's Club",wage:"$19.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4337390660/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Baker and Packager Associate",employer:"Sam's Club",wage:"$19.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4337420235/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Maintenance Custodian Associate",employer:"Sam's Club",wage:"$19.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4337420252/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Medical Receptionist",employer:"RadNet",wage:"$19.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4382217549/",posted:new Date(D-3*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Retail Sales Associate",employer:"Best Buy",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4382562854/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Barista / Busser",employer:"Intazza",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4382562974/",posted:new Date(D-2*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Part-Time Maintenance",employer:"Palms Property Management, Inc.",wage:"$20.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4382569651/",posted:new Date(D-2*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Facility Lifeguard",employer:"Swan Aquatics",wage:"$18.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4382808621/",posted:new Date(D-2*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Retail Stocking Associate",employer:"Burlington",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4383759969/",posted:new Date(D-3*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Retail Shortage Control",employer:"Burlington",wage:"$18.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4383768746/",posted:new Date(D-3*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Customer Service Representative",employer:"U-Haul",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4384517859/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Plumbing Installer",employer:"Big B's Plumbing, Electric, Heating & Air",wage:"$25.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4384587961/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Plumbing Service Technician",employer:"Big B's Plumbing, Electric, Heating & Air",wage:"$25.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4384898423/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Warehouse (Overnight)",employer:"Lowe's",wage:"$18.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4385163721/",posted:new Date(D-0.8*PD).toISOString(),status:"open", source:"LinkedIn"}
-  ],
-  "Wildomar": [
-    {title:"Membership Sales Associate",employer:"Super Star Car Wash",wage:"$18.50/hr",type:"pt",url:"https://www.indeed.com/jobs?q=Membership+Sales+Associate+Super+Star+Car+Wash&l=Wildomar%2C+CA",posted:new Date(D-3*PD).toISOString(),status:"open", source:"Indeed"},
-    {title:"Restaurant Crew",employer:"Dunkin'",wage:"$20.00/hr",type:"pt",url:"https://www.indeed.com/jobs?q=Restaurant+Crew+Dunkin&l=Wildomar%2C+CA",posted:new Date(D-7*PD).toISOString(),status:"open", source:"Indeed"},
-    {title:"Assistant General Manager",employer:"McDonald's",wage:"$24.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4320741676/",posted:new Date(D-0.2*PD).toISOString(),status:"open", source:"LinkedIn"}
-  ],
-  "Menifee": [
-    {title:"Seasonal Retail Sales Associate",employer:"Lowe's",wage:"$16.90/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Seasonal+Retail+Sales+Associate+Lowes&l=Menifee%2C+CA",posted:new Date(D-1.5*PD).toISOString(),status:"open", source:"Indeed"},
-    {title:"Front Desk Sales Associate",employer:"Massage Envy",wage:"$16.50/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Front+Desk+Sales+Associate+Massage+Envy&l=Menifee%2C+CA",posted:new Date(D-10*PD).toISOString(),status:"open", source:"Indeed"},
-    {title:"Barista",employer:"Better Buzz Coffee",wage:"$21.00/hr",type:"pt",url:"https://www.indeed.com/jobs?q=Barista+Better+Buzz+Coffee&l=Menifee%2C+CA",posted:new Date(D-0.8*PD).toISOString(),status:"open", source:"Indeed"},
-    {title:"Truck Driver",employer:"Updike Distribution Logistics",wage:"$15.50/hr",type:"pt",url:"https://www.indeed.com/jobs?q=CDL+A+Truck+Driver+Updike+Distribution+Logistics&l=Menifee%2C+CA",posted:new Date(D-5*PD).toISOString(),status:"open", source:"Indeed"},
-    {title:"Logistics Coordinator",employer:"Amazon",wage:"$22.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/search/?keywords=Logistics+Coordinator+Amazon",posted:new Date(D-2*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Service Technician Trainee",employer:"Leslie's",wage:"$19.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4374336867/",posted:new Date(D-0.3*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Field Sales Associate",employer:"Sherwin-Williams",wage:"$22.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4375037515/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Deli Clerk",employer:"Sprouts Farmers Market",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4381540052/",posted:new Date(D-5*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Assistant Store Manager",employer:"Ross",wage:"$24.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4382757338/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Grocery Clerk",employer:"Sprouts Farmers Market",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4383229662/",posted:new Date(D-2*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Customer Service Representative",employer:"Circle K",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4383278584/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Parts Specialist",employer:"O'Reilly Auto Parts",wage:"$18.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4383318870/",posted:new Date(D-4*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Seasonal Cashier",employer:"Lowe's",wage:"$16.90/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4383474534/",posted:new Date(D-3*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Sales Associate",employer:"Petco",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4383801335/",posted:new Date(D-3*PD).toISOString(),status:"open", source:"LinkedIn"}
-  ],
-  "Perris": [
-    {title:"Sales Associate",employer:"Five Below",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4356100102/",posted:new Date(D-3*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Lift Operator",employer:"Living Spaces Furniture",wage:"$19.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4374147523/",posted:new Date(D-2*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Company Driver",employer:"Forward Air Corporation",wage:"$30.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4382284692/",posted:new Date(D-3*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Lube Technician (Graveyard)",employer:"Power Plus",wage:"$22.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4382308422/",posted:new Date(D-6*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Sales Coordinator",employer:"Clayton",wage:"$22.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4384512571/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Utility Locator",employer:"UtiliQuest, LLC",wage:"$21.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4384554428/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Customer Service Representative",employer:"Domino's",wage:"$20.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4384560570/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Shift Warehouse",employer:"Lensa",wage:"$19.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4385171774/",posted:new Date(D-0.66*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Warehouse Associate",employer:"Humano",wage:"$18.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4385378255/",posted:new Date(D-0.87*PD).toISOString(),status:"open", source:"LinkedIn"}
-  ],
-  "Winchester": [
-    {title:"Cook",employer:"Panda",wage:"$21.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4330589006/",posted:new Date(D-2*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Service Team",employer:"Panda",wage:"$21.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4330589007/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Kitchen Team",employer:"Panda",wage:"$21.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4330601887/",posted:new Date(D-2*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Customer Service Associate",employer:"Dollar Tree Stores",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4358157282/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"}
-  ],
-  "Lake Elsinore": [
-    {title:"Customer Service Representative",employer:"Circle K",wage:"$17.13/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4377622537",posted:new Date(D-0.08*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Service Team",employer:"Panda Express",wage:"$21.00/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Service+Team+Panda+Express&l=Lake+Elsinore%2C+CA",posted:new Date(D-4*PD).toISOString(),status:"open", source:"Indeed"},
-    {title:"Receptionist",employer:"H&R Block",wage:"$16.50/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Receptionist+HR+Block&l=Lake+Elsinore%2C+CA",posted:new Date(D-0.4*PD).toISOString(),status:"open", source:"Indeed"},
-    {title:"Guest Advocate",employer:"Target",wage:"$18.25/hr",type:"pt",url:"https://www.indeed.com/jobs?q=Guest+Advocate+Target&l=Lake+Elsinore%2C+CA",posted:new Date(D-9*PD).toISOString(),status:"open", source:"Indeed"},
-    {title:"Marketing Assistant",employer:"Local Agency",wage:"$20.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/search/?keywords=Marketing+Assistant",posted:new Date(D-3*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Retail Sales Associate",employer:"Skechers",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/3977885772/",posted:new Date(D-3*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Team Member",employer:"Tractor Supply Company",wage:"$17.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4180197080/",posted:new Date(D-2*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Merchandising Sales Associate",employer:"Tractor Supply Company",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4213262690/",posted:new Date(D-3*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Assistant General Manager",employer:"McDonald's",wage:"$24.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4320691772/",posted:new Date(D-0.2*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Customer Service Representative",employer:"Circle K",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4326317119/",posted:new Date(D-6*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Customer Experience Manager",employer:"Five Below",wage:"$18.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4373407951/",posted:new Date(D-0.45*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Cart Attendant",employer:"Walmart",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4373512701/",posted:new Date(D-4*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Meat / Produce Team Associate",employer:"Walmart",wage:"$18.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4373907843/",posted:new Date(D-3*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Groomer",employer:"Petco",wage:"$17.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4382608328/",posted:new Date(D-6*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Youth Civic Engagement & Policy Leadership Intern",employer:"The Happier Life Project",wage:"$18.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4383443423/",posted:new Date(D-3*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Automotive Service Manager",employer:"Big Brand Tire & Service",wage:"$20.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4383887976/",posted:new Date(D-2*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Tire Technician",employer:"Big Brand Tire & Service",wage:"$18.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4383898356/",posted:new Date(D-2*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Hair Stylist",employer:"Sport Clips Haircuts",wage:"$17.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4384848926/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"}
-  ],
-  "Hemet & San Jacinto": [
-    {title:"Team Member (Bilingual)",employer:"Tractor Supply Company",wage:"$17.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4180190642/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Shift Manager",employer:"McDonald's",wage:"$22.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4320791651/",posted:new Date(D-0.33*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Pharmacy Cashier",employer:"Walgreens",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4385362478/",posted:new Date(D-0.33*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Receptionist",employer:"H&R Block",wage:"$16.50/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4333836706/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Online Order Filling Team Associate",employer:"Walmart",wage:"$18.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4333733539/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Kitchen Team",employer:"Panda",wage:"$21.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4366805176/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"}
-  ],
-  "Temecula": [
-    {title:"Shift Supervisor",employer:"CVS Health",wage:"$18.35/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4388141243/",posted:new Date(D-0.71*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"Service Technician",employer:"Pep Boys",wage:"$16.90/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4387175694/",posted:new Date(D-0.92*PD).toISOString(),status:"open", source:"LinkedIn"},
-    {title:"HR Support Services Assistant",employer:"Southwest Healthcare",wage:"$24.99/hr",type:"ft",url:"https://www.indeed.com/jobs?q=HR+Support+Services+Assistant+Southwest+Healthcare&l=Temecula%2C+CA",posted:new Date(D-1*PD).toISOString(),status:"open", source:"Indeed"},
-    {title:"Roofing Laborer",employer:"Westmax Roofing",wage:"$25.00/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Roofing+Laborer+Westmax+Roofing&l=Temecula%2C+CA",posted:new Date(D-4*PD).toISOString(),status:"open", source:"Indeed"},
-    {title:"Cook",employer:"Buffalo Wild Wings",wage:"$18.00/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Cook+Buffalo+Wild+Wings&l=Temecula%2C+CA",posted:new Date(D-6*PD).toISOString(),status:"open", source:"Indeed"},
-    {title:"Shift Leader",employer:"Panda Express",wage:"$23.00/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Shift+Leader+Panda+Express&l=Temecula%2C+CA",posted:new Date(D-13*PD).toISOString(),status:"open", source:"Indeed"},
-    {title:"Retail Customer Service Associate",employer:"FedEx",wage:"$19.70/hr",type:"pt",url:"https://www.indeed.com/jobs?q=Retail+Customer+Service+Associate+FedEx&l=Temecula%2C+CA",posted:new Date(D-8*PD).toISOString(),status:"open", source:"Indeed"}
-  ]
+  "Murrieta":[
+    {title:"Pharmacy Customer Service Associate",employer:"Walgreens",wage:"$17.90/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4388362946",posted:new Date(D-0.08*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Supervisor",employer:"Lucky Strike Entertainment",wage:"$24.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4387891598/",posted:new Date(D-0.79*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Client Engagement Specialist",employer:"The Grey Legal Group",wage:"$23.00/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Client+Engagement+Specialist+Grey+Legal+Group&l=Murrieta%2C+CA",posted:new Date(D-2*PD).toISOString(),status:"open", source:"Indeed"},
+    {title:"Security Specialist",employer:"Target",wage:"$20.50/hr",type:"pt",url:"https://www.indeed.com/jobs?q=Security+Specialist+Target&l=Murrieta%2C+CA",posted:new Date(D-1*PD).toISOString(),status:"open", source:"Indeed"},
+    {title:"Specialty Sales",employer:"Target",wage:"$18.25/hr",type:"pt",url:"https://www.indeed.com/jobs?q=Specialty+Sales+Target&l=Murrieta%2C+CA",posted:new Date(D-4*PD).toISOString(),status:"open", source:"Indeed"},
+    {title:"Customer Service",employer:"KFC",wage:"$20.00/hr",type:"pt",url:"https://www.indeed.com/jobs?q=Customer+Service+KFC&l=Murrieta%2C+CA",posted:new Date(D-12*PD).toISOString(),status:"open", source:"Indeed"},
+    {title:"Department Manager",employer:"McDonald's",wage:"$22.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4320702040/",posted:new Date(D-0.2*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Shift Manager",employer:"McDonald's",wage:"$22.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4320771796/",posted:new Date(D-0.25*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Merchandise and Stocking Associate",employer:"Sam's Club",wage:"$19.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4332699598/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Receptionist",employer:"H&R Block",wage:"$16.50/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4333856405/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Fitness Manager",employer:"EōS Fitness",wage:"$25.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4334573194/",posted:new Date(D-0.3*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Cart Attendant",employer:"Sam's Club",wage:"$19.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4337310391/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Cafe Associate",employer:"Sam's Club",wage:"$19.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4337310886/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Prepared Meals Associate",employer:"Sam's Club",wage:"$19.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4337320924/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Freezer and Deli Stocker Associate",employer:"Sam's Club",wage:"$19.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4337390660/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Baker and Packager Associate",employer:"Sam's Club",wage:"$19.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4337420235/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Maintenance Custodian Associate",employer:"Sam's Club",wage:"$19.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4337420252/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Medical Receptionist",employer:"RadNet",wage:"$19.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4382217549/",posted:new Date(D-3*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Retail Sales Associate",employer:"Best Buy",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4382562854/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Barista / Busser",employer:"Intazza",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4382562974/",posted:new Date(D-2*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Part-Time Maintenance",employer:"Palms Property Management, Inc.",wage:"$20.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4382569651/",posted:new Date(D-2*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Facility Lifeguard",employer:"Swan Aquatics",wage:"$18.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4382808621/",posted:new Date(D-2*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Retail Stocking Associate",employer:"Burlington",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4383759969/",posted:new Date(D-3*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Retail Shortage Control",employer:"Burlington",wage:"$18.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4383768746/",posted:new Date(D-3*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Customer Service Representative",employer:"U-Haul",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4384517859/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Plumbing Installer",employer:"Big B's Plumbing, Electric, Heating & Air",wage:"$25.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4384587961/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Plumbing Service Technician",employer:"Big B's Plumbing, Electric, Heating & Air",wage:"$25.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4384898423/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Warehouse (Overnight)",employer:"Lowe's",wage:"$18.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4385163721/",posted:new Date(D-0.8*PD).toISOString(),status:"open", source:"LinkedIn"}
+  ],
+  "Wildomar":[
+    {title:"Membership Sales Associate",employer:"Super Star Car Wash",wage:"$18.50/hr",type:"pt",url:"https://www.indeed.com/jobs?q=Membership+Sales+Associate+Super+Star+Car+Wash&l=Wildomar%2C+CA",posted:new Date(D-3*PD).toISOString(),status:"open", source:"Indeed"},
+    {title:"Restaurant Crew",employer:"Dunkin'",wage:"$20.00/hr",type:"pt",url:"https://www.indeed.com/jobs?q=Restaurant+Crew+Dunkin&l=Wildomar%2C+CA",posted:new Date(D-7*PD).toISOString(),status:"open", source:"Indeed"},
+    {title:"Assistant General Manager",employer:"McDonald's",wage:"$24.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4320741676/",posted:new Date(D-0.2*PD).toISOString(),status:"open", source:"LinkedIn"}
+  ],
+  "Menifee":[
+    {title:"Seasonal Retail Sales Associate",employer:"Lowe's",wage:"$16.90/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Seasonal+Retail+Sales+Associate+Lowes&l=Menifee%2C+CA",posted:new Date(D-1.5*PD).toISOString(),status:"open", source:"Indeed"},
+    {title:"Front Desk Sales Associate",employer:"Massage Envy",wage:"$16.50/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Front+Desk+Sales+Associate+Massage+Envy&l=Menifee%2C+CA",posted:new Date(D-10*PD).toISOString(),status:"open", source:"Indeed"},
+    {title:"Barista",employer:"Better Buzz Coffee",wage:"$21.00/hr",type:"pt",url:"https://www.indeed.com/jobs?q=Barista+Better+Buzz+Coffee&l=Menifee%2C+CA",posted:new Date(D-0.8*PD).toISOString(),status:"open", source:"Indeed"},
+    {title:"Truck Driver",employer:"Updike Distribution Logistics",wage:"$15.50/hr",type:"pt",url:"https://www.indeed.com/jobs?q=CDL+A+Truck+Driver+Updike+Distribution+Logistics&l=Menifee%2C+CA",posted:new Date(D-5*PD).toISOString(),status:"open", source:"Indeed"},
+    {title:"Logistics Coordinator",employer:"Amazon",wage:"$22.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/search/?keywords=Logistics+Coordinator+Amazon",posted:new Date(D-2*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Service Technician Trainee",employer:"Leslie's",wage:"$19.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4374336867/",posted:new Date(D-0.3*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Field Sales Associate",employer:"Sherwin-Williams",wage:"$22.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4375037515/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Deli Clerk",employer:"Sprouts Farmers Market",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4381540052/",posted:new Date(D-5*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Assistant Store Manager",employer:"Ross",wage:"$24.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4382757338/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Grocery Clerk",employer:"Sprouts Farmers Market",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4383229662/",posted:new Date(D-2*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Customer Service Representative",employer:"Circle K",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4383278584/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Parts Specialist",employer:"O'Reilly Auto Parts",wage:"$18.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4383318870/",posted:new Date(D-4*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Seasonal Cashier",employer:"Lowe's",wage:"$16.90/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4383474534/",posted:new Date(D-3*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Sales Associate",employer:"Petco",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4383801335/",posted:new Date(D-3*PD).toISOString(),status:"open", source:"LinkedIn"}
+  ],
+  "Perris":[
+    {title:"Sales Associate",employer:"Five Below",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4356100102/",posted:new Date(D-3*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Lift Operator",employer:"Living Spaces Furniture",wage:"$19.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4374147523/",posted:new Date(D-2*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Company Driver",employer:"Forward Air Corporation",wage:"$30.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4382284692/",posted:new Date(D-3*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Lube Technician (Graveyard)",employer:"Power Plus",wage:"$22.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4382308422/",posted:new Date(D-6*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Sales Coordinator",employer:"Clayton",wage:"$22.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4384512571/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Utility Locator",employer:"UtiliQuest, LLC",wage:"$21.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4384554428/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Customer Service Representative",employer:"Domino's",wage:"$20.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4384560570/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Shift Warehouse",employer:"Lensa",wage:"$19.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4385171774/",posted:new Date(D-0.66*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Warehouse Associate",employer:"Humano",wage:"$18.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4385378255/",posted:new Date(D-0.87*PD).toISOString(),status:"open", source:"LinkedIn"}
+  ],
+  "Winchester":[
+    {title:"Cook",employer:"Panda",wage:"$21.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4330589006/",posted:new Date(D-2*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Service Team",employer:"Panda",wage:"$21.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4330589007/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Kitchen Team",employer:"Panda",wage:"$21.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4330601887/",posted:new Date(D-2*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Customer Service Associate",employer:"Dollar Tree Stores",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4358157282/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"}
+  ],
+  "Lake Elsinore":[
+    {title:"Customer Service Representative",employer:"Circle K",wage:"$17.13/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4377622537",posted:new Date(D-0.08*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Service Team",employer:"Panda Express",wage:"$21.00/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Service+Team+Panda+Express&l=Lake+Elsinore%2C+CA",posted:new Date(D-4*PD).toISOString(),status:"open", source:"Indeed"},
+    {title:"Receptionist",employer:"H&R Block",wage:"$16.50/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Receptionist+HR+Block&l=Lake+Elsinore%2C+CA",posted:new Date(D-0.4*PD).toISOString(),status:"open", source:"Indeed"},
+    {title:"Guest Advocate",employer:"Target",wage:"$18.25/hr",type:"pt",url:"https://www.indeed.com/jobs?q=Guest+Advocate+Target&l=Lake+Elsinore%2C+CA",posted:new Date(D-9*PD).toISOString(),status:"open", source:"Indeed"},
+    {title:"Marketing Assistant",employer:"Local Agency",wage:"$20.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/search/?keywords=Marketing+Assistant",posted:new Date(D-3*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Retail Sales Associate",employer:"Skechers",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/3977885772/",posted:new Date(D-3*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Team Member",employer:"Tractor Supply Company",wage:"$17.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4180197080/",posted:new Date(D-2*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Merchandising Sales Associate",employer:"Tractor Supply Company",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4213262690/",posted:new Date(D-3*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Assistant General Manager",employer:"McDonald's",wage:"$24.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4320691772/",posted:new Date(D-0.2*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Customer Service Representative",employer:"Circle K",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4326317119/",posted:new Date(D-6*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Customer Experience Manager",employer:"Five Below",wage:"$18.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4373407951/",posted:new Date(D-0.45*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Cart Attendant",employer:"Walmart",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4373512701/",posted:new Date(D-4*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Meat / Produce Team Associate",employer:"Walmart",wage:"$18.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4373907843/",posted:new Date(D-3*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Groomer",employer:"Petco",wage:"$17.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4382608328/",posted:new Date(D-6*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Youth Civic Engagement & Policy Leadership Intern",employer:"The Happier Life Project",wage:"$18.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4383443423/",posted:new Date(D-3*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Automotive Service Manager",employer:"Big Brand Tire & Service",wage:"$20.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4383887976/",posted:new Date(D-2*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Tire Technician",employer:"Big Brand Tire & Service",wage:"$18.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4383898356/",posted:new Date(D-2*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Hair Stylist",employer:"Sport Clips Haircuts",wage:"$17.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4384848926/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"}
+  ],
+  "Hemet & San Jacinto":[
+    {title:"Team Member (Bilingual)",employer:"Tractor Supply Company",wage:"$17.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4180190642/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Shift Manager",employer:"McDonald's",wage:"$22.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4320791651/",posted:new Date(D-0.33*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Pharmacy Cashier",employer:"Walgreens",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4385362478/",posted:new Date(D-0.33*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Receptionist",employer:"H&R Block",wage:"$16.50/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4333836706/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Online Order Filling Team Associate",employer:"Walmart",wage:"$18.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4333733539/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Kitchen Team",employer:"Panda",wage:"$21.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4366805176/",posted:new Date(D-1*PD).toISOString(),status:"open", source:"LinkedIn"}
+  ],
+  "Temecula":[
+    {title:"Shift Supervisor",employer:"CVS Health",wage:"$18.35/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4388141243/",posted:new Date(D-0.71*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"Service Technician",employer:"Pep Boys",wage:"$16.90/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4387175694/",posted:new Date(D-0.92*PD).toISOString(),status:"open", source:"LinkedIn"},
+    {title:"HR Support Services Assistant",employer:"Southwest Healthcare",wage:"$24.99/hr",type:"ft",url:"https://www.indeed.com/jobs?q=HR+Support+Services+Assistant+Southwest+Healthcare&l=Temecula%2C+CA",posted:new Date(D-1*PD).toISOString(),status:"open", source:"Indeed"},
+    {title:"Roofing Laborer",employer:"Westmax Roofing",wage:"$25.00/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Roofing+Laborer+Westmax+Roofing&l=Temecula%2C+CA",posted:new Date(D-4*PD).toISOString(),status:"open", source:"Indeed"},
+    {title:"Cook",employer:"Buffalo Wild Wings",wage:"$18.00/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Cook+Buffalo+Wild+Wings&l=Temecula%2C+CA",posted:new Date(D-6*PD).toISOString(),status:"open", source:"Indeed"},
+    {title:"Shift Leader",employer:"Panda Express",wage:"$23.00/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Shift+Leader+Panda+Express&l=Temecula%2C+CA",posted:new Date(D-13*PD).toISOString(),status:"open", source:"Indeed"},
+    {title:"Retail Customer Service Associate",employer:"FedEx",wage:"$19.70/hr",type:"pt",url:"https://www.indeed.com/jobs?q=Retail+Customer+Service+Associate+FedEx&l=Temecula%2C+CA",posted:new Date(D-8*PD).toISOString(),status:"open", source:"Indeed"}
+  ]
 };
 
-const staffingAgencies = [
+const staffingAgencies =[
   {name:"PrideStaff", phone:"951-999-4230", email:"southriversidecounty@pridestaff.com", website:"https://www.pridestaff.com/locations/southriversidecounty/", address:"25186 Hancock Avenue, Suite 320, Murrieta, CA", special:"Staffing Agency"},
   {name:"PeopleReady", phone:"951-587-2027", email:"1523-br@peopleready.com", website:"https://www.peopleready.com/location/murrieta-ca-1523/", address:"25014 Las Brisas South, Suite A, Murrieta CA", special:"Staffing Agency"},
   {name:"Partners Personnel", phone:"951-691-1008", website:"https://www.partnerspersonnel.com/", address:"39040, 105 Sky Canyon Drive, B5, Murrieta, CA", special:"Staffing Agency"},
@@ -1475,13 +1322,13 @@ const staffingAgencies = [
 ];
 
 const housing = {
-  referrals: [
+  referrals:[
     {name:"HomeConnect", phone:"800-498-8847", email:"homeconnect@ruhealth.org", website:"https://rivcodpss.org/2-1-1-24-hour-services", address:"5555 Arlington Ave, Riverside, CA", special:"General Referrals"},
     {name:"HomeConnect - After-Hours", phone:"951-955-8278", email:"homeconnect@ruhealth.org", website:"https://ruhealth.org/behavioral-health/housing", address:"5555 Arlington Ave, Riverside, CA", special:"General Referrals"},
     {name:"City Net", phone:"951-390-3567", website:"https://www.citynet.org/riverside-county", special:"Street Outreach"},
     {name:"SWAG", phone:"833-792-4674", email:"hello@theswag.org", website:"https://www.theswag.org/", special:"Street Outreach"}
   ],
-  emergency: [
+  emergency:[
     {name:"Project TOUCH", phone:"951-677-9661", email:"info@projecttouchonline.com", website:"https://projecttouchonline.com/", address:"28736 Calle del Lago, Murrieta, CA"},
     {name:"The Anchor", phone:"951-390-3567", website:"https://www.lake-elsinore.org/400/The-Anchor", address:"215 W Graham Ave, Lake Elsinore, CA"},
     {name:"Path of Life - Emergency", phone:"951-462-9822", email:"hotline@thepathoflife.com", website:"https://www.thepathoflife.com/shelter", address:"2840 Hulen Place, Riverside, CA"},
@@ -1495,7 +1342,7 @@ const housing = {
     {name:"Operation SafeHouse - East", phone:"760-343-3211", email:"info@operationsafehouse.org", website:"https://safehouseofthedesert.com/youth-emergency-services/", address:"72710 East Lynn Street, Thousand Palms, CA", special:"Youth (16-25)"},
     {name:"Jacob's House", phone:"951-452-2627", website:"https://www.jacobshousetemecula.org", address:"31525 Jedediah Smith Road, Temecula, CA", special:"Hospital Patients & Families"}
   ],
-  transitional: [
+  transitional:[
     {name:"Project TOUCH", phone:"951-677-9661", email:"info@projecttouchonline.com", website:"https://projecttouchonline.com/", address:"28736 Calle del Lago, Murrieta, CA"},
     {name:"Mission Hope - Empowerment Village", phone:"951-444-1404", email:"info@missionhope.com", website:"https://www.missionhope.com/empowerment-village", address:"41760 Rider Way, Temecula, CA", special:"Women & Families"},
     {name:"Path of Life - Youth", phone:"951-288-3302", email:"eprewitt@thepathoflife.com", website:"https://www.thepathoflife.com", special:"Youth (16-25)"},
@@ -1503,14 +1350,14 @@ const housing = {
     {name:"TruEvolution", phone:"951-888-1346", email:"CurtT@truevolution.org", website:"https://www.truevolution.org/project-legacy", address:"3838 Brockton Avenue, Riverside, CA", special:"LGBTQIA+"},
     {name:"Starting Over, Inc.", phone:"951-898-0862", email:"office@startingoverinc.org", website:"https://www.startingoverinc.org/", address:"6355 Riverside Ave, Suite 100, Riverside, CA", special:"Justice-Involved"}
   ],
-  psh: [
+  psh:[
     {name:"No Place Like Home", email:"HomeConnect@ruhealth.org", website:"https://ruhealth.org/behavioral-health/no-place-like-home", special:"Permanent Supportive"},
     {name:"The Place Safehaven Program", phone:"951-779-3057", email:"HHOPE@ruhealth.org", website:"https://www.ruhealth.org/behavioral-health/housing", address:"2800 Hulen Place, Riverside, CA", special:"Permanent Supportive"},
     {name:"The Path Safehaven Program", phone:"760-251-2346", email:"HHOPE@ruhealth.org", website:"https://www.ruhealth.org/behavioral-health/housing", address:"19531 McLane Street, Palm Springs, CA", special:"Permanent Supportive"},
     {name:"Jewish Family Service", phone:"760-325-4088", website:"https://www.jfssd.org", special:"Permanent Supportive"},
     {name:"LightHouse Social Service Centers", phone:"951-571-3533", website:"https://lighthouse-ssc.org", special:"Women & Children"}
   ],
-  affordable: [
+  affordable:[
     {name:"Tres Lagos", phone:"951-877-5726", website:"https://www.treslagosapartments.com", address:"23345 Catt Road, Wildomar, CA"},
     {name:"Monte Vista", phone:"951-600-1505", email:"montevista@solari-ent.com", website:"https://affirmedhousing.com/completed/monte-1/", address:"24740 Jefferson Avenue, Murrieta, CA"},
     {name:"Monte Vista II", phone:"951-600-1505", email:"montevista@solari-ent.com", website:"https://www.dahlingroup.com/projects/monte-vista-ii", address:"41411 Juniper Street, Murrieta, CA"},
@@ -1525,7 +1372,7 @@ const housing = {
     {name:"Amanda Park Senior Apartments", phone:"951-698-1133", website:"https://amandaparksenior.usamfm.com/", address:"24425 Skyview Ridge Drive, Murrieta, CA", special:"Senior 55+"},
     {name:"Fountain Glen", phone:"951-677-8035", website:"https://www.fountainglengrandisle.com", address:"24405 Village Walk Place, Murrieta, CA", special:"Senior 55+"}
   ],
-  sober: [
+  sober:[
     {name:"Village Care", phone:"858-761-3656", email:"Brittanyaina@care-villages.com", website:"https://www.care-villages.com/services", special:"Sober Living"},
     {name:"The Lemonade House", phone:"760-272-6816", email:"Amy@TheLemonadeHouse.Org", website:"https://thelemonadehouse.org", special:"Sober Living"},
     {name:"Alive Sober Living", website:"https://www.alivesoberliving.com", special:"Sober Living"}
@@ -1555,7 +1402,7 @@ const healthcare = {
 };
 
 const resources = {
-  crisis: [
+  crisis:[
     {name:"National Suicide & Crisis Lifeline", phone:"988", special:"Suicide & Crisis"},
     {name:"RUHS Mobile Crisis Unit", phone:"888-374-1113", website:"https://ruhealth.org/behavioral-health/crisis-support-system-care", special:"Suicide & Crisis"},
     {name:"Inland Southern California Crisis Helpline", phone:"951-686-4357", special:"Suicide & Crisis"},
@@ -1611,10 +1458,8 @@ const resources = {
   ]
 };
 
-/* ─── UTILITIES ─────────────────────────────────────── */
 function initials(n) { return n.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase(); }
 
-/* ─── SCROLL REVEAL & JS COUNTER ANIMATIONS ─────────── */
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
@@ -1626,7 +1471,7 @@ const countObserver = new IntersectionObserver((entries) => {
       const el = entry.target;
       const target = parseInt(el.getAttribute('data-target'));
       let count = 0;
-      const duration = 1200; // ms
+      const duration = 1200; 
       const increment = target / (duration / 16);
       
       const update = () => {
@@ -1645,7 +1490,6 @@ const countObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 document.querySelectorAll('.counter').forEach(c => countObserver.observe(c));
 
-/* ─── TEAM STATUS ────────────────────────────────────── */
 function updateStatus() {
   const dot = document.getElementById('statusDot');
   const txt = document.getElementById('statusTxt');
@@ -1659,7 +1503,6 @@ function updateStatus() {
 }
 updateStatus();setInterval(updateStatus, 60000);
 
-/* ─── TEAM RENDER ────────────────────────────────────── */
 function renderTeam(q='') {
   const grid = document.getElementById('teamGrid');
   const cnt  = document.getElementById('cmCount');
@@ -1694,7 +1537,6 @@ function renderTeam(q='') {
 document.getElementById('cmSearch')?.addEventListener('input', debounce(e => renderTeam(e.target.value), 300));
 renderTeam();
 
-/* ─── JOB ENGINE ─────────────────────────────────────── */
 let activeJobs = {}, totalJobs = 0;
 let empFilter = 'all';
 
@@ -1708,8 +1550,8 @@ function timeAgo(iso) {
 function renderJobs() {
   const c = document.getElementById('empListings'); if (!c) return;
   let html = '';
-  for (const [city, list] of Object.entries(activeJobs)) {
-    const filtered = (empFilter==='all' ? [...list] : list.filter(j=>j.type===empFilter))
+  for (const[city, list] of Object.entries(activeJobs)) {
+    const filtered = (empFilter==='all' ?[...list] : list.filter(j=>j.type===empFilter))
       .sort((a,b)=> new Date(b.posted) - new Date(a.posted));
       
     const id = city.toLowerCase().replace(/\s+/g,'-');
@@ -1757,7 +1599,6 @@ function renderJobs() {
   c.innerHTML = html;
 }
 
-/* ─── RESOURCE CARD BUILDER ──────────────────────────── */
 const SVG = {
   addr:  `<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>`,
   phone: `<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"></path>`,
@@ -1825,7 +1666,6 @@ buildPanels(resources, 'resPanels',
   {crisis:'Crisis Support', basic:'Basic Needs', food:'Food Pantries', legal:'Social & Legal Services', education:'Education', animals:'Animal Care'},
   'resTabs');
 
-/* STAFFING AGENCIES (Employment Page logic override) */
 function renderAgencies() {
   const c = document.getElementById('agencyListings');
   if (!c) return;
@@ -1856,7 +1696,6 @@ document.querySelectorAll('#empFilters .pill').forEach(btn => {
   });
 });
 
-/* ─── NAVIGATION ─────────────────────────────────────── */
 function goTo(page, scrollTo, activateTab) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   const target = document.getElementById('page-'+page);
@@ -1864,13 +1703,11 @@ function goTo(page, scrollTo, activateTab) {
 
   const resPages = ['housing','healthcare','resources'];
 
-  // Desktop Nav Links
   document.querySelectorAll('.nav-link[data-page]').forEach(l => {
     const match = l.dataset.page === page || (resPages.includes(page) && l.dataset.page === 'resources-group');
     l.classList.toggle('active', match);
   });
 
-  // Mobile Nav Links
   document.querySelectorAll('.mobile-nav__link[data-mpage]').forEach(l => {
     l.classList.toggle('active', l.dataset.mpage === page);
   });
@@ -1901,7 +1738,6 @@ function goTo(page, scrollTo, activateTab) {
   }
 }
 
-/* ─── MOBILE NAV ─────────────────────────────────────── */
 function openMobileNav() {
   document.getElementById('mobileNav').classList.add('open');
   document.getElementById('menuBtn').setAttribute('aria-expanded','true');
@@ -1921,21 +1757,18 @@ document.getElementById('mobileNav').addEventListener('click', e => {
   if (e.target === e.currentTarget) closeMobileNav();
 });
 
-/* ─── DYNAMIC ISLAND SCROLL ──────────────────────────── */
 window.addEventListener('scroll', () => {
   document.getElementById('headerWrapper').classList.toggle('scrolled', window.scrollY > 40);
 }, {passive: true});
 
-/* ─── INITIAL REVEAL ─────────────────────────────────── */
 attachReveal();
 
-/* ─── REAL-TIME API INTEGRATION (SerpAPI Google Jobs via Vercel Proxy) ─── */
 const PROXY_URL = "https://hub-phi-bice.vercel.app/api/jobs";
 
 async function fetchGoogleJobs() {
   if (!PROXY_URL) {
       console.warn('No proxy URL provided. Falling back to local data.');
-      return [];
+      return[];
   }
 
   try {
@@ -1944,19 +1777,19 @@ async function fetchGoogleJobs() {
     const data = await response.json();
     
     if (data.error) throw new Error(data.error);
-    if (!data.jobs_results || !Array.isArray(data.jobs_results)) return [];
+    if (!data.jobs_results || !Array.isArray(data.jobs_results)) return[];
 
     return data.jobs_results.map(job => normalizeGoogleJob(job));
 
   } catch (error) {
     console.error('Failed to fetch jobs from proxy:', error);
-    return [];
+    return[];
   }
 }
 
 function normalizeGoogleJob(data) {
   let city = 'Hemet & San Jacinto';
-  const knownCities = ['Murrieta', 'Temecula', 'Menifee', 'Lake Elsinore', 'Wildomar', 'Perris', 'Winchester', 'Hemet', 'San Jacinto'];
+  const knownCities =['Murrieta', 'Temecula', 'Menifee', 'Lake Elsinore', 'Wildomar', 'Perris', 'Winchester', 'Hemet', 'San Jacinto'];
   if (data.location) {
       for (const known of knownCities) {
           if (data.location.toLowerCase().includes(known.toLowerCase())) {
@@ -2044,7 +1877,7 @@ async function fetchAndPopulateJobs() {
   
   validJobs.forEach(job => {
     const loc = job.location;
-    const targetLoc = ['Murrieta', 'Temecula', 'Menifee', 'Lake Elsinore', 'Wildomar', 'Perris', 'Winchester', 'Hemet', 'San Jacinto', 'Hemet & San Jacinto'].includes(loc) ? loc : 'Hemet & San Jacinto';
+    const targetLoc =['Murrieta', 'Temecula', 'Menifee', 'Lake Elsinore', 'Wildomar', 'Perris', 'Winchester', 'Hemet', 'San Jacinto', 'Hemet & San Jacinto'].includes(loc) ? loc : 'Hemet & San Jacinto';
     
     if (!activeJobs[targetLoc]) activeJobs[targetLoc] = [];
     activeJobs[targetLoc].push(job);
@@ -2062,15 +1895,12 @@ async function fetchAndPopulateJobs() {
 fetchAndPopulateJobs();
 setInterval(fetchAndPopulateJobs, 300000);
 
-/* ─────────────────────────────────────────────────────
-   RAPID INTAKE WIZARD (Questionnaire)
-───────────────────────────────────────────────────── */
 const Q_STEPS = {
   need: {
     eyebrow: 'STEP 1',
     title: 'What do you need help with today?',
     sub: 'Select your most urgent need and we\'ll guide you to the right resources.',
-    opts: [
+    opts:[
       {icon:'🆘', label:'Crisis Support',          sub:'Hotlines, immediate help',          val:'crisis'},
       {icon:'🏠', label:'Housing',                 sub:'Shelters, transitional, apartments',  val:'housing'},
       {icon:'💼', label:'Employment',              sub:'Job listings, staffing agencies',     val:'employment'},
@@ -2083,7 +1913,7 @@ const Q_STEPS = {
     eyebrow: 'STEP 2 OF 3 — HOUSING',
     title: 'What\'s your current situation?',
     sub: 'This helps us show you the most relevant housing options.',
-    opts: [
+    opts:[
       {icon:'🚨', label:'Need shelter tonight',   sub:'Emergency shelters',                           val:'emergency'},
       {icon:'🏘️', label:'Transitional Housing',   sub:'Stable, short-term housing support',          val:'transitional'},
       {icon:'🏡', label:'Affordable Housing',     sub:'Affordable, low-income apartments',           val:'affordable'},
@@ -2094,7 +1924,7 @@ const Q_STEPS = {
     eyebrow: 'STEP 2 OF 2 — HEALTHCARE',
     title: 'What type of care do you need?',
     sub: 'We\'ll direct you to the most appropriate providers.',
-    opts: [
+    opts:[
       {icon:'🩺', label:'Medical & Primary Care',     sub:'Hospitals, clinics, urgent care',             val:'medical'},
       {icon:'🧠', label:'Behavioral Health',              sub:'Counseling, therapy, psychiatry',      val:'behavioral'},
       {icon:'💊', label:'Substance Use',     sub:'Recovery centers, treatment programs',            val:'recovery'},
@@ -2105,7 +1935,7 @@ const Q_STEPS = {
     eyebrow: 'STEP 3 OF 3',
     title: 'Any special circumstances?',
     sub: 'Explore resources tailored for specific communities.',
-    opts: [
+    opts:[
       {icon:'🌟',  label:'Adult (Single)',       sub:'Show me all matching resources',      val:'none'},
       {icon:'👨‍👩‍👧', label:'Women & Families',     sub:'Family shelter & housing resources',   val:'family'},
       {icon:'🌱',  label:'Youth (16–25)',        sub:'Youth-specific housing & support',    val:'youth'},
@@ -2254,7 +2084,202 @@ function finishQuestionnaire() {
 document.getElementById('qOverlay').addEventListener('click', e => { 
     if (e.target === e.currentTarget) closeQuestionnaire(); 
 });
+</script>
 
+<!-- 2. GOOGLE MAPS API & MAP LOGIC -->
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY_HERE"></script>
+<script>
+/* ─── RESOURCE MAP (Dynamic Auto-Populate Integration) ─────────── */
+let resourceMap = null;
+let mapMarkers =[];
+let infoWindow = null;
+let geocoder = null;
+let dynamicMapLocs =[];
+
+const MC = {
+  housing: '#0277b6', 
+  healthcare: '#6d28d9', 
+  food: '#0f766e', 
+  crisis: '#b91c1c', 
+  legal: '#b45309',
+  basic: '#0277b6',
+  education: '#0277b6',
+  animals: '#b91c1c'
+};
+
+function buildDynamicLocs() {
+  dynamicMapLocs =[];
+  
+  const addItems = (dataObj, typeFn) => {
+    for (const [subCat, items] of Object.entries(dataObj)) {
+      items.forEach(item => {
+        if (item.address) {
+          if (!dynamicMapLocs.find(l => l.n === item.name && l.a === item.address)) {
+            dynamicMapLocs.push({
+              n: item.name,
+              t: typeFn(subCat), 
+              c: item.special || subCat.charAt(0).toUpperCase() + subCat.slice(1),
+              p: item.phone,
+              a: item.address,
+              lat: item.lat, 
+              lng: item.lng
+            });
+          }
+        }
+      });
+    }
+  };
+
+  if (typeof housing !== 'undefined') addItems(housing, () => 'housing');
+  if (typeof healthcare !== 'undefined') addItems(healthcare, () => 'healthcare');
+  if (typeof resources !== 'undefined') addItems(resources, (subCat) => subCat);
+}
+
+function initResourceMap() {
+  if (resourceMap || typeof google === 'undefined') return;
+  
+  const el = document.getElementById('resourceMap');
+  if (!el) return;
+
+  resourceMap = new google.maps.Map(el, {
+    center: { lat: 33.7, lng: -117.15 },
+    zoom: 9,
+    mapTypeControl: false,
+    streetViewControl: false,
+    fullscreenControl: true
+  });
+
+  infoWindow = new google.maps.InfoWindow();
+  geocoder = new google.maps.Geocoder();
+  
+  buildDynamicLocs();
+  populateMap('all');
+
+  document.querySelectorAll('#mapFilters .map-filter-btn').forEach(b => {
+    b.addEventListener('click', () => {
+      document.querySelectorAll('#mapFilters .map-filter-btn').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      populateMap(b.dataset.filter);
+    });
+  });
+}
+
+const geocodeCache = {};
+let activeGeocodes = 0;
+
+async function getCoordinates(address) {
+  if (geocodeCache[address]) return geocodeCache[address];
+  
+  while(activeGeocodes > 3) { await new Promise(r => setTimeout(r, 200)); }
+  activeGeocodes++;
+  
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      geocoder.geocode({ address: address }, (results, status) => {
+        activeGeocodes--;
+        if (status === 'OK' && results[0]) {
+          const loc = { lat: results[0].geometry.location.lat(), lng: results[0].geometry.location.lng() };
+          geocodeCache[address] = loc;
+          resolve(loc);
+        } else {
+          console.warn(`Geocode failed for: ${address}`, status);
+          resolve(null);
+        }
+      });
+    }, 250); 
+  });
+}
+
+let currentRenderId = 0;
+
+async function populateMap(f) {
+  const renderId = ++currentRenderId; 
+  
+  mapMarkers.forEach(m => m.setMap(null));
+  mapMarkers =[];
+  
+  if (!dynamicMapLocs.length) buildDynamicLocs();
+  
+  const locs = f === 'all' ? dynamicMapLocs : dynamicMapLocs.filter(l => l.t === f);
+  const bounds = new google.maps.LatLngBounds();
+  let pointsAdded = 0;
+
+  for (const loc of locs) {
+    if (renderId !== currentRenderId) return; 
+
+    let coords = loc.lat && loc.lng ? { lat: loc.lat, lng: loc.lng } : null;
+    
+    if (!coords) {
+      coords = await getCoordinates(loc.a);
+      if (coords) {
+        loc.lat = coords.lat; 
+        loc.lng = coords.lng;
+      }
+    }
+
+    if (renderId !== currentRenderId) return;
+
+    if (coords) {
+      const col = MC[loc.t] || '#0277b6';
+      const svgIcon = encodeURIComponent(`<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="14" fill="${col}" stroke="#ffffff" stroke-width="3"/><svg x="9" y="9" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></svg>`);
+
+      const marker = new google.maps.Marker({
+        position: coords,
+        map: resourceMap,
+        title: loc.n,
+        icon: {
+          url: 'data:image/svg+xml;charset=UTF-8,' + svgIcon,
+          scaledSize: new google.maps.Size(32, 32),
+          anchor: new google.maps.Point(16, 16)
+        },
+        animation: google.maps.Animation.DROP
+      });
+
+      const popupHTML = `
+        <div style="color:black; padding: 4px; max-width: 220px; font-family: var(--f-body);">
+          <div class="map-popup-name">${loc.n}</div>
+          <div class="map-popup-type" style="color: ${col}; text-transform:uppercase;">${loc.c}</div>
+          <div class="map-popup-detail">
+            ${loc.a ? '📍 ' + loc.a + '<br>' : ''}
+            ${loc.p ? '📞 <a href="tel:' + loc.p.replace(/[^0-9]/g,'') + '">' + loc.p + '</a>' : ''}
+          </div>
+        </div>
+      `;
+
+      marker.addListener('click', () => {
+        infoWindow.setContent(popupHTML);
+        infoWindow.open(resourceMap, marker);
+      });
+
+      mapMarkers.push(marker);
+      bounds.extend(coords);
+      pointsAdded++;
+      
+      if (pointsAdded > 1) {
+        resourceMap.fitBounds(bounds);
+      } else {
+        resourceMap.setCenter(coords);
+        resourceMap.setZoom(12);
+      }
+    }
+  }
+
+  if (pointsAdded > 0 && resourceMap.getZoom() > 14) {
+    resourceMap.setZoom(14);
+  }
+}
+
+const _originalGoTo = window.goTo;
+window.goTo = function(page, scrollTo, activateTab) {
+  if (typeof _originalGoTo === 'function') {
+    _originalGoTo(page, scrollTo, activateTab);
+  }
+  if (page === 'map') {
+    setTimeout(() => {
+      initResourceMap();
+    }, 300);
+  }
+};
 </script>
 </body>
 </html>
