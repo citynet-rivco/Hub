@@ -5,15 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
 <meta name="description" content="City Net Client Hub - Connecting neighbors experiencing homelessness to transformative care and housing solutions.">
 
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9YT2688MQC"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  gtag('config', 'G-9YT2688MQC');
+  gtag('config', 'G-9YT2688MQC');
 </script>
 
+<!-- Open Graph preview -->
 <meta property="og:title" content="City Net | Client Hub">
 <meta property="og:description" content="Explore housing resources, find local job opportunities, and connect with your case manager — all in one place.">
 <meta property="og:image" content="https://citynet-rivco.github.io/Hub/preview.jpg">
@@ -21,6 +23,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="City Net Client Hub">
 
+<!-- Twitter / iMessage fallback -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="City Net | Client Hub">
 <meta name="twitter:description" content="Housing resources, employment opportunities, and case management in Riverside County.">
@@ -32,164 +35,164 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&display=swap" rel="stylesheet">
 <style>
 /* ══════════════════════════════════════════════════════
-   ND STUDIO: ELITE DESIGN TOKENS (City Net Unified)
+   ND STUDIO: ELITE DESIGN TOKENS (City Net Unified)
 ══════════════════════════════════════════════════════ */
 :root {
-  /* Core Colors - Clean, uplifting slate-white background */
-  --ink: #0f172a; 
-  --ink-soft: #1e293b;
-  --ink-muted: #64748b;
-  --surface: #f8fafc; 
-  --surface-warm: #f1f5f9;
-  --surface-card: rgba(255, 255, 255, 0.85); 
-  --surface-float: rgba(255, 255, 255, 0.95); 
-  
-  /* Brand Accents - City Net Cohesive Blue */
-  --accent: #0277b6; 
-  --accent-light: #0096c7; 
-  --accent-pale: rgba(2, 119, 182, 0.08);
-  --accent-glow: rgba(2, 119, 182, 0.2);
-  
-  /* Buttons & High Contrast Elements */
-  --btn-bg: #0277b6;
-  --btn-hover: #025a8a;
-  --btn-text: #ffffff;
-  
-  /* Semantic Signals - Harmonized Jewel Tones */
-  --signal-green: #0f766e; 
-  --signal-green-pale: rgba(15, 118, 110, 0.1);
-  --signal-amber: #b45309; 
-  --signal-amber-pale: rgba(180, 83, 9, 0.1);
-  --signal-red: #b91c1c; 
-  --signal-red-pale: rgba(185, 28, 28, 0.1);
-  --signal-purple: #6d28d9; 
-  --signal-purple-pale: rgba(109, 40, 217, 0.1);
-  
-  /* Structural / Lines */
-  --border: rgba(15, 23, 42, 0.12);
-  --border-light: rgba(15, 23, 42, 0.06);
-  --border-glass: rgba(255, 255, 255, 0.9);
-  
-  /* Typography Variables */
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-tertiary: #64748b;
-  --text-on-accent: #ffffff; 
-  
-  /* Badge/Circle Specific Colors (Deep tones for bright white text) */
-  --badge-bg-1: #0277b6; 
-  --badge-bg-2: #0f766e; 
-  --badge-bg-3: #6d28d9; 
-  --badge-bg-4: #b45309; 
-  --badge-bg-5: #b91c1c; 
-  
-  /* Fonts */
-  --f-display: 'Fraunces', Georgia, serif;
-  --f-body: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  
-  /* Fluid Scaling */
-  --size-xs: 0.8rem; 
-  --size-sm: 0.925rem; 
-  --size-base: 1.05rem; 
-  --size-md: 1.15rem; 
-  --size-lg: 1.35rem;
-  --size-xl: 1.75rem;
-  --size-2xl: 2.5rem;
-  --size-3xl: 3.5rem;
-  --size-hero: clamp(3rem, 7vw, 6rem);
-  
-  /* Spacing */
-  --space-sm: 0.5rem;
-  --space-md: 1rem;
-  --space-lg: 1.5rem;
+  /* Core Colors - Clean, uplifting slate-white background */
+  --ink: #0f172a; 
+  --ink-soft: #1e293b;
+  --ink-muted: #64748b;
+  --surface: #f8fafc; 
+  --surface-warm: #f1f5f9;
+  --surface-card: rgba(255, 255, 255, 0.85); 
+  --surface-float: rgba(255, 255, 255, 0.95); 
+  
+  /* Brand Accents - City Net Cohesive Blue */
+  --accent: #0277b6; 
+  --accent-light: #0096c7; 
+  --accent-pale: rgba(2, 119, 182, 0.08);
+  --accent-glow: rgba(2, 119, 182, 0.2);
+  
+  /* Buttons & High Contrast Elements */
+  --btn-bg: #0277b6;
+  --btn-hover: #025a8a;
+  --btn-text: #ffffff;
+  
+  /* Semantic Signals - Harmonized Jewel Tones */
+  --signal-green: #0f766e; 
+  --signal-green-pale: rgba(15, 118, 110, 0.1);
+  --signal-amber: #b45309; 
+  --signal-amber-pale: rgba(180, 83, 9, 0.1);
+  --signal-red: #b91c1c; 
+  --signal-red-pale: rgba(185, 28, 28, 0.1);
+  --signal-purple: #6d28d9; 
+  --signal-purple-pale: rgba(109, 40, 217, 0.1);
+  
+  /* Structural / Lines */
+  --border: rgba(15, 23, 42, 0.12);
+  --border-light: rgba(15, 23, 42, 0.06);
+  --border-glass: rgba(255, 255, 255, 0.9);
+  
+  /* Typography Variables */
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-tertiary: #64748b;
+  --text-on-accent: #ffffff; 
+  
+  /* Badge/Circle Specific Colors (Deep tones for bright white text) */
+  --badge-bg-1: #0277b6; 
+  --badge-bg-2: #0f766e; 
+  --badge-bg-3: #6d28d9; 
+  --badge-bg-4: #b45309; 
+  --badge-bg-5: #b91c1c; 
+  
+  /* Fonts */
+  --f-display: 'Fraunces', Georgia, serif;
+  --f-body: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+  /* Fluid Scaling */
+  --size-xs: 0.8rem; 
+  --size-sm: 0.925rem; 
+  --size-base: 1.05rem; 
+  --size-md: 1.15rem; 
+  --size-lg: 1.35rem;
+  --size-xl: 1.75rem;
+  --size-2xl: 2.5rem;
+  --size-3xl: 3.5rem;
+  --size-hero: clamp(3rem, 7vw, 6rem);
+  
+  /* Spacing */
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
 
-  /* Radii */
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
-  --radius-xl: 32px;
-  
-  /* Elevation */
-  --shadow-sm: 0 4px 16px rgba(15,23,42,0.04);
-  --shadow-md: 0 16px 48px rgba(15,23,42,0.08);
-  --shadow-lg: 0 32px 96px rgba(15,23,42,0.12);
-  --shadow-float: 0 40px 100px rgba(2,119,182,0.15), 0 0 0 1px var(--border);
-  --inner-glow: inset 0 1px 0 0 rgba(255,255,255,0.9);
-  
-  /* Easing & Physics */
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-spring: cubic-bezier(0.25, 1.2, 0.5, 1);
-  --dur-fast: 200ms;
-  --dur-base: 400ms;
-  --dur-slow: 700ms;
-  --dur-spring: 500ms;
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 32px;
+  
+  /* Elevation */
+  --shadow-sm: 0 4px 16px rgba(15,23,42,0.04);
+  --shadow-md: 0 16px 48px rgba(15,23,42,0.08);
+  --shadow-lg: 0 32px 96px rgba(15,23,42,0.12);
+  --shadow-float: 0 40px 100px rgba(2,119,182,0.15), 0 0 0 1px var(--border);
+  --inner-glow: inset 0 1px 0 0 rgba(255,255,255,0.9);
+  
+  /* Easing & Physics */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.25, 1.2, 0.5, 1);
+  --dur-fast: 200ms;
+  --dur-base: 400ms;
+  --dur-slow: 700ms;
+  --dur-spring: 500ms;
 }
 
 /* ══════════════════════════════════════════════════════
-   OLED-OPTIMIZED DARK MODE
+   OLED-OPTIMIZED DARK MODE
 ══════════════════════════════════════════════════════ */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --ink: #f8fafc;
-    --ink-soft: #e2e8f0;
-    --ink-muted: #94a3b8;
-    --surface: #020617; 
-    --surface-warm: #0f172a;
-    --surface-card: rgba(30, 41, 59, 0.6); 
-    --surface-float: rgba(15, 23, 42, 0.9); 
-    
-    --text-primary: #f8fafc;
-    --text-secondary: #cbd5e1;
-    --text-tertiary: #94a3b8;
-    --text-on-accent: #ffffff; 
-    
-    --accent: #38bdf8; 
-    --accent-light: #7dd3fc;
-    --accent-pale: rgba(56, 189, 248, 0.15);
-    --accent-glow: rgba(56, 189, 248, 0.25);
-    
-    --btn-bg: #38bdf8;
-    --btn-hover: #7dd3fc;
-    --btn-text: #020617;
-    
-    --signal-green: #34d399;
-    --signal-green-pale: rgba(52, 211, 153, 0.15);
-    --signal-amber: #fbbf24;
-    --signal-amber-pale: rgba(251, 191, 36, 0.15);
-    --signal-red: #f87171;
-    --signal-red-pale: rgba(248, 113, 113, 0.15);
-    --signal-purple: #a78bfa;
-    --signal-purple-pale: rgba(167, 139, 250, 0.15);
-    
-    --badge-bg-1: #0277b6; 
-    --badge-bg-2: #0f766e;
-    --badge-bg-3: #6d28d9;
-    --badge-bg-4: #b45309;
-    --badge-bg-5: #b91c1c;
-    
-    --border: rgba(255, 255, 255, 0.12);
-    --border-light: rgba(255, 255, 255, 0.06);
-    --border-glass: rgba(255, 255, 255, 0.05);
-    
-    --shadow-sm: 0 4px 12px rgba(0,0,0,0.5);
-    --shadow-md: 0 16px 48px rgba(0,0,0,0.7);
-    --shadow-lg: 0 32px 96px rgba(0,0,0,0.9);
-    --shadow-float: 0 40px 100px rgba(0,0,0,0.9), 0 0 0 1px var(--border);
-    --inner-glow: inset 0 1px 0 0 rgba(255,255,255,0.05);
-  }
+  :root {
+    --ink: #f8fafc;
+    --ink-soft: #e2e8f0;
+    --ink-muted: #94a3b8;
+    --surface: #020617; 
+    --surface-warm: #0f172a;
+    --surface-card: rgba(30, 41, 59, 0.6); 
+    --surface-float: rgba(15, 23, 42, 0.9); 
+    
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-tertiary: #94a3b8;
+    --text-on-accent: #ffffff; 
+    
+    --accent: #38bdf8; 
+    --accent-light: #7dd3fc;
+    --accent-pale: rgba(56, 189, 248, 0.15);
+    --accent-glow: rgba(56, 189, 248, 0.25);
+    
+    --btn-bg: #38bdf8;
+    --btn-hover: #7dd3fc;
+    --btn-text: #020617;
+    
+    --signal-green: #34d399;
+    --signal-green-pale: rgba(52, 211, 153, 0.15);
+    --signal-amber: #fbbf24;
+    --signal-amber-pale: rgba(251, 191, 36, 0.15);
+    --signal-red: #f87171;
+    --signal-red-pale: rgba(248, 113, 113, 0.15);
+    --signal-purple: #a78bfa;
+    --signal-purple-pale: rgba(167, 139, 250, 0.15);
+    
+    --badge-bg-1: #0277b6; 
+    --badge-bg-2: #0f766e;
+    --badge-bg-3: #6d28d9;
+    --badge-bg-4: #b45309;
+    --badge-bg-5: #b91c1c;
+    
+    --border: rgba(255, 255, 255, 0.12);
+    --border-light: rgba(255, 255, 255, 0.06);
+    --border-glass: rgba(255, 255, 255, 0.05);
+    
+    --shadow-sm: 0 4px 12px rgba(0,0,0,0.5);
+    --shadow-md: 0 16px 48px rgba(0,0,0,0.7);
+    --shadow-lg: 0 32px 96px rgba(0,0,0,0.9);
+    --shadow-float: 0 40px 100px rgba(0,0,0,0.9), 0 0 0 1px var(--border);
+    --inner-glow: inset 0 1px 0 0 rgba(255,255,255,0.05);
+  }
 }
 
 /* ══════════════════════════════════════════════════════
-   GLOBAL RESET & BASE
+   GLOBAL RESET & BASE
 ══════════════════════════════════════════════════════ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
 
 body {
-  font-family: var(--f-body); font-size: var(--size-base); color: var(--text-primary);
-  background-color: var(--surface); line-height: 1.6; overflow-x: hidden;
-  transition: background-color 0.4s ease, color 0.4s ease;
-  position: relative;
+  font-family: var(--f-body); font-size: var(--size-base); color: var(--text-primary);
+  background-color: var(--surface); line-height: 1.6; overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  position: relative;
 }
 
 img { display: block; max-width: 100%; }
@@ -200,7 +203,7 @@ button { font-family: var(--f-body); border: none; background: none; cursor: poi
 @media (prefers-color-scheme: light) { ::selection { color: #fff; } }
 
 a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:focus-visible, div[role="menuitem"]:focus-visible, div[role="tab"]:focus-visible {
-  outline: 2px solid var(--accent); outline-offset: 4px; border-radius: var(--radius-sm);
+  outline: 2px solid var(--accent); outline-offset: 4px; border-radius: var(--radius-sm);
 }
 .container { width: 100%; max-width: 1320px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 3rem); }
 
@@ -210,14 +213,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 @keyframes float-bg { 0% { transform: translate(0, 0) scale(1); opacity: 0.5; } 33% { transform: translate(30px, -50px) scale(1.1); opacity: 0.7; } 66% { transform: translate(-20px, 20px) scale(0.9); opacity: 0.6; } 100% { transform: translate(0, 0) scale(1); opacity: 0.5; } }
 
 /* ══════════════════════════════════════════════════════
-   SCROLL-REVEAL SYSTEM
+   SCROLL-REVEAL SYSTEM
 ══════════════════════════════════════════════════════ */
 .reveal { opacity: 0; transform: translateY(30px) scale(0.98); transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-spring); }
 .reveal.visible { opacity: 1; transform: translateY(0) scale(1); }
 .reveal-delay-1 { transition-delay: 0.05s; } .reveal-delay-2 { transition-delay: 0.1s; } .reveal-delay-3 { transition-delay: 0.15s; }
 
 /* ══════════════════════════════════════════════════════
-   TOPBAR
+   TOPBAR
 ══════════════════════════════════════════════════════ */
 .topbar { background: var(--badge-bg-1); color: #fff; padding: 8px 0; font-size: var(--size-xs); font-weight: 600; letter-spacing: 0.04em; position: relative; z-index: 200; text-transform: uppercase; transition: background 0.4s; }
 .topbar__inner { display: flex; align-items: center; justify-content: space-between; gap: var(--space-md); flex-wrap: wrap; }
@@ -228,19 +231,19 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .topbar__sep { width: 1px; height: 12px; background: currentColor; opacity: 0.4; }
 
 /* ══════════════════════════════════════════════════════
-   HEADER (Dynamic Island Style)
+   HEADER (Dynamic Island Style)
 ══════════════════════════════════════════════════════ */
 .header-wrapper { position: sticky; top: 0; z-index: 150; padding: 0; transition: padding 0.5s var(--ease-out); }
 .header-wrapper.scrolled { padding: 1rem 1.5rem; pointer-events: none; }
 
 .header { background: var(--surface-float); backdrop-filter: blur(32px) saturate(200%); -webkit-backdrop-filter: blur(32px) saturate(200%); border-bottom: 1px solid var(--border-light); transition: border-radius 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out), background 0.5s var(--ease-out), max-width 0.5s var(--ease-out); pointer-events: auto; }
-.header-wrapper.scrolled .header { 
-  border-radius: 100px; 
-  border: 1px solid var(--border-glass); 
-  box-shadow: var(--shadow-lg), var(--inner-glow); 
-  background: var(--surface-float);
-  margin: 0 auto;
-  max-width: 1200px;
+.header-wrapper.scrolled .header { 
+  border-radius: 100px; 
+  border: 1px solid var(--border-glass); 
+  box-shadow: var(--shadow-lg), var(--inner-glow); 
+  background: var(--surface-float);
+  margin: 0 auto;
+  max-width: 1200px;
 }
 .header__inner { display: flex; align-items: center; justify-content: space-between; height: 76px; padding: 0 clamp(1.5rem, 5vw, 3rem); transition: padding 0.5s var(--ease-out), height 0.5s var(--ease-out); }
 .header-wrapper.scrolled .header__inner { padding: 0 1rem 0 1.5rem; height: 64px; }
@@ -266,31 +269,31 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .nav-link.active::after { content:''; position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%); width: 16px; height: 2px; background: var(--accent); border-radius: 2px; }
 
 /* Nav Dropdown (Fixed Hover/Bridge) */
-.nav-drop { position: relative; padding-bottom: 16px; margin-bottom: -16px; } 
-.nav-drop-menu { 
-  display: block; 
-  visibility: hidden;
-  opacity: 0;
-  position: absolute; 
-  top: calc(100% + 4px); 
-  left: 50%; 
-  transform: translateX(-50%) translateY(-10px) scale(0.98); 
-  background: var(--surface-float); 
-  min-width: 320px; 
-  border-radius: var(--radius-lg); 
-  padding: 8px; 
-  backdrop-filter: blur(40px) saturate(200%); 
-  box-shadow: var(--shadow-float), var(--inner-glow); 
-  border: 1px solid var(--border-glass); 
-  transition: all 0.3s var(--ease-spring);
-  transform-origin: top center; 
-  pointer-events: none;
+.nav-drop { position: relative; padding-bottom: 16px; margin-bottom: -16px; } 
+.nav-drop-menu { 
+  display: block; 
+  visibility: hidden;
+  opacity: 0;
+  position: absolute; 
+  top: calc(100% + 4px); 
+  left: 50%; 
+  transform: translateX(-50%) translateY(-10px) scale(0.98); 
+  background: var(--surface-float); 
+  min-width: 320px; 
+  border-radius: var(--radius-lg); 
+  padding: 8px; 
+  backdrop-filter: blur(40px) saturate(200%); 
+  box-shadow: var(--shadow-float), var(--inner-glow); 
+  border: 1px solid var(--border-glass); 
+  transition: all 0.3s var(--ease-spring);
+  transform-origin: top center; 
+  pointer-events: none;
 }
-.nav-drop:hover .nav-drop-menu, .nav-drop:focus-within .nav-drop-menu { 
-  visibility: visible;
-  opacity: 1;
-  transform: translateX(-50%) translateY(0) scale(1);
-  pointer-events: auto;
+.nav-drop:hover .nav-drop-menu, .nav-drop:focus-within .nav-drop-menu { 
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(0) scale(1);
+  pointer-events: auto;
 }
 
 .nav-drop-item { display: flex; align-items: center; gap: 16px; padding: 12px; border-radius: var(--radius-md); cursor: pointer; transition: all var(--dur-fast) var(--ease-out); opacity: 0; transform: translateY(-6px); }
@@ -300,7 +303,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .nav-drop-item:nth-child(2) { transition-delay: 0.1s; }
 .nav-drop-item:nth-child(3) { transition-delay: 0.15s; }
 
-.nav-drop-item:hover { background: var(--surface-warm); transform: translateX(4px) !important; transition-delay: 0s; } 
+.nav-drop-item:hover { background: var(--surface-warm); transform: translateX(4px) !important; transition-delay: 0s; } 
 
 .ndi-icon { width: 44px; height: 44px; border-radius: 10px; background: var(--surface); box-shadow: var(--shadow-sm); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all var(--dur-spring); border: 1px solid var(--border-light); }
 .nav-drop-item:hover .ndi-icon { background: var(--accent); border-color: var(--accent); transform: scale(1.05); }
@@ -337,7 +340,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .hamburger span { display: block; width: 18px; height: 2px; background: var(--text-primary); border-radius: 2px; }
 
 /* ══════════════════════════════════════════════════════
-   MOBILE NAV OVERLAY
+   MOBILE NAV OVERLAY
 ══════════════════════════════════════════════════════ */
 .mobile-nav { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(40px) saturate(200%); -webkit-backdrop-filter: blur(40px) saturate(200%); flex-direction: column; padding: 0; overflow-y: auto; color: #fff; }
 .mobile-nav.open { display: flex; animation: mobileNavIn 0.4s var(--ease-out) forwards; }
@@ -374,14 +377,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .logo--white .logo__sub { color: rgba(255,255,255,0.6); }
 
 /* ══════════════════════════════════════════════════════
-   PAGE SYSTEM
+   PAGE SYSTEM
 ══════════════════════════════════════════════════════ */
 .page { display: none; }
 .page.active { display: block; animation: pageFadeIn 0.5s var(--ease-out) forwards; }
 @keyframes pageFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
 /* ══════════════════════════════════════════════════════
-   HERO (Home)
+   HERO (Home)
 ══════════════════════════════════════════════════════ */
 .hero { padding: clamp(4rem, 10vw, 8rem) 0 clamp(3rem, 8vw, 5rem); position: relative; overflow: visible; display: flex; flex-direction: column; align-items: center; text-align: center; }
 /* Volumetric glowing orbs behind hero */
@@ -397,53 +400,53 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .hero__actions { margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
 
 /* ══════════════════════════════════════════════════════
-   STUNNING STAT STRIPS (Dynamic Floating Pill)
+   STUNNING STAT STRIPS (Dynamic Floating Pill)
 ══════════════════════════════════════════════════════ */
 .stats-strip-wrapper, .page-stats-wrapper {
-  padding: 2rem clamp(1.5rem, 5vw, 3rem);
-  position: relative;
+  padding: 2rem clamp(1.5rem, 5vw, 3rem);
+  position: relative;
 }
 .stats-strip, .page-stats {
-  background: linear-gradient(135deg, var(--surface-float), var(--surface-card));
-  border: 1px solid var(--border-glass);
-  border-radius: var(--radius-xl);
-  padding: 3rem 2rem;
-  box-shadow: var(--shadow-lg), var(--inner-glow);
-  backdrop-filter: blur(40px) saturate(150%);
-  position: relative;
-  overflow: hidden;
-  max-width: 1200px;
-  margin: 0 auto;
+  background: linear-gradient(135deg, var(--surface-float), var(--surface-card));
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-xl);
+  padding: 3rem 2rem;
+  box-shadow: var(--shadow-lg), var(--inner-glow);
+  backdrop-filter: blur(40px) saturate(150%);
+  position: relative;
+  overflow: hidden;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 .stats-strip::before, .page-stats::before {
-  content: ''; position: absolute; top: -50%; left: 50%; transform: translateX(-50%); 
-  width: 800px; height: 400px; background: radial-gradient(ellipse, var(--accent-glow) 0%, transparent 70%); 
-  pointer-events: none; z-index: 0;
+  content: ''; position: absolute; top: -50%; left: 50%; transform: translateX(-50%); 
+  width: 800px; height: 400px; background: radial-gradient(ellipse, var(--accent-glow) 0%, transparent 70%); 
+  pointer-events: none; z-index: 0;
 }
 .stats-strip__grid, .page-stats__grid {
-  position: relative; z-index: 1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
+  position: relative; z-index: 1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
 }
 .stat-cell, .ps-cell { text-align: center; position: relative; }
 
 /* Metallic Gradient Numbers */
-.stat-cell__num, .ps-cell__num { 
-  font-family: var(--f-display); 
-  font-size: clamp(2.5rem, 5vw, 4rem); 
-  font-weight: 500; 
-  background: linear-gradient(135deg, var(--text-primary), var(--accent));
-  -webkit-background-clip: text; 
-  -webkit-text-fill-color: transparent;
-  letter-spacing: -0.04em; 
-  line-height: 1;
-  filter: drop-shadow(0 4px 12px rgba(2,119,182,0.1));
+.stat-cell__num, .ps-cell__num { 
+  font-family: var(--f-display); 
+  font-size: clamp(2.5rem, 5vw, 4rem); 
+  font-weight: 500; 
+  background: linear-gradient(135deg, var(--text-primary), var(--accent));
+  -webkit-background-clip: text; 
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.04em; 
+  line-height: 1;
+  filter: drop-shadow(0 4px 12px rgba(2,119,182,0.1));
 }
-.stat-cell__label, .ps-cell__label { 
-  margin-top: 0.5rem; font-size: 12px; color: var(--text-secondary); text-transform: uppercase; 
-  letter-spacing: 0.1em; font-weight: 700; 
+.stat-cell__label, .ps-cell__label { 
+  margin-top: 0.5rem; font-size: 12px; color: var(--text-secondary); text-transform: uppercase; 
+  letter-spacing: 0.1em; font-weight: 700; 
 }
 
 /* ══════════════════════════════════════════════════════
-   SECTION BASE
+   SECTION BASE
 ══════════════════════════════════════════════════════ */
 .section { padding: clamp(3rem, 6vw, 5rem) 0; position: relative; }
 .section--alt { background: var(--surface-warm); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); }
@@ -458,7 +461,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .s-header--center { text-align: center; display: flex; flex-direction: column; align-items: center; }
 
 /* ══════════════════════════════════════════════════════
-   HUB CARDS (The "Apple" Glass Cards)
+   HUB CARDS (The "Apple" Glass Cards)
 ══════════════════════════════════════════════════════ */
 .hub-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .hub-card { background: var(--surface-card); border: 1px solid var(--border-glass); border-radius: var(--radius-xl); padding: 2.5rem; transition: all var(--dur-base) var(--ease-spring); cursor: pointer; display: flex; flex-direction: column; box-shadow: var(--shadow-sm), var(--inner-glow); backdrop-filter: blur(32px) saturate(200%); -webkit-backdrop-filter: blur(32px) saturate(200%); position: relative; overflow: hidden; }
@@ -471,49 +474,49 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 
 .hub-card__icon { width: 52px; height: 52px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; transition: transform var(--dur-base) var(--ease-spring); box-shadow: inset 0 1px 0 rgba(255,255,255,0.5); }
 .hub-card:hover .hub-card__icon { transform: scale(1.1) translateY(-4px); }
-.hub-card__icon svg { width: 24px; height: 24px; stroke-width: 2; } 
+.hub-card__icon svg { width: 24px; height: 24px; stroke-width: 2; } 
 
 .hub-card--housing .hub-card__icon { background: linear-gradient(135deg, var(--badge-bg-1), #0096c7); color: #fff; }
 .hub-card--employment .hub-card__icon { background: linear-gradient(135deg, var(--badge-bg-2), #14b8a6); color: #fff; }
 .hub-card--team .hub-card__icon { background: linear-gradient(135deg, var(--badge-bg-4), #d97706); color: #fff; }
-@media (prefers-color-scheme: dark) { 
-  .hub-card__icon { color: #fff; } /* Keep icons white on deep badges in dark mode */
+@media (prefers-color-scheme: dark) { 
+  .hub-card__icon { color: #fff; } /* Keep icons white on deep badges in dark mode */
 }
 
 .hub-card__title { font-family: var(--f-display); font-size: var(--size-xl); font-weight: 600; color: var(--text-primary); letter-spacing: -0.02em; margin-bottom: 0.5rem; transition: color var(--dur-fast); }
 .hub-card:hover .hub-card__title { color: var(--accent); }
 .hub-card__desc { font-size: var(--size-sm); color: var(--text-secondary); line-height: 1.6; margin-bottom: 2rem; flex-grow: 1; }
 .hub-card__cta { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: var(--text-primary); transition: gap var(--dur-fast), color var(--dur-fast); text-transform: uppercase; letter-spacing: 0.05em; }
-.hub-card__cta svg { width: 16px; height: 16px; stroke-width: 2.5; transition: transform var(--dur-fast); color: var(--text-tertiary); } 
+.hub-card__cta svg { width: 16px; height: 16px; stroke-width: 2.5; transition: transform var(--dur-fast); color: var(--text-tertiary); } 
 .hub-card:hover .hub-card__cta { color: var(--accent); }
 .hub-card:hover .hub-card__cta svg { transform: translateX(4px); color: var(--accent); }
 
 /* ══════════════════════════════════════════════════════
-   AVATARS / INITIALS BADGES (Readability Fix)
+   AVATARS / INITIALS BADGES (Readability Fix)
 ══════════════════════════════════════════════════════ */
-.job-initials, .cm-avatar { 
-  width: 48px; height: 48px; 
-  border-radius: 50%; 
-  display: flex; align-items: center; justify-content: center; 
-  font-family: var(--f-display); font-weight: 600; font-size: 16px; 
-  color: var(--text-on-accent) !important; 
-  flex-shrink: 0; 
-  box-shadow: inset 0 2px 4px rgba(255,255,255,0.3), var(--shadow-sm);
-  text-shadow: 0 1px 2px rgba(0,0,0,0.2); 
+.job-initials, .cm-avatar { 
+  width: 48px; height: 48px; 
+  border-radius: 50%; 
+  display: flex; align-items: center; justify-content: center; 
+  font-family: var(--f-display); font-weight: 600; font-size: 16px; 
+  color: var(--text-on-accent) !important; 
+  flex-shrink: 0; 
+  box-shadow: inset 0 2px 4px rgba(255,255,255,0.3), var(--shadow-sm);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2); 
 }
 
 /* Staggered deep backgrounds to ensure PURE WHITE text is always legible */
-.job-initials, .cm-card:nth-child(5n+1) .cm-avatar { background-color: var(--badge-bg-1); } 
-.city-block:nth-of-type(2n) .job-initials, .cm-card:nth-child(5n+2) .cm-avatar { background-color: var(--badge-bg-2); } 
-.city-block:nth-of-type(3n) .job-initials, .cm-card:nth-child(5n+3) .cm-avatar { background-color: var(--badge-bg-3); } 
-.cm-card:nth-child(5n+4) .cm-avatar { background-color: var(--badge-bg-4); } 
-.cm-card:nth-child(5n+5) .cm-avatar { background-color: var(--badge-bg-5); } 
+.job-initials, .cm-card:nth-child(5n+1) .cm-avatar { background-color: var(--badge-bg-1); } 
+.city-block:nth-of-type(2n) .job-initials, .cm-card:nth-child(5n+2) .cm-avatar { background-color: var(--badge-bg-2); } 
+.city-block:nth-of-type(3n) .job-initials, .cm-card:nth-child(5n+3) .cm-avatar { background-color: var(--badge-bg-3); } 
+.cm-card:nth-child(5n+4) .cm-avatar { background-color: var(--badge-bg-4); } 
+.cm-card:nth-child(5n+5) .cm-avatar { background-color: var(--badge-bg-5); } 
 
 /* employment specific smaller initials */
 .job-initials { width: 40px; height: 40px; border-radius: 8px; font-size: 14px; }
 
 /* ══════════════════════════════════════════════════════
-   TEAM GRID
+   TEAM GRID
 ══════════════════════════════════════════════════════ */
 .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .cm-card { background: var(--surface-card); border: 1px solid var(--border-glass); border-radius: var(--radius-xl); padding: 1.5rem; transition: all var(--dur-base) var(--ease-spring); display: flex; flex-direction: column; box-shadow: var(--shadow-sm), var(--inner-glow); backdrop-filter: blur(32px) saturate(200%); }
@@ -553,7 +556,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .result-count { font-size: 13px; color: var(--text-secondary); font-weight: 500; }
 
 /* ══════════════════════════════════════════════════════
-   INNER PAGES HERO (Centered)
+   INNER PAGES HERO (Centered)
 ══════════════════════════════════════════════════════ */
 .page-hero { padding: clamp(3rem, 6vw, 5rem) 0 1rem; position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; }
 .page-hero__inner { display: flex; flex-direction: column; align-items: center; text-align: center; }
@@ -565,7 +568,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .page-hero__sub { margin-top: 1rem; font-size: var(--size-lg); color: var(--text-secondary); line-height: 1.5; max-width: 600px; font-weight: 400; margin-left: auto; margin-right: auto; }
 
 /* ══════════════════════════════════════════════════════
-   SEGMENTED CONTROLS (Pills & Tabs)
+   SEGMENTED CONTROLS (Pills & Tabs)
 ══════════════════════════════════════════════════════ */
 .pill-row { display: inline-flex; gap: 4px; padding: 4px; background: var(--surface-card); border: 1px solid var(--border-glass); border-radius: 100px; box-shadow: var(--shadow-sm), inset 0 2px 4px rgba(0,0,0,0.02); backdrop-filter: blur(20px); margin-bottom: 2rem; overflow-x: auto; max-width: 100%; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
 .pill-row::-webkit-scrollbar { display: none; }
@@ -574,7 +577,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .pill.on, .tab.on { background: var(--btn-bg); color: var(--btn-text); box-shadow: 0 2px 8px rgba(2,119,182,0.25); }
 
 /* ══════════════════════════════════════════════════════
-   EMPLOYMENT (Linear App Style List)
+   EMPLOYMENT (Linear App Style List)
 ══════════════════════════════════════════════════════ */
 .emp-layout { display: grid; grid-template-columns: 1fr 340px; gap: 2rem; align-items: start; }
 .emp-layout > div { min-width: 0; }
@@ -618,8 +621,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .badge--ft { background: var(--signal-green-pale); color: var(--signal-green); border-color: rgba(15,118,110,0.2); }
 .badge--pt { background: var(--surface-warm); color: var(--text-secondary); border-color: var(--border); }
 .badge--new { background: var(--accent); color: var(--btn-text); border-color: var(--accent); }
-@media (prefers-color-scheme: dark) { 
-  .badge--ft { border-color: rgba(52,211,153,0.2); } 
+@media (prefers-color-scheme: dark) { 
+  .badge--ft { border-color: rgba(52,211,153,0.2); } 
 }
 
 /* Sidebar Cards */
@@ -641,7 +644,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .res-link:hover .res-link__arrow { color: var(--accent); }
 
 /* ══════════════════════════════════════════════════════
-   RESOURCE CARDS (Housing, Healthcare, More)
+   RESOURCE CARDS (Housing, Healthcare, More)
 ══════════════════════════════════════════════════════ */
 .panel { display: none; }
 .panel.on { display: block; animation: panelIn 0.5s var(--ease-spring) forwards; }
@@ -654,46 +657,46 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .rc:hover::before { width: 6px; }
 
 /* Sub-branding colors for resources */
-.rc--emergency::before   { background: var(--signal-red); }
+.rc--emergency::before   { background: var(--signal-red); }
 .rc--transitional::before{ background: var(--signal-purple); }
-.rc--affordable::before  { background: var(--signal-green); }
-.rc--medical::before     { background: var(--accent); }
-.rc--behavioral::before  { background: var(--signal-purple); }
-.rc--specialty::before   { background: var(--signal-amber); }
-.rc--basic::before       { background: var(--accent); }
-.rc--food::before        { background: var(--signal-green); }
-.rc--legal::before       { background: var(--signal-amber); }
-.rc--education::before   { background: var(--accent); }
-.rc--animals::before     { background: var(--signal-red); }
+.rc--affordable::before  { background: var(--signal-green); }
+.rc--medical::before     { background: var(--accent); }
+.rc--behavioral::before  { background: var(--signal-purple); }
+.rc--specialty::before   { background: var(--signal-amber); }
+.rc--basic::before       { background: var(--accent); }
+.rc--food::before        { background: var(--signal-green); }
+.rc--legal::before       { background: var(--signal-amber); }
+.rc--education::before   { background: var(--accent); }
+.rc--animals::before     { background: var(--signal-red); }
 
 .rc-badge { display: inline-flex; align-items: center; padding: 4px 12px; border-radius: 100px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; border: 1px solid; }
-.rcb--emergency   { background: var(--signal-red-pale); color: var(--signal-red); border-color: rgba(185,28,28,0.2); }
+.rcb--emergency   { background: var(--signal-red-pale); color: var(--signal-red); border-color: rgba(185,28,28,0.2); }
 .rcb--transitional{ background: var(--signal-purple-pale); color: var(--signal-purple); border-color: rgba(109,40,217,0.2); }
-.rcb--affordable  { background: var(--signal-green-pale); color: var(--signal-green); border-color: rgba(15,118,110,0.2); }
-.rcb--special     { background: var(--signal-amber-pale); color: var(--signal-amber); border-color: rgba(180,83,9,0.2); }
-.rcb--medical     { background: var(--accent-pale); color: var(--accent); border-color: rgba(2,119,182,0.2); }
-.rcb--behavioral  { background: var(--signal-purple-pale); color: var(--signal-purple); border-color: rgba(109,40,217,0.2); }
-.rcb--specialty   { background: var(--signal-amber-pale); color: var(--signal-amber); border-color: rgba(180,83,9,0.2); }
-.rcb--basic       { background: var(--accent-pale); color: var(--accent); border-color: rgba(2,119,182,0.2); }
-.rcb--food        { background: var(--signal-green-pale); color: var(--signal-green); border-color: rgba(15,118,110,0.2); }
-.rcb--legal       { background: var(--signal-amber-pale); color: var(--signal-amber); border-color: rgba(180,83,9,0.2); }
-.rcb--education   { background: var(--accent-pale); color: var(--accent); border-color: rgba(2,119,182,0.2); }
-.rcb--animals     { background: var(--signal-red-pale); color: var(--signal-red); border-color: rgba(185,28,28,0.2); }
+.rcb--affordable  { background: var(--signal-green-pale); color: var(--signal-green); border-color: rgba(15,118,110,0.2); }
+.rcb--special     { background: var(--signal-amber-pale); color: var(--signal-amber); border-color: rgba(180,83,9,0.2); }
+.rcb--medical     { background: var(--accent-pale); color: var(--accent); border-color: rgba(2,119,182,0.2); }
+.rcb--behavioral  { background: var(--signal-purple-pale); color: var(--signal-purple); border-color: rgba(109,40,217,0.2); }
+.rcb--specialty   { background: var(--signal-amber-pale); color: var(--signal-amber); border-color: rgba(180,83,9,0.2); }
+.rcb--basic       { background: var(--accent-pale); color: var(--accent); border-color: rgba(2,119,182,0.2); }
+.rcb--food        { background: var(--signal-green-pale); color: var(--signal-green); border-color: rgba(15,118,110,0.2); }
+.rcb--legal       { background: var(--signal-amber-pale); color: var(--signal-amber); border-color: rgba(180,83,9,0.2); }
+.rcb--education   { background: var(--accent-pale); color: var(--accent); border-color: rgba(2,119,182,0.2); }
+.rcb--animals     { background: var(--signal-red-pale); color: var(--signal-red); border-color: rgba(185,28,28,0.2); }
 
 /* Update dark mode borders */
 @media (prefers-color-scheme: dark) {
-  .rcb--emergency   { border-color: rgba(248,113,113,0.2); }
-  .rcb--transitional{ border-color: rgba(167,139,250,0.2); }
-  .rcb--affordable  { border-color: rgba(52,211,153,0.2); }
-  .rcb--special     { border-color: rgba(251,191,36,0.2); }
-  .rcb--medical     { border-color: rgba(56,189,248,0.2); }
-  .rcb--behavioral  { border-color: rgba(167,139,250,0.2); }
-  .rcb--specialty   { border-color: rgba(251,191,36,0.2); }
-  .rcb--basic       { border-color: rgba(56,189,248,0.2); }
-  .rcb--food        { border-color: rgba(52,211,153,0.2); }
-  .rcb--legal       { border-color: rgba(251,191,36,0.2); }
-  .rcb--education   { border-color: rgba(56,189,248,0.2); }
-  .rcb--animals     { border-color: rgba(248,113,113,0.2); }
+  .rcb--emergency   { border-color: rgba(248,113,113,0.2); }
+  .rcb--transitional{ border-color: rgba(167,139,250,0.2); }
+  .rcb--affordable  { border-color: rgba(52,211,153,0.2); }
+  .rcb--special     { border-color: rgba(251,191,36,0.2); }
+  .rcb--medical     { border-color: rgba(56,189,248,0.2); }
+  .rcb--behavioral  { border-color: rgba(167,139,250,0.2); }
+  .rcb--specialty   { border-color: rgba(251,191,36,0.2); }
+  .rcb--basic       { border-color: rgba(56,189,248,0.2); }
+  .rcb--food        { border-color: rgba(52,211,153,0.2); }
+  .rcb--legal       { border-color: rgba(251,191,36,0.2); }
+  .rcb--education   { border-color: rgba(56,189,248,0.2); }
+  .rcb--animals     { border-color: rgba(248,113,113,0.2); }
 }
 
 .rc-name { font-family: var(--f-display); font-size: var(--size-lg); font-weight: 600; color: var(--text-primary); line-height: 1.2; margin-bottom: 0.5rem; letter-spacing: -0.01em; transition: color var(--dur-fast); }
@@ -706,7 +709,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .rc:hover .rc-row svg { color: var(--accent); }
 
 /* ══════════════════════════════════════════════════════
-   CTA BLOCK
+   CTA BLOCK
 ══════════════════════════════════════════════════════ */
 .cta-block { margin: 2rem 0; padding: clamp(3rem, 6vw, 5rem) 2rem; background: var(--badge-bg-1); border-radius: var(--radius-xl); text-align: center; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255,255,255,0.05); color: #fff; }
 .cta-block::before { content: ''; position: absolute; top: -50%; left: -20%; width: 1000px; height: 1000px; background: radial-gradient(circle, rgba(255,255,255,0.04), transparent 60%); pointer-events: none; border-radius: 50%; }
@@ -719,13 +722,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .cta-block .btn--solid:hover { background: rgba(255,255,255,0.9); }
 
 @media (prefers-color-scheme: dark) {
-  .cta-block { background: var(--surface-warm); }
-  .cta-block .btn--solid { background: var(--accent); color: var(--btn-text); }
-  .cta-block .btn--solid:hover { background: var(--accent-light); }
+  .cta-block { background: var(--surface-warm); }
+  .cta-block .btn--solid { background: var(--accent); color: var(--btn-text); }
+  .cta-block .btn--solid:hover { background: var(--accent-light); }
 }
 
 /* ══════════════════════════════════════════════════════
-   FOOTER
+   FOOTER
 ══════════════════════════════════════════════════════ */
 .footer { background: var(--surface-warm); padding: 4rem 0 2rem; border-top: 1px solid var(--border-light); font-size: 13px; }
 .footer__grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid var(--border-light); }
@@ -744,37 +747,37 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .footer .logo__sub { font-size: var(--size-xs); }
 
 /* ══════════════════════════════════════════════════════
-   RAPID INTAKE WIZARD (Questionnaire)
+   RAPID INTAKE WIZARD (Questionnaire)
 ══════════════════════════════════════════════════════ */
-.intake-overlay { 
-  display: none; position: fixed; inset: 0; z-index: 2000; 
-  background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); 
-  align-items: center; justify-content: center; padding: 1rem; 
-  opacity: 0; transition: opacity 0.3s; will-change: opacity; 
+.intake-overlay { 
+  display: none; position: fixed; inset: 0; z-index: 2000; 
+  background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); 
+  align-items: center; justify-content: center; padding: 1rem; 
+  opacity: 0; transition: opacity 0.3s; will-change: opacity; 
 }
 .intake-overlay.open { display: flex; opacity: 1; }
-.intake-modal { 
-  background: var(--surface-float); border: 1px solid var(--border-glass); 
-  border-radius: 32px; width: 100%; max-width: 560px; max-height: 90vh; max-height: 90dvh; 
-  display: flex; flex-direction: column; overflow: hidden; 
-  box-shadow: var(--shadow-float); position: relative; 
-  transform: translateY(20px) scale(0.97); transition: transform 0.4s var(--ease-spring); 
-  will-change: transform; 
+.intake-modal { 
+  background: var(--surface-float); border: 1px solid var(--border-glass); 
+  border-radius: 32px; width: 100%; max-width: 560px; max-height: 90vh; max-height: 90dvh; 
+  display: flex; flex-direction: column; overflow: hidden; 
+  box-shadow: var(--shadow-float); position: relative; 
+  transform: translateY(20px) scale(0.97); transition: transform 0.4s var(--ease-spring); 
+  will-change: transform; 
 }
 .intake-overlay.open .intake-modal { transform: translateY(0) scale(1); }
-.intake-modal__header { 
-  display: flex; align-items: center; justify-content: space-between; 
-  padding: 24px 28px 0; flex-shrink: 0;
+.intake-modal__header { 
+  display: flex; align-items: center; justify-content: space-between; 
+  padding: 24px 28px 0; flex-shrink: 0;
 }
-.intake-modal__close { 
-  width: 44px; height: 44px; border-radius: 50%; background: var(--surface-warm); 
-  border: 1px solid var(--border-light); display: flex; align-items: center; 
-  justify-content: center; color: var(--text-secondary); transition: all var(--dur-fast); cursor: pointer; 
+.intake-modal__close { 
+  width: 44px; height: 44px; border-radius: 50%; background: var(--surface-warm); 
+  border: 1px solid var(--border-light); display: flex; align-items: center; 
+  justify-content: center; color: var(--text-secondary); transition: all var(--dur-fast); cursor: pointer; 
 }
 .intake-modal__close:hover { background: var(--border-light); color: var(--text-primary); }
 .intake-modal__close:active { transform: scale(0.9); }
-.intake-modal__body { 
-  padding: 12px 28px 28px; position: relative; overflow-y: auto; flex-grow: 1;
+.intake-modal__body { 
+  padding: 12px 28px 28px; position: relative; overflow-y: auto; flex-grow: 1;
 }
 
 .q-step-ind { display: flex; gap: 6px; align-items: center; }
@@ -796,782 +799,549 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .q-nav .btn { min-height: 44px; }
 
 /* ══════════════════════════════════════════════════════
-   RESPONSIVE DESIGN (Master + Map Adjustments)
+   RESPONSIVE DESIGN (Master + Map Adjustments)
 ══════════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
-  .hub-grid, .team-grid { grid-template-columns: repeat(2, 1fr); }
-  .emp-layout { grid-template-columns: 1fr; }
-  .emp-sidebar { position: static; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-  .resource-grid { grid-template-columns: 1fr; }
-  .footer__grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
-  .stats-strip__grid, .page-stats__grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .hub-grid, .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .emp-layout { grid-template-columns: 1fr; }
+  .emp-sidebar { position: static; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .resource-grid { grid-template-columns: 1fr; }
+  .footer__grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .stats-strip__grid, .page-stats__grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
 }
 @media (max-width: 768px) {
-  .nav { display: none !important; }
-  .nav-toggle { display: flex; }
-  .hub-grid, .team-grid { grid-template-columns: 1fr; }
-  .emp-sidebar { grid-template-columns: 1fr; }
-  .footer__grid { grid-template-columns: 1fr; }
-  .topbar { display: none; }
-  
-  .hub-card, .cm-card, .rc { padding: 1.5rem; }
-  .stats-strip, .page-stats { padding: 2rem 1.5rem; }
-  
-  .cta-block__actions { width: 100%; flex-direction: column; }
-  .cta-block__actions .btn { justify-content: center; width: 100%; }
-  
-  .job-row { grid-template-columns: auto minmax(0, 1fr); padding: 16px; gap: 12px; }
-  .job-right { flex-direction: row; align-items: center; justify-content: space-between; grid-column: span 2; margin-top: 8px; flex-wrap: wrap; gap: 8px; }
-  
-  .footer__bottom { flex-direction: column; align-items: flex-start; gap: 12px; }
-  .controls-row { flex-direction: column; align-items: stretch; }
-  .searchbox { max-width: 100%; }
+  .nav { display: none !important; }
+  .nav-toggle { display: flex; }
+  .hub-grid, .team-grid { grid-template-columns: 1fr; }
+  .emp-sidebar { grid-template-columns: 1fr; }
+  .footer__grid { grid-template-columns: 1fr; }
+  .topbar { display: none; }
+  
+  .hub-card, .cm-card, .rc { padding: 1.5rem; }
+  .stats-strip, .page-stats { padding: 2rem 1.5rem; }
+  
+  .cta-block__actions { width: 100%; flex-direction: column; }
+  .cta-block__actions .btn { justify-content: center; width: 100%; }
+  
+  .job-row { grid-template-columns: auto minmax(0, 1fr); padding: 16px; gap: 12px; }
+  .job-right { flex-direction: row; align-items: center; justify-content: space-between; grid-column: span 2; margin-top: 8px; flex-wrap: wrap; gap: 8px; }
+  
+  .footer__bottom { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .controls-row { flex-direction: column; align-items: stretch; }
+  .searchbox { max-width: 100%; }
 }
 
 /* Optimized Mobile Intake (No Scrolling Needed) */
 @media (max-width: 600px) {
-  .intake-modal { border-radius: 24px; max-height: 95vh; max-height: 95dvh; display: flex; flex-direction: column; }
-  .intake-modal__header { padding: 16px 20px 0; flex-shrink: 0; }
-  .intake-modal__body { padding: 12px 20px 20px; overflow-y: auto; flex-grow: 1; }
-  .q-grid { grid-template-columns: 1fr; gap: 8px; }
-  .q-btn { padding: 10px 14px; border-radius: 12px; gap: 12px; }
-  .q-icon { width: 36px; height: 36px; font-size: 1.1rem; border-radius: 8px; flex-shrink: 0; }
-  .q-title { font-size: 1.25rem; margin-bottom: 4px; line-height: 1.2; }
-  .q-sub { font-size: 0.85rem; margin-bottom: 12px; line-height: 1.4; }
-  .q-nav { margin-top: 16px; gap: 12px; }
+  .intake-modal { border-radius: 24px; max-height: 95vh; max-height: 95dvh; display: flex; flex-direction: column; }
+  .intake-modal__header { padding: 16px 20px 0; flex-shrink: 0; }
+  .intake-modal__body { padding: 12px 20px 20px; overflow-y: auto; flex-grow: 1; }
+  .q-grid { grid-template-columns: 1fr; gap: 8px; }
+  .q-btn { padding: 10px 14px; border-radius: 12px; gap: 12px; }
+  .q-icon { width: 36px; height: 36px; font-size: 1.1rem; border-radius: 8px; flex-shrink: 0; }
+  .q-title { font-size: 1.25rem; margin-bottom: 4px; line-height: 1.2; }
+  .q-sub { font-size: 0.85rem; margin-bottom: 12px; line-height: 1.4; }
+  .q-nav { margin-top: 16px; gap: 12px; }
 }
 
 /* Extreme Compact Mode for Short Mobile Screens (e.g. iPhone SE) */
 @media (max-height: 720px) and (max-width: 600px) {
-  .intake-overlay { padding: 0.5rem; }
-  .intake-modal__header { padding: 12px 16px 0; }
-  .intake-modal__body { padding: 8px 16px 16px; }
-  .intake-modal__close { width: 36px; height: 36px; }
-  .q-grid { gap: 6px; }
-  .q-btn { padding: 8px 12px; border-radius: 10px; gap: 10px; }
-  .q-icon { width: 32px; height: 32px; font-size: 1rem; }
-  .q-label { font-size: 0.9rem; margin-bottom: 0; }
-  .q-desc { font-size: 0.75rem; line-height: 1.2; }
-  .q-title { font-size: 1.15rem; margin-bottom: 2px; }
-  .q-sub { font-size: 0.8rem; margin-bottom: 8px; }
-  .q-eyebrow { margin-bottom: 4px; }
-  .q-nav { margin-top: 12px; gap: 8px; }
-  .q-nav .btn { min-height: 38px; padding: 6px 12px; font-size: 0.85rem; }
+  .intake-overlay { padding: 0.5rem; }
+  .intake-modal__header { padding: 12px 16px 0; }
+  .intake-modal__body { padding: 8px 16px 16px; }
+  .intake-modal__close { width: 36px; height: 36px; }
+  .q-grid { gap: 6px; }
+  .q-btn { padding: 8px 12px; border-radius: 10px; gap: 10px; }
+  .q-icon { width: 32px; height: 32px; font-size: 1rem; }
+  .q-label { font-size: 0.9rem; margin-bottom: 0; }
+  .q-desc { font-size: 0.75rem; line-height: 1.2; }
+  .q-title { font-size: 1.15rem; margin-bottom: 2px; }
+  .q-sub { font-size: 0.8rem; margin-bottom: 8px; }
+  .q-eyebrow { margin-bottom: 4px; }
+  .q-nav { margin-top: 12px; gap: 8px; }
+  .q-nav .btn { min-height: 38px; padding: 6px 12px; font-size: 0.85rem; }
 }
-
 </style>
 </head>
 <body>
 
 <div class="topbar">
-  <div class="container topbar__inner">
-    <div class="topbar__left">
-      Official resource of City Net Homeless Services
-    </div>
-    <div class="topbar__right">
-      <a href="tel:9513903567">Outreach Line: (951) 390-3567</a>
-      <div class="topbar__sep"></div>
-      <a href="https://www.citynet.org" target="_blank" rel="noopener noreferrer">citynet.org ↗</a>
-    </div>
-  </div>
+  <div class="container topbar__inner">
+    <div class="topbar__left">
+      Official resource of City Net Homeless Services
+    </div>
+    <div class="topbar__right">
+      <a href="tel:9513903567">Outreach Line: (951) 390-3567</a>
+      <div class="topbar__sep"></div>
+      <a href="https://www.citynet.org" target="_blank" rel="noopener noreferrer">citynet.org ↗</a>
+    </div>
+  </div>
 </div>
 
 <div class="header-wrapper" id="headerWrapper">
-  <header class="header" id="header">
-    <div class="container header__inner">
-      <div class="logo" onclick="goTo('home')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('home')" tabindex="0" role="button" aria-label="City Net home">
-        <div class="logo__mark">
-          <img src="https://images.squarespace-cdn.com/content/v1/5d7aabbf20f74311abd10693/1572561367590-17GJRM1XSH3Q4SSRBEAZ/City+Net+Logo+Icon+Full+Color.png" alt="City Net logo" loading="lazy">
-        </div>
-        <div class="logo__info">
-          <div class="logo__text" style="font-family: var(--f-display);">City Net</div>
-          <div class="logo__sub" style="font-family: var(--f-body);">Client Hub</div>
-        </div>
-      </div>
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <div class="logo" onclick="goTo('home')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('home')" tabindex="0" role="button" aria-label="City Net home">
+        <div class="logo__mark">
+          <img src="https://images.squarespace-cdn.com/content/v1/5d7aabbf20f74311abd10693/1572561367590-17GJRM1XSH3Q4SSRBEAZ/City+Net+Logo+Icon+Full+Color.png" alt="City Net logo" loading="lazy">
+        </div>
+        <div class="logo__info">
+          <div class="logo__text" style="font-family: var(--f-display);">City Net</div>
+          <div class="logo__sub" style="font-family: var(--f-body);">Client Hub</div>
+        </div>
+      </div>
 
-      <nav class="nav" id="mainNav" role="navigation" aria-label="Primary Desktop Navigation">
-        <button class="nav-link active" onclick="goTo('home')" data-page="home">Home</button>
-        
-        <div class="nav-drop">
-          <button class="nav-link" data-page="resources-group" aria-haspopup="true">Resources ▾</button>
-          <div class="nav-drop-menu" role="menu">
-            <div class="nav-drop-item" onclick="goTo('housing')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('housing')" tabindex="0" role="menuitem">
-              <div class="ndi-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-              <div><div class="ndi-title">Housing</div><div class="ndi-sub">Shelters, transitional &amp; apartments</div></div>
-            </div>
-            <div class="nav-drop-item" onclick="goTo('employment')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('employment')" tabindex="0" role="menuitem">
-              <div class="ndi-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7h-3V5a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M8 7h8"/></svg></div>
-              <div><div class="ndi-title">Employment</div><div class="ndi-sub">Current openings &amp; job support</div></div>
-            </div>
-            <div class="nav-drop-item" onclick="goTo('healthcare')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('healthcare')" tabindex="0" role="menuitem">
-              <div class="ndi-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
-              <div><div class="ndi-title">Healthcare</div><div class="ndi-sub">Clinics &amp; behavioral health</div></div>
-            </div>
-            <div class="nav-drop-item" onclick="goTo('resources')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('resources')" tabindex="0" role="menuitem">
-              <div class="ndi-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
-              <div><div class="ndi-title">Additional Resources</div><div class="ndi-sub">Crisis, basics, food &amp; more</div></div>
-            </div>
-          </div>
-        </div>
-        <button class="nav-link" onclick="goTo('home','team-section')" data-page="team">Case Managers</button>
-        <button class="btn btn--solid btn-cta" onclick="window.location.href='tel:9513903567'" aria-label="Call outreach line">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"></path></svg>
-          Outreach
-        </button>
-      </nav>
+      <nav class="nav" id="mainNav" role="navigation" aria-label="Primary Desktop Navigation">
+        <button class="nav-link active" onclick="goTo('home')" data-page="home">Home</button>
+        
+        <div class="nav-drop">
+          <button class="nav-link" data-page="resources-group" aria-haspopup="true">Resources ▾</button>
+          <div class="nav-drop-menu" role="menu">
+            <div class="nav-drop-item" onclick="goTo('housing')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('housing')" tabindex="0" role="menuitem">
+              <div class="ndi-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+              <div><div class="ndi-title">Housing</div><div class="ndi-sub">Shelters, transitional &amp; apartments</div></div>
+            </div>
+            <div class="nav-drop-item" onclick="goTo('employment')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('employment')" tabindex="0" role="menuitem">
+              <div class="ndi-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7h-3V5a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M8 7h8"/></svg></div>
+              <div><div class="ndi-title">Employment</div><div class="ndi-sub">Current openings &amp; job support</div></div>
+            </div>
+            <div class="nav-drop-item" onclick="goTo('healthcare')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('healthcare')" tabindex="0" role="menuitem">
+              <div class="ndi-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+              <div><div class="ndi-title">Healthcare</div><div class="ndi-sub">Clinics &amp; behavioral health</div></div>
+            </div>
+            <div class="nav-drop-item" onclick="goTo('resources')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('resources')" tabindex="0" role="menuitem">
+              <div class="ndi-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+              <div><div class="ndi-title">Additional Resources</div><div class="ndi-sub">Crisis, basics, food &amp; more</div></div>
+            </div>
+          </div>
+        </div>
+        <button class="nav-link" onclick="goTo('home','team-section')" data-page="team">Case Managers</button>
+        <button class="btn btn--solid btn-cta" onclick="window.location.href='tel:9513903567'" aria-label="Call outreach line">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"></path></svg>
+          Outreach
+        </button>
+      </nav>
 
-      <button class="nav-toggle" id="menuBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileNav">
-        <div class="hamburger" aria-hidden="true">
-          <span></span><span></span><span></span>
-        </div>
-      </button>
-    </div>
-  </header>
+      <button class="nav-toggle" id="menuBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileNav">
+        <div class="hamburger" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+      </button>
+    </div>
+  </header>
 </div>
 
 <div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Mobile Navigation Menu" aria-modal="true">
-  <div class="mobile-nav__head">
-    <div class="logo logo--white">
-      <div class="logo__mark">
-        <img src="https://images.squarespace-cdn.com/content/v1/5d7aabbf20f74311abd10693/1572561367590-17GJRM1XSH3Q4SSRBEAZ/City+Net+Logo+Icon+Full+Color.png" alt="City Net logo" loading="lazy">
-      </div>
-      <div class="logo__info">
-        <div class="logo__text" style="font-family: var(--f-display);">City Net</div>
-        <div class="logo__sub" style="font-family: var(--f-body);">Client Hub</div>
-      </div>
-    </div>
-    <button class="mobile-nav__close" id="mobileClose" aria-label="Close navigation menu">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
-  </div>
-  <div class="mobile-nav__links" role="menu">
-    <div class="mobile-nav__link active" onclick="goTo('home');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('home');closeMobileNav()}" tabindex="0" role="menuitem" data-mpage="home">Home</div>
-    
-    <div class="mobile-nav__group-label">Resources</div>
-    <div class="mobile-nav__link" onclick="goTo('housing');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('housing');closeMobileNav()}" tabindex="0" role="menuitem" data-mpage="housing" style="padding-left:32px">Housing</div>
-    <div class="mobile-nav__link" onclick="goTo('employment');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('employment');closeMobileNav()}" tabindex="0" role="menuitem" data-mpage="employment" style="padding-left:32px">Employment</div>
-    <div class="mobile-nav__link" onclick="goTo('healthcare');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('healthcare');closeMobileNav()}" tabindex="0" role="menuitem" data-mpage="healthcare" style="padding-left:32px">Healthcare</div>
-    <div class="mobile-nav__link" onclick="goTo('resources');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('resources');closeMobileNav()}" tabindex="0" role="menuitem" data-mpage="resources" style="padding-left:32px">Additional Resources</div>
-    <div style="height:1px; background:rgba(255,255,255,0.1); margin:1rem 20px;"></div>
-    
-    <div class="mobile-nav__link" onclick="goTo('home','team-section');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('home','team-section');closeMobileNav()}" tabindex="0" role="menuitem">Case Managers</div>
-  </div>
-  <div class="mobile-nav__footer">
-    <a class="mobile-nav__call" href="tel:9513903567">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"></path></svg>
-      Outreach Line
-    </a>
-  </div>
+  <div class="mobile-nav__head">
+    <div class="logo logo--white">
+      <div class="logo__mark">
+        <img src="https://images.squarespace-cdn.com/content/v1/5d7aabbf20f74311abd10693/1572561367590-17GJRM1XSH3Q4SSRBEAZ/City+Net+Logo+Icon+Full+Color.png" alt="City Net logo" loading="lazy">
+      </div>
+      <div class="logo__info">
+        <div class="logo__text" style="font-family: var(--f-display);">City Net</div>
+        <div class="logo__sub" style="font-family: var(--f-body);">Client Hub</div>
+      </div>
+    </div>
+    <button class="mobile-nav__close" id="mobileClose" aria-label="Close navigation menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="mobile-nav__links" role="menu">
+    <div class="mobile-nav__link active" onclick="goTo('home');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('home');closeMobileNav()}" tabindex="0" role="menuitem" data-mpage="home">Home</div>
+    
+    <div class="mobile-nav__group-label">Resources</div>
+    <div class="mobile-nav__link" onclick="goTo('housing');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('housing');closeMobileNav()}" tabindex="0" role="menuitem" data-mpage="housing" style="padding-left:32px">Housing</div>
+    <div class="mobile-nav__link" onclick="goTo('employment');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('employment');closeMobileNav()}" tabindex="0" role="menuitem" data-mpage="employment" style="padding-left:32px">Employment</div>
+    <div class="mobile-nav__link" onclick="goTo('healthcare');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('healthcare');closeMobileNav()}" tabindex="0" role="menuitem" data-mpage="healthcare" style="padding-left:32px">Healthcare</div>
+    <div class="mobile-nav__link" onclick="goTo('resources');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('resources');closeMobileNav()}" tabindex="0" role="menuitem" data-mpage="resources" style="padding-left:32px">Additional Resources</div>
+    <div style="height:1px; background:rgba(255,255,255,0.1); margin:1rem 20px;"></div>
+    
+    <div class="mobile-nav__link" onclick="goTo('home','team-section');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('home','team-section');closeMobileNav()}" tabindex="0" role="menuitem">Case Managers</div>
+  </div>
+  <div class="mobile-nav__footer">
+    <a class="mobile-nav__call" href="tel:9513903567">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"></path></svg>
+      Outreach Line
+    </a>
+  </div>
 </div>
 
 <main id="main-content">
-  <div class="page active" id="page-home">
-    <section class="hero" aria-label="Welcome section">
-      <div class="container hero__inner">
-        <div class="hero__badge">
-          <span class="hero__badge-live" aria-hidden="true"></span>
-          Riverside County
-        </div>
-        <h1 class="hero__headline reveal">Your partner on<br>the path to <em>housing.</em></h1>
-        <p class="hero__sub reveal reveal-delay-1">Explore housing resources, find local job opportunities, and connect with your case manager — all in one place.</p>
-        <div class="hero__actions reveal reveal-delay-2">
-          <button class="btn btn--solid" onclick="openQuestionnaire()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            Get Started
-          </button>
-                    <button class="btn btn--outline" onclick="goTo('map')">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            View Resource Map
-          </button>
-        </div>
-      </div>
-    </section>
+  <div class="page active" id="page-home">
+    <section class="hero" aria-label="Welcome section">
+      <div class="container hero__inner">
+        <div class="hero__badge">
+          <span class="hero__badge-live" aria-hidden="true"></span>
+          Riverside County
+        </div>
+        <h1 class="hero__headline reveal">Your partner on<br>the path to <em>housing.</em></h1>
+        <p class="hero__sub reveal reveal-delay-1">Explore housing resources, find local job opportunities, and connect with your case manager — all in one place.</p>
+        <div class="hero__actions reveal reveal-delay-2">
+          <button class="btn btn--solid" onclick="openQuestionnaire()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Get Started
+          </button>
+        </div>
+      </div>
+    </section>
 
-    <div class="stats-strip-wrapper">
-      <div class="stats-strip">
-        <div class="stats-strip__grid">
-          <div class="stat-cell reveal">
-            <div class="stat-cell__num"><span class="counter" data-target="25">0</span>+</div>
-            <div class="stat-cell__label">Housing Resources</div>
-          </div>
-          <div class="stat-cell reveal reveal-delay-1">
-            <div class="stat-cell__num"><span class="counter" data-target="50">0</span>+</div>
-            <div class="stat-cell__label">Active Job Openings</div>
-          </div>
-          <div class="stat-cell reveal reveal-delay-2">
-            <div class="stat-cell__num"><span class="counter" data-target="11">0</span></div>
-            <div class="stat-cell__label">Case Managers</div>
-          </div>
-          <div class="stat-cell reveal reveal-delay-3">
-            <div class="stat-cell__num"><span class="counter" data-target="5">0</span>+</div>
-            <div class="stat-cell__label">Cities Served</div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div class="stats-strip-wrapper">
+      <div class="stats-strip">
+        <div class="stats-strip__grid">
+          <div class="stat-cell reveal">
+            <div class="stat-cell__num"><span class="counter" data-target="25">0</span>+</div>
+            <div class="stat-cell__label">Housing Resources</div>
+          </div>
+          <div class="stat-cell reveal reveal-delay-1">
+            <div class="stat-cell__num"><span class="counter" data-target="50">0</span>+</div>
+            <div class="stat-cell__label">Active Job Openings</div>
+          </div>
+          <div class="stat-cell reveal reveal-delay-2">
+            <div class="stat-cell__num"><span class="counter" data-target="11">0</span></div>
+            <div class="stat-cell__label">Case Managers</div>
+          </div>
+          <div class="stat-cell reveal reveal-delay-3">
+            <div class="stat-cell__num"><span class="counter" data-target="5">0</span>+</div>
+            <div class="stat-cell__label">Cities Served</div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <section class="section" aria-label="Main Navigation Options">
-      <div class="container">
-        <div class="s-header s-header--center reveal">
-          <div class="s-eyebrow s-eyebrow--center">Navigate Services</div>
-          <h2 class="s-title" style="margin-bottom:0">How can we help <em>today?</em></h2>
-          <p class="s-desc">Resources to help you move forward, updated regularly.</p>
-        </div>
-        <div class="hub-grid">
-          <div class="hub-card hub-card--housing reveal reveal-delay-1" onclick="goTo('housing')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('housing')" tabindex="0" role="button" aria-label="View housing resources">
-            <div class="hub-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-            </div>
-            <h3 class="hub-card__title">Housing</h3>
-            <p class="hub-card__desc">Find emergency shelters, transitional housing, and affordable apartments across Riverside County.</p>
-            <div class="hub-card__cta">
-              View housing
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </div>
-          </div>
-          <div class="hub-card hub-card--employment reveal reveal-delay-2" onclick="goTo('employment')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('employment')" tabindex="0" role="button" aria-label="Browse employment opportunities">
-            <div class="hub-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-            </div>
-            <h3 class="hub-card__title">Employment</h3>
-            <p class="hub-card__desc">Browse current job opportunities in Murrieta, Wildomar, Menifee, Lake Elsinore, and Temecula.</p>
-            <div class="hub-card__cta">
-              Browse jobs
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </div>
-          </div>
-          <div class="hub-card hub-card--team reveal reveal-delay-3" onclick="goTo('home','team-section')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('home','team-section')" tabindex="0" role="button" aria-label="Meet your case management team">
-            <div class="hub-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            </div>
-            <h3 class="hub-card__title">Case Managers</h3>
-            <p class="hub-card__desc">Find your assigned case manager and contact them directly by email or phone.</p>
-            <div class="hub-card__cta">
-              Meet the team
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <section class="section" aria-label="Main Navigation Options">
+      <div class="container">
+        <div class="s-header s-header--center reveal">
+          <div class="s-eyebrow s-eyebrow--center">Navigate Services</div>
+          <h2 class="s-title" style="margin-bottom:0">How can we help <em>today?</em></h2>
+          <p class="s-desc">Resources to help you move forward, updated regularly.</p>
+        </div>
+        <div class="hub-grid">
+          <div class="hub-card hub-card--housing reveal reveal-delay-1" onclick="goTo('housing')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('housing')" tabindex="0" role="button" aria-label="View housing resources">
+            <div class="hub-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <h3 class="hub-card__title">Housing</h3>
+            <p class="hub-card__desc">Find emergency shelters, transitional housing, and affordable apartments across Riverside County.</p>
+            <div class="hub-card__cta">
+              View housing
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </div>
+          </div>
+          <div class="hub-card hub-card--employment reveal reveal-delay-2" onclick="goTo('employment')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('employment')" tabindex="0" role="button" aria-label="Browse employment opportunities">
+            <div class="hub-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            </div>
+            <h3 class="hub-card__title">Employment</h3>
+            <p class="hub-card__desc">Browse current job opportunities in Murrieta, Wildomar, Menifee, Lake Elsinore, and Temecula.</p>
+            <div class="hub-card__cta">
+              Browse jobs
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </div>
+          </div>
+          <div class="hub-card hub-card--team reveal reveal-delay-3" onclick="goTo('home','team-section')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('home','team-section')" tabindex="0" role="button" aria-label="Meet your case management team">
+            <div class="hub-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3 class="hub-card__title">Case Managers</h3>
+            <p class="hub-card__desc">Find your assigned case manager and contact them directly by email or phone.</p>
+            <div class="hub-card__cta">
+              Meet the team
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <section class="section section--alt" id="team-section" aria-label="Case Management Team">
-      <div class="container">
-        <div class="s-header reveal s-header--center">
-          <div class="s-eyebrow s-eyebrow--center">Case Management Team</div>
-          <h2 class="s-title">People in your <em>corner</em></h2>
-          <p class="s-desc">Find your assigned case manager and contact them directly by email or phone.</p>
-        </div>
+    <section class="section section--alt" id="team-section" aria-label="Case Management Team">
+      <div class="container">
+        <div class="s-header reveal s-header--center">
+          <div class="s-eyebrow s-eyebrow--center">Case Management Team</div>
+          <h2 class="s-title">People in your <em>corner</em></h2>
+          <p class="s-desc">Find your assigned case manager and contact them directly by email or phone.</p>
+        </div>
 
-        <div class="status-bar reveal reveal-delay-1">
-          <div class="status-ind" id="statusInd">
-            <span class="sdot" id="statusDot" aria-hidden="true"></span>
-            <span id="statusTxt">Checking availability…</span>
-          </div>
-          <div class="status-hours">Available Mon–Fri, 7:00 AM – 3:30 PM</div>
-        </div>
+        <div class="status-bar reveal reveal-delay-1">
+          <div class="status-ind" id="statusInd">
+            <span class="sdot" id="statusDot" aria-hidden="true"></span>
+            <span id="statusTxt">Checking availability…</span>
+          </div>
+          <div class="status-hours">Available Mon–Fri, 7:00 AM – 3:30 PM</div>
+        </div>
 
-        <div class="controls-row reveal reveal-delay-2">
-          <div class="searchbox">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            <input type="text" id="cmSearch" placeholder="Search by name…" aria-label="Search case managers" autocomplete="off">
-          </div>
-          <div class="result-count" aria-live="polite">Showing <strong id="cmCount">11</strong> case managers</div>
-        </div>
+        <div class="controls-row reveal reveal-delay-2">
+          <div class="searchbox">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="cmSearch" placeholder="Search by name…" aria-label="Search case managers" autocomplete="off">
+          </div>
+          <div class="result-count" aria-live="polite">Showing <strong id="cmCount">11</strong> case managers</div>
+        </div>
 
-        <div class="team-grid reveal reveal-delay-3" id="teamGrid"></div>
-      </div>
-    </section>
+        <div class="team-grid reveal reveal-delay-3" id="teamGrid"></div>
+      </div>
+    </section>
 
-    <section class="section" aria-label="Call to action">
-      <div class="container">
-        <div class="cta-block reveal">
-          <div class="cta-block__title">Not sure where to start?</div>
-          <p class="cta-block__text">Whether you need housing, employment, or case management support, we’re here to help.</p>
-          <div class="cta-block__actions">
-            <button class="btn btn--solid" onclick="window.location.href='tel:9513903567'">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"></path></svg>
-              Call Outreach Line
-            </button>
-            <button class="btn btn--outline" onclick="window.open('https://www.citynet.org','_blank','noopener noreferrer')">Visit citynet.org ↗</button>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
+    <section class="section" aria-label="Call to action">
+      <div class="container">
+        <div class="cta-block reveal">
+          <div class="cta-block__title">Not sure where to start?</div>
+          <p class="cta-block__text">Whether you need housing, employment, or case management support, we’re here to help.</p>
+          <div class="cta-block__actions">
+            <button class="btn btn--solid" onclick="window.location.href='tel:9513903567'">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"></path></svg>
+              Call Outreach Line
+            </button>
+            <button class="btn btn--outline" onclick="window.open('https://www.citynet.org','_blank','noopener noreferrer')">Visit citynet.org ↗</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 
-  <div class="page" id="page-housing">
-    <div class="page-hero">
-      <div class="container page-hero__inner">
-        <nav class="page-hero__crumb" aria-label="Breadcrumb"><a onclick="goTo('home')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('home')" tabindex="0" role="link">Home</a> <span style="margin:0 4px" aria-hidden="true">/</span> <span aria-current="page">Housing Resources</span></nav>
-        <h1 class="page-hero__title reveal">Housing <em>Resources</em></h1>
-        <p class="page-hero__sub reveal reveal-delay-1">Emergency shelters, transitional programs, and affordable housing across Riverside County.</p>
-      </div>
-      </div>
-    <div class="page-stats-wrapper">
-      <div class="page-stats">
-        <div class="page-stats__grid">
-          <div class="ps-cell reveal"><div class="ps-cell__num"><span class="counter" data-target="12">0</span></div><div class="ps-cell__label">Emergency Shelters</div></div>
-          <div class="ps-cell reveal reveal-delay-1"><div class="ps-cell__num"><span class="counter" data-target="5">0</span></div><div class="ps-cell__label">Transitional Programs</div></div>
-          <div class="ps-cell reveal reveal-delay-2"><div class="ps-cell__num"><span class="counter" data-target="13">0</span></div><div class="ps-cell__label">Affordable Communities</div></div>
-          <div class="ps-cell reveal reveal-delay-3"><div class="ps-cell__num"><span class="counter" data-target="6">0</span>+</div><div class="ps-cell__label">Cities Served</div></div>
-        </div>
-      </div>
-    </div>
-    <section class="section">
-      <div class="container">
-        <div class="pill-row reveal reveal-delay-1" id="housingTabs" role="tablist">
-          <button class="pill on" data-tab="referrals" role="tab" aria-selected="true">Referrals & Outreach</button>
-          <button class="pill" data-tab="emergency" role="tab" aria-selected="false">Emergency Shelters</button>
-          <button class="pill" data-tab="transitional" role="tab" aria-selected="false">Transitional</button>
-          <button class="pill" data-tab="psh" role="tab" aria-selected="false">Permanent Supportive</button>
-          <button class="pill" data-tab="affordable" role="tab" aria-selected="false">Affordable Housing</button>
-          <button class="pill" data-tab="sober" role="tab" aria-selected="false">Sober Living</button>
-        </div>
-        <div id="housingPanels" class="reveal reveal-delay-2"></div>
-      </div>
-    </section>
-  </div>
+  <div class="page" id="page-housing">
+    <div class="page-hero">
+      <div class="container page-hero__inner">
+        <nav class="page-hero__crumb" aria-label="Breadcrumb"><a onclick="goTo('home')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('home')" tabindex="0" role="link">Home</a> <span style="margin:0 4px" aria-hidden="true">/</span> <span aria-current="page">Housing Resources</span></nav>
+        <h1 class="page-hero__title reveal">Housing <em>Resources</em></h1>
+        <p class="page-hero__sub reveal reveal-delay-1">Emergency shelters, transitional programs, and affordable housing across Riverside County.</p>
+      </div>
+    </div>
+    <div class="page-stats-wrapper">
+      <div class="page-stats">
+        <div class="page-stats__grid">
+          <div class="ps-cell reveal"><div class="ps-cell__num"><span class="counter" data-target="12">0</span></div><div class="ps-cell__label">Emergency Shelters</div></div>
+          <div class="ps-cell reveal reveal-delay-1"><div class="ps-cell__num"><span class="counter" data-target="5">0</span></div><div class="ps-cell__label">Transitional Programs</div></div>
+          <div class="ps-cell reveal reveal-delay-2"><div class="ps-cell__num"><span class="counter" data-target="13">0</span></div><div class="ps-cell__label">Affordable Communities</div></div>
+          <div class="ps-cell reveal reveal-delay-3"><div class="ps-cell__num"><span class="counter" data-target="6">0</span>+</div><div class="ps-cell__label">Cities Served</div></div>
+        </div>
+      </div>
+    </div>
+    <section class="section">
+      <div class="container">
+        <div class="pill-row reveal reveal-delay-1" id="housingTabs" role="tablist">
+          <button class="pill on" data-tab="referrals" role="tab" aria-selected="true">Referrals & Outreach</button>
+          <button class="pill" data-tab="emergency" role="tab" aria-selected="false">Emergency Shelters</button>
+          <button class="pill" data-tab="transitional" role="tab" aria-selected="false">Transitional</button>
+          <button class="pill" data-tab="psh" role="tab" aria-selected="false">Permanent Supportive</button>
+          <button class="pill" data-tab="affordable" role="tab" aria-selected="false">Affordable Housing</button>
+          <button class="pill" data-tab="sober" role="tab" aria-selected="false">Sober Living</button>
+        </div>
+        <div id="housingPanels" class="reveal reveal-delay-2"></div>
+      </div>
+    </section>
+  </div>
 
-  <div class="page" id="page-healthcare">
-    <div class="page-hero">
-      <div class="container page-hero__inner">
-        <nav class="page-hero__crumb" aria-label="Breadcrumb"><a onclick="goTo('home')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('home')" tabindex="0" role="link">Home</a> <span style="margin:0 4px" aria-hidden="true">/</span> <span aria-current="page">Healthcare</span></nav>
-        <h1 class="page-hero__title reveal">Health <em>Care</em></h1>
-        <p class="page-hero__sub reveal reveal-delay-1">Trusted medical clinics, behavioral health, and specialized care programs.</p>
-      </div>
-    </div>
-    <div class="page-stats-wrapper">
-      <div class="page-stats">
-        <div class="page-stats__grid">
-          <div class="ps-cell reveal"><div class="ps-cell__num"><span class="counter" data-target="12">0</span></div><div class="ps-cell__label">Care Providers</div></div>
-          <div class="ps-cell reveal reveal-delay-1"><div class="ps-cell__num"><span class="counter" data-target="3">0</span></div><div class="ps-cell__label">Care Categories</div></div>
-          <div class="ps-cell reveal reveal-delay-2"><div class="ps-cell__num"><span class="counter" data-target="6">0</span>+</div><div class="ps-cell__label">Cities Served</div></div>
-          <div class="ps-cell reveal reveal-delay-3"><div class="ps-cell__num">Medi-Cal</div><div class="ps-cell__label">Providers</div></div>
-        </div>
-      </div>
-    </div>
-    <section class="section">
-      <div class="container">
-        <div class="pill-row reveal reveal-delay-1" id="hcTabs" role="tablist">
-          <button class="pill on" data-tab="medical" role="tab" aria-selected="true">Medical &amp; Primary Care</button>
-          <button class="pill" data-tab="behavioral" role="tab" aria-selected="false">Behavioral Health</button>
-          <button class="pill" data-tab="specialty" role="tab" aria-selected="false">Specialty Care</button>
-        </div>
-        <div id="hcPanels" class="reveal reveal-delay-2"></div>
-      </div>
-    </section>
-  </div>
+  <div class="page" id="page-healthcare">
+    <div class="page-hero">
+      <div class="container page-hero__inner">
+        <nav class="page-hero__crumb" aria-label="Breadcrumb"><a onclick="goTo('home')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('home')" tabindex="0" role="link">Home</a> <span style="margin:0 4px" aria-hidden="true">/</span> <span aria-current="page">Healthcare</span></nav>
+        <h1 class="page-hero__title reveal">Health <em>Care</em></h1>
+        <p class="page-hero__sub reveal reveal-delay-1">Trusted medical clinics, behavioral health, and specialized care programs.</p>
+      </div>
+    </div>
+    <div class="page-stats-wrapper">
+      <div class="page-stats">
+        <div class="page-stats__grid">
+          <div class="ps-cell reveal"><div class="ps-cell__num"><span class="counter" data-target="12">0</span></div><div class="ps-cell__label">Care Providers</div></div>
+          <div class="ps-cell reveal reveal-delay-1"><div class="ps-cell__num"><span class="counter" data-target="3">0</span></div><div class="ps-cell__label">Care Categories</div></div>
+          <div class="ps-cell reveal reveal-delay-2"><div class="ps-cell__num"><span class="counter" data-target="6">0</span>+</div><div class="ps-cell__label">Cities Served</div></div>
+          <div class="ps-cell reveal reveal-delay-3"><div class="ps-cell__num">Medi-Cal</div><div class="ps-cell__label">Providers</div></div>
+        </div>
+      </div>
+    </div>
+    <section class="section">
+      <div class="container">
+        <div class="pill-row reveal reveal-delay-1" id="hcTabs" role="tablist">
+          <button class="pill on" data-tab="medical" role="tab" aria-selected="true">Medical &amp; Primary Care</button>
+          <button class="pill" data-tab="behavioral" role="tab" aria-selected="false">Behavioral Health</button>
+          <button class="pill" data-tab="specialty" role="tab" aria-selected="false">Specialty Care</button>
+        </div>
+        <div id="hcPanels" class="reveal reveal-delay-2"></div>
+      </div>
+    </section>
+  </div>
 
-  <div class="page" id="page-resources">
-    <div class="page-hero">
-      <div class="container page-hero__inner">
-        <nav class="page-hero__crumb" aria-label="Breadcrumb"><a onclick="goTo('home')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('home')" tabindex="0" role="link">Home</a> <span style="margin:0 4px" aria-hidden="true">/</span> <span aria-current="page">Additional Resources</span></nav>
-        <h1 class="page-hero__title reveal">Additional <em>Resources</em></h1>
-      </div>
-    </div>
-    <div class="page-stats-wrapper">
-      <div class="page-stats">
-        <div class="page-stats__grid">
-          <div class="ps-cell reveal"><div class="ps-cell__num"><span class="counter" data-target="24">0</span></div><div class="ps-cell__label">Community Partners</div></div>
-          <div class="ps-cell reveal reveal-delay-1"><div class="ps-cell__num"><span class="counter" data-target="6">0</span></div><div class="ps-cell__label">Support Types</div></div>
-          <div class="ps-cell reveal reveal-delay-2"><div class="ps-cell__num"><span class="counter" data-target="10">0</span></div><div class="ps-cell__label">Food Pantries</div></div>
-          <div class="ps-cell reveal reveal-delay-3"><div class="ps-cell__num">Free</div><div class="ps-cell__label">Access</div></div>
-        </div>
-      </div>
-    </div>
-    <section class="section">
-      <div class="container">
-        <div class="pill-row reveal reveal-delay-1" id="resTabs" role="tablist">
-          <button class="pill on" data-tab="crisis" role="tab" aria-selected="true">Crisis Support</button>
-          <button class="pill" data-tab="basic" role="tab" aria-selected="false">Basic Needs</button>
-          <button class="pill" data-tab="food" role="tab" aria-selected="false">Food Pantries</button>
-          <button class="pill" data-tab="legal" role="tab" aria-selected="false">Social &amp; Legal</button>
-          <button class="pill" data-tab="education" role="tab" aria-selected="false">Education</button>
-          <button class="pill" data-tab="animals" role="tab" aria-selected="false">Animal Care</button>
-        </div>
-        <div id="resPanels" class="reveal reveal-delay-2"></div>
-      </div>
-    </section>
-  </div>
+  <div class="page" id="page-resources">
+    <div class="page-hero">
+      <div class="container page-hero__inner">
+        <nav class="page-hero__crumb" aria-label="Breadcrumb"><a onclick="goTo('home')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('home')" tabindex="0" role="link">Home</a> <span style="margin:0 4px" aria-hidden="true">/</span> <span aria-current="page">Additional Resources</span></nav>
+        <h1 class="page-hero__title reveal">Additional <em>Resources</em></h1>
+      </div>
+    </div>
+    <div class="page-stats-wrapper">
+      <div class="page-stats">
+        <div class="page-stats__grid">
+          <div class="ps-cell reveal"><div class="ps-cell__num"><span class="counter" data-target="24">0</span></div><div class="ps-cell__label">Community Partners</div></div>
+          <div class="ps-cell reveal reveal-delay-1"><div class="ps-cell__num"><span class="counter" data-target="6">0</span></div><div class="ps-cell__label">Support Types</div></div>
+          <div class="ps-cell reveal reveal-delay-2"><div class="ps-cell__num"><span class="counter" data-target="10">0</span></div><div class="ps-cell__label">Food Pantries</div></div>
+          <div class="ps-cell reveal reveal-delay-3"><div class="ps-cell__num">Free</div><div class="ps-cell__label">Access</div></div>
+        </div>
+      </div>
+    </div>
+    <section class="section">
+      <div class="container">
+        <div class="pill-row reveal reveal-delay-1" id="resTabs" role="tablist">
+          <button class="pill on" data-tab="crisis" role="tab" aria-selected="true">Crisis Support</button>
+          <button class="pill" data-tab="basic" role="tab" aria-selected="false">Basic Needs</button>
+          <button class="pill" data-tab="food" role="tab" aria-selected="false">Food Pantries</button>
+          <button class="pill" data-tab="legal" role="tab" aria-selected="false">Social &amp; Legal</button>
+          <button class="pill" data-tab="education" role="tab" aria-selected="false">Education</button>
+          <button class="pill" data-tab="animals" role="tab" aria-selected="false">Animal Care</button>
+        </div>
+        <div id="resPanels" class="reveal reveal-delay-2"></div>
+      </div>
+    </section>
+  </div>
 
-  <div class="page" id="page-employment">
-    <div class="page-hero">
-      <div class="container page-hero__inner">
-        <nav class="page-hero__crumb" aria-label="Breadcrumb">
-          <a onclick="goTo('home')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('home')" tabindex="0" role="link">Home</a> <span style="margin:0 4px" aria-hidden="true">/</span> <span aria-current="page">Employment</span>
-        </nav>
-        <h1 class="page-hero__title reveal">Employment <em>Opportunities</em></h1>
-        <p class="page-hero__sub reveal reveal-delay-1">Current job openings across Riverside County. Click any listing to apply on Indeed or LinkedIn.</p>
-      </div>
-    </div>
-    <div class="page-stats-wrapper">
-      <div class="page-stats">
-        <div class="page-stats__grid">
-          <div class="ps-cell reveal"><div class="ps-cell__num"><span class="counter" data-target="50">0</span>+</div><div class="ps-cell__label">Open Positions</div></div>
-          <div class="ps-cell reveal reveal-delay-1"><div class="ps-cell__num"><span class="counter" data-target="5">0</span>+</div><div class="ps-cell__label">Cities Served</div></div>
-          <div class="ps-cell reveal reveal-delay-2"><div class="ps-cell__num">$16.90+</div><div class="ps-cell__label">Starting Hourly Pay</div></div>
-          <div class="ps-cell reveal reveal-delay-3"><div class="ps-cell__num">Live</div><div class="ps-cell__label">Job Feed</div></div>
-        </div>
-      </div>
-    </div>
-    <section class="section">
-      <div class="container">
-        <div class="emp-layout">
-          <div class="reveal reveal-delay-1">
-            <div class="sync-bar" id="empSyncBar">
-              <div class="live-dot"><div class="live-pip" aria-hidden="true"></div> Live Updates</div>
-              <div class="sync-time" id="lastSync" aria-live="polite">Checking for new jobs...</div>
-            </div>
-            <div class="pill-row" id="empFilters" role="tablist">
-              <button class="pill on" data-filter="all" role="tab" aria-selected="true">All Positions</button>
-              <button class="pill" data-filter="ft" role="tab" aria-selected="false">Full-Time</button>
-              <button class="pill" data-filter="pt" role="tab" aria-selected="false">Part-Time</button>
-              <button class="pill" data-filter="agencies" role="tab" aria-selected="false">Staffing Agencies</button>
-            </div>
-            <div id="empListings"></div>
-            <div id="agencyListings" class="resource-grid" style="display:none;"></div>
-          </div>
-          <aside class="emp-sidebar reveal reveal-delay-2">
-            <div class="scard">
-              <div class="scard__head"><h3>How to Apply</h3></div>
-              <div class="step-item"><div class="step-num" aria-hidden="true">1</div><div><div class="step-title">Click any job title</div><div class="step-desc">Opens an Indeed or LinkedIn search for that specific role.</div></div></div>
-              <div class="step-item"><div class="step-num" aria-hidden="true">2</div><div><div class="step-title">Create an account</div><div class="step-desc">Free — upload a resume and apply in one click.</div></div></div>
-              <div class="step-item"><div class="step-num" aria-hidden="true">3</div><div><div class="step-title">Tailor your resume</div><div class="step-desc">Match keywords from the job description.</div></div></div>
-              <div class="step-item"><div class="step-num" aria-hidden="true">4</div><div><div class="step-title">Apply same-day</div><div class="step-desc">Positions close on a rolling basis.</div></div></div>
-            </div>
-            <div class="scard">
-              <div class="scard__head"><h3>Job Search Resources</h3></div>
-              <a class="res-link" href="https://www.indeed.com/jobs?l=Riverside+County%2C+CA" target="_blank" rel="noopener noreferrer"><div><div class="res-link__cat">Job Search</div><div class="res-link__name">Indeed</div></div><span class="res-link__arrow" aria-hidden="true">↗</span></a>
-              <a class="res-link" href="https://www.linkedin.com/jobs/search/?location=Riverside%20County%2C%20CA" target="_blank" rel="noopener noreferrer"><div><div class="res-link__cat">Job Search</div><div class="res-link__name">LinkedIn</div></div><span class="res-link__arrow" aria-hidden="true">↗</span></a>
-              <a class="res-link" href="https://www.caljobs.ca.gov" target="_blank" rel="noopener noreferrer"><div><div class="res-link__cat">State of California</div><div class="res-link__name">CalJOBS</div></div><span class="res-link__arrow" aria-hidden="true">↗</span></a>
-              <a class="res-link" href="https://www.dor.ca.gov/" target="_blank" rel="noopener noreferrer"><div><div class="res-link__cat">State of California</div><div class="res-link__name">Department of Rehabilitation</div></div><span class="res-link__arrow" aria-hidden="true">↗</span></a>
-            </div>
-          </aside>
-        </div>
-      </div>
-    </section>
-  </div>
-     <div class="page" id="page-map">
-    <div class="page-hero">
-      <div class="container page-hero__inner">
-        <nav class="page-hero__crumb" aria-label="Breadcrumb"><a onclick="goTo('home')" tabindex="0" role="link">Home</a> <span style="margin:0 4px" aria-hidden="true">/</span> <span aria-current="page">Resource Map</span></nav>
-        <h1 class="page-hero__title reveal">Resource <em>Map</em></h1>
-        <p class="page-hero__sub reveal reveal-delay-1">Find the nearest shelters, clinics, food pantries, and services across Riverside County.</p>
-      </div>
-    </div>
-    <section class="section">
-      <div class="container">
-        <div class="map-filter-row reveal" id="mapFilters">
-          <button class="map-filter-btn active" data-filter="all">All Resources</button>
-          <button class="map-filter-btn" data-filter="housing">Housing</button>
-          <button class="map-filter-btn" data-filter="healthcare">Healthcare</button>
-          <button class="map-filter-btn" data-filter="food">Food</button>
-          <button class="map-filter-btn" data-filter="crisis">Crisis</button>
-          <button class="map-filter-btn" data-filter="legal">Legal & Social</button>
-        </div>
-        <div id="resourceMap" class="reveal reveal-delay-1"></div>
-      </div>
-    </section>
-  </div>
+  <div class="page" id="page-employment">
+    <div class="page-hero">
+      <div class="container page-hero__inner">
+        <nav class="page-hero__crumb" aria-label="Breadcrumb">
+          <a onclick="goTo('home')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('home')" tabindex="0" role="link">Home</a> <span style="margin:0 4px" aria-hidden="true">/</span> <span aria-current="page">Employment</span>
+        </nav>
+        <h1 class="page-hero__title reveal">Employment <em>Opportunities</em></h1>
+        <p class="page-hero__sub reveal reveal-delay-1">Current job openings across Riverside County. Click any listing to apply on Indeed or LinkedIn.</p>
+      </div>
+    </div>
+    <div class="page-stats-wrapper">
+      <div class="page-stats">
+        <div class="page-stats__grid">
+          <div class="ps-cell reveal"><div class="ps-cell__num"><span class="counter" data-target="50">0</span>+</div><div class="ps-cell__label">Open Positions</div></div>
+          <div class="ps-cell reveal reveal-delay-1"><div class="ps-cell__num"><span class="counter" data-target="5">0</span>+</div><div class="ps-cell__label">Cities Served</div></div>
+          <div class="ps-cell reveal reveal-delay-2"><div class="ps-cell__num">$16.90+</div><div class="ps-cell__label">Starting Hourly Pay</div></div>
+          <div class="ps-cell reveal reveal-delay-3"><div class="ps-cell__num">Live</div><div class="ps-cell__label">Job Feed</div></div>
+        </div>
+      </div>
+    </div>
+    <section class="section">
+      <div class="container">
+        <div class="emp-layout">
+          <div class="reveal reveal-delay-1">
+            <div class="sync-bar" id="empSyncBar">
+              <div class="live-dot"><div class="live-pip" aria-hidden="true"></div> Live Updates</div>
+              <div class="sync-time" id="lastSync" aria-live="polite">Checking for new jobs...</div>
+            </div>
+            <div class="pill-row" id="empFilters" role="tablist">
+              <button class="pill on" data-filter="all" role="tab" aria-selected="true">All Positions</button>
+              <button class="pill" data-filter="ft" role="tab" aria-selected="false">Full-Time</button>
+              <button class="pill" data-filter="pt" role="tab" aria-selected="false">Part-Time</button>
+              <button class="pill" data-filter="agencies" role="tab" aria-selected="false">Staffing Agencies</button>
+            </div>
+            <div id="empListings"></div>
+            <div id="agencyListings" class="resource-grid" style="display:none;"></div>
+          </div>
+          <aside class="emp-sidebar reveal reveal-delay-2">
+            <div class="scard">
+              <div class="scard__head"><h3>How to Apply</h3></div>
+              <div class="step-item"><div class="step-num" aria-hidden="true">1</div><div><div class="step-title">Click any job title</div><div class="step-desc">Opens an Indeed or LinkedIn search for that specific role.</div></div></div>
+              <div class="step-item"><div class="step-num" aria-hidden="true">2</div><div><div class="step-title">Create an account</div><div class="step-desc">Free — upload a resume and apply in one click.</div></div></div>
+              <div class="step-item"><div class="step-num" aria-hidden="true">3</div><div><div class="step-title">Tailor your resume</div><div class="step-desc">Match keywords from the job description.</div></div></div>
+              <div class="step-item"><div class="step-num" aria-hidden="true">4</div><div><div class="step-title">Apply same-day</div><div class="step-desc">Positions close on a rolling basis.</div></div></div>
+            </div>
+            <div class="scard">
+              <div class="scard__head"><h3>Job Search Resources</h3></div>
+              <a class="res-link" href="https://www.indeed.com/jobs?l=Riverside+County%2C+CA" target="_blank" rel="noopener noreferrer"><div><div class="res-link__cat">Job Search</div><div class="res-link__name">Indeed</div></div><span class="res-link__arrow" aria-hidden="true">↗</span></a>
+              <a class="res-link" href="https://www.linkedin.com/jobs/search/?location=Riverside%20County%2C%20CA" target="_blank" rel="noopener noreferrer"><div><div class="res-link__cat">Job Search</div><div class="res-link__name">LinkedIn</div></div><span class="res-link__arrow" aria-hidden="true">↗</span></a>
+              <a class="res-link" href="https://www.caljobs.ca.gov" target="_blank" rel="noopener noreferrer"><div><div class="res-link__cat">State of California</div><div class="res-link__name">CalJOBS</div></div><span class="res-link__arrow" aria-hidden="true">↗</span></a>
+              <a class="res-link" href="https://www.dor.ca.gov/" target="_blank" rel="noopener noreferrer"><div><div class="res-link__cat">State of California</div><div class="res-link__name">Department of Rehabilitation</div></div><span class="res-link__arrow" aria-hidden="true">↗</span></a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </div>
 </main>
 
 <footer class="footer" role="contentinfo">
-  <div class="container">
-    <div class="footer__grid">
-      <div>
-        <div class="logo logo--white" style="cursor:default; transform:none; margin-bottom: 12px;">
-          <div class="logo__mark" style="box-shadow:none;">
-            <img src="https://images.squarespace-cdn.com/content/v1/5d7aabbf20f74311abd10693/1572561367590-17GJRM1XSH3Q4SSRBEAZ/City+Net+Logo+Icon+Full+Color.png" alt="City Net logo" loading="lazy">
-          </div>
-          <div class="logo__info">
-            <div class="logo__text" style="font-family: var(--f-display); color: var(--text-primary);">City Net</div>
-            <div class="logo__sub" style="font-family: var(--f-body); color: var(--text-tertiary);">Client Hub</div>
-          </div>
-        </div>
-        <p class="footer__brand-desc">Connecting neighbors experiencing homelessness to transformative care and housing solutions.</p>
-      </div>
-      <div>
-        <div class="footer__col-label">Navigate</div>
-        <div class="footer__links">
-          <a onclick="goTo('home')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('home')" tabindex="0" role="link">Home</a>
-          <a onclick="goTo('housing')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('housing')" tabindex="0" role="link">Housing</a>
-          <a onclick="goTo('employment')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('employment')" tabindex="0" role="link">Employment</a>
-          <a onclick="goTo('healthcare')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('healthcare')" tabindex="0" role="link">Healthcare</a>
-          <a onclick="goTo('resources')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('resources')" tabindex="0" role="link">Additional Resources</a>
-          <a onclick="goTo('home','team-section')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('home','team-section')" tabindex="0" role="link">Case Managers</a>
-        </div>
-      </div>
-      <div>
-        <div class="footer__col-label">Quick Links</div>
-        <div class="footer__links">
-          <a href="https://benefitscal.com" target="_blank" rel="noopener noreferrer">BenefitsCal</a>
-          <a href="https://www.caljobs.ca.gov" target="_blank" rel="noopener noreferrer">CalJOBS</a>
-          <a href="https://edd.ca.gov" target="_blank" rel="noopener noreferrer">EDD</a>
-          <a href="https://www.ssa.gov" target="_blank" rel="noopener noreferrer">Social Security</a>
-        </div>
-      </div>
-      <div>
-        <div class="footer__col-label">Organization</div>
-        <div class="footer__links">
-          <a href="https://www.citynet.org/about" target="_blank" rel="noopener noreferrer">About City Net</a>
-          <a href="https://www.citynet.org/contact" target="_blank" rel="noopener noreferrer">Contact Us</a>
-        </div>
-      </div>
-    </div>
-    <div class="footer__bottom">
-      <div>© 2026 City Net. All rights reserved.</div>
-      <div class="footer__legal">
-        <a href="https://www.citynet.org/privacypolicy">Privacy Policy</a>
-        <a href="https://www.citynet.org/privacypolicy">Terms of Service</a>
-        <a href="https://www.citynet.org/accessibilitypolicy">Accessibility</a>
-      </div>
-    </div>
-  </div>
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="logo logo--white" style="cursor:default; transform:none; margin-bottom: 12px;">
+          <div class="logo__mark" style="box-shadow:none;">
+            <img src="https://images.squarespace-cdn.com/content/v1/5d7aabbf20f74311abd10693/1572561367590-17GJRM1XSH3Q4SSRBEAZ/City+Net+Logo+Icon+Full+Color.png" alt="City Net logo" loading="lazy">
+          </div>
+          <div class="logo__info">
+            <div class="logo__text" style="font-family: var(--f-display); color: var(--text-primary);">City Net</div>
+            <div class="logo__sub" style="font-family: var(--f-body); color: var(--text-tertiary);">Client Hub</div>
+          </div>
+        </div>
+        <p class="footer__brand-desc">Connecting neighbors experiencing homelessness to transformative care and housing solutions.</p>
+      </div>
+      <div>
+        <div class="footer__col-label">Navigate</div>
+        <div class="footer__links">
+          <a onclick="goTo('home')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('home')" tabindex="0" role="link">Home</a>
+          <a onclick="goTo('housing')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('housing')" tabindex="0" role="link">Housing</a>
+          <a onclick="goTo('employment')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('employment')" tabindex="0" role="link">Employment</a>
+          <a onclick="goTo('healthcare')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('healthcare')" tabindex="0" role="link">Healthcare</a>
+          <a onclick="goTo('resources')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('resources')" tabindex="0" role="link">Additional Resources</a>
+          <a onclick="goTo('home','team-section')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('home','team-section')" tabindex="0" role="link">Case Managers</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer__col-label">Quick Links</div>
+        <div class="footer__links">
+          <a href="https://benefitscal.com" target="_blank" rel="noopener noreferrer">BenefitsCal</a>
+          <a href="https://www.caljobs.ca.gov" target="_blank" rel="noopener noreferrer">CalJOBS</a>
+          <a href="https://edd.ca.gov" target="_blank" rel="noopener noreferrer">EDD</a>
+          <a href="https://www.ssa.gov" target="_blank" rel="noopener noreferrer">Social Security</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer__col-label">Organization</div>
+        <div class="footer__links">
+          <a href="https://www.citynet.org/about" target="_blank" rel="noopener noreferrer">About City Net</a>
+          <a href="https://www.citynet.org/contact" target="_blank" rel="noopener noreferrer">Contact Us</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div>© 2026 City Net. All rights reserved.</div>
+      <div class="footer__legal">
+        <a href="https://www.citynet.org/privacypolicy">Privacy Policy</a>
+        <a href="https://www.citynet.org/privacypolicy">Terms of Service</a>
+        <a href="https://www.citynet.org/accessibilitypolicy">Accessibility</a>
+      </div>
+    </div>
+  </div>
 </footer>
 
 <div class="intake-overlay" id="qOverlay" role="dialog" aria-modal="true" aria-label="Get Started Questionnaire">
-  <div class="intake-modal">
-    <div class="intake-modal__header">
-      <div class="q-step-ind"></div>
-      <button class="intake-modal__close" onclick="closeQuestionnaire()" aria-label="Close wizard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-    </div>
-    <div class="intake-modal__body" id="qBody"></div>
-  </div>
+  <div class="intake-modal">
+    <div class="intake-modal__header">
+      <div class="q-step-ind"></div>
+      <button class="intake-modal__close" onclick="closeQuestionnaire()" aria-label="Close wizard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="intake-modal__body" id="qBody"></div>
+  </div>
 </div>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXQ4P_MfQLuXFaFHsGEb3wPMajcXN9P2M"></script>
-<script>
-/* ─── RESOURCE MAP (Dynamic Auto-Populate Integration) ─────────── */
-let resourceMap = null;
-let mapMarkers =[];
-let infoWindow = null;
-let geocoder = null;
-let dynamicMapLocs =[];
-
-// App colors mapped to resource categories
-const MC = {
-  housing: '#0277b6', 
-  healthcare: '#6d28d9', 
-  food: '#0f766e', 
-  crisis: '#b91c1c', 
-  legal: '#b45309',
-  basic: '#0277b6',
-  education: '#0277b6',
-  animals: '#b91c1c'
-};
-
-// Auto-extract locations from existing data objects
-function buildDynamicLocs() {
-  dynamicMapLocs =[];
-  
-  const addItems = (dataObj, typeFn) => {
-    for (const [subCat, items] of Object.entries(dataObj)) {
-      items.forEach(item => {
-        if (item.address) {
-          // Prevent duplicates if same location is listed in multiple categories
-          if (!dynamicMapLocs.find(l => l.n === item.name && l.a === item.address)) {
-            dynamicMapLocs.push({
-              n: item.name,
-              t: typeFn(subCat), 
-              c: item.special || subCat.charAt(0).toUpperCase() + subCat.slice(1),
-              p: item.phone,
-              a: item.address,
-              lat: item.lat, // Undefined initially, gets cached after first geocode
-              lng: item.lng
-            });
-          }
-        }
-      });
-    }
-  };
-
-  // Scan the master arrays defined earlier in the code (excluding jobs)
-  if (typeof housing !== 'undefined') addItems(housing, () => 'housing');
-  if (typeof healthcare !== 'undefined') addItems(healthcare, () => 'healthcare');
-  if (typeof resources !== 'undefined') addItems(resources, (subCat) => subCat); // subCat matches 'food', 'crisis', etc.
-}
-
-function initResourceMap() {
-  if (resourceMap || typeof google === 'undefined') return;
-  
-  const el = document.getElementById('resourceMap');
-  if (!el) return;
-
-  resourceMap = new google.maps.Map(el, {
-    center: { lat: 33.7, lng: -117.15 },
-    zoom: 9,
-    mapTypeControl: false,
-    streetViewControl: false,
-    fullscreenControl: true
-  });
-
-  infoWindow = new google.maps.InfoWindow();
-  geocoder = new google.maps.Geocoder();
-  
-  buildDynamicLocs();
-  populateMap('all');
-
-  document.querySelectorAll('#mapFilters .map-filter-btn').forEach(b => {
-    b.addEventListener('click', () => {
-      document.querySelectorAll('#mapFilters .map-filter-btn').forEach(x => x.classList.remove('active'));
-      b.classList.add('active');
-      populateMap(b.dataset.filter);
-    });
-  });
-}
-
-// Geocode Queue to prevent hitting Google Maps "OVER_QUERY_LIMIT"
-const geocodeCache = {};
-let activeGeocodes = 0;
-
-async function getCoordinates(address) {
-  if (geocodeCache[address]) return geocodeCache[address];
-  
-  // Throttle concurrent API requests
-  while(activeGeocodes > 3) { await new Promise(r => setTimeout(r, 200)); }
-  activeGeocodes++;
-  
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      geocoder.geocode({ address: address }, (results, status) => {
-        activeGeocodes--;
-        if (status === 'OK' && results[0]) {
-          const loc = { lat: results[0].geometry.location.lat(), lng: results[0].geometry.location.lng() };
-          geocodeCache[address] = loc;
-          resolve(loc);
-        } else {
-          console.warn(`Geocode failed for: ${address}`, status);
-          resolve(null);
-        }
-      });
-    }, 250); // 250ms spacing
-  });
-}
-
-let currentRenderId = 0;
-
-async function populateMap(f) {
-  const renderId = ++currentRenderId; // Prevent race conditions if user rapidly clicks filters
-  
-  mapMarkers.forEach(m => m.setMap(null));
-  mapMarkers =[];
-  
-  if (!dynamicMapLocs.length) buildDynamicLocs();
-  
-  const locs = f === 'all' ? dynamicMapLocs : dynamicMapLocs.filter(l => l.t === f);
-  const bounds = new google.maps.LatLngBounds();
-  let pointsAdded = 0;
-
-  // Progressively load pins onto the map
-  for (const loc of locs) {
-    if (renderId !== currentRenderId) return; 
-
-    let coords = loc.lat && loc.lng ? { lat: loc.lat, lng: loc.lng } : null;
-    
-    // Auto-fetch lat/long if not previously cached
-    if (!coords) {
-      coords = await getCoordinates(loc.a);
-      if (coords) {
-        loc.lat = coords.lat; // Cache directly onto the object to speed up subsequent loads
-        loc.lng = coords.lng;
-      }
-    }
-
-    if (renderId !== currentRenderId) return;
-
-    if (coords) {
-      const col = MC[loc.t] || '#0277b6';
-      const svgIcon = encodeURIComponent(`<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="14" fill="${col}" stroke="#ffffff" stroke-width="3"/><svg x="9" y="9" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></svg>`);
-
-      const marker = new google.maps.Marker({
-        position: coords,
-        map: resourceMap,
-        title: loc.n,
-        icon: {
-          url: 'data:image/svg+xml;charset=UTF-8,' + svgIcon,
-          scaledSize: new google.maps.Size(32, 32),
-          anchor: new google.maps.Point(16, 16)
-        },
-        animation: google.maps.Animation.DROP
-      });
-
-      const popupHTML = `
-        <div style="color:black; padding: 4px; max-width: 220px; font-family: var(--f-body);">
-          <div class="map-popup-name">${loc.n}</div>
-          <div class="map-popup-type" style="color: ${col}; text-transform:uppercase;">${loc.c}</div>
-          <div class="map-popup-detail">
-            ${loc.a ? '📍 ' + loc.a + '<br>' : ''}
-            ${loc.p ? '📞 <a href="tel:' + loc.p.replace(/[^0-9]/g,'') + '">' + loc.p + '</a>' : ''}
-          </div>
-        </div>
-      `;
-
-      marker.addListener('click', () => {
-        infoWindow.setContent(popupHTML);
-        infoWindow.open(resourceMap, marker);
-      });
-
-      mapMarkers.push(marker);
-      bounds.extend(coords);
-      pointsAdded++;
-      
-      // Fluidly scale the map as new markers resolve
-      if (pointsAdded > 1) {
-        resourceMap.fitBounds(bounds);
-      } else {
-        resourceMap.setCenter(coords);
-        resourceMap.setZoom(12);
-      }
-    }
-  }
-
-  // Prevent zooming in too close when there's only 1-2 tight pins
-  if (pointsAdded > 0 && resourceMap.getZoom() > 14) {
-    resourceMap.setZoom(14);
-  }
-}
-
-// Intercept existing goTo function to trigger Map initialization safely
-const _originalGoTo = window.goTo;
-window.goTo = function(page, scrollTo, activateTab) {
-  if (typeof _originalGoTo === 'function') {
-    _originalGoTo(page, scrollTo, activateTab);
-  }
-  if (page === 'map') {
-    setTimeout(() => {
-      initResourceMap();
-    }, 300);
-  }
-};
-</script>
 
 <script>
 'use strict';
 
 /* ─── UTILITY FUNCTIONS ────────────────────────────── */
 function debounce(func, wait) {
-  let timeout;
-  return function executedFunction(...args) {
-    const later = () => { clearTimeout(timeout); func(...args); };
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-  };
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => { clearTimeout(timeout); func(...args); };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
 }
 
 /* ─── DATA ─────────────────────────────────────────── */
 const caseManagers = [
-  {name:"Adrian Labastida",email:"adrian.labastida@citynet.org",    phone:"951-203-1293", role:"Lead Case Manager"},
-  {name:"Aileen Magana",   email:"aileen.magana@citynet.org",       phone:"951-897-7685", role:"Lead Case Manager"},
-  {name:"Alex Nunez",      email:"alex.nunez@citynet.org",          phone:"951-212-6726"},
-  {name:"Andrew Sayegh",   email:"andrew.sayegh@citynet.org",       phone:"951-401-3739"},
-  {name:"Brandon Tucker",  email:"brandon.tucker@citynet.org",      phone:"951-201-9873"},
-  {name:"Breanna Wells-Tyrell",email:"breanna.wells-tyrell@citynet.org",phone:"951-836-3503"},
-  {name:"Damani Enokson",  email:"damani.enokson@citynet.org",      phone:"951-235-0969", role:"Lead Case Manager"},
-  {name:"Malcolm Parker",  email:"malcolm.parker@citynet.org",      phone:"951-834-3319", role:"Housing Navigator"},
-  {name:"Riley Lynch",     email:"riley.lynch@citynet.org",         phone:"951-675-2785"},
-  {name:"Ryan Lemus",      email:"ryan.lemus@citynet.org",          phone:"951-235-2667"},
-  {name:"Whiskey Kelsey",  email:"whiskey.kelsey@citynet.org",      phone:"951-235-1898"}
+  {name:"Adrian Labastida",email:"adrian.labastida@citynet.org",    phone:"951-203-1293", role:"Lead Case Manager"},
+  {name:"Aileen Magana",   email:"aileen.magana@citynet.org",       phone:"951-897-7685", role:"Lead Case Manager"},
+  {name:"Alex Nunez",      email:"alex.nunez@citynet.org",          phone:"951-212-6726"},
+  {name:"Andrew Sayegh",   email:"andrew.sayegh@citynet.org",       phone:"951-401-3739"},
+  {name:"Brandon Tucker",  email:"brandon.tucker@citynet.org",      phone:"951-201-9873"},
+  {name:"Breanna Wells-Tyrell",email:"breanna.wells-tyrell@citynet.org",phone:"951-836-3503"},
+  {name:"Damani Enokson",  email:"damani.enokson@citynet.org",      phone:"951-235-0969", role:"Lead Case Manager"},
+  {name:"Malcolm Parker",  email:"malcolm.parker@citynet.org",      phone:"951-834-3319", role:"Housing Navigator"},
+  {name:"Riley Lynch",     email:"riley.lynch@citynet.org",         phone:"951-675-2785"},
+  {name:"Ryan Lemus",      email:"ryan.lemus@citynet.org",          phone:"951-235-2667"},
+  {name:"Whiskey Kelsey",  email:"whiskey.kelsey@citynet.org",      phone:"951-235-1898"}
 ];
 
 const D = Date.now(), PD = 86400000;
@@ -1685,160 +1455,160 @@ const jobs = {
 };
 
 const staffingAgencies = [
-  {name:"PrideStaff", phone:"951-999-4230", email:"southriversidecounty@pridestaff.com", website:"https://www.pridestaff.com/locations/southriversidecounty/", address:"25186 Hancock Avenue, Suite 320, Murrieta, CA", special:"Staffing Agency"},
-  {name:"PeopleReady", phone:"951-587-2027", email:"1523-br@peopleready.com", website:"https://www.peopleready.com/location/murrieta-ca-1523/", address:"25014 Las Brisas South, Suite A, Murrieta CA", special:"Staffing Agency"},
-  {name:"Partners Personnel", phone:"951-691-1008", website:"https://www.partnerspersonnel.com/", address:"39040, 105 Sky Canyon Drive, B5, Murrieta, CA", special:"Staffing Agency"},
-  {name:"Manpower Riverside", phone:"951-308-2686", website:"https://www.manpowerriverside.com/temecula/", address:"39885 Alta Murrieta Drive, D1, Murrieta, CA", special:"Staffing Agency"},
-  {name:"AtWork Personnel", phone:"951-297-3591", email:"temecula@atwork.com", website:"https://www.atwork.com/locations/temecula/", address:"27720 Jefferson Ave, Suite 130, Temecula, CA", special:"Staffing Agency"},
-  {name:"United Staffing Associates", phone:"951-228-2221", website:"https://www.unitedwestaff.com/locations/wildomar-ca", address:"32326 Clinton Keith Road, Suite 105, Wildomar, CA", special:"Staffing Agency"},
-  {name:"Infinium Staffing", phone:"951-816-6434", email:"info@infiniumhr.com", website:"https://www.infiniumstaffing.com/", address:"29970 Technology Drive, Suite 223, Murrieta, CA", special:"Staffing Agency"},
-  {name:"Apple One Employment Services", phone:"951-296-5430", email:"temecula-ca@appleone.com", website:"https://www.appleone.com/", address:"41923 Second Street, Suite 202, Temecula, CA", special:"Staffing Agency"},
-  {name:"iStaff Pros, Inc.", phone:"951-200-5523", email:"info@istaffpros.com", website:"https://istaffpros.com/", address:"27412 Enterprise Circle West, Suite 201, Temecula, CA", special:"Staffing Agency"},
-  {name:"Spherion Staffing & Recruiting", phone:"760-568-3433", website:"https://www.spherion.com/", address:"41593 Winchester Road, Suite 200, Temecula, CA", special:"Staffing Agency"},
-  {name:"OneCruit LLC", phone:"951-566-4100", email:"menifeebranch@onecruit.com", website:"https://www.onecruit.com/menifee", address:"27701 Scott Road, Unit 302, Menifee, CA", special:"Staffing Agency"},
-  {name:"Go Staff", phone:"951-760-7100", website:"https://go-staff.com/contact-go-staff/labor-skilled-trades-and-office-division/", address:"41790 Winchester Road, Temecula, CA", special:"Staffing Agency"},
-  {name:"Express Employment Professionals", phone:"951-877-4623", website:"https://www.expresspros.com/us-california-temecula", address:"27555 Ynez Road, Suite 202, Temecula, CA", special:"Staffing Agency"},
-  {name:"TechBridge Global Services", phone:"858-203-6313", email:"info@techbridgegs.com", website:"https://techbridgegs.com/", special:"Staffing Agency"},
-  {name:"Blue Horizon Staffing Solutions", phone:"866-728-1346", email:"Staff@Bluehorizonstaffing.com", address:"41593 Winchester Road, Suite 200-242, Temecula, CA", special:"Staffing Agency"},
-  {name:"Honestlove Global", phone:"951-763-6005", email:"contact@honestloveglobalstaffing.com", website:"https://honestloveglobalprofessionals.com/", address:"29970 Technology Drive, Murrieta, CA", special:"Healthcare Staffing"},
-  {name:"Staffmark", phone:"951-928-5351", website:"https://staffmark.com/locations/perri-ca/", address:"3150 Case Road, Suite O-3, Perris, CA", special:"Staffing Agency"}
+  {name:"PrideStaff", phone:"951-999-4230", email:"southriversidecounty@pridestaff.com", website:"https://www.pridestaff.com/locations/southriversidecounty/", address:"25186 Hancock Avenue, Suite 320, Murrieta, CA", special:"Staffing Agency"},
+  {name:"PeopleReady", phone:"951-587-2027", email:"1523-br@peopleready.com", website:"https://www.peopleready.com/location/murrieta-ca-1523/", address:"25014 Las Brisas South, Suite A, Murrieta CA", special:"Staffing Agency"},
+  {name:"Partners Personnel", phone:"951-691-1008", website:"https://www.partnerspersonnel.com/", address:"39040, 105 Sky Canyon Drive, B5, Murrieta, CA", special:"Staffing Agency"},
+  {name:"Manpower Riverside", phone:"951-308-2686", website:"https://www.manpowerriverside.com/temecula/", address:"39885 Alta Murrieta Drive, D1, Murrieta, CA", special:"Staffing Agency"},
+  {name:"AtWork Personnel", phone:"951-297-3591", email:"temecula@atwork.com", website:"https://www.atwork.com/locations/temecula/", address:"27720 Jefferson Ave, Suite 130, Temecula, CA", special:"Staffing Agency"},
+  {name:"United Staffing Associates", phone:"951-228-2221", website:"https://www.unitedwestaff.com/locations/wildomar-ca", address:"32326 Clinton Keith Road, Suite 105, Wildomar, CA", special:"Staffing Agency"},
+  {name:"Infinium Staffing", phone:"951-816-6434", email:"info@infiniumhr.com", website:"https://www.infiniumstaffing.com/", address:"29970 Technology Drive, Suite 223, Murrieta, CA", special:"Staffing Agency"},
+  {name:"Apple One Employment Services", phone:"951-296-5430", email:"temecula-ca@appleone.com", website:"https://www.appleone.com/", address:"41923 Second Street, Suite 202, Temecula, CA", special:"Staffing Agency"},
+  {name:"iStaff Pros, Inc.", phone:"951-200-5523", email:"info@istaffpros.com", website:"https://istaffpros.com/", address:"27412 Enterprise Circle West, Suite 201, Temecula, CA", special:"Staffing Agency"},
+  {name:"Spherion Staffing & Recruiting", phone:"760-568-3433", website:"https://www.spherion.com/", address:"41593 Winchester Road, Suite 200, Temecula, CA", special:"Staffing Agency"},
+  {name:"OneCruit LLC", phone:"951-566-4100", email:"menifeebranch@onecruit.com", website:"https://www.onecruit.com/menifee", address:"27701 Scott Road, Unit 302, Menifee, CA", special:"Staffing Agency"},
+  {name:"Go Staff", phone:"951-760-7100", website:"https://go-staff.com/contact-go-staff/labor-skilled-trades-and-office-division/", address:"41790 Winchester Road, Temecula, CA", special:"Staffing Agency"},
+  {name:"Express Employment Professionals", phone:"951-877-4623", website:"https://www.expresspros.com/us-california-temecula", address:"27555 Ynez Road, Suite 202, Temecula, CA", special:"Staffing Agency"},
+  {name:"TechBridge Global Services", phone:"858-203-6313", email:"info@techbridgegs.com", website:"https://techbridgegs.com/", special:"Staffing Agency"},
+  {name:"Blue Horizon Staffing Solutions", phone:"866-728-1346", email:"Staff@Bluehorizonstaffing.com", address:"41593 Winchester Road, Suite 200-242, Temecula, CA", special:"Staffing Agency"},
+  {name:"Honestlove Global", phone:"951-763-6005", email:"contact@honestloveglobalstaffing.com", website:"https://honestloveglobalprofessionals.com/", address:"29970 Technology Drive, Murrieta, CA", special:"Healthcare Staffing"},
+  {name:"Staffmark", phone:"951-928-5351", website:"https://staffmark.com/locations/perri-ca/", address:"3150 Case Road, Suite O-3, Perris, CA", special:"Staffing Agency"}
 ];
 
 const housing = {
-  referrals: [
-    {name:"HomeConnect", phone:"800-498-8847", email:"homeconnect@ruhealth.org", website:"https://rivcodpss.org/2-1-1-24-hour-services", address:"5555 Arlington Ave, Riverside, CA", special:"General Referrals"},
-    {name:"HomeConnect - After-Hours", phone:"951-955-8278", email:"homeconnect@ruhealth.org", website:"https://ruhealth.org/behavioral-health/housing", address:"5555 Arlington Ave, Riverside, CA", special:"General Referrals"},
-    {name:"City Net", phone:"951-390-3567", website:"https://www.citynet.org/riverside-county", special:"Street Outreach"},
-    {name:"SWAG", phone:"833-792-4674", email:"hello@theswag.org", website:"https://www.theswag.org/", special:"Street Outreach"}
-  ],
-  emergency: [
-    {name:"Project TOUCH", phone:"951-677-9661", email:"info@projecttouchonline.com", website:"https://projecttouchonline.com/", address:"28736 Calle del Lago, Murrieta, CA"},
-    {name:"The Anchor", phone:"951-390-3567", website:"https://www.lake-elsinore.org/400/The-Anchor", address:"215 W Graham Ave, Lake Elsinore, CA"},
-    {name:"Path of Life - Emergency", phone:"951-462-9822", email:"hotline@thepathoflife.com", website:"https://www.thepathoflife.com/shelter", address:"2840 Hulen Place, Riverside, CA"},
-    {name:"Path of Life - Cold Weather", phone:"951-318-1329", email:"hotline@thepathoflife.com", website:"https://www.thepathoflife.com/shelter", address:"3695 1st Street, Riverside, CA", special:"Seasonal"},
-    {name:"Coachella Valley Rescue Mission", phone:"760-851-2160", email:"info@cvrm.org", website:"https://www.cvrm.org/what-we-do/get-help-today/", address:"84110 Manila Ave, Indio, CA"},
-    {name:"Martha's Village", phone:"760-347-4741", email:"info@marthasvillage.org", website:"https://marthasvillage.org/services/emergency-housing/", address:"83791 Date Ave, Indio, CA"},
-    {name:"Valley Restart Shelter", phone:"951-766-7476", website:"https://www.valleyrestartshelter.org/", address:"200 E Menlo Street, Hemet, CA", special:"Women & Families"},
-    {name:"Path of Life - Family", phone:"951-462-9822", email:"hotline@thepathoflife.com", website:"https://www.thepathoflife.com/shelter", address:"2530 3rd Street, Riverside, CA", special:"Women & Families"},
-    {name:"Corona Norco Rescue Mission", phone:"951-279-1300", address:"420 W Harrison Street, Corona, CA", special:"Women & Families"},
-    {name:"Operation SafeHouse - West", phone:"951-351-4418", email:"info@operationsafehouse.org", website:"https://operationsafehouse.org/youth-emergency-services/", address:"9685 Hayes Street, Riverside, CA", special:"Youth (16-25)"},
-    {name:"Operation SafeHouse - East", phone:"760-343-3211", email:"info@operationsafehouse.org", website:"https://safehouseofthedesert.com/youth-emergency-services/", address:"72710 East Lynn Street, Thousand Palms, CA", special:"Youth (16-25)"},
-    {name:"Jacob's House", phone:"951-452-2627", website:"https://www.jacobshousetemecula.org", address:"31525 Jedediah Smith Road, Temecula, CA", special:"Hospital Patients & Families"}
-  ],
-  transitional: [
-    {name:"Project TOUCH", phone:"951-677-9661", email:"info@projecttouchonline.com", website:"https://projecttouchonline.com/", address:"28736 Calle del Lago, Murrieta, CA"},
-    {name:"Mission Hope - Empowerment Village", phone:"951-444-1404", email:"info@missionhope.com", website:"https://www.missionhope.com/empowerment-village", address:"41760 Rider Way, Temecula, CA", special:"Women & Families"},
-    {name:"Path of Life - Youth", phone:"951-288-3302", email:"eprewitt@thepathoflife.com", website:"https://www.thepathoflife.com", special:"Youth (16-25)"},
-    {name:"U.S.VETS Inland Empire", phone:"951-269-1119", email:"kbush@usvets.org", website:"https://usvets.org/locations/inland-empire/", address:"15305 6th Street, March Air Reserve Base, CA", special:"Veterans"},
-    {name:"TruEvolution", phone:"951-888-1346", email:"CurtT@truevolution.org", website:"https://www.truevolution.org/project-legacy", address:"3838 Brockton Avenue, Riverside, CA", special:"LGBTQIA+"},
-    {name:"Starting Over, Inc.", phone:"951-898-0862", email:"office@startingoverinc.org", website:"https://www.startingoverinc.org/", address:"6355 Riverside Ave, Suite 100, Riverside, CA", special:"Justice-Involved"}
-  ],
-  psh: [
-    {name:"No Place Like Home", email:"HomeConnect@ruhealth.org", website:"https://ruhealth.org/behavioral-health/no-place-like-home", special:"Permanent Supportive"},
-    {name:"The Place Safehaven Program", phone:"951-779-3057", email:"HHOPE@ruhealth.org", website:"https://www.ruhealth.org/behavioral-health/housing", address:"2800 Hulen Place, Riverside, CA", special:"Permanent Supportive"},
-    {name:"The Path Safehaven Program", phone:"760-251-2346", email:"HHOPE@ruhealth.org", website:"https://www.ruhealth.org/behavioral-health/housing", address:"19531 McLane Street, Palm Springs, CA", special:"Permanent Supportive"},
-    {name:"Jewish Family Service", phone:"760-325-4088", website:"https://www.jfssd.org", special:"Permanent Supportive"},
-    {name:"LightHouse Social Service Centers", phone:"951-571-3533", website:"https://lighthouse-ssc.org", special:"Women & Children"}
-  ],
-  affordable: [
-    {name:"Tres Lagos", phone:"951-877-5726", website:"https://www.treslagosapartments.com", address:"23345 Catt Road, Wildomar, CA"},
-    {name:"Monte Vista", phone:"951-600-1505", email:"montevista@solari-ent.com", website:"https://affirmedhousing.com/completed/monte-1/", address:"24740 Jefferson Avenue, Murrieta, CA"},
-    {name:"Monte Vista II", phone:"951-600-1505", email:"montevista@solari-ent.com", website:"https://www.dahlingroup.com/projects/monte-vista-ii", address:"41411 Juniper Street, Murrieta, CA"},
-    {name:"Momamos Terrace", phone:"951-290-5101", website:"https://www.monamosterraceapts.com", address:"25054 Monroe Avenue, Murrieta, CA"},
-    {name:"Oak View Ranch", phone:"951-290-0533", website:"https://www.liveatoakviewranch.com", address:"24960 Adams Avenue, Murrieta, CA"},
-    {name:"Monarch Terrace", phone:"951-247-5414", website:"https://www.rent-monarchterrace.com", address:"23215 Ironwood Avenue, Moreno Valley, CA"},
-    {name:"TELACU Villa", phone:"951-486-9842", website:"https://telacu.com/property_listings/telacu-villa/", address:"25105 Fir Avenue, Moreno Valley, CA"},
-    {name:"Verano Terrace", phone:"951-924-0162", address:"25445 Sunnymead Blvd, Moreno Valley, CA"},
-    {name:"Courtyards at Cottonwood", phone:"951-247-5546", email:"courtyardsatcottonwood@awimc.com", website:"https://www.awimc.com/community/courtyards-at-cottonwood-apartments/", address:"24580 Cottonwood Avenue, Moreno Valley, CA"},
-    {name:"Mountain View", phone:"951-653-1173", email:"mountainview@rpmcompany.com", website:"https://mountainviewapartmenthomes.com", address:"13135 Heacock Street, Moreno Valley, CA"},
-    {name:"Corona Del Rey", phone:"951-278-3245", email:"coronadelrey@nationalcore.org", website:"https://nationalcore.org/communities/corona-del-rey/", address:"1148 D Street, Corona, CA"},
-    {name:"Amanda Park Senior Apartments", phone:"951-698-1133", website:"https://amandaparksenior.usamfm.com/", address:"24425 Skyview Ridge Drive, Murrieta, CA", special:"Senior 55+"},
-    {name:"Fountain Glen", phone:"951-677-8035", website:"https://www.fountainglengrandisle.com", address:"24405 Village Walk Place, Murrieta, CA", special:"Senior 55+"}
-  ],
-  sober: [
-    {name:"Village Care", phone:"858-761-3656", email:"Brittanyaina@care-villages.com", website:"https://www.care-villages.com/services", special:"Sober Living"},
-    {name:"The Lemonade House", phone:"760-272-6816", email:"Amy@TheLemonadeHouse.Org", website:"https://thelemonadehouse.org", special:"Sober Living"},
-    {name:"Alive Sober Living", website:"https://www.alivesoberliving.com", special:"Sober Living"}
-  ]
+  referrals: [
+    {name:"HomeConnect", phone:"800-498-8847", email:"homeconnect@ruhealth.org", website:"https://rivcodpss.org/2-1-1-24-hour-services", address:"5555 Arlington Ave, Riverside, CA", special:"General Referrals"},
+    {name:"HomeConnect - After-Hours", phone:"951-955-8278", email:"homeconnect@ruhealth.org", website:"https://ruhealth.org/behavioral-health/housing", address:"5555 Arlington Ave, Riverside, CA", special:"General Referrals"},
+    {name:"City Net", phone:"951-390-3567", website:"https://www.citynet.org/riverside-county", special:"Street Outreach"},
+    {name:"SWAG", phone:"833-792-4674", email:"hello@theswag.org", website:"https://www.theswag.org/", special:"Street Outreach"}
+  ],
+  emergency: [
+    {name:"Project TOUCH", phone:"951-677-9661", email:"info@projecttouchonline.com", website:"https://projecttouchonline.com/", address:"28736 Calle del Lago, Murrieta, CA"},
+    {name:"The Anchor", phone:"951-390-3567", website:"https://www.lake-elsinore.org/400/The-Anchor", address:"215 W Graham Ave, Lake Elsinore, CA"},
+    {name:"Path of Life - Emergency", phone:"951-462-9822", email:"hotline@thepathoflife.com", website:"https://www.thepathoflife.com/shelter", address:"2840 Hulen Place, Riverside, CA"},
+    {name:"Path of Life - Cold Weather", phone:"951-318-1329", email:"hotline@thepathoflife.com", website:"https://www.thepathoflife.com/shelter", address:"3695 1st Street, Riverside, CA", special:"Seasonal"},
+    {name:"Coachella Valley Rescue Mission", phone:"760-851-2160", email:"info@cvrm.org", website:"https://www.cvrm.org/what-we-do/get-help-today/", address:"84110 Manila Ave, Indio, CA"},
+    {name:"Martha's Village", phone:"760-347-4741", email:"info@marthasvillage.org", website:"https://marthasvillage.org/services/emergency-housing/", address:"83791 Date Ave, Indio, CA"},
+    {name:"Valley Restart Shelter", phone:"951-766-7476", website:"https://www.valleyrestartshelter.org/", address:"200 E Menlo Street, Hemet, CA", special:"Women & Families"},
+    {name:"Path of Life - Family", phone:"951-462-9822", email:"hotline@thepathoflife.com", website:"https://www.thepathoflife.com/shelter", address:"2530 3rd Street, Riverside, CA", special:"Women & Families"},
+    {name:"Corona Norco Rescue Mission", phone:"951-279-1300", address:"420 W Harrison Street, Corona, CA", special:"Women & Families"},
+    {name:"Operation SafeHouse - West", phone:"951-351-4418", email:"info@operationsafehouse.org", website:"https://operationsafehouse.org/youth-emergency-services/", address:"9685 Hayes Street, Riverside, CA", special:"Youth (16-25)"},
+    {name:"Operation SafeHouse - East", phone:"760-343-3211", email:"info@operationsafehouse.org", website:"https://safehouseofthedesert.com/youth-emergency-services/", address:"72710 East Lynn Street, Thousand Palms, CA", special:"Youth (16-25)"},
+    {name:"Jacob's House", phone:"951-452-2627", website:"https://www.jacobshousetemecula.org", address:"31525 Jedediah Smith Road, Temecula, CA", special:"Hospital Patients & Families"}
+  ],
+  transitional: [
+    {name:"Project TOUCH", phone:"951-677-9661", email:"info@projecttouchonline.com", website:"https://projecttouchonline.com/", address:"28736 Calle del Lago, Murrieta, CA"},
+    {name:"Mission Hope - Empowerment Village", phone:"951-444-1404", email:"info@missionhope.com", website:"https://www.missionhope.com/empowerment-village", address:"41760 Rider Way, Temecula, CA", special:"Women & Families"},
+    {name:"Path of Life - Youth", phone:"951-288-3302", email:"eprewitt@thepathoflife.com", website:"https://www.thepathoflife.com", special:"Youth (16-25)"},
+    {name:"U.S.VETS Inland Empire", phone:"951-269-1119", email:"kbush@usvets.org", website:"https://usvets.org/locations/inland-empire/", address:"15305 6th Street, March Air Reserve Base, CA", special:"Veterans"},
+    {name:"TruEvolution", phone:"951-888-1346", email:"CurtT@truevolution.org", website:"https://www.truevolution.org/project-legacy", address:"3838 Brockton Avenue, Riverside, CA", special:"LGBTQIA+"},
+    {name:"Starting Over, Inc.", phone:"951-898-0862", email:"office@startingoverinc.org", website:"https://www.startingoverinc.org/", address:"6355 Riverside Ave, Suite 100, Riverside, CA", special:"Justice-Involved"}
+  ],
+  psh: [
+    {name:"No Place Like Home", email:"HomeConnect@ruhealth.org", website:"https://ruhealth.org/behavioral-health/no-place-like-home", special:"Permanent Supportive"},
+    {name:"The Place Safehaven Program", phone:"951-779-3057", email:"HHOPE@ruhealth.org", website:"https://www.ruhealth.org/behavioral-health/housing", address:"2800 Hulen Place, Riverside, CA", special:"Permanent Supportive"},
+    {name:"The Path Safehaven Program", phone:"760-251-2346", email:"HHOPE@ruhealth.org", website:"https://www.ruhealth.org/behavioral-health/housing", address:"19531 McLane Street, Palm Springs, CA", special:"Permanent Supportive"},
+    {name:"Jewish Family Service", phone:"760-325-4088", website:"https://www.jfssd.org", special:"Permanent Supportive"},
+    {name:"LightHouse Social Service Centers", phone:"951-571-3533", website:"https://lighthouse-ssc.org", special:"Women & Children"}
+  ],
+  affordable: [
+    {name:"Tres Lagos", phone:"951-877-5726", website:"https://www.treslagosapartments.com", address:"23345 Catt Road, Wildomar, CA"},
+    {name:"Monte Vista", phone:"951-600-1505", email:"montevista@solari-ent.com", website:"https://affirmedhousing.com/completed/monte-1/", address:"24740 Jefferson Avenue, Murrieta, CA"},
+    {name:"Monte Vista II", phone:"951-600-1505", email:"montevista@solari-ent.com", website:"https://www.dahlingroup.com/projects/monte-vista-ii", address:"41411 Juniper Street, Murrieta, CA"},
+    {name:"Momamos Terrace", phone:"951-290-5101", website:"https://www.monamosterraceapts.com", address:"25054 Monroe Avenue, Murrieta, CA"},
+    {name:"Oak View Ranch", phone:"951-290-0533", website:"https://www.liveatoakviewranch.com", address:"24960 Adams Avenue, Murrieta, CA"},
+    {name:"Monarch Terrace", phone:"951-247-5414", website:"https://www.rent-monarchterrace.com", address:"23215 Ironwood Avenue, Moreno Valley, CA"},
+    {name:"TELACU Villa", phone:"951-486-9842", website:"https://telacu.com/property_listings/telacu-villa/", address:"25105 Fir Avenue, Moreno Valley, CA"},
+    {name:"Verano Terrace", phone:"951-924-0162", address:"25445 Sunnymead Blvd, Moreno Valley, CA"},
+    {name:"Courtyards at Cottonwood", phone:"951-247-5546", email:"courtyardsatcottonwood@awimc.com", website:"https://www.awimc.com/community/courtyards-at-cottonwood-apartments/", address:"24580 Cottonwood Avenue, Moreno Valley, CA"},
+    {name:"Mountain View", phone:"951-653-1173", email:"mountainview@rpmcompany.com", website:"https://mountainviewapartmenthomes.com", address:"13135 Heacock Street, Moreno Valley, CA"},
+    {name:"Corona Del Rey", phone:"951-278-3245", email:"coronadelrey@nationalcore.org", website:"https://nationalcore.org/communities/corona-del-rey/", address:"1148 D Street, Corona, CA"},
+    {name:"Amanda Park Senior Apartments", phone:"951-698-1133", website:"https://amandaparksenior.usamfm.com/", address:"24425 Skyview Ridge Drive, Murrieta, CA", special:"Senior 55+"},
+    {name:"Fountain Glen", phone:"951-677-8035", website:"https://www.fountainglengrandisle.com", address:"24405 Village Walk Place, Murrieta, CA", special:"Senior 55+"}
+  ],
+  sober: [
+    {name:"Village Care", phone:"858-761-3656", email:"Brittanyaina@care-villages.com", website:"https://www.care-villages.com/services", special:"Sober Living"},
+    {name:"The Lemonade House", phone:"760-272-6816", email:"Amy@TheLemonadeHouse.Org", website:"https://thelemonadehouse.org", special:"Sober Living"},
+    {name:"Alive Sober Living", website:"https://www.alivesoberliving.com", special:"Sober Living"}
+  ]
 };
 
 const healthcare = {
-  medical:[
-    {name:"Loma Linda University Medical Center",phone:"951-290-4000",website:"https://lluh.org/locations/loma-linda-university-medical-center-murrieta",address:"28062 Baxter Road, Murrieta, CA",special:"Emergency Room"},
-    {name:"Rancho Springs Medical Center",phone:"951-696-6000",website:"https://www.swhranchosprings.com/",address:"25500 Medical Center Drive, Murrieta, CA",special:"Emergency Room"},
-    {name:"Healthcare in Action",phone:"909-970-5860",website:"https://www.healthcareinaction.org",special:"Street Medicine"},
-    {name:"Planned Parenthood",phone:"888-743-7526",website:"https://www.plannedparenthood.org/health-center/california/murrieta/92562/murrieta-health-center-10002-9011025",address:"25130 Hancock Avenue, Suite 100, Murrieta, CA",special:"Sexual Health"}
-  ],
-  behavioral:[
-    {name:"Riverside University Health System",phone:"800-499-3008",website:"https://www.ruhealth.org/behavioral-health",special:"Behavioral Health"},
-    {name:"Renewing Hope Family Counseling",phone:"951-465-3664",email:"office@renewing-hope.org",website:"https://www.renewinghopeinc.com/",address:"24910 Las Brisas Road, Unit 117, Murrieta, CA",special:"Behavioral Health"},
-    {name:"Temecula Valley Comprehensive Treatment Center", phone:"855-553-2363", website:"https://www.ctcprograms.com/", address:"40700 California Oaks Road, Suite 202, Murrieta, CA", special:"Opioid Addiction Treatment"},
-    {name:"Hill Alcohol & Drug Treatment",phone:"951-719-3685",email:"info@hillrecovery.com",website:"https://hillrecovery.com/treatment-center/",address:"41877 Enterprise Circle N, Suite 100, Temecula, CA",special:"Substance Use"},
-    {name:"TruEvolution", phone:"951-888-1346", email:"support@truevolution.org", website:"https://www.truevolution.org/behavioral-health", address:"3838 Brockton Avenue, Riverside, CA", special:"LGBTQIA+ Behavioral Health"}
-  ],
-  specialty:[
-    {name:"Autism Society Inland Empire",phone:"951-220-6922",email:"info@ieautism.org",website:"https://ieautism.org/",address:"420 N McKinley, Suite 111-118, Corona CA",special:"Autism Services"},
-    {name:"Inland Regional Center", phone:"909-890-3000", website:"https://www.inlandrc.org", special:"Developmental Disabilities"},
-    {name:"TruEvolution",phone:"951-888-1346",email:"care@truevolution.org",website:"https://www.truevolution.org/case-management",address:"3838 Brockton Avenue, Riverside, CA",special:"HIV Testing & PrEP"},
-    {name:"Riverside County Department of Public Social Services", phone:"888-960-4477", website:"http://www.RiversideIHSS.org", address:"561 N San Jacinto Street, Hemet, CA", special:"In-Home Supportive Services"}
-  ]
+  medical:[
+    {name:"Loma Linda University Medical Center",phone:"951-290-4000",website:"https://lluh.org/locations/loma-linda-university-medical-center-murrieta",address:"28062 Baxter Road, Murrieta, CA",special:"Emergency Room"},
+    {name:"Rancho Springs Medical Center",phone:"951-696-6000",website:"https://www.swhranchosprings.com/",address:"25500 Medical Center Drive, Murrieta, CA",special:"Emergency Room"},
+    {name:"Healthcare in Action",phone:"909-970-5860",website:"https://www.healthcareinaction.org",special:"Street Medicine"},
+    {name:"Planned Parenthood",phone:"888-743-7526",website:"https://www.plannedparenthood.org/health-center/california/murrieta/92562/murrieta-health-center-10002-9011025",address:"25130 Hancock Avenue, Suite 100, Murrieta, CA",special:"Sexual Health"}
+  ],
+  behavioral:[
+    {name:"Riverside University Health System",phone:"800-499-3008",website:"https://www.ruhealth.org/behavioral-health",special:"Behavioral Health"},
+    {name:"Renewing Hope Family Counseling",phone:"951-465-3664",email:"office@renewing-hope.org",website:"https://www.renewinghopeinc.com/",address:"24910 Las Brisas Road, Unit 117, Murrieta, CA",special:"Behavioral Health"},
+    {name:"Temecula Valley Comprehensive Treatment Center", phone:"855-553-2363", website:"https://www.ctcprograms.com/", address:"40700 California Oaks Road, Suite 202, Murrieta, CA", special:"Opioid Addiction Treatment"},
+    {name:"Hill Alcohol & Drug Treatment",phone:"951-719-3685",email:"info@hillrecovery.com",website:"https://hillrecovery.com/treatment-center/",address:"41877 Enterprise Circle N, Suite 100, Temecula, CA",special:"Substance Use"},
+    {name:"TruEvolution", phone:"951-888-1346", email:"support@truevolution.org", website:"https://www.truevolution.org/behavioral-health", address:"3838 Brockton Avenue, Riverside, CA", special:"LGBTQIA+ Behavioral Health"}
+  ],
+  specialty:[
+    {name:"Autism Society Inland Empire",phone:"951-220-6922",email:"info@ieautism.org",website:"https://ieautism.org/",address:"420 N McKinley, Suite 111-118, Corona CA",special:"Autism Services"},
+    {name:"Inland Regional Center", phone:"909-890-3000", website:"https://www.inlandrc.org", special:"Developmental Disabilities"},
+    {name:"TruEvolution",phone:"951-888-1346",email:"care@truevolution.org",website:"https://www.truevolution.org/case-management",address:"3838 Brockton Avenue, Riverside, CA",special:"HIV Testing & PrEP"},
+    {name:"Riverside County Department of Public Social Services", phone:"888-960-4477", website:"http://www.RiversideIHSS.org", address:"561 N San Jacinto Street, Hemet, CA", special:"In-Home Supportive Services"}
+  ]
 };
 
 const resources = {
-  crisis: [
-    {name:"National Suicide & Crisis Lifeline", phone:"988", special:"Suicide & Crisis"},
-    {name:"RUHS Mobile Crisis Unit", phone:"888-374-1113", website:"https://ruhealth.org/behavioral-health/crisis-support-system-care", special:"Suicide & Crisis"},
-    {name:"Inland Southern California Crisis Helpline", phone:"951-686-4357", special:"Suicide & Crisis"},
-    {name:"Mental Health Urgent Care - Riverside", phone:"951-509-2499", website:"https://ruhealth.org/behavioral-health/county-mental-health-triage-services", address:"9890 County Farm Road, Building 2, Riverside, CA", special:"Suicide & Crisis"},
-    {name:"Mental Health Urgent Care - Perris", phone:"951-349-4195", website:"https://ruhealth.org/behavioral-health/county-mental-health-triage-services", address:"85 Ramona Expressway, Suite 1-3, Perris, CA", special:"Suicide & Crisis"},
-    {name:"Mental Health Urgent Care - Palm Springs", phone:"760-424-5602", website:"https://ruhealth.org/behavioral-health/county-mental-health-triage-services", address:"2500 N Palm Canyon Drive, Suite A4, Palm Springs, CA", special:"Suicide & Crisis"},
-    {name:"The Trevor Project", phone:"866-488-7386", email:"info@thetrevorproject.org", website:"https://www.thetrevorproject.org/", special:"LGBTQIA+ Suicide & Crisis"},
-    {name:"Trans Lifeline", phone:"877-565-8860", website:"https://translifeline.org", special:"LGBTQIA+ Suicide & Crisis"},
-    {name:"Veterans Crisis Line", phone:"988 x1", special:"Veterans Suicide & Crisis"},
-    {name:"National Human Trafficking Hotline", phone:"888-373-7888", email:"help@humantraffickinghotline.org", website:"https://humantraffickinghotline.org/en", special:"Human Trafficking"},
-    {name:"Riverside County Anti-Human Trafficking", phone:"855-758-3733", website:"https://www.riversidesheriff.org/797/Anti-Human-Trafficking-Task-Force-RCAHT", address:"4095 Lemon Street, Riverside, CA", special:"Human Trafficking"},
-    {name:"NORA", phone:"951-686-7273", email:"info@callnora.org", website:"https://callnora.org", address:"1845 Chicago Avenue, Suite A, Riverside, CA", special:"Sexual Assault"},
-    {name:"National Domestic Violence Hotline", phone:"800-339-7233", website:"https://www.thehotline.org/", special:"Domestic Violence"},
-    {name:"SAFE Family Justice Center", phone:"951-587-3900", email:"info@safefamiliesca.org", website:"https://www.safefjc.org/", address:"28910 Pujol Street, Temecula, CA", special:"Domestic Violence"},
-    {name:"REACH", phone:"866-373-8300", email:"info@reachus.org", website:"https://reachus.org/", address:"1600 E Florida, Suite 206, Hemet, CA", special:"Domestic Violence"},
-    {name:"Alternatives to Domestic Violence", phone:"951-425-8900", email:"referrals@alternativestodomesticviolence.org", website:"https://www.alternativestodomesticviolence.org/", address:"4150 Latham Street, Suite A, Riverside, CA", special:"Domestic Violence"},
-    {name:"Adult Protective Services", phone:"800-491-7123", website:"https://rivcodpss.org/elder-and-dependent-adult-abuse", address:"3950 Reynolds Road, Riverside, CA", special:"Elder & Dependent Abuse"},
-    {name:"Child Protective Services", phone:"800-442-4918", website:"https://rivcodpss.org/child-abuse", address:"2300 Market Street, Suite 100, Riverside, CA", special:"Child Abuse"}
-  ],
-  basic:[
-    {name:"California LifeLine", website:"https://www.californialifeline.com", special:"Free Phone & Data"},
-    {name:"St. Martha's 2nd Hand Treasures",phone:"951-677-0078",website:"https://communityoutreachofmurrieta.com/thrift-store",address:"39793 Avenida Acacias, Murrieta, CA",special:"Clothing"},
-    {name:"First 5 Riverside", phone:"951-715-4500", website:"https://rccfc.org", special:"Children & Families"},
-    {name:"IE LGBTQ+ Center",phone:"951-888-1346",email:"IELGBTQ@truevolution.org",website:"https://www.truevolution.org/ie-lgbtq-center",address:"3838 Brockton Avenue, Riverside, CA",special:"LGBTQIA+ Basic Needs"},
-    {name:"The LGBTQ Community Center of the Desert", phone:"760-416-7790", email:"info@thecentercv.org", website:"https://thecentercv.org/en/", address:"1301 North Palm Canyon Drive, 3rd Floor, Palm Springs, CA", special:"LGBTQIA+ Basic Needs"},
-    {name:"Transgender Health & Wellness Center", phone:"760-202-4308", email:"info@trans.health", website:"https://trans.health", address:"340 South Farrell Drive, Suite A208, Palm Springs, CA", special:"LGBTQIA+ Basic Needs"}
-  ],
-  food:[
-    {name:"Community Food Pantry of Murrieta",phone:"951-677-6347",website:"https://communityoutreachofmurrieta.com/pantry-hours",address:"39493 Los Alamos Road, Suite A, Murrieta, CA"},
-    {name:"The Salvation Army",phone:"951-677-1324",website:"https://murrieta.salvationarmy.org",address:"40270 Los Alamos Road, Murrieta, CA"},
-    {name:"Menifee Valley Cupboard",phone:"951-301-4414",website:"https://mvcupboard.org",address:"26808 Cherry Hills Blvd, Menifee, CA"},
-    {name:"Aspire to Inspire", phone:"951-457-2712", address:"29930 Hunter Road, Murrieta, CA"},
-    {name:"Greater Works Church", phone:"951-326-5295", website:"https://4greaterworks.org", address:"25823 Jefferson Avenue, Murrieta, CA"},
-    {name:"Murrieta United Methodist Church", phone:"951-677-6174", website:"https://murrietaca.gov/facilities/facility/details/Senior-Center-7", address:"5 Town Square, Murrieta, CA"}
-  ],
-  legal:[
-    {name:"Community Connect",phone:"211",special:"General Referrals"},
-    {name:"Riverside County Department of Public Social Services",phone:"877-410-8827",email:"DPSSComm@rivco.org",website:"https://rivcodpss.org/",address:"43264 Business Park Drive Suite 102, Temecula, CA",special:"Public Benefits (CalWORKs, CalFresh, etc)"},
-    {name:"Riverside County Public Defender", website:"https://rivcopublicdefender.org", special:"Public Defender"},
-    {name:"Legal Aid",phone:"951-682-7968",email:"info@riversidelegalaid.org",website:"https://riversidelegalaid.org",address:"4129 Main Street, Suite 101, Riverside, CA",special:"Family Law"},
-    {name:"Riverside Legal Aid - Eviction Defense", phone:"951-888-2039", email:"info@riversidelegalaid.org", website:"https://riversidelegalaid.org/unsafe-housing-tenant-rights/", special:"Eviction Defense"},
-    {name:"Inland Coalition for Immigrant Justice", phone:"909-474-9996", email:"info@ic4ij.org", website:"https://ic4ij.org/", address:"2441 N Sierra Way, San Bernardino, CA", special:"Immigration"}
-  ],
-  education:[
-    {name:"Riverside County Office of Education", website:"https://www.rcoe.us/", special:"Adult Education & Childcare"},
-    {name:"Federal Student Aid (FAFSA)",phone:"800-433-3243",website:"https://studentaid.gov/h/apply-for-aid/fafsa",special:"Student Aid"},
-    {name:"Arise Wellness Scholarship", phone:"951-581-4111", email:"arisewellnessstudio@gmail.com", address:"24710 Washington Avenue, Suite 4, Murrieta, CA", special:"Women"}
-  ],
-  animals:[
-    {name:"Emergency Animal Control", phone:"951-506-5069", website:"http://www.afv.org", address:"33751 Mission Trail, Wildomar, CA", special:"Emergency"},
-    {name:"Animal Friends of the Valley",phone:"951-674-0618",website:"http://www.afv.org",address:"33751 Mission Trail, Wildomar, CA",special:"Shelter & Field Services"},
-    {name:"Hold My Leash", phone:"858-761-3656", email:"Brittanyaina@care-villages.com", website:"https://www.care-villages.com/hold-my-leash", special:"Boarding"}
-  ]
+  crisis: [
+    {name:"National Suicide & Crisis Lifeline", phone:"988", special:"Suicide & Crisis"},
+    {name:"RUHS Mobile Crisis Unit", phone:"888-374-1113", website:"https://ruhealth.org/behavioral-health/crisis-support-system-care", special:"Suicide & Crisis"},
+    {name:"Inland Southern California Crisis Helpline", phone:"951-686-4357", special:"Suicide & Crisis"},
+    {name:"Mental Health Urgent Care - Riverside", phone:"951-509-2499", website:"https://ruhealth.org/behavioral-health/county-mental-health-triage-services", address:"9890 County Farm Road, Building 2, Riverside, CA", special:"Suicide & Crisis"},
+    {name:"Mental Health Urgent Care - Perris", phone:"951-349-4195", website:"https://ruhealth.org/behavioral-health/county-mental-health-triage-services", address:"85 Ramona Expressway, Suite 1-3, Perris, CA", special:"Suicide & Crisis"},
+    {name:"Mental Health Urgent Care - Palm Springs", phone:"760-424-5602", website:"https://ruhealth.org/behavioral-health/county-mental-health-triage-services", address:"2500 N Palm Canyon Drive, Suite A4, Palm Springs, CA", special:"Suicide & Crisis"},
+    {name:"The Trevor Project", phone:"866-488-7386", email:"info@thetrevorproject.org", website:"https://www.thetrevorproject.org/", special:"LGBTQIA+ Suicide & Crisis"},
+    {name:"Trans Lifeline", phone:"877-565-8860", website:"https://translifeline.org", special:"LGBTQIA+ Suicide & Crisis"},
+    {name:"Veterans Crisis Line", phone:"988 x1", special:"Veterans Suicide & Crisis"},
+    {name:"National Human Trafficking Hotline", phone:"888-373-7888", email:"help@humantraffickinghotline.org", website:"https://humantraffickinghotline.org/en", special:"Human Trafficking"},
+    {name:"Riverside County Anti-Human Trafficking", phone:"855-758-3733", website:"https://www.riversidesheriff.org/797/Anti-Human-Trafficking-Task-Force-RCAHT", address:"4095 Lemon Street, Riverside, CA", special:"Human Trafficking"},
+    {name:"NORA", phone:"951-686-7273", email:"info@callnora.org", website:"https://callnora.org", address:"1845 Chicago Avenue, Suite A, Riverside, CA", special:"Sexual Assault"},
+    {name:"National Domestic Violence Hotline", phone:"800-339-7233", website:"https://www.thehotline.org/", special:"Domestic Violence"},
+    {name:"SAFE Family Justice Center", phone:"951-587-3900", email:"info@safefamiliesca.org", website:"https://www.safefjc.org/", address:"28910 Pujol Street, Temecula, CA", special:"Domestic Violence"},
+    {name:"REACH", phone:"866-373-8300", email:"info@reachus.org", website:"https://reachus.org/", address:"1600 E Florida, Suite 206, Hemet, CA", special:"Domestic Violence"},
+    {name:"Alternatives to Domestic Violence", phone:"951-425-8900", email:"referrals@alternativestodomesticviolence.org", website:"https://www.alternativestodomesticviolence.org/", address:"4150 Latham Street, Suite A, Riverside, CA", special:"Domestic Violence"},
+    {name:"Adult Protective Services", phone:"800-491-7123", website:"https://rivcodpss.org/elder-and-dependent-adult-abuse", address:"3950 Reynolds Road, Riverside, CA", special:"Elder & Dependent Abuse"},
+    {name:"Child Protective Services", phone:"800-442-4918", website:"https://rivcodpss.org/child-abuse", address:"2300 Market Street, Suite 100, Riverside, CA", special:"Child Abuse"}
+  ],
+  basic:[
+    {name:"California LifeLine", website:"https://www.californialifeline.com", special:"Free Phone & Data"},
+    {name:"St. Martha's 2nd Hand Treasures",phone:"951-677-0078",website:"https://communityoutreachofmurrieta.com/thrift-store",address:"39793 Avenida Acacias, Murrieta, CA",special:"Clothing"},
+    {name:"First 5 Riverside", phone:"951-715-4500", website:"https://rccfc.org", special:"Children & Families"},
+    {name:"IE LGBTQ+ Center",phone:"951-888-1346",email:"IELGBTQ@truevolution.org",website:"https://www.truevolution.org/ie-lgbtq-center",address:"3838 Brockton Avenue, Riverside, CA",special:"LGBTQIA+ Basic Needs"},
+    {name:"The LGBTQ Community Center of the Desert", phone:"760-416-7790", email:"info@thecentercv.org", website:"https://thecentercv.org/en/", address:"1301 North Palm Canyon Drive, 3rd Floor, Palm Springs, CA", special:"LGBTQIA+ Basic Needs"},
+    {name:"Transgender Health & Wellness Center", phone:"760-202-4308", email:"info@trans.health", website:"https://trans.health", address:"340 South Farrell Drive, Suite A208, Palm Springs, CA", special:"LGBTQIA+ Basic Needs"}
+  ],
+  food:[
+    {name:"Community Food Pantry of Murrieta",phone:"951-677-6347",website:"https://communityoutreachofmurrieta.com/pantry-hours",address:"39493 Los Alamos Road, Suite A, Murrieta, CA"},
+    {name:"The Salvation Army",phone:"951-677-1324",website:"https://murrieta.salvationarmy.org",address:"40270 Los Alamos Road, Murrieta, CA"},
+    {name:"Menifee Valley Cupboard",phone:"951-301-4414",website:"https://mvcupboard.org",address:"26808 Cherry Hills Blvd, Menifee, CA"},
+    {name:"Aspire to Inspire", phone:"951-457-2712", address:"29930 Hunter Road, Murrieta, CA"},
+    {name:"Greater Works Church", phone:"951-326-5295", website:"https://4greaterworks.org", address:"25823 Jefferson Avenue, Murrieta, CA"},
+    {name:"Murrieta United Methodist Church", phone:"951-677-6174", website:"https://murrietaca.gov/facilities/facility/details/Senior-Center-7", address:"5 Town Square, Murrieta, CA"}
+  ],
+  legal:[
+    {name:"Community Connect",phone:"211",special:"General Referrals"},
+    {name:"Riverside County Department of Public Social Services",phone:"877-410-8827",email:"DPSSComm@rivco.org",website:"https://rivcodpss.org/",address:"43264 Business Park Drive Suite 102, Temecula, CA",special:"Public Benefits (CalWORKs, CalFresh, etc)"},
+    {name:"Riverside County Public Defender", website:"https://rivcopublicdefender.org", special:"Public Defender"},
+    {name:"Legal Aid",phone:"951-682-7968",email:"info@riversidelegalaid.org",website:"https://riversidelegalaid.org",address:"4129 Main Street, Suite 101, Riverside, CA",special:"Family Law"},
+    {name:"Riverside Legal Aid - Eviction Defense", phone:"951-888-2039", email:"info@riversidelegalaid.org", website:"https://riversidelegalaid.org/unsafe-housing-tenant-rights/", special:"Eviction Defense"},
+    {name:"Inland Coalition for Immigrant Justice", phone:"909-474-9996", email:"info@ic4ij.org", website:"https://ic4ij.org/", address:"2441 N Sierra Way, San Bernardino, CA", special:"Immigration"}
+  ],
+  education:[
+    {name:"Riverside County Office of Education", website:"https://www.rcoe.us/", special:"Adult Education & Childcare"},
+    {name:"Federal Student Aid (FAFSA)",phone:"800-433-3243",website:"https://studentaid.gov/h/apply-for-aid/fafsa",special:"Student Aid"},
+    {name:"Arise Wellness Scholarship", phone:"951-581-4111", email:"arisewellnessstudio@gmail.com", address:"24710 Washington Avenue, Suite 4, Murrieta, CA", special:"Women"}
+  ],
+  animals:[
+    {name:"Emergency Animal Control", phone:"951-506-5069", website:"http://www.afv.org", address:"33751 Mission Trail, Wildomar, CA", special:"Emergency"},
+    {name:"Animal Friends of the Valley",phone:"951-674-0618",website:"http://www.afv.org",address:"33751 Mission Trail, Wildomar, CA",special:"Shelter & Field Services"},
+    {name:"Hold My Leash", phone:"858-761-3656", email:"Brittanyaina@care-villages.com", website:"https://www.care-villages.com/hold-my-leash", special:"Boarding"}
+  ]
 };
 
 /* ─── UTILITIES ─────────────────────────────────────── */
@@ -1846,80 +1616,80 @@ function initials(n) { return n.split(' ').map(w=>w[0]).join('').slice(0,2).toUp
 
 /* ─── SCROLL REVEAL & JS COUNTER ANIMATIONS ─────────── */
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 function attachReveal() { document.querySelectorAll('.reveal').forEach(el => observer.observe(el)); }
 
 const countObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const el = entry.target;
-      const target = parseInt(el.getAttribute('data-target'));
-      let count = 0;
-      const duration = 1200; // ms
-      const increment = target / (duration / 16);
-      
-      const update = () => {
-        count += increment;
-        if (count < target) {
-          el.innerText = Math.ceil(count);
-          requestAnimationFrame(update);
-        } else {
-          el.innerText = target;
-        }
-      };
-      update();
-      countObserver.unobserve(el);
-    }
-  });
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.getAttribute('data-target'));
+      let count = 0;
+      const duration = 1200; // ms
+      const increment = target / (duration / 16);
+      
+      const update = () => {
+        count += increment;
+        if (count < target) {
+          el.innerText = Math.ceil(count);
+          requestAnimationFrame(update);
+        } else {
+          el.innerText = target;
+        }
+      };
+      update();
+      countObserver.unobserve(el);
+    }
+  });
 }, { threshold: 0.5 });
 document.querySelectorAll('.counter').forEach(c => countObserver.observe(c));
 
 /* ─── TEAM STATUS ────────────────────────────────────── */
 function updateStatus() {
-  const dot = document.getElementById('statusDot');
-  const txt = document.getElementById('statusTxt');
-  if (!dot || !txt) return;
-  const pt  = new Date(new Date().toLocaleString('en-US', {timeZone:'America/Los_Angeles'}));
-  const d=pt.getDay(), h=pt.getHours(), m=pt.getMinutes();
-  const on = d>=1&&d<=5 && (h>7||(h===7&&m>=0)) && (h<15||(h===15&&m<30));
-  dot.className = 'sdot ' + (on ? 'on' : 'off');
-  txt.textContent = on ? 'Available Now' : 'Currently Offline';
-  txt.style.color = on ? 'var(--signal-green)' : 'var(--text-tertiary)';
+  const dot = document.getElementById('statusDot');
+  const txt = document.getElementById('statusTxt');
+  if (!dot || !txt) return;
+  const pt  = new Date(new Date().toLocaleString('en-US', {timeZone:'America/Los_Angeles'}));
+  const d=pt.getDay(), h=pt.getHours(), m=pt.getMinutes();
+  const on = d>=1&&d<=5 && (h>7||(h===7&&m>=0)) && (h<15||(h===15&&m<30));
+  dot.className = 'sdot ' + (on ? 'on' : 'off');
+  txt.textContent = on ? 'Available Now' : 'Currently Offline';
+  txt.style.color = on ? 'var(--signal-green)' : 'var(--text-tertiary)';
 }
 updateStatus();setInterval(updateStatus, 60000);
 
 /* ─── TEAM RENDER ────────────────────────────────────── */
 function renderTeam(q='') {
-  const grid = document.getElementById('teamGrid');
-  const cnt  = document.getElementById('cmCount');
-  if (!grid) return;
-  const list = caseManagers.filter(c => c.name.toLowerCase().includes(q.toLowerCase()));
-  if (cnt) cnt.textContent = list.length;
-  grid.innerHTML = list.map(cm => `
-    <div class="cm-card">
-      <div class="cm-card__head">
-        <div class="cm-avatar" aria-hidden="true">${initials(cm.name)}</div>
-        <div>
-          <div class="cm-card__name">${cm.name}</div>
-          <div class="cm-card__role">${cm.role || 'Case Manager'}</div>
-        </div>
-        </div>
-      <div class="cm-card__contacts">
-        <div class="cm-contact">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          <a href="mailto:${cm.email}">${cm.email}</a>
-        </div>
-        <div class="cm-contact">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"></path></svg>
-          <a href="tel:${cm.phone.replace(/-/g,'')}">${cm.phone}</a>
-        </div>
-      </div>
-      <div class="cm-card__actions">
-        <button class="cm-btn cm-btn--primary" onclick="location.href='mailto:${cm.email}'">Email</button>
-        <button class="cm-btn cm-btn--secondary" onclick="location.href='tel:${cm.phone.replace(/-/g,'')}'">Call</button>
-      </div>
-    </div>`).join('');
+  const grid = document.getElementById('teamGrid');
+  const cnt  = document.getElementById('cmCount');
+  if (!grid) return;
+  const list = caseManagers.filter(c => c.name.toLowerCase().includes(q.toLowerCase()));
+  if (cnt) cnt.textContent = list.length;
+  grid.innerHTML = list.map(cm => `
+    <div class="cm-card">
+      <div class="cm-card__head">
+        <div class="cm-avatar" aria-hidden="true">${initials(cm.name)}</div>
+        <div>
+          <div class="cm-card__name">${cm.name}</div>
+          <div class="cm-card__role">${cm.role || 'Case Manager'}</div>
+        </div>
+      </div>
+      <div class="cm-card__contacts">
+        <div class="cm-contact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:${cm.email}">${cm.email}</a>
+        </div>
+        <div class="cm-contact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"></path></svg>
+          <a href="tel:${cm.phone.replace(/-/g,'')}">${cm.phone}</a>
+        </div>
+      </div>
+      <div class="cm-card__actions">
+        <button class="cm-btn cm-btn--primary" onclick="location.href='mailto:${cm.email}'">Email</button>
+        <button class="cm-btn cm-btn--secondary" onclick="location.href='tel:${cm.phone.replace(/-/g,'')}'">Call</button>
+      </div>
+    </div>`).join('');
 }
 document.getElementById('cmSearch')?.addEventListener('input', debounce(e => renderTeam(e.target.value), 300));
 renderTeam();
@@ -1929,87 +1699,87 @@ let activeJobs = {}, totalJobs = 0;
 let empFilter = 'all';
 
 function timeAgo(iso) {
-  const h = (Date.now() - new Date(iso).getTime()) / 3600000;
-  if (h < 24) return { text: 'Posted today', isNew: true };
-  const d = Math.floor(h/24);
-  return { text: `${d === 1 ? '1 day' : d+' days'} ago`, isNew: false };
+  const h = (Date.now() - new Date(iso).getTime()) / 3600000;
+  if (h < 24) return { text: 'Posted today', isNew: true };
+  const d = Math.floor(h/24);
+  return { text: `${d === 1 ? '1 day' : d+' days'} ago`, isNew: false };
 }
 
 function renderJobs() {
-  const c = document.getElementById('empListings'); if (!c) return;
-  let html = '';
-  for (const [city, list] of Object.entries(activeJobs)) {
-    const filtered = (empFilter==='all' ? [...list] : list.filter(j=>j.type===empFilter))
-      .sort((a,b)=> new Date(b.posted) - new Date(a.posted));
-      
-    const id = city.toLowerCase().replace(/\s+/g,'-');
+  const c = document.getElementById('empListings'); if (!c) return;
+  let html = '';
+  for (const [city, list] of Object.entries(activeJobs)) {
+    const filtered = (empFilter==='all' ? [...list] : list.filter(j=>j.type===empFilter))
+      .sort((a,b)=> new Date(b.posted) - new Date(a.posted));
+      
+    const id = city.toLowerCase().replace(/\s+/g,'-');
 
-   html += `<div class="city-block closed" id="emp-${id}">
-      <div class="city-block__header" onclick="this.closest('.city-block').classList.toggle('closed'); this.setAttribute('aria-expanded', this.closest('.city-block').classList.contains('closed') ? 'false' : 'true')"
-           onkeydown="if(event.key==='Enter'||event.key===' '){this.closest('.city-block').classList.toggle('closed'); this.setAttribute('aria-expanded', this.closest('.city-block').classList.contains('closed') ? 'false' : 'true')}"
-           tabindex="0" role="button" aria-expanded="false">
-        <div class="city-block__left"><div class="city-pip" aria-hidden="true"></div><span class="city-name">${city}</span></div>
-        <div class="city-block__right">
-          <span class="city-count">${filtered.length} opening${filtered.length!==1?'s':''}</span>
-          <svg class="city-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-        </div>
-      </div>
-      <div class="city-block__body">`;
-      
-    if (!filtered.length) {
-      html += `<div style="padding:32px 20px;text-align:center;color:var(--text-tertiary);font-size:14px;font-weight:500;">No ${empFilter==='ft'?'full-time':'part-time'} openings listed in ${city}.</div>`;
-    } else {
-      filtered.forEach(j => {
-        const ta = timeAgo(j.posted);
-        html += `<div class="job-row" tabindex="0" role="link" aria-label="${j.title} at ${j.employer}"
-                   onclick="window.open('${j.url}','_blank','noopener noreferrer')"
-                   onkeydown="if(event.key==='Enter'||event.key===' ')window.open('${j.url}','_blank','noopener noreferrer')">
-          <div class="job-initials" aria-hidden="true">${initials(j.employer)}</div>
-          <div class="job-info">
-            <div class="job-title">${j.title}<span class="job-arrow" aria-hidden="true">↗</span></div>
-            <div class="job-meta">
-              <span class="job-employer">${j.employer}</span>
-              <span class="job-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>${ta.text} <span style="margin-left:4px; opacity:0.75; font-weight:600;">via ${j.source || 'Local'}</span></span>
-            </div>
-          </div>
-          <div class="job-right">
-            <span class="job-wage">${j.wage}</span>
-            <div style="display:flex;gap:6px;align-items:center">
-              <span class="badge badge--${j.type}">${j.type==='ft'?'Full-Time':'Part-Time'}</span>
-              ${ta.isNew?'<span class="badge badge--new">New</span>':''}
-            </div>
-          </div>
-        </div>`;
-      });
-    }
-    html += '</div></div>';
-  }
-  c.innerHTML = html;
+   html += `<div class="city-block closed" id="emp-${id}">
+      <div class="city-block__header" onclick="this.closest('.city-block').classList.toggle('closed'); this.setAttribute('aria-expanded', this.closest('.city-block').classList.contains('closed') ? 'false' : 'true')"
+           onkeydown="if(event.key==='Enter'||event.key===' '){this.closest('.city-block').classList.toggle('closed'); this.setAttribute('aria-expanded', this.closest('.city-block').classList.contains('closed') ? 'false' : 'true')}"
+           tabindex="0" role="button" aria-expanded="false">
+        <div class="city-block__left"><div class="city-pip" aria-hidden="true"></div><span class="city-name">${city}</span></div>
+        <div class="city-block__right">
+          <span class="city-count">${filtered.length} opening${filtered.length!==1?'s':''}</span>
+          <svg class="city-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </div>
+      </div>
+      <div class="city-block__body">`;
+      
+    if (!filtered.length) {
+      html += `<div style="padding:32px 20px;text-align:center;color:var(--text-tertiary);font-size:14px;font-weight:500;">No ${empFilter==='ft'?'full-time':'part-time'} openings listed in ${city}.</div>`;
+    } else {
+      filtered.forEach(j => {
+        const ta = timeAgo(j.posted);
+        html += `<div class="job-row" tabindex="0" role="link" aria-label="${j.title} at ${j.employer}"
+                   onclick="window.open('${j.url}','_blank','noopener noreferrer')"
+                   onkeydown="if(event.key==='Enter'||event.key===' ')window.open('${j.url}','_blank','noopener noreferrer')">
+          <div class="job-initials" aria-hidden="true">${initials(j.employer)}</div>
+          <div class="job-info">
+            <div class="job-title">${j.title}<span class="job-arrow" aria-hidden="true">↗</span></div>
+            <div class="job-meta">
+              <span class="job-employer">${j.employer}</span>
+              <span class="job-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>${ta.text} <span style="margin-left:4px; opacity:0.75; font-weight:600;">via ${j.source || 'Local'}</span></span>
+            </div>
+          </div>
+          <div class="job-right">
+            <span class="job-wage">${j.wage}</span>
+            <div style="display:flex;gap:6px;align-items:center">
+              <span class="badge badge--${j.type}">${j.type==='ft'?'Full-Time':'Part-Time'}</span>
+              ${ta.isNew?'<span class="badge badge--new">New</span>':''}
+            </div>
+          </div>
+        </div>`;
+      });
+    }
+    html += '</div></div>';
+  }
+  c.innerHTML = html;
 }
 
 /* ─── RESOURCE CARD BUILDER ──────────────────────────── */
 const SVG = {
-  addr:  `<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>`,
-  phone: `<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"></path>`,
-  email: `<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>`,
-  web:   `<circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>`,
+  addr:  `<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>`,
+  phone: `<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"></path>`,
+  email: `<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>`,
+  web:   `<circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>`,
 };
 const ico = k => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${SVG[k]}</svg>`;
 
 function buildCard(item, colorClass, defaultLabel) {
-  const badgeClass = item.special ? 'rcb--special' : `rcb--${colorClass}`;
-  const label      = item.special || defaultLabel;
-  return `
-    <div class="rc rc--${colorClass} reveal">
-      <div class="rc-badge ${badgeClass}">${label}</div>
-      <div class="rc-name">${item.name}</div>
-      <div class="rc-details">
-        ${item.address ? `<div class="rc-row">${ico('addr')}<span>${item.address}</span></div>` : ''}
-        ${item.phone   ? `<div class="rc-row">${ico('phone')}<a href="tel:${item.phone.replace(/[^0-9]/g,'')}">${item.phone}</a></div>` : ''}
-        ${item.email   ? `<div class="rc-row">${ico('email')}<a href="mailto:${item.email}">${item.email}</a></div>` : ''}
-        ${item.website ? `<div class="rc-row">${ico('web')}<a href="${item.website}" target="_blank" rel="noopener noreferrer">Visit Website ↗</a></div>` : ''}
-      </div>
-    </div>`;
+  const badgeClass = item.special ? 'rcb--special' : `rcb--${colorClass}`;
+  const label      = item.special || defaultLabel;
+  return `
+    <div class="rc rc--${colorClass} reveal">
+      <div class="rc-badge ${badgeClass}">${label}</div>
+      <div class="rc-name">${item.name}</div>
+      <div class="rc-details">
+        ${item.address ? `<div class="rc-row">${ico('addr')}<span>${item.address}</span></div>` : ''}
+        ${item.phone   ? `<div class="rc-row">${ico('phone')}<a href="tel:${item.phone.replace(/[^0-9]/g,'')}">${item.phone}</a></div>` : ''}
+        ${item.email   ? `<div class="rc-row">${ico('email')}<a href="mailto:${item.email}">${item.email}</a></div>` : ''}
+        ${item.website ? `<div class="rc-row">${ico('web')}<a href="${item.website}" target="_blank" rel="noopener noreferrer">Visit Website ↗</a></div>` : ''}
+      </div>
+    </div>`;
 }
 
 function buildPanels(data, containerId, colorMap, labelMap, tabRowId) {
