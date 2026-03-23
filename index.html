@@ -680,6 +680,18 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 @media (max-width: 768px) {
   #resourceMap { height: 400px; }
 }
+
+/* MAP CAROUSEL STYLES */
+.map-carousel-wrapper { margin-top: 1.5rem; position: relative; width: 100%; overflow: hidden; }
+.map-carousel { display: flex; gap: 16px; overflow-x: auto; padding-bottom: 16px; scroll-behavior: smooth; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.map-carousel::-webkit-scrollbar { display: none; }
+.map-card { min-width: 280px; max-width: 280px; background: var(--surface-card); border: 1px solid var(--border-glass); border-radius: var(--radius-md); padding: 16px; box-shadow: var(--shadow-sm); cursor: pointer; transition: all var(--dur-fast); border-left: 4px solid var(--accent); flex-shrink: 0; display: flex; flex-direction: column; backdrop-filter: blur(20px); }
+.map-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--accent); }
+.map-card-name { font-family: var(--f-display); font-weight: 600; font-size: 16px; color: var(--text-primary); margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.map-card-type { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); margin-bottom: 8px; }
+.map-card-addr { font-size: 13px; color: var(--text-tertiary); display: flex; align-items: flex-start; gap: 6px; line-height: 1.4; }
+.map-card-addr svg { width: 14px; height: 14px; flex-shrink: 0; margin-top: 2px; }
+}
 </style>
 </head>
 <body>
@@ -1095,6 +1107,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
           <button class="map-filter-btn" data-filter="legal">Legal & Social</button>
         </div>
         <div id="resourceMap" class="reveal reveal-delay-1"></div>
+        
+        <div class="map-carousel-wrapper reveal reveal-delay-2">
+          <div class="map-carousel" id="mapCarousel"></div>
       </div>
     </section>
   </div>
@@ -2195,28 +2210,42 @@ let currentRenderId = 0;
 async function populateMap(f) {
   const renderId = ++currentRenderId; 
   
-  // Clear existing markers
+  // Clear existing map markers
   mapMarkers.forEach(m => m.setMap(null));
   mapMarkers = [];
   
-  // Prepare Carousel
-  const carouselEl = document.getElementById('mapCarousel');
-  if (carouselEl) carouselEl.innerHTML = '';
-  let carouselHTML = '';
-  
+  // Build location array if empty
   if (!dynamicMapLocs.length) buildDynamicLocs();
-  
   const locs = f === 'all' ? dynamicMapLocs : dynamicMapLocs.filter(l => l.t === f);
+  
+  // IMMEDIATELY render the carousel so the user can start browsing instantly
+  const carouselEl = document.getElementById('mapCarousel');
+  if (carouselEl) {
+    carouselEl.innerHTML = locs.map((loc, index) => {
+      const col = MC[loc.t] || '#0277b6';
+      return `
+        <div class="map-card" id="map-card-${index}" style="border-left-color: ${col};">
+          <div class="map-card-name">${loc.n}</div>
+          <div class="map-card-type" style="color: ${col};">${loc.c}</div>
+          <div class="map-card-addr">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>${loc.a ? loc.a : 'Contact for address'}</span>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
   const bounds = new google.maps.LatLngBounds();
   let pointsAdded = 0;
 
-  // Progressively load pins and build carousel cards
-  for (const loc of locs) {
+  // Silently plot map markers in the background
+  for (let i = 0; i < locs.length; i++) {
+    const loc = locs[i];
     if (renderId !== currentRenderId) return; 
 
     let coords = loc.lat && loc.lng ? { lat: loc.lat, lng: loc.lng } : null;
     
-    // Auto-fetch lat/long if not previously cached
     if (!coords) {
       coords = await getCoordinates(loc.a);
       if (coords) {
@@ -2231,6 +2260,7 @@ async function populateMap(f) {
       const col = MC[loc.t] || '#0277b6';
       const svgIcon = encodeURIComponent(`<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="14" fill="${col}" stroke="#ffffff" stroke-width="3"/><svg x="9" y="9" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></svg>`);
 
+      // Animation removed for instantaneous, smooth loading
       const marker = new google.maps.Marker({
         position: coords,
         map: resourceMap,
@@ -2240,7 +2270,6 @@ async function populateMap(f) {
           scaledSize: new google.maps.Size(32, 32),
           anchor: new google.maps.Point(16, 16)
         }
-        // Removed the DROP animation so they appear instantly and smoothly
       });
 
       const popupHTML = `
@@ -2257,63 +2286,36 @@ async function populateMap(f) {
       marker.addListener('click', () => {
         infoWindow.setContent(popupHTML);
         infoWindow.open(resourceMap, marker);
-        resourceMap.panTo(coords); // smoothly pan to center the clicked marker
+        resourceMap.panTo(coords);
       });
 
       mapMarkers.push(marker);
       bounds.extend(coords);
-      
-      // Build the corresponding Carousel Card
-      const cardId = `map-card-${pointsAdded}`;
-      carouselHTML += `
-        <div class="map-card" id="${cardId}" style="border-left-color: ${col};">
-          <div class="map-card-name">${loc.n}</div>
-          <div class="map-card-type" style="color: ${col};">${loc.c}</div>
-          <div class="map-card-addr">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span style="white-space: normal; line-height: 1.3; display: block;">${loc.a ? loc.a : 'Contact for address'}</span>
-          </div>
-        </div>
-      `;
-      
       pointsAdded++;
+
+      // Link the specific Carousel Card to this Marker
+      const card = document.getElementById(`map-card-${i}`);
+      if (card) {
+        card.addEventListener('click', () => {
+          resourceMap.panTo(coords);
+          resourceMap.setZoom(15);
+          google.maps.event.trigger(marker, 'click'); // Open popup
+          card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' }); // Keep card visible
+        });
+      }
+      
+      // Adjust view
+      if (pointsAdded > 1) {
+        resourceMap.fitBounds(bounds);
+      } else if (pointsAdded === 1) {
+        resourceMap.panTo(coords);
+        resourceMap.setZoom(13);
+      }
     }
   }
 
-  // Inject the carousel into the DOM and attach listeners
-  if (carouselEl) {
-    carouselEl.innerHTML = carouselHTML;
-    
-    // Attach click listeners to sync cards with map pins
-    mapMarkers.forEach((marker, index) => {
-      const card = document.getElementById(`map-card-${index}`);
-      if (card) {
-        card.addEventListener('click', () => {
-          // Smoothly pan map to the marker and zoom in
-          resourceMap.panTo(marker.getPosition());
-          resourceMap.setZoom(15);
-          
-          // Open the map popup bubble automatically
-          google.maps.event.trigger(marker, 'click');
-          
-          // Auto-scroll the carousel so the clicked card stays centered
-          card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-        });
-      }
-    });
-  }
-
-  // Smooth UI FIX: Adjust camera bounds ONCE after all markers are finished loading
-  if (pointsAdded > 1) {
-    resourceMap.fitBounds(bounds);
-    
-    // Prevent zooming in too close when there are only 2 tight pins
-    const listener = google.maps.event.addListener(resourceMap, "idle", function() { 
-      if (resourceMap.getZoom() > 14) resourceMap.setZoom(14); 
-      google.maps.event.removeListener(listener); 
-    });
-  } else if (pointsAdded === 1) {
-    resourceMap.panTo(mapMarkers[0].getPosition());
+  // Prevent map from zooming too far in on small clusters
+  if (pointsAdded > 0 && resourceMap.getZoom() > 14) {
     resourceMap.setZoom(14);
   }
 }
