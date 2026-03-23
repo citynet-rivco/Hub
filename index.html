@@ -2195,8 +2195,14 @@ let currentRenderId = 0;
 async function populateMap(f) {
   const renderId = ++currentRenderId; 
   
+  // Clear existing markers
   mapMarkers.forEach(m => m.setMap(null));
-  mapMarkers =[];
+  mapMarkers = [];
+  
+  // Prepare Carousel
+  const carouselEl = document.getElementById('mapCarousel');
+  if (carouselEl) carouselEl.innerHTML = '';
+  let carouselHTML = '';
   
   if (!dynamicMapLocs.length) buildDynamicLocs();
   
@@ -2204,11 +2210,13 @@ async function populateMap(f) {
   const bounds = new google.maps.LatLngBounds();
   let pointsAdded = 0;
 
+  // Progressively load pins and build carousel cards
   for (const loc of locs) {
     if (renderId !== currentRenderId) return; 
 
     let coords = loc.lat && loc.lng ? { lat: loc.lat, lng: loc.lng } : null;
     
+    // Auto-fetch lat/long if not previously cached
     if (!coords) {
       coords = await getCoordinates(loc.a);
       if (coords) {
@@ -2231,8 +2239,8 @@ async function populateMap(f) {
           url: 'data:image/svg+xml;charset=UTF-8,' + svgIcon,
           scaledSize: new google.maps.Size(32, 32),
           anchor: new google.maps.Point(16, 16)
-        },
-        animation: google.maps.Animation.DROP
+        }
+        // Removed the DROP animation so they appear instantly and smoothly
       });
 
       const popupHTML = `
@@ -2249,22 +2257,63 @@ async function populateMap(f) {
       marker.addListener('click', () => {
         infoWindow.setContent(popupHTML);
         infoWindow.open(resourceMap, marker);
+        resourceMap.panTo(coords); // smoothly pan to center the clicked marker
       });
 
       mapMarkers.push(marker);
       bounds.extend(coords);
-      pointsAdded++;
       
-      if (pointsAdded > 1) {
-        resourceMap.fitBounds(bounds);
-      } else {
-        resourceMap.setCenter(coords);
-        resourceMap.setZoom(12);
-      }
+      // Build the corresponding Carousel Card
+      const cardId = `map-card-${pointsAdded}`;
+      carouselHTML += `
+        <div class="map-card" id="${cardId}" style="border-left-color: ${col};">
+          <div class="map-card-name">${loc.n}</div>
+          <div class="map-card-type" style="color: ${col};">${loc.c}</div>
+          <div class="map-card-addr">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span style="white-space: normal; line-height: 1.3; display: block;">${loc.a ? loc.a : 'Contact for address'}</span>
+          </div>
+        </div>
+      `;
+      
+      pointsAdded++;
     }
   }
 
-  if (pointsAdded > 0 && resourceMap.getZoom() > 14) {
+  // Inject the carousel into the DOM and attach listeners
+  if (carouselEl) {
+    carouselEl.innerHTML = carouselHTML;
+    
+    // Attach click listeners to sync cards with map pins
+    mapMarkers.forEach((marker, index) => {
+      const card = document.getElementById(`map-card-${index}`);
+      if (card) {
+        card.addEventListener('click', () => {
+          // Smoothly pan map to the marker and zoom in
+          resourceMap.panTo(marker.getPosition());
+          resourceMap.setZoom(15);
+          
+          // Open the map popup bubble automatically
+          google.maps.event.trigger(marker, 'click');
+          
+          // Auto-scroll the carousel so the clicked card stays centered
+          card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        });
+      }
+    });
+  }
+
+  // Smooth UI FIX: Adjust camera bounds ONCE after all markers are finished loading
+  if (pointsAdded > 1) {
+    resourceMap.fitBounds(bounds);
+    
+    // Prevent zooming in too close when there are only 2 tight pins
+    const listener = google.maps.event.addListener(resourceMap, "idle", function() { 
+      if (resourceMap.getZoom() > 14) resourceMap.setZoom(14); 
+      google.maps.event.removeListener(listener); 
+    });
+  } else if (pointsAdded === 1) {
+    resourceMap.panTo(mapMarkers[0].getPosition());
     resourceMap.setZoom(14);
   }
 }
