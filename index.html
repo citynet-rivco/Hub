@@ -2361,13 +2361,9 @@ async function populateMap(f) {
 
 // 1. The Master Click Event for the Marker
       marker.addListener('click', () => {
+        resourceMap.setZoom(15);
         // Smoothly pan to center the pin
         resourceMap.panTo(coords);
-        
-        // Add a tiny delay for a "swooping" zoom effect
-        setTimeout(() => {
-            resourceMap.setZoom(15);
-        }, 150);
         
         // Open the info bubble
         infoWindow.setContent(popupHTML);
