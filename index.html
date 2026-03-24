@@ -1708,7 +1708,7 @@ document.querySelectorAll('#empFilters .pill').forEach(btn => {
   });
 });
 
-window.goTo = function(page, scrollTo, activateTab, skipHistory = false) {
+function goTo(page, scrollTo, activateTab) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   const target = document.getElementById('page-'+page);
   if (target) target.classList.add('active');
@@ -1723,54 +1723,6 @@ window.goTo = function(page, scrollTo, activateTab, skipHistory = false) {
   document.querySelectorAll('.mobile-nav__link[data-mpage]').forEach(l => {
     l.classList.toggle('active', l.dataset.mpage === page);
   });
-
-  closeMobileNav();
-
-  // Push state to browser history (unless we are using the back button)
-  if (!skipHistory) {
-    history.pushState({ page, scrollTo, activateTab }, '', `#${page}`);
-  }
-
-  if (scrollTo) {
-    requestAnimationFrame(() => {
-      setTimeout(() => {
-        const el = document.getElementById(scrollTo);
-        if (el) { const y = el.getBoundingClientRect().top + window.scrollY - 100; window.scrollTo({top:y,behavior:'smooth'}); }
-      }, 100);
-    });
-  } else {
-    window.scrollTo({top:0, behavior:'smooth'});
-  }
-  setTimeout(attachReveal, 150);
-
-  if (activateTab) {
-    setTimeout(() => {
-      const tabMap = { housing: 'housingTabs', healthcare: 'hcTabs', resources: 'resTabs' };
-      const tabRowId = tabMap[page];
-      if (tabRowId) {
-         const btn = document.querySelector(`#${tabRowId} .pill[data-tab="${activateTab}"]`);
-         if (btn) btn.click();
-      }
-    }, 200);
-  }
-
-  // Handle map initialization dynamically
-  if (page === 'map') {
-    setTimeout(() => {
-      initResourceMap();
-    }, 300);
-  }
-};
-
-// Listen for browser back/forward arrows
-window.addEventListener('popstate', (event) => {
-  if (event.state && event.state.page) {
-    // Pass true to skipHistory so we don't trap the user in a loop
-    window.goTo(event.state.page, event.state.scrollTo, event.state.activateTab, true);
-  } else {
-    window.goTo('home', null, null, true);
-  }
-});
 
   closeMobileNav();
 
@@ -2300,6 +2252,16 @@ async function populateMap(f) {
   }
 }
 
+const _originalGoTo = window.goTo;
+window.goTo = function(page, scrollTo, activateTab) {
+  if (typeof _originalGoTo === 'function') {
+    _originalGoTo(page, scrollTo, activateTab);
+  }
+  if (page === 'map') {
+    setTimeout(() => {
+      initResourceMap();
+    }, 300);
+  }
 };
 </script>
 </body>
