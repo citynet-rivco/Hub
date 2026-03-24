@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
 <meta name="description" content="City Net Client Hub - Connecting neighbors experiencing homelessness to transformative care and housing solutions.">
 
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9YT2688MQC"></script>
 <script>
   window.dataLayer = window.dataLayer ||[];
@@ -14,7 +13,6 @@
   gtag('config', 'G-9YT2688MQC');
 </script>
 
-<!-- Open Graph preview -->
 <meta property="og:title" content="City Net | Client Hub">
 <meta property="og:description" content="Explore housing resources, find local job opportunities, and connect with your case manager — all in one place.">
 <meta property="og:image" content="https://citynet-rivco.github.io/Hub/preview.jpg">
@@ -22,7 +20,6 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="City Net Client Hub">
 
-<!-- Twitter / iMessage fallback -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="City Net | Client Hub">
 <meta name="twitter:description" content="Housing resources, employment opportunities, and case management in Riverside County.">
@@ -682,16 +679,20 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 }
 
 /* MAP CAROUSEL STYLES */
-.map-carousel-wrapper { margin-top: 1.5rem; position: relative; width: 100%; overflow: hidden; }
-.map-carousel { display: flex; gap: 16px; overflow-x: auto; padding-bottom: 16px; scroll-behavior: smooth; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.map-carousel-wrapper { margin-top: 1.5rem; position: relative; width: 100%; overflow: hidden; padding-bottom: 0.5rem; }
+.map-carousel { display: flex; gap: 16px; overflow-x: auto; padding: 0 1rem 16px 1rem; scroll-behavior: smooth; scrollbar-width: none; -webkit-overflow-scrolling: touch; scroll-snap-type: x mandatory; }
 .map-carousel::-webkit-scrollbar { display: none; }
-.map-card { min-width: 280px; max-width: 280px; background: var(--surface-card); border: 1px solid var(--border-glass); border-radius: var(--radius-md); padding: 16px; box-shadow: var(--shadow-sm); cursor: pointer; transition: all var(--dur-fast); border-left: 4px solid var(--accent); flex-shrink: 0; display: flex; flex-direction: column; backdrop-filter: blur(20px); }
+.map-card { min-width: 280px; max-width: 280px; background: var(--surface-card); border: 1px solid var(--border-glass); border-radius: var(--radius-md); padding: 16px; box-shadow: var(--shadow-sm); cursor: pointer; transition: all var(--dur-fast); border-left: 4px solid var(--accent); flex-shrink: 0; display: flex; flex-direction: column; backdrop-filter: blur(20px); scroll-snap-align: center; }
 .map-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--accent); }
 .map-card-name { font-family: var(--f-display); font-weight: 600; font-size: 16px; color: var(--text-primary); margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .map-card-type { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); margin-bottom: 8px; }
-.map-card-addr { font-size: 13px; color: var(--text-tertiary); display: flex; align-items: flex-start; gap: 6px; line-height: 1.4; }
+.map-card-addr { font-size: 13px; color: var(--text-tertiary); display: flex; align-items: flex-start; gap: 6px; line-height: 1.4; flex-grow: 1; margin-bottom: 1rem; }
 .map-card-addr svg { width: 14px; height: 14px; flex-shrink: 0; margin-top: 2px; }
-}
+.map-card-actions { display: flex; gap: 8px; margin-top: auto; border-top: 1px solid var(--border-light); padding-top: 12px; }
+.map-btn { padding: 8px 12px; font-size: 11px; font-weight: 700; border-radius: 6px; text-transform: uppercase; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px; text-decoration: none; width: 100%; letter-spacing: 0.05em; }
+.map-btn--nav { background: var(--surface-warm); color: var(--accent); border: 1px solid var(--border); }
+.map-btn--nav:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+.map-btn--nav:active { transform: scale(0.96); }
 </style>
 </head>
 <body>
@@ -812,7 +813,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
             Get Started
           </button>
-          <!-- NEW: Resource Map button -->
           <button class="btn btn--outline" onclick="goTo('map')">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             Resource Map
@@ -1087,7 +1087,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
     </section>
   </div>
   
-  <!-- NEW: RESOURCE MAP PAGE -->
   <div class="page" id="page-map">
     <div class="page-hero">
       <div class="container page-hero__inner">
@@ -1179,7 +1178,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
   </div>
 </div>
 
-<!-- 1. MAIN APP SCRIPT -->
 <script>
 'use strict';
 
@@ -1478,7 +1476,7 @@ function initials(n) { return n.split(' ').map(w=>w[0]).join('').slice(0,2).toUp
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-function attachReveal() { document.querySelectorAll('.reveal').forEach(el => observer.observe(el)); }
+function attachReveal() { document.querySelectorAll('.reveal:not(.visible)').forEach(el => observer.observe(el)); }
 
 const countObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -2101,9 +2099,39 @@ document.getElementById('qOverlay').addEventListener('click', e => {
 });
 </script>
 
-<!-- 2. GOOGLE MAPS API & MAP LOGIC -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXQ4P_MfQLuXFaFHsGEb3wPMajcXN9P2M"></script>
 <script>
+/* ─── MAP LAZY LOADING & PERFORMANCE ─────────── */
+let isMapLoaded = false;
+
+function loadGoogleMaps(callback) {
+  if (isMapLoaded) { callback(); return; }
+  
+  const existingScript = document.getElementById('google-maps-script');
+  if (existingScript) {
+    // Script is currently loading, attach to the window callback
+    const oldCallback = window.initResourceMapCallback;
+    window.initResourceMapCallback = () => {
+      if (oldCallback) oldCallback();
+      callback();
+    };
+    return;
+  }
+
+  const script = document.createElement('script');
+  script.id = 'google-maps-script';
+  // Use callback parameter so it triggers initialization as soon as it loads
+  script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyAXQ4P_MfQLuXFaFHsGEb3wPMajcXN9P2M&callback=initResourceMapCallback";
+  script.async = true;
+  script.defer = true;
+  
+  window.initResourceMapCallback = () => {
+    isMapLoaded = true;
+    callback();
+  };
+  
+  document.head.appendChild(script);
+}
+
 /* ─── RESOURCE MAP (Dynamic Auto-Populate Integration) ─────────── */
 let resourceMap = null;
 let mapMarkers =[];
@@ -2207,6 +2235,19 @@ async function getCoordinates(address) {
 
 let currentRenderId = 0;
 
+// Helper function for seamless map zooming
+function smoothZoom(map, targetZoom, currentZoom) {
+  if (currentZoom >= targetZoom) {
+    map.setZoom(targetZoom);
+    return;
+  }
+  let z = google.maps.event.addListener(map, 'zoom_changed', () => {
+    google.maps.event.removeListener(z);
+    smoothZoom(map, targetZoom, currentZoom + 1);
+  });
+  setTimeout(() => { map.setZoom(currentZoom); }, 80); // 80ms delay creates a smooth sweep effect
+}
+
 async function populateMap(f) {
   const renderId = ++currentRenderId; 
   
@@ -2223,6 +2264,9 @@ async function populateMap(f) {
   if (carouselEl) {
     carouselEl.innerHTML = locs.map((loc, index) => {
       const col = MC[loc.t] || '#0277b6';
+      // Generate standard Google Maps Directions URL
+      const navUrl = `https://www.google.com/maps/dir/?api=1&destination=$${encodeURIComponent(loc.a || (loc.lat + ',' + loc.lng))}`;
+      
       return `
         <div class="map-card" id="map-card-${index}" style="border-left-color: ${col};">
           <div class="map-card-name">${loc.n}</div>
@@ -2230,6 +2274,12 @@ async function populateMap(f) {
           <div class="map-card-addr">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             <span>${loc.a ? loc.a : 'Contact for address'}</span>
+          </div>
+          <div class="map-card-actions">
+            <a href="${navUrl}" target="_blank" rel="noopener noreferrer" class="map-btn map-btn--nav" onclick="event.stopPropagation()">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+              Directions
+            </a>
           </div>
         </div>
       `;
@@ -2243,6 +2293,11 @@ async function populateMap(f) {
   for (let i = 0; i < locs.length; i++) {
     const loc = locs[i];
     if (renderId !== currentRenderId) return; 
+
+    // Yield to the main thread every 10 markers to prevent mobile UI freezing
+    if (i > 0 && i % 10 === 0) {
+      await new Promise(resolve => setTimeout(resolve, 0));
+    }
 
     let coords = loc.lat && loc.lng ? { lat: loc.lat, lng: loc.lng } : null;
     
@@ -2260,7 +2315,6 @@ async function populateMap(f) {
       const col = MC[loc.t] || '#0277b6';
       const svgIcon = encodeURIComponent(`<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="14" fill="${col}" stroke="#ffffff" stroke-width="3"/><svg x="9" y="9" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></svg>`);
 
-      // Animation removed for instantaneous, smooth loading
       const marker = new google.maps.Marker({
         position: coords,
         map: resourceMap,
@@ -2272,34 +2326,35 @@ async function populateMap(f) {
         }
       });
 
+      const navUrl = `https://www.google.com/maps/dir/?api=1&destination=$${encodeURIComponent(loc.a || (loc.lat + ',' + loc.lng))}`;
+      
       const popupHTML = `
-        <div style="color:black; padding: 4px; max-width: 220px; font-family: var(--f-body);">
+        <div style="color:black; padding: 6px; max-width: 220px; font-family: var(--f-body);">
           <div class="map-popup-name">${loc.n}</div>
           <div class="map-popup-type" style="color: ${col}; text-transform:uppercase;">${loc.c}</div>
           <div class="map-popup-detail">
             ${loc.a ? '📍 ' + loc.a + '<br>' : ''}
-            ${loc.p ? '📞 <a href="tel:' + loc.p.replace(/[^0-9]/g,'') + '">' + loc.p + '</a>' : ''}
+            ${loc.p ? '📞 <a href="tel:' + loc.p.replace(/[^0-9]/g,'') + '">' + loc.p + '</a><br>' : ''}
+          </div>
+          <div style="margin-top: 12px;">
+            <a href="${navUrl}" target="_blank" style="background:${col}; color:#fff; padding:6px 12px; border-radius:6px; font-size:11px; text-decoration:none; font-weight:bold; display:block; text-align:center; text-transform:uppercase; letter-spacing: 0.05em;">Get Directions ↗</a>
           </div>
         </div>
       `;
 
-// 1. The Master Click Event for the Marker
+      // 1. The Master Click Event for the Marker
       marker.addListener('click', () => {
-        // Smoothly pan to center the pin
         resourceMap.panTo(coords);
         
-        // Add a tiny delay for a "swooping" zoom effect
-        setTimeout(() => {
+        let currentZoom = resourceMap.getZoom();
+        if (currentZoom < 15) {
+            smoothZoom(resourceMap, 15, currentZoom);
+        } else {
             resourceMap.setZoom(15);
-        }, 150);
+        }
         
-        // Open the info bubble
         infoWindow.setContent(popupHTML);
-        infoWindow.open({
-            anchor: marker,
-            map: resourceMap,
-            shouldFocus: false // Prevents the page from harshly snapping to the map
-        });
+        infoWindow.open({ anchor: marker, map: resourceMap, shouldFocus: false });
 
         // Sync the carousel: Scroll the matching card into view and highlight it
         const card = document.getElementById(`map-card-${i}`);
@@ -2345,15 +2400,21 @@ async function populateMap(f) {
   }
 }
 
+// Safely override the goTo function to handle map initialization
 const _originalGoTo = window.goTo;
 window.goTo = function(page, scrollTo, activateTab) {
   if (typeof _originalGoTo === 'function') {
     _originalGoTo(page, scrollTo, activateTab);
   }
+  
+  // Only load heavy map scripts when the user actually navigates to the map
   if (page === 'map') {
-    setTimeout(() => {
-      initResourceMap();
-    }, 300);
+    loadGoogleMaps(() => {
+      // Small timeout allows the DOM to finish its page transition before rendering canvas
+      setTimeout(() => {
+        initResourceMap();
+      }, 150);
+    });
   }
 };
 </script>
