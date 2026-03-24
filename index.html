@@ -31,7 +31,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&display=swap" rel="stylesheet">
 <style>
 /* ══════════════════════════════════════════════════════
-   ND STUDIO: ELITE DESIGN TOKENS (City Net Unified)
+  ND STUDIO: ELITE DESIGN TOKENS (City Net Unified)
 ══════════════════════════════════════════════════════ */
 :root {
   --ink: #0f172a; 
@@ -415,6 +415,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .page-hero__title em { font-style: italic; color: transparent; background: linear-gradient(135deg, var(--accent), var(--accent-light)); -webkit-background-clip: text; }
 .page-hero__sub { margin-top: 1rem; font-size: var(--size-lg); color: var(--text-secondary); line-height: 1.5; max-width: 600px; font-weight: 400; margin-left: auto; margin-right: auto; }
 
+/* NEW: AUDIENCE FILTER STYLES */
+.resource-filter-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; background: var(--surface-card); border: 1px solid var(--border-glass); padding: 12px 20px; border-radius: 100px; box-shadow: var(--shadow-sm), inset 0 2px 4px rgba(0,0,0,0.02); backdrop-filter: blur(20px); }
+.resource-filter-label { font-size: 13px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; gap: 8px; }
+.resource-filter-label svg { width: 16px; height: 16px; color: var(--accent); }
+.audience-select { background: var(--surface); border: 1px solid var(--border); color: var(--text-primary); font-family: var(--f-body); font-size: 13px; font-weight: 600; padding: 8px 32px 8px 16px; border-radius: 100px; cursor: pointer; appearance: none; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 12px center; background-size: 14px; outline: none; transition: all var(--dur-fast); }
+.audience-select:hover { border-color: var(--accent); }
+.audience-select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-pale); }
+.rc.filtered-out { display: none !important; }
+
 .pill-row { display: inline-flex; gap: 4px; padding: 4px; background: var(--surface-card); border: 1px solid var(--border-glass); border-radius: 100px; box-shadow: var(--shadow-sm), inset 0 2px 4px rgba(0,0,0,0.02); backdrop-filter: blur(20px); margin-bottom: 2rem; overflow-x: auto; max-width: 100%; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
 .pill-row::-webkit-scrollbar { display: none; }
 .pill, .tab { padding: 10px 20px; font-size: 13px; font-weight: 600; border: none; border-radius: 100px; background: transparent; color: var(--text-secondary); cursor: pointer; transition: all var(--dur-fast); white-space: nowrap; }
@@ -679,20 +688,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 }
 
 /* MAP CAROUSEL STYLES */
-.map-carousel-wrapper { margin-top: 1.5rem; position: relative; width: 100%; overflow: hidden; padding-bottom: 0.5rem; }
-.map-carousel { display: flex; gap: 16px; overflow-x: auto; padding: 0 1rem 16px 1rem; scroll-behavior: smooth; scrollbar-width: none; -webkit-overflow-scrolling: touch; scroll-snap-type: x mandatory; }
+.map-carousel-wrapper { margin-top: 1.5rem; position: relative; width: 100%; overflow: hidden; }
+.map-carousel { display: flex; gap: 16px; overflow-x: auto; padding-bottom: 16px; scroll-behavior: smooth; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
 .map-carousel::-webkit-scrollbar { display: none; }
-.map-card { min-width: 280px; max-width: 280px; background: var(--surface-card); border: 1px solid var(--border-glass); border-radius: var(--radius-md); padding: 16px; box-shadow: var(--shadow-sm); cursor: pointer; transition: all var(--dur-fast); border-left: 4px solid var(--accent); flex-shrink: 0; display: flex; flex-direction: column; backdrop-filter: blur(20px); scroll-snap-align: center; }
+.map-card { min-width: 280px; max-width: 280px; background: var(--surface-card); border: 1px solid var(--border-glass); border-radius: var(--radius-md); padding: 16px; box-shadow: var(--shadow-sm); cursor: pointer; transition: all var(--dur-fast); border-left: 4px solid var(--accent); flex-shrink: 0; display: flex; flex-direction: column; backdrop-filter: blur(20px); }
 .map-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--accent); }
 .map-card-name { font-family: var(--f-display); font-weight: 600; font-size: 16px; color: var(--text-primary); margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .map-card-type { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); margin-bottom: 8px; }
-.map-card-addr { font-size: 13px; color: var(--text-tertiary); display: flex; align-items: flex-start; gap: 6px; line-height: 1.4; flex-grow: 1; margin-bottom: 1rem; }
+.map-card-addr { font-size: 13px; color: var(--text-tertiary); display: flex; align-items: flex-start; gap: 6px; line-height: 1.4; }
 .map-card-addr svg { width: 14px; height: 14px; flex-shrink: 0; margin-top: 2px; }
-.map-card-actions { display: flex; gap: 8px; margin-top: auto; border-top: 1px solid var(--border-light); padding-top: 12px; }
-.map-btn { padding: 8px 12px; font-size: 11px; font-weight: 700; border-radius: 6px; text-transform: uppercase; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px; text-decoration: none; width: 100%; letter-spacing: 0.05em; }
-.map-btn--nav { background: var(--surface-warm); color: var(--accent); border: 1px solid var(--border); }
-.map-btn--nav:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
-.map-btn--nav:active { transform: scale(0.96); }
 </style>
 </head>
 <body>
@@ -954,6 +958,22 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
     </div>
     <section class="section">
       <div class="container">
+        
+        <div class="resource-filter-row reveal">
+          <div class="resource-filter-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+            Audience Filter
+          </div>
+          <select class="audience-select" onchange="applyAudienceFilter(this.value)" aria-label="Filter resources by audience">
+            <option value="all">Everyone</option>
+            <option value="families">Women & Families</option>
+            <option value="youth">Youth (16-25)</option>
+            <option value="veterans">Veterans</option>
+            <option value="lgbtq">LGBTQIA+</option>
+            <option value="seniors">Seniors (55+)</option>
+          </select>
+        </div>
+        
         <div class="pill-row reveal reveal-delay-1" id="housingTabs" role="tablist">
           <button class="pill on" data-tab="referrals" role="tab" aria-selected="true">Referrals & Outreach</button>
           <button class="pill" data-tab="emergency" role="tab" aria-selected="false">Emergency Shelters</button>
@@ -987,6 +1007,22 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
     </div>
     <section class="section">
       <div class="container">
+        
+        <div class="resource-filter-row reveal">
+          <div class="resource-filter-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+            Audience Filter
+          </div>
+          <select class="audience-select" onchange="applyAudienceFilter(this.value)" aria-label="Filter resources by audience">
+            <option value="all">Everyone</option>
+            <option value="families">Women & Families</option>
+            <option value="youth">Youth (16-25)</option>
+            <option value="veterans">Veterans</option>
+            <option value="lgbtq">LGBTQIA+</option>
+            <option value="seniors">Seniors (55+)</option>
+          </select>
+        </div>
+        
         <div class="pill-row reveal reveal-delay-1" id="hcTabs" role="tablist">
           <button class="pill on" data-tab="medical" role="tab" aria-selected="true">Medical &amp; Primary Care</button>
           <button class="pill" data-tab="behavioral" role="tab" aria-selected="false">Behavioral Health</button>
@@ -1016,6 +1052,22 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
     </div>
     <section class="section">
       <div class="container">
+        
+        <div class="resource-filter-row reveal">
+          <div class="resource-filter-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+            Audience Filter
+          </div>
+          <select class="audience-select" onchange="applyAudienceFilter(this.value)" aria-label="Filter resources by audience">
+            <option value="all">Everyone</option>
+            <option value="families">Women & Families</option>
+            <option value="youth">Youth (16-25)</option>
+            <option value="veterans">Veterans</option>
+            <option value="lgbtq">LGBTQIA+</option>
+            <option value="seniors">Seniors (55+)</option>
+          </select>
+        </div>
+        
         <div class="pill-row reveal reveal-delay-1" id="resTabs" role="tablist">
           <button class="pill on" data-tab="crisis" role="tab" aria-selected="true">Crisis Support</button>
           <button class="pill" data-tab="basic" role="tab" aria-selected="false">Basic Needs</button>
@@ -1476,7 +1528,7 @@ function initials(n) { return n.split(' ').map(w=>w[0]).join('').slice(0,2).toUp
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-function attachReveal() { document.querySelectorAll('.reveal:not(.visible)').forEach(el => observer.observe(el)); }
+function attachReveal() { document.querySelectorAll('.reveal').forEach(el => observer.observe(el)); }
 
 const countObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -1620,11 +1672,38 @@ const SVG = {
 };
 const ico = k => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${SVG[k]}</svg>`;
 
+// NEW: Global function to determine audience tags based on the 'special' string
+function getAudienceTags(special) {
+  if (!special) return 'all';
+  let tags = ['all'];
+  let s = special.toLowerCase();
+  if (s.includes('youth')) tags.push('youth');
+  if (s.includes('women') || s.includes('famil')) tags.push('families');
+  if (s.includes('veteran')) tags.push('veterans');
+  if (s.includes('lgbtq')) tags.push('lgbtq');
+  if (s.includes('senior')) tags.push('seniors');
+  return tags.join(' ');
+}
+
+// NEW: Global function to apply the audience filter across all select dropdowns and cards
+function applyAudienceFilter(val) {
+  document.querySelectorAll('.audience-select').forEach(sel => sel.value = val);
+  document.querySelectorAll('.rc').forEach(card => {
+    if (val === 'all' || (card.dataset.tags && card.dataset.tags.includes(val))) {
+      card.classList.remove('filtered-out');
+    } else {
+      card.classList.add('filtered-out');
+    }
+  });
+}
+
 function buildCard(item, colorClass, defaultLabel) {
   const badgeClass = item.special ? 'rcb--special' : `rcb--${colorClass}`;
   const label      = item.special || defaultLabel;
+  const tags       = getAudienceTags(item.special);
+  
   return `
-    <div class="rc rc--${colorClass} reveal">
+    <div class="rc rc--${colorClass} reveal" data-tags="${tags}">
       <div class="rc-badge ${badgeClass}">${label}</div>
       <div class="rc-name">${item.name}</div>
       <div class="rc-details">
@@ -2099,39 +2178,8 @@ document.getElementById('qOverlay').addEventListener('click', e => {
 });
 </script>
 
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXQ4P_MfQLuXFaFHsGEb3wPMajcXN9P2M"></script>
 <script>
-/* ─── MAP LAZY LOADING & PERFORMANCE ─────────── */
-let isMapLoaded = false;
-
-function loadGoogleMaps(callback) {
-  if (isMapLoaded) { callback(); return; }
-  
-  const existingScript = document.getElementById('google-maps-script');
-  if (existingScript) {
-    // Script is currently loading, attach to the window callback
-    const oldCallback = window.initResourceMapCallback;
-    window.initResourceMapCallback = () => {
-      if (oldCallback) oldCallback();
-      callback();
-    };
-    return;
-  }
-
-  const script = document.createElement('script');
-  script.id = 'google-maps-script';
-  // Use callback parameter so it triggers initialization as soon as it loads
-  script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyAXQ4P_MfQLuXFaFHsGEb3wPMajcXN9P2M&callback=initResourceMapCallback";
-  script.async = true;
-  script.defer = true;
-  
-  window.initResourceMapCallback = () => {
-    isMapLoaded = true;
-    callback();
-  };
-  
-  document.head.appendChild(script);
-}
-
 /* ─── RESOURCE MAP (Dynamic Auto-Populate Integration) ─────────── */
 let resourceMap = null;
 let mapMarkers =[];
@@ -2235,19 +2283,6 @@ async function getCoordinates(address) {
 
 let currentRenderId = 0;
 
-// Helper function for seamless map zooming
-function smoothZoom(map, targetZoom, currentZoom) {
-  if (currentZoom >= targetZoom) {
-    map.setZoom(targetZoom);
-    return;
-  }
-  let z = google.maps.event.addListener(map, 'zoom_changed', () => {
-    google.maps.event.removeListener(z);
-    smoothZoom(map, targetZoom, currentZoom + 1);
-  });
-  setTimeout(() => { map.setZoom(currentZoom); }, 80); // 80ms delay creates a smooth sweep effect
-}
-
 async function populateMap(f) {
   const renderId = ++currentRenderId; 
   
@@ -2264,9 +2299,6 @@ async function populateMap(f) {
   if (carouselEl) {
     carouselEl.innerHTML = locs.map((loc, index) => {
       const col = MC[loc.t] || '#0277b6';
-      // Generate standard Google Maps Directions URL
-      const navUrl = `https://www.google.com/maps/dir/?api=1&destination=$${encodeURIComponent(loc.a || (loc.lat + ',' + loc.lng))}`;
-      
       return `
         <div class="map-card" id="map-card-${index}" style="border-left-color: ${col};">
           <div class="map-card-name">${loc.n}</div>
@@ -2274,12 +2306,6 @@ async function populateMap(f) {
           <div class="map-card-addr">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             <span>${loc.a ? loc.a : 'Contact for address'}</span>
-          </div>
-          <div class="map-card-actions">
-            <a href="${navUrl}" target="_blank" rel="noopener noreferrer" class="map-btn map-btn--nav" onclick="event.stopPropagation()">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
-              Directions
-            </a>
           </div>
         </div>
       `;
@@ -2293,11 +2319,6 @@ async function populateMap(f) {
   for (let i = 0; i < locs.length; i++) {
     const loc = locs[i];
     if (renderId !== currentRenderId) return; 
-
-    // Yield to the main thread every 10 markers to prevent mobile UI freezing
-    if (i > 0 && i % 10 === 0) {
-      await new Promise(resolve => setTimeout(resolve, 0));
-    }
 
     let coords = loc.lat && loc.lng ? { lat: loc.lat, lng: loc.lng } : null;
     
@@ -2315,6 +2336,7 @@ async function populateMap(f) {
       const col = MC[loc.t] || '#0277b6';
       const svgIcon = encodeURIComponent(`<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="14" fill="${col}" stroke="#ffffff" stroke-width="3"/><svg x="9" y="9" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></svg>`);
 
+      // Animation removed for instantaneous, smooth loading
       const marker = new google.maps.Marker({
         position: coords,
         map: resourceMap,
@@ -2326,35 +2348,34 @@ async function populateMap(f) {
         }
       });
 
-      const navUrl = `https://www.google.com/maps/dir/?api=1&destination=$${encodeURIComponent(loc.a || (loc.lat + ',' + loc.lng))}`;
-      
       const popupHTML = `
-        <div style="color:black; padding: 6px; max-width: 220px; font-family: var(--f-body);">
+        <div style="color:black; padding: 4px; max-width: 220px; font-family: var(--f-body);">
           <div class="map-popup-name">${loc.n}</div>
           <div class="map-popup-type" style="color: ${col}; text-transform:uppercase;">${loc.c}</div>
           <div class="map-popup-detail">
             ${loc.a ? '📍 ' + loc.a + '<br>' : ''}
-            ${loc.p ? '📞 <a href="tel:' + loc.p.replace(/[^0-9]/g,'') + '">' + loc.p + '</a><br>' : ''}
-          </div>
-          <div style="margin-top: 12px;">
-            <a href="${navUrl}" target="_blank" style="background:${col}; color:#fff; padding:6px 12px; border-radius:6px; font-size:11px; text-decoration:none; font-weight:bold; display:block; text-align:center; text-transform:uppercase; letter-spacing: 0.05em;">Get Directions ↗</a>
+            ${loc.p ? '📞 <a href="tel:' + loc.p.replace(/[^0-9]/g,'') + '">' + loc.p + '</a>' : ''}
           </div>
         </div>
       `;
 
-      // 1. The Master Click Event for the Marker
+// 1. The Master Click Event for the Marker
       marker.addListener('click', () => {
+        // Smoothly pan to center the pin
         resourceMap.panTo(coords);
         
-        let currentZoom = resourceMap.getZoom();
-        if (currentZoom < 15) {
-            smoothZoom(resourceMap, 15, currentZoom);
-        } else {
+        // Add a tiny delay for a "swooping" zoom effect
+        setTimeout(() => {
             resourceMap.setZoom(15);
-        }
+        }, 150);
         
+        // Open the info bubble
         infoWindow.setContent(popupHTML);
-        infoWindow.open({ anchor: marker, map: resourceMap, shouldFocus: false });
+        infoWindow.open({
+            anchor: marker,
+            map: resourceMap,
+            shouldFocus: false // Prevents the page from harshly snapping to the map
+        });
 
         // Sync the carousel: Scroll the matching card into view and highlight it
         const card = document.getElementById(`map-card-${i}`);
@@ -2400,21 +2421,15 @@ async function populateMap(f) {
   }
 }
 
-// Safely override the goTo function to handle map initialization
 const _originalGoTo = window.goTo;
 window.goTo = function(page, scrollTo, activateTab) {
   if (typeof _originalGoTo === 'function') {
     _originalGoTo(page, scrollTo, activateTab);
   }
-  
-  // Only load heavy map scripts when the user actually navigates to the map
   if (page === 'map') {
-    loadGoogleMaps(() => {
-      // Small timeout allows the DOM to finish its page transition before rendering canvas
-      setTimeout(() => {
-        initResourceMap();
-      }, 150);
-    });
+    setTimeout(() => {
+      initResourceMap();
+    }, 300);
   }
 };
 </script>
