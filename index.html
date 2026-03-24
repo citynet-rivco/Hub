@@ -415,15 +415,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 .page-hero__title em { font-style: italic; color: transparent; background: linear-gradient(135deg, var(--accent), var(--accent-light)); -webkit-background-clip: text; }
 .page-hero__sub { margin-top: 1rem; font-size: var(--size-lg); color: var(--text-secondary); line-height: 1.5; max-width: 600px; font-weight: 400; margin-left: auto; margin-right: auto; }
 
-/* NEW: AUDIENCE FILTER STYLES */
-.resource-filter-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; background: var(--surface-card); border: 1px solid var(--border-glass); padding: 12px 20px; border-radius: 100px; box-shadow: var(--shadow-sm), inset 0 2px 4px rgba(0,0,0,0.02); backdrop-filter: blur(20px); }
-.resource-filter-label { font-size: 13px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; gap: 8px; }
-.resource-filter-label svg { width: 16px; height: 16px; color: var(--accent); }
-.audience-select { background: var(--surface); border: 1px solid var(--border); color: var(--text-primary); font-family: var(--f-body); font-size: 13px; font-weight: 600; padding: 8px 32px 8px 16px; border-radius: 100px; cursor: pointer; appearance: none; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 12px center; background-size: 14px; outline: none; transition: all var(--dur-fast); }
-.audience-select:hover { border-color: var(--accent); }
-.audience-select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-pale); }
-.rc.filtered-out { display: none !important; }
-
 .pill-row { display: inline-flex; gap: 4px; padding: 4px; background: var(--surface-card); border: 1px solid var(--border-glass); border-radius: 100px; box-shadow: var(--shadow-sm), inset 0 2px 4px rgba(0,0,0,0.02); backdrop-filter: blur(20px); margin-bottom: 2rem; overflow-x: auto; max-width: 100%; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
 .pill-row::-webkit-scrollbar { display: none; }
 .pill, .tab { padding: 10px 20px; font-size: 13px; font-weight: 600; border: none; border-radius: 100px; background: transparent; color: var(--text-secondary); cursor: pointer; transition: all var(--dur-fast); white-space: nowrap; }
@@ -959,21 +950,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
     <section class="section">
       <div class="container">
         
-        <div class="resource-filter-row reveal">
-          <div class="resource-filter-label">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
-            Audience Filter
-          </div>
-          <select class="audience-select" onchange="applyAudienceFilter(this.value)" aria-label="Filter resources by audience">
-            <option value="all">Adult (Single)</option>
-            <option value="families">Women & Families</option>
-            <option value="youth">Youth (16-25)</option>
-            <option value="veterans">Veterans</option>
-            <option value="lgbtq">LGBTQIA+</option>
-            <option value="seniors">Seniors (55+)</option>
-          </select>
-        </div>
-        
         <div class="pill-row reveal reveal-delay-1" id="housingTabs" role="tablist">
           <button class="pill on" data-tab="referrals" role="tab" aria-selected="true">Referrals & Outreach</button>
           <button class="pill" data-tab="emergency" role="tab" aria-selected="false">Emergency Shelters</button>
@@ -1008,21 +984,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
     <section class="section">
       <div class="container">
         
-        <div class="resource-filter-row reveal">
-          <div class="resource-filter-label">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
-            Audience Filter
-          </div>
-          <select class="audience-select" onchange="applyAudienceFilter(this.value)" aria-label="Filter resources by audience">
-            <option value="all">Adult (Single)</option>
-            <option value="families">Women & Families</option>
-            <option value="youth">Youth (16-25)</option>
-            <option value="veterans">Veterans</option>
-            <option value="lgbtq">LGBTQIA+</option>
-            <option value="seniors">Seniors (55+)</option>
-          </select>
-        </div>
-        
         <div class="pill-row reveal reveal-delay-1" id="hcTabs" role="tablist">
           <button class="pill on" data-tab="medical" role="tab" aria-selected="true">Medical &amp; Primary Care</button>
           <button class="pill" data-tab="behavioral" role="tab" aria-selected="false">Behavioral Health</button>
@@ -1052,21 +1013,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
     </div>
     <section class="section">
       <div class="container">
-        
-        <div class="resource-filter-row reveal">
-          <div class="resource-filter-label">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
-            Audience Filter
-          </div>
-          <select class="audience-select" onchange="applyAudienceFilter(this.value)" aria-label="Filter resources by audience">
-            <option value="all">Adult (Single)</option>
-            <option value="families">Women & Families</option>
-            <option value="youth">Youth (16-25)</option>
-            <option value="veterans">Veterans</option>
-            <option value="lgbtq">LGBTQIA+</option>
-            <option value="seniors">Seniors (55+)</option>
-          </select>
-        </div>
         
         <div class="pill-row reveal reveal-delay-1" id="resTabs" role="tablist">
           <button class="pill on" data-tab="crisis" role="tab" aria-selected="true">Crisis Support</button>
@@ -1672,38 +1618,12 @@ const SVG = {
 };
 const ico = k => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${SVG[k]}</svg>`;
 
-// NEW: Global function to determine audience tags based on the 'special' string
-function getAudienceTags(special) {
-  if (!special) return 'all';
-  let tags = ['all'];
-  let s = special.toLowerCase();
-  if (s.includes('youth')) tags.push('youth');
-  if (s.includes('women') || s.includes('famil')) tags.push('families');
-  if (s.includes('veteran')) tags.push('veterans');
-  if (s.includes('lgbtq')) tags.push('lgbtq');
-  if (s.includes('senior')) tags.push('seniors');
-  return tags.join(' ');
-}
-
-// NEW: Global function to apply the audience filter across all select dropdowns and cards
-function applyAudienceFilter(val) {
-  document.querySelectorAll('.audience-select').forEach(sel => sel.value = val);
-  document.querySelectorAll('.rc').forEach(card => {
-    if (val === 'all' || (card.dataset.tags && card.dataset.tags.includes(val))) {
-      card.classList.remove('filtered-out');
-    } else {
-      card.classList.add('filtered-out');
-    }
-  });
-}
-
 function buildCard(item, colorClass, defaultLabel) {
   const badgeClass = item.special ? 'rcb--special' : `rcb--${colorClass}`;
   const label      = item.special || defaultLabel;
-  const tags       = getAudienceTags(item.special);
   
   return `
-    <div class="rc rc--${colorClass} reveal" data-tags="${tags}">
+    <div class="rc rc--${colorClass} reveal">
       <div class="rc-badge ${badgeClass}">${label}</div>
       <div class="rc-name">${item.name}</div>
       <div class="rc-details">
@@ -1855,81 +1775,6 @@ window.addEventListener('scroll', () => {
 
 attachReveal();
 
-const PROXY_URL = "https://hub-phi-bice.vercel.app/api/jobs";
-
-async function fetchGoogleJobs() {
-  if (!PROXY_URL) {
-      console.warn('No proxy URL provided. Falling back to local data.');
-      return[];
-  }
-
-  try {
-    const response = await fetch(`${PROXY_URL}?action=get_cache`);
-    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-    const data = await response.json();
-    
-    if (data.error) throw new Error(data.error);
-    if (!data.jobs_results || !Array.isArray(data.jobs_results)) return[];
-
-    return data.jobs_results.map(job => normalizeGoogleJob(job));
-
-  } catch (error) {
-    console.error('Failed to fetch jobs from proxy:', error);
-    return[];
-  }
-}
-
-function normalizeGoogleJob(data) {
-  let city = 'Hemet & San Jacinto';
-  const knownCities =['Murrieta', 'Temecula', 'Menifee', 'Lake Elsinore', 'Wildomar', 'Perris', 'Winchester', 'Hemet', 'San Jacinto'];
-  if (data.location) {
-      for (const known of knownCities) {
-          if (data.location.toLowerCase().includes(known.toLowerCase())) {
-              city = known;
-              break;
-          }
-      }
-  }
-
-  let postedDate = new Date().toISOString();
-  if (data.detected_extensions && data.detected_extensions.posted_at) {
-      const postedStr = data.detected_extensions.posted_at.toLowerCase();
-      const match = postedStr.match(/(\d+)\s+(day|hour|minute)s?\s+ago/);
-      if (match) {
-          const amount = parseInt(match[1], 10);
-          const unit = match[2];
-          const now = Date.now();
-          if (unit === 'day') postedDate = new Date(now - amount * 86400000).toISOString();
-          if (unit === 'hour') postedDate = new Date(now - amount * 3600000).toISOString();
-          if (unit === 'minute') postedDate = new Date(now - amount * 60000).toISOString();
-      }
-  }
-
-  let jobType = 'ft';
-  if (data.detected_extensions && data.detected_extensions.schedule_type) {
-      if (data.detected_extensions.schedule_type.toLowerCase().includes('part')) {
-          jobType = 'pt';
-      }
-  }
-
-  let wage = 'Competitive';
-  if (data.detected_extensions && data.detected_extensions.salary) {
-      wage = data.detected_extensions.salary;
-  }
-
-  return {
-    title: data.title || 'Open Position',
-    employer: data.company_name || 'Local Business',
-    wage: wage,
-    type: jobType,
-    url: data.share_link || data.related_links?.[0]?.link || '#', 
-    posted: postedDate,
-    status: 'open', 
-    location: city,
-    source: 'Google Jobs'
-  };
-}
-
 function removeDuplicates(jobArray) {
   const seen = new Set();
   return jobArray.filter(job => {
@@ -1944,9 +1789,7 @@ async function fetchAndPopulateJobs() {
   const ls = document.getElementById('lastSync');
   if (ls) ls.textContent = 'Syncing live feeds...';
   
-  const liveListings = await fetchGoogleJobs();
-  
-  let allJobs = [...liveListings];
+  let allJobs = [];
   for (const city in jobs) {
     allJobs.push(...jobs[city].map(j => ({ ...j, location: city })));
   }
@@ -2256,32 +2099,25 @@ function initResourceMap() {
 }
 
 const geocodeCache = {};
-let activeGeocodes = 0;
+let currentRenderId = 0;
 
+// MUST KEEP THIS: It acts as a fallback if you forget to add lat/lng to an item
 async function getCoordinates(address) {
   if (geocodeCache[address]) return geocodeCache[address];
   
-  while(activeGeocodes > 3) { await new Promise(r => setTimeout(r, 200)); }
-  activeGeocodes++;
-  
   return new Promise((resolve) => {
-    setTimeout(() => {
-      geocoder.geocode({ address: address }, (results, status) => {
-        activeGeocodes--;
-        if (status === 'OK' && results[0]) {
-          const loc = { lat: results[0].geometry.location.lat(), lng: results[0].geometry.location.lng() };
-          geocodeCache[address] = loc;
-          resolve(loc);
-        } else {
-          console.warn(`Geocode failed for: ${address}`, status);
-          resolve(null);
-        }
-      });
-    }, 250); 
+    geocoder.geocode({ address: address }, (results, status) => {
+      if (status === 'OK' && results[0]) {
+        const loc = { lat: results[0].geometry.location.lat(), lng: results[0].geometry.location.lng() };
+        geocodeCache[address] = loc;
+        resolve(loc);
+      } else {
+        console.warn(`Geocode failed for: ${address}`, status);
+        resolve(null);
+      }
+    });
   });
 }
-
-let currentRenderId = 0;
 
 async function populateMap(f) {
   const renderId = ++currentRenderId; 
@@ -2315,9 +2151,8 @@ async function populateMap(f) {
   const bounds = new google.maps.LatLngBounds();
   let pointsAdded = 0;
 
-  // Silently plot map markers in the background
-  for (let i = 0; i < locs.length; i++) {
-    const loc = locs[i];
+  // Silently plot map markers concurrently for speed
+  locs.forEach(async (loc, i) => {
     if (renderId !== currentRenderId) return; 
 
     let coords = loc.lat && loc.lng ? { lat: loc.lat, lng: loc.lng } : null;
@@ -2409,7 +2244,7 @@ async function populateMap(f) {
         resourceMap.setZoom(13);
       }
     }
-  }
+  });
 
   // Prevent map from zooming too far in on small clusters
   if (pointsAdded > 0 && resourceMap.getZoom() > 14) {
