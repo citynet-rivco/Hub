@@ -30,6 +30,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&display=swap" rel="stylesheet">
 <style>
+/* Prevent iOS input auto-zoom and double-tap zoom */
+html, body { touch-action: manipulation; }
+input, select, textarea { font-size: 16px !important; }
+
 /* ══════════════════════════════════════════════════════
   ND STUDIO: ELITE DESIGN TOKENS (City Net Unified)
 ══════════════════════════════════════════════════════ */
@@ -626,7 +630,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
   .cta-block__actions .btn { justify-content: center; width: 100%; }
   
   .job-row { grid-template-columns: auto minmax(0, 1fr); padding: 16px; gap: 12px; }
-  .job-right { flex-direction: row; align-items: center; justify-content: space-between; grid-column: span 2; margin-top: 8px; flex-wrap: wrap; gap: 8px; }
+  .job-right { flex-direction: row; align-items: center; justify-content: space-between; grid-column: 1 / -1; margin-top: 8px; flex-wrap: wrap; gap: 8px; }
   
   .footer__bottom { flex-direction: column; align-items: flex-start; gap: 12px; }
   .controls-row { flex-direction: column; align-items: stretch; }
@@ -708,7 +712,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 <div class="header-wrapper" id="headerWrapper">
   <header class="header" id="header">
     <div class="container header__inner">
-      <div class="logo" onclick="goTo('home')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('home')" tabindex="0" role="button" aria-label="City Net home">
+      <div class="logo" onclick="window.goTo('home')" onkeydown="if(event.key==='Enter'||event.key===' ')window.goTo('home')" tabindex="0" role="button" aria-label="City Net home">
         <div class="logo__mark">
           <img src="https://images.squarespace-cdn.com/content/v1/5d7aabbf20f74311abd10693/1572561367590-17GJRM1XSH3Q4SSRBEAZ/City+Net+Logo+Icon+Full+Color.png" alt="City Net logo" loading="lazy">
         </div>
@@ -719,30 +723,30 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
       </div>
 
       <nav class="nav" id="mainNav" role="navigation" aria-label="Primary Desktop Navigation">
-        <button class="nav-link active" onclick="goTo('home')" data-page="home">Home</button>
+        <button class="nav-link active" onclick="window.goTo('home')" data-page="home">Home</button>
         
         <div class="nav-drop">
           <button class="nav-link" data-page="resources-group" aria-haspopup="true">Resources ▾</button>
           <div class="nav-drop-menu" role="menu">
-            <div class="nav-drop-item" onclick="goTo('housing')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('housing')" tabindex="0" role="menuitem">
+            <div class="nav-drop-item" onclick="window.goTo('housing')" onkeydown="if(event.key==='Enter'||event.key===' ')window.goTo('housing')" tabindex="0" role="menuitem">
               <div class="ndi-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
               <div><div class="ndi-title">Housing</div><div class="ndi-sub">Shelters, transitional &amp; apartments</div></div>
             </div>
-            <div class="nav-drop-item" onclick="goTo('employment')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('employment')" tabindex="0" role="menuitem">
+            <div class="nav-drop-item" onclick="window.goTo('employment')" onkeydown="if(event.key==='Enter'||event.key===' ')window.goTo('employment')" tabindex="0" role="menuitem">
               <div class="ndi-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7h-3V5a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M8 7h8"/></svg></div>
               <div><div class="ndi-title">Employment</div><div class="ndi-sub">Current openings &amp; job support</div></div>
             </div>
-            <div class="nav-drop-item" onclick="goTo('healthcare')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('healthcare')" tabindex="0" role="menuitem">
+            <div class="nav-drop-item" onclick="window.goTo('healthcare')" onkeydown="if(event.key==='Enter'||event.key===' ')window.goTo('healthcare')" tabindex="0" role="menuitem">
               <div class="ndi-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
               <div><div class="ndi-title">Healthcare</div><div class="ndi-sub">Clinics &amp; behavioral health</div></div>
             </div>
-            <div class="nav-drop-item" onclick="goTo('resources')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('resources')" tabindex="0" role="menuitem">
+            <div class="nav-drop-item" onclick="window.goTo('resources')" onkeydown="if(event.key==='Enter'||event.key===' ')window.goTo('resources')" tabindex="0" role="menuitem">
               <div class="ndi-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
               <div><div class="ndi-title">Additional Resources</div><div class="ndi-sub">Crisis, basics, food &amp; more</div></div>
             </div>
           </div>
         </div>
-        <button class="nav-link" onclick="goTo('home','team-section')" data-page="team">Case Managers</button>
+        <button class="nav-link" onclick="window.goTo('home','team-section')" data-page="team">Case Managers</button>
         <button class="btn btn--solid btn-cta" onclick="window.location.href='tel:9513903567'" aria-label="Call outreach line">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"></path></svg>
           Outreach
@@ -774,16 +778,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
     </button>
   </div>
   <div class="mobile-nav__links" role="menu">
-    <div class="mobile-nav__link active" onclick="goTo('home');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('home');closeMobileNav()}" tabindex="0" role="menuitem" data-mpage="home">Home</div>
+    <div class="mobile-nav__link active" onclick="window.goTo('home');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){window.goTo('home');closeMobileNav()}" tabindex="0" role="menuitem" data-mpage="home">Home</div>
     
     <div class="mobile-nav__group-label">Resources</div>
-    <div class="mobile-nav__link" onclick="goTo('housing');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('housing');closeMobileNav()}" tabindex="0" role="menuitem" data-mpage="housing" style="padding-left:32px">Housing</div>
-    <div class="mobile-nav__link" onclick="goTo('employment');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('employment');closeMobileNav()}" tabindex="0" role="menuitem" data-mpage="employment" style="padding-left:32px">Employment</div>
-    <div class="mobile-nav__link" onclick="goTo('healthcare');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('healthcare');closeMobileNav()}" tabindex="0" role="menuitem" data-mpage="healthcare" style="padding-left:32px">Healthcare</div>
-    <div class="mobile-nav__link" onclick="goTo('resources');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('resources');closeMobileNav()}" tabindex="0" role="menuitem" data-mpage="resources" style="padding-left:32px">Additional Resources</div>
+    <div class="mobile-nav__link" onclick="window.goTo('housing');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){window.goTo('housing');closeMobileNav()}" tabindex="0" role="menuitem" data-mpage="housing" style="padding-left:32px">Housing</div>
+    <div class="mobile-nav__link" onclick="window.goTo('employment');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){window.goTo('employment');closeMobileNav()}" tabindex="0" role="menuitem" data-mpage="employment" style="padding-left:32px">Employment</div>
+    <div class="mobile-nav__link" onclick="window.goTo('healthcare');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){window.goTo('healthcare');closeMobileNav()}" tabindex="0" role="menuitem" data-mpage="healthcare" style="padding-left:32px">Healthcare</div>
+    <div class="mobile-nav__link" onclick="window.goTo('resources');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){window.goTo('resources');closeMobileNav()}" tabindex="0" role="menuitem" data-mpage="resources" style="padding-left:32px">Additional Resources</div>
     <div style="height:1px; background:rgba(255,255,255,0.1); margin:1rem 20px;"></div>
     
-    <div class="mobile-nav__link" onclick="goTo('home','team-section');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){goTo('home','team-section');closeMobileNav()}" tabindex="0" role="menuitem">Case Managers</div>
+    <div class="mobile-nav__link" onclick="window.goTo('home','team-section');closeMobileNav()" onkeydown="if(event.key==='Enter'||event.key===' '){window.goTo('home','team-section');closeMobileNav()}" tabindex="0" role="menuitem">Case Managers</div>
   </div>
   <div class="mobile-nav__footer">
     <a class="mobile-nav__call" href="tel:9513903567">
@@ -808,7 +812,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
             Get Started
           </button>
-          <button class="btn btn--outline" onclick="goTo('map')">
+          <button class="btn btn--outline" onclick="window.goTo('map')">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             Resource Map
           </button>
@@ -847,7 +851,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
           <p class="s-desc">Resources to help you move forward, updated regularly.</p>
         </div>
         <div class="hub-grid">
-          <div class="hub-card hub-card--housing reveal reveal-delay-1" onclick="goTo('housing')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('housing')" tabindex="0" role="button" aria-label="View housing resources">
+          <div class="hub-card hub-card--housing reveal reveal-delay-1" onclick="window.goTo('housing')" onkeydown="if(event.key==='Enter'||event.key===' ')window.goTo('housing')" tabindex="0" role="button" aria-label="View housing resources">
             <div class="hub-card__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
             </div>
@@ -858,7 +862,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </div>
           </div>
-          <div class="hub-card hub-card--employment reveal reveal-delay-2" onclick="goTo('employment')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('employment')" tabindex="0" role="button" aria-label="Browse employment opportunities">
+          <div class="hub-card hub-card--employment reveal reveal-delay-2" onclick="window.goTo('employment')" onkeydown="if(event.key==='Enter'||event.key===' ')window.goTo('employment')" tabindex="0" role="button" aria-label="Browse employment opportunities">
             <div class="hub-card__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
             </div>
@@ -869,7 +873,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </div>
           </div>
-          <div class="hub-card hub-card--team reveal reveal-delay-3" onclick="goTo('home','team-section')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('home','team-section')" tabindex="0" role="button" aria-label="Meet your case management team">
+          <div class="hub-card hub-card--team reveal reveal-delay-3" onclick="window.goTo('home','team-section')" onkeydown="if(event.key==='Enter'||event.key===' ')window.goTo('home','team-section')" tabindex="0" role="button" aria-label="Meet your case management team">
             <div class="hub-card__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
@@ -932,7 +936,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
   <div class="page" id="page-housing">
     <div class="page-hero">
       <div class="container page-hero__inner">
-        <nav class="page-hero__crumb" aria-label="Breadcrumb"><a onclick="goTo('home')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('home')" tabindex="0" role="link">Home</a> <span style="margin:0 4px" aria-hidden="true">/</span> <span aria-current="page">Housing Resources</span></nav>
+        <nav class="page-hero__crumb" aria-label="Breadcrumb"><a onclick="window.goTo('home')" onkeydown="if(event.key==='Enter'||event.key===' ')window.goTo('home')" tabindex="0" role="link">Home</a> <span style="margin:0 4px" aria-hidden="true">/</span> <span aria-current="page">Housing Resources</span></nav>
         <h1 class="page-hero__title reveal">Housing <em>Resources</em></h1>
         <p class="page-hero__sub reveal reveal-delay-1">Emergency shelters, transitional programs, and affordable housing across Riverside County.</p>
       </div>
@@ -966,7 +970,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
   <div class="page" id="page-healthcare">
     <div class="page-hero">
       <div class="container page-hero__inner">
-        <nav class="page-hero__crumb" aria-label="Breadcrumb"><a onclick="goTo('home')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('home')" tabindex="0" role="link">Home</a> <span style="margin:0 4px" aria-hidden="true">/</span> <span aria-current="page">Healthcare</span></nav>
+        <nav class="page-hero__crumb" aria-label="Breadcrumb"><a onclick="window.goTo('home')" onkeydown="if(event.key==='Enter'||event.key===' ')window.goTo('home')" tabindex="0" role="link">Home</a> <span style="margin:0 4px" aria-hidden="true">/</span> <span aria-current="page">Healthcare</span></nav>
         <h1 class="page-hero__title reveal">Health <em>Care</em></h1>
         <p class="page-hero__sub reveal reveal-delay-1">Trusted medical clinics, behavioral health, and specialized care programs.</p>
       </div>
@@ -997,7 +1001,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
   <div class="page" id="page-resources">
     <div class="page-hero">
       <div class="container page-hero__inner">
-        <nav class="page-hero__crumb" aria-label="Breadcrumb"><a onclick="goTo('home')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('home')" tabindex="0" role="link">Home</a> <span style="margin:0 4px" aria-hidden="true">/</span> <span aria-current="page">Additional Resources</span></nav>
+        <nav class="page-hero__crumb" aria-label="Breadcrumb"><a onclick="window.goTo('home')" onkeydown="if(event.key==='Enter'||event.key===' ')window.goTo('home')" tabindex="0" role="link">Home</a> <span style="margin:0 4px" aria-hidden="true">/</span> <span aria-current="page">Additional Resources</span></nav>
         <h1 class="page-hero__title reveal">Additional <em>Resources</em></h1>
       </div>
     </div>
@@ -1031,7 +1035,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
     <div class="page-hero">
       <div class="container page-hero__inner">
         <nav class="page-hero__crumb" aria-label="Breadcrumb">
-          <a onclick="goTo('home')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('home')" tabindex="0" role="link">Home</a> <span style="margin:0 4px" aria-hidden="true">/</span> <span aria-current="page">Employment</span>
+          <a onclick="window.goTo('home')" onkeydown="if(event.key==='Enter'||event.key===' ')window.goTo('home')" tabindex="0" role="link">Home</a> <span style="margin:0 4px" aria-hidden="true">/</span> <span aria-current="page">Employment</span>
         </nav>
         <h1 class="page-hero__title reveal">Employment <em>Opportunities</em></h1>
         <p class="page-hero__sub reveal reveal-delay-1">Current job openings across Riverside County. Click any listing to apply on Indeed or LinkedIn.</p>
@@ -1088,7 +1092,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
   <div class="page" id="page-map">
     <div class="page-hero">
       <div class="container page-hero__inner">
-        <nav class="page-hero__crumb" aria-label="Breadcrumb"><a onclick="goTo('home')" tabindex="0" role="link">Home</a> <span style="margin:0 4px" aria-hidden="true">/</span> <span aria-current="page">Resource Map</span></nav>
+        <nav class="page-hero__crumb" aria-label="Breadcrumb"><a onclick="window.goTo('home')" tabindex="0" role="link">Home</a> <span style="margin:0 4px" aria-hidden="true">/</span> <span aria-current="page">Resource Map</span></nav>
         <h1 class="page-hero__title reveal">Resource <em>Map</em></h1>
         <p class="page-hero__sub reveal reveal-delay-1">Find the nearest shelters, clinics, food pantries, and services across Riverside County.</p>
       </div>
@@ -1130,12 +1134,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
       <div>
         <div class="footer__col-label">Navigate</div>
         <div class="footer__links">
-          <a onclick="goTo('home')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('home')" tabindex="0" role="link">Home</a>
-          <a onclick="goTo('housing')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('housing')" tabindex="0" role="link">Housing</a>
-          <a onclick="goTo('employment')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('employment')" tabindex="0" role="link">Employment</a>
-          <a onclick="goTo('healthcare')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('healthcare')" tabindex="0" role="link">Healthcare</a>
-          <a onclick="goTo('resources')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('resources')" tabindex="0" role="link">Additional Resources</a>
-          <a onclick="goTo('home','team-section')" onkeydown="if(event.key==='Enter'||event.key===' ')goTo('home','team-section')" tabindex="0" role="link">Case Managers</a>
+          <a onclick="window.goTo('home')" onkeydown="if(event.key==='Enter'||event.key===' ')window.goTo('home')" tabindex="0" role="link">Home</a>
+          <a onclick="window.goTo('housing')" onkeydown="if(event.key==='Enter'||event.key===' ')window.goTo('housing')" tabindex="0" role="link">Housing</a>
+          <a onclick="window.goTo('employment')" onkeydown="if(event.key==='Enter'||event.key===' ')window.goTo('employment')" tabindex="0" role="link">Employment</a>
+          <a onclick="window.goTo('healthcare')" onkeydown="if(event.key==='Enter'||event.key===' ')window.goTo('healthcare')" tabindex="0" role="link">Healthcare</a>
+          <a onclick="window.goTo('resources')" onkeydown="if(event.key==='Enter'||event.key===' ')window.goTo('resources')" tabindex="0" role="link">Additional Resources</a>
+          <a onclick="window.goTo('home','team-section')" onkeydown="if(event.key==='Enter'||event.key===' ')window.goTo('home','team-section')" tabindex="0" role="link">Case Managers</a>
         </div>
       </div>
       <div>
@@ -1178,6 +1182,23 @@ a:focus-visible, button:focus-visible, input:focus-visible, div[role="button"]:f
 
 <script>
 'use strict';
+
+// Prevent pinch-to-zoom on touch devices
+document.addEventListener('touchstart', function(event) {
+  if (event.touches.length > 1) {
+    event.preventDefault();
+  }
+}, { passive: false });
+
+// Prevent double-tap to zoom (fallback)
+let lastTouchEnd = 0;
+document.addEventListener('touchend', function(event) {
+  const now = (new Date()).getTime();
+  if (now - lastTouchEnd <= 300) {
+    event.preventDefault();
+  }
+  lastTouchEnd = now;
+}, { passive: false });
 
 function debounce(func, wait) {
   let timeout;
@@ -1708,7 +1729,12 @@ document.querySelectorAll('#empFilters .pill').forEach(btn => {
   });
 });
 
-function goTo(page, scrollTo, activateTab) {
+window.goTo = function(page, scrollTo, activateTab, skipHistory = false) {
+  // Force active element to lose focus, fixing stuck dropdowns
+  if (document.activeElement) {
+    document.activeElement.blur();
+  }
+
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   const target = document.getElementById('page-'+page);
   if (target) target.classList.add('active');
@@ -1725,6 +1751,11 @@ function goTo(page, scrollTo, activateTab) {
   });
 
   closeMobileNav();
+
+  // Push state to browser history (unless we are using the back button)
+  if (!skipHistory) {
+    history.pushState({ page, scrollTo, activateTab }, '', `#${page}`);
+  }
 
   if (scrollTo) {
     requestAnimationFrame(() => {
@@ -1748,7 +1779,24 @@ function goTo(page, scrollTo, activateTab) {
       }
     }, 200);
   }
-}
+
+  // Handle map initialization dynamically
+  if (page === 'map') {
+    setTimeout(() => {
+      initResourceMap();
+    }, 300);
+  }
+};
+
+// Listen for browser back/forward arrows
+window.addEventListener('popstate', (event) => {
+  if (event.state && event.state.page) {
+    // Pass true to skipHistory so we don't trap the user in a loop
+    window.goTo(event.state.page, event.state.scrollTo, event.state.activateTab, true);
+  } else {
+    window.goTo('home', null, null, true);
+  }
+});
 
 function openMobileNav() {
   document.getElementById('mobileNav').classList.add('open');
@@ -1993,27 +2041,27 @@ function qNext(totalSteps) {
 function finishQuestionnaire() {
   closeQuestionnaire();
   
-  if (qState.need === 'employment') return goTo('employment');
-  if (qState.need === 'food') return goTo('resources', null, 'food');
-  if (qState.need === 'legal') return goTo('resources', null, 'legal');
-  if (qState.need === 'crisis') return goTo('resources', null, 'crisis');
+  if (qState.need === 'employment') return window.goTo('employment');
+  if (qState.need === 'food') return window.goTo('resources', null, 'food');
+  if (qState.need === 'legal') return window.goTo('resources', null, 'legal');
+  if (qState.need === 'crisis') return window.goTo('resources', null, 'crisis');
   
   if (qState.need === 'healthcare') {
-    if (qState.sub === 'medical') return goTo('healthcare', null, 'medical');
-    if (qState.sub === 'behavioral' || qState.sub === 'recovery') return goTo('healthcare', null, 'behavioral');
-    if (qState.sub === 'specialty') return goTo('healthcare', null, 'specialty');
-    return goTo('healthcare');
+    if (qState.sub === 'medical') return window.goTo('healthcare', null, 'medical');
+    if (qState.sub === 'behavioral' || qState.sub === 'recovery') return window.goTo('healthcare', null, 'behavioral');
+    if (qState.sub === 'specialty') return window.goTo('healthcare', null, 'specialty');
+    return window.goTo('healthcare');
   }
   
   if (qState.need === 'housing') {
-    if (qState.sub === 'emergency') return goTo('housing', null, 'emergency');
-    if (qState.sub === 'transitional') return goTo('housing', null, 'transitional');
-    if (qState.sub === 'affordable') return goTo('housing', null, 'affordable');
-    if (qState.sub === 'casemgr') return goTo('home', 'team-section');
-    return goTo('housing');
+    if (qState.sub === 'emergency') return window.goTo('housing', null, 'emergency');
+    if (qState.sub === 'transitional') return window.goTo('housing', null, 'transitional');
+    if (qState.sub === 'affordable') return window.goTo('housing', null, 'affordable');
+    if (qState.sub === 'casemgr') return window.goTo('home', 'team-section');
+    return window.goTo('housing');
   }
   
-  goTo('home');
+  window.goTo('home');
 }
 
 document.getElementById('qOverlay').addEventListener('click', e => { 
@@ -2056,7 +2104,8 @@ function buildDynamicLocs() {
               p: item.phone,
               a: item.address,
               lat: item.lat, 
-              lng: item.lng
+              lng: item.lng,
+              w: item.website
             });
           }
         }
@@ -2135,14 +2184,19 @@ async function populateMap(f) {
   if (carouselEl) {
     carouselEl.innerHTML = locs.map((loc, index) => {
       const col = MC[loc.t] || '#0277b6';
+      const nameHTML = loc.w ? `<a href="${loc.w}" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:none;">${loc.n}</a>` : loc.n;
+      const dirURL = loc.a ? `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(loc.a)}` : '#';
+      const dirBtn = loc.a ? `<a href="${dirURL}" target="_blank" rel="noopener noreferrer" style="display:inline-block; margin-top:8px; font-size:11px; font-weight:700; color:var(--accent); text-transform:uppercase; letter-spacing:0.05em; text-decoration:none;">↗ Directions</a>` : '';
+      
       return `
         <div class="map-card" id="map-card-${index}" style="border-left-color: ${col};">
-          <div class="map-card-name">${loc.n}</div>
+          <div class="map-card-name">${nameHTML}</div>
           <div class="map-card-type" style="color: ${col};">${loc.c}</div>
           <div class="map-card-addr">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             <span>${loc.a ? loc.a : 'Contact for address'}</span>
           </div>
+          ${dirBtn}
         </div>
       `;
     }).join('');
@@ -2183,41 +2237,40 @@ async function populateMap(f) {
         }
       });
 
+      const nameHTML = loc.w ? `<a href="${loc.w}" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:underline;">${loc.n}</a>` : loc.n;
+      const dirURL = loc.a ? `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(loc.a)}` : '#';
+      const dirBtn = loc.a ? `<div style="margin-top:8px;"><a href="${dirURL}" target="_blank" rel="noopener noreferrer" style="display:inline-block; background:var(--accent); color:#fff; padding:6px 12px; border-radius:100px; font-size:11px; font-weight:600; text-decoration:none; text-align:center; width:100%; box-sizing:border-box;">Get Directions</a></div>` : '';
+
       const popupHTML = `
         <div style="color:black; padding: 4px; max-width: 220px; font-family: var(--f-body);">
-          <div class="map-popup-name">${loc.n}</div>
+          <div class="map-popup-name">${nameHTML}</div>
           <div class="map-popup-type" style="color: ${col}; text-transform:uppercase;">${loc.c}</div>
           <div class="map-popup-detail">
             ${loc.a ? '📍 ' + loc.a + '<br>' : ''}
             ${loc.p ? '📞 <a href="tel:' + loc.p.replace(/[^0-9]/g,'') + '">' + loc.p + '</a>' : ''}
           </div>
+          ${dirBtn}
         </div>
       `;
 
-// 1. The Master Click Event for the Marker
       marker.addListener('click', () => {
         resourceMap.setZoom(15);
-        // Smoothly pan to center the pin
         resourceMap.panTo(coords);
         
-        // Open the info bubble
         infoWindow.setContent(popupHTML);
         infoWindow.open({
             anchor: marker,
             map: resourceMap,
-            shouldFocus: false // Prevents the page from harshly snapping to the map
+            shouldFocus: false
         });
 
-        // Sync the carousel: Scroll the matching card into view and highlight it
         const card = document.getElementById(`map-card-${i}`);
         if (card) {
-          // Reset all cards to default shadow
           document.querySelectorAll('.map-card').forEach(c => {
               c.style.boxShadow = 'var(--shadow-sm)';
               c.style.borderColor = 'var(--border-glass)';
           });
           
-          // Highlight the active card and smoothly scroll it to the center
           card.style.boxShadow = '0 8px 24px rgba(2, 119, 182, 0.15)';
           card.style.borderColor = 'var(--accent)';
           card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
@@ -2228,7 +2281,6 @@ async function populateMap(f) {
       bounds.extend(coords);
       pointsAdded++;
 
-      // 2. Link the Carousel Card to trigger the exact same beautiful animation
       const card = document.getElementById(`map-card-${i}`);
       if (card) {
         card.addEventListener('click', () => {
@@ -2236,7 +2288,6 @@ async function populateMap(f) {
         });
       }
       
-      // Adjust view
       if (pointsAdded > 1) {
         resourceMap.fitBounds(bounds);
       } else if (pointsAdded === 1) {
@@ -2246,23 +2297,10 @@ async function populateMap(f) {
     }
   });
 
-  // Prevent map from zooming too far in on small clusters
   if (pointsAdded > 0 && resourceMap.getZoom() > 14) {
     resourceMap.setZoom(14);
   }
 }
-
-const _originalGoTo = window.goTo;
-window.goTo = function(page, scrollTo, activateTab) {
-  if (typeof _originalGoTo === 'function') {
-    _originalGoTo(page, scrollTo, activateTab);
-  }
-  if (page === 'map') {
-    setTimeout(() => {
-      initResourceMap();
-    }, 300);
-  }
-};
 </script>
 </body>
 </html>
