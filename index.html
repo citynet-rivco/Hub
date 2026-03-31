@@ -1920,13 +1920,13 @@ async function fetchAndPopulateJobs() {
   
   validJobs.forEach(job => {
     const loc = job.location;
-    const targetLoc =['Murrieta', 'Temecula', 'Menifee', 'Lake Elsinore', 'Wildomar', 'Perris', 'Winchester', 'Hemet', 'San Jacinto', 'Hemet & San Jacinto'].includes(loc) ? loc : 'Hemet & San Jacinto';
+    const targetLoc =['Murrieta', 'Temecula', 'Menifee', 'Lake Elsinore', 'Wildomar', 'Perris', 'Winchester', 'Hemet', 'San Jacinto', 'Hemet & San Jacinto', 'Coachella Valley'].includes(loc) ? loc : 'Hemet & San Jacinto';
     
     if (!activeJobs[targetLoc]) activeJobs[targetLoc] = [];
     activeJobs[targetLoc].push(job);
     totalJobs++;
   });
-
+  
   if (ls) { 
     const n = new Date(); 
     ls.textContent = 'Live • ' + n.toLocaleTimeString(undefined, {hour:'2-digit', minute:'2-digit'}); 
