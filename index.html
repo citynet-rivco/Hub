@@ -1386,7 +1386,6 @@ const jobs = {
     {title:"Retail Sales Associate",employer:"AutoZone",wage:"$16.90/hr",type:"pt",url:"https://careers.autozone.com/hcmUI/CandidateExperience/en/sites/CX_1/job/71830?utm_medium=jobboard&utm_source=linkedin",posted:"2026-03-20T12:00:00.000Z",status:"open", source:"LinkedIn"}
   ],
   "Coachella Valley": [
-    {title:"Coming soon"},
   ]
 };
 
@@ -1886,13 +1885,7 @@ attachReveal();
 function removeDuplicates(jobArray) {
   const seen = new Set();
   return jobArray.filter(job => {
-    // Safely handle missing title, employer, or location
-    const title = job.title?.toLowerCase().trim() || '';
-    const employer = job.employer?.toLowerCase().trim() || '';
-    const location = job.location?.toLowerCase().trim() || '';
-    
-    const key = `${title}|${employer}|${location}`;
-    
+    const key = `${job.title.toLowerCase().trim()}|${job.employer.toLowerCase().trim()}|${job.location.toLowerCase().trim()}`;
     if (seen.has(key)) return false;
     seen.add(key);
     return true;
