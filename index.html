@@ -1886,7 +1886,13 @@ attachReveal();
 function removeDuplicates(jobArray) {
   const seen = new Set();
   return jobArray.filter(job => {
-    const key = `${job.title.toLowerCase().trim()}|${job.employer.toLowerCase().trim()}|${job.location.toLowerCase().trim()}`;
+    // Safely handle missing title, employer, or location
+    const title = job.title?.toLowerCase().trim() || '';
+    const employer = job.employer?.toLowerCase().trim() || '';
+    const location = job.location?.toLowerCase().trim() || '';
+    
+    const key = `${title}|${employer}|${location}`;
+    
     if (seen.has(key)) return false;
     seen.add(key);
     return true;
