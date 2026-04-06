@@ -49,7 +49,6 @@ const jobs = {
     {title:"Medical Receptionist",employer:"RadNet",wage:"$19.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4382217549/",posted:"2026-03-23T12:00:00.000Z",status:"open", source:"LinkedIn"},
     {title:"Retail Stocking Associate",employer:"Burlington",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4383759969/",posted:"2026-03-23T12:00:00.000Z",status:"open", source:"LinkedIn"},
     {title:"Retail Shortage Control",employer:"Burlington",wage:"$18.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4383768746/",posted:"2026-03-23T12:00:00.000Z",status:"open", source:"LinkedIn"},
-    {title:"Specialty Sales",employer:"Target",wage:"$18.25/hr",type:"pt",url:"https://www.indeed.com/jobs?q=Specialty+Sales+Target&l=Murrieta%2C+CA",posted:"2026-03-22T12:00:00.000Z",status:"open", source:"Indeed"}
   ],
     "Temecula": [
     {title:"Host",employer:"LongHorn Steakhouse",wage:"$16.00/hr",type:"pt",url:"https://www.indeed.com/viewjob?jk=3d902c6e41cf917b",posted:"2026-04-05T12:00:00.000Z",status:"open", source:"Indeed"},
@@ -75,7 +74,6 @@ const jobs = {
     {title:"Sales Associate",employer:"GNC",wage:"$16.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4389313964",posted:"2026-03-25T19:00:00.000Z",status:"open", source:"LinkedIn"},
     {title:"Service Technician",employer:"Pep Boys",wage:"$16.90/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4387175694/",posted:"2026-03-25T14:00:00.000Z",status:"open", source:"LinkedIn"},
     {title:"HR Support Services Assistant",employer:"Southwest Healthcare",wage:"$24.99/hr",type:"ft",url:"https://www.indeed.com/jobs?q=HR+Support+Services+Assistant+Southwest+Healthcare&l=Temecula%2C+CA",posted:"2026-03-25T12:00:00.000Z",status:"open", source:"Indeed"},
-    {title:"Roofing Laborer",employer:"Westmax Roofing",wage:"$25.00/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Roofing+Laborer+Westmax+Roofing&l=Temecula%2C+CA",posted:"2026-03-22T12:00:00.000Z",status:"open", source:"Indeed"}
   ],
     "Wildomar": [
     {title:"Crew Team Member",employer:"McDonald's",wage:"$16.90/hr",type:"ft",url:"https://www.indeed.com/viewjob?jk=66b31ec602428534",posted:"2026-04-05T12:00:00.000Z",status:"open", source:"Indeed"},
@@ -99,7 +97,6 @@ const jobs = {
     {title:"Grocery Clerk",employer:"Sprouts Farmers Market",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4383229662/",posted:"2026-03-24T12:00:00.000Z",status:"open", source:"LinkedIn"},
     {title:"Seasonal Cashier",employer:"Lowe's",wage:"$16.90/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4383474534/",posted:"2026-03-23T12:00:00.000Z",status:"open", source:"LinkedIn"},
     {title:"Sales Associate",employer:"Petco",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4383801335/",posted:"2026-03-23T12:00:00.000Z",status:"open", source:"LinkedIn"},
-    {title:"Parts Specialist",employer:"O'Reilly Auto Parts",wage:"$18.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4383318870/",posted:"2026-03-22T12:00:00.000Z",status:"open", source:"LinkedIn"},
   ],
     "Winchester": [
     {title:"Restaurant Team Member",employer:"Panera Bread",wage:"$20.00/hr",type:"ft",url:"https://to.indeed.com/aakknnbxtkqp",posted:"2026-04-01T12:00:00.000Z",status:"open", source:"Indeed"},
@@ -134,8 +131,6 @@ const jobs = {
     {title:"Merchandising Sales Associate",employer:"Tractor Supply Company",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4213262690/",posted:"2026-03-23T12:00:00.000Z",status:"open", source:"LinkedIn"},
     {title:"Meat / Produce Team Associate",employer:"Walmart",wage:"$18.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4373907843/",posted:"2026-03-23T12:00:00.000Z",status:"open", source:"LinkedIn"},
     {title:"Youth Civic Engagement & Policy Leadership Intern",employer:"The Happier Life Project",wage:"$18.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4383443423/",posted:"2026-03-23T12:00:00.000Z",status:"open", source:"LinkedIn"},
-    {title:"Service Team",employer:"Panda Express",wage:"$21.00/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Service+Team+Panda+Express&l=Lake+Elsinore%2C+CA",posted:"2026-03-22T12:00:00.000Z",status:"open", source:"Indeed"},
-    {title:"Cart Attendant",employer:"Walmart",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4373512701/",posted:"2026-03-22T12:00:00.000Z",status:"open", source:"LinkedIn"}
   ],
     "Perris": [
     {title:"Warehouse Worker",employer:"IDC Logistics",wage:"$18.00/hr",type:"ft",url:"https://www.indeed.com/viewjob?jk=1d6dad24534dd351",posted:"2026-04-05T12:00:00.000Z",status:"open", source:"Indeed"},
