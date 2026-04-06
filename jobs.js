@@ -87,7 +87,6 @@ const jobs = {
     {title:"Sales Associate",employer:"GNC",wage:"$16.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4389313964",posted:"2026-03-25T19:00:00.000Z",status:"open", source:"LinkedIn"},
     {title:"Service Technician",employer:"Pep Boys",wage:"$16.90/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4387175694/",posted:"2026-03-25T14:00:00.000Z",status:"open", source:"LinkedIn"},
     {title:"HR Support Services Assistant",employer:"Southwest Healthcare",wage:"$24.99/hr",type:"ft",url:"https://www.indeed.com/jobs?q=HR+Support+Services+Assistant+Southwest+Healthcare&l=Temecula%2C+CA",posted:"2026-03-25T12:00:00.000Z",status:"open", source:"Indeed"},
-    {title:"Entry-Level Sales Crew",employer:"Undisclosed",wage:"$48,000–$56,000/yr",type:"ft",url:"https://to.indeed.com/aaxf746vlvky",posted:"2026-03-24T00:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Front Desk Customer Service Rep",employer:"Legacy Education",wage:"$16.90–$20.00/hr",type:"ft",url:"https://to.indeed.com/aa8rhzlqwzdx",posted:"2026-03-23T00:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Dental Assistant & Receptionist",employer:"Smile Dental Care",wage:"$21.00–$27.00/hr",type:"pt",url:"https://to.indeed.com/aahrdp8w68w8",posted:"2026-03-15T00:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Security Host",employer:"Sporting Fraternity Inc",wage:"From $17.00/hr",type:"pt",url:"https://to.indeed.com/aab4np2cbf6f",posted:"2026-03-14T00:00:00.000Z",status:"open", source:"Indeed"},
@@ -103,7 +102,7 @@ const jobs = {
     {title:"Team Member",employer:"Popeyes",wage:"$16.90/hr",type:"ft",url:"https://www.indeed.com/viewjob?jk=5d6cbbb42784d3d0",posted:"2026-04-05T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Crew Member",employer:"Taco Bell",wage:"$20.00/hr",type:"ft",url:"https://www.indeed.com/viewjob?jk=fc805783906245a5",posted:"2026-04-04T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Sales Associate",employer:"Verizon",wage:"$44,000–$56,000/yr",type:"ft",url:"https://to.indeed.com/aambpyxrmnzq",posted:"2026-03-31T00:00:00.000Z",status:"open", source:"Indeed"},
-    {title:"AT&T Sales Associate",employer:"Westline Collective",wage:"$45,000–$55,000/yr",type:"ft",url:"https://to.indeed.com/aaxz42s422mc",posted:"2026-03-27T00:00:00.000Z",status:"open", source:"Indeed"},
+    {title:"Sales Associate",employer:"AT&T",wage:"$45,000–$55,000/yr",type:"ft",url:"https://to.indeed.com/aaxz42s422mc",posted:"2026-03-27T00:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Security Officer",employer:"Iron Wall Security",wage:"From $17.75/hr",type:"pt",url:"https://to.indeed.com/aamgbypkbm8l",posted:"2026-03-27T00:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Assistant General Manager",employer:"McDonald's",wage:"$24.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4320741676/",posted:"2026-03-26T07:00:00.000Z",status:"open", source:"LinkedIn"},
     {title:"Membership Sales Associate",employer:"Super Star Car Wash",wage:"$18.50/hr",type:"pt",url:"https://www.indeed.com/jobs?q=Membership+Sales+Associate+Super+Star+Car+Wash&l=Wildomar%2C+CA",posted:"2026-03-23T12:00:00.000Z",status:"open", source:"Indeed"}
@@ -111,7 +110,7 @@ const jobs = {
   "Menifee": [
     {title:"Restaurant Team Member",employer:"Cafe Rio",wage:"$20.00/hr",type:"ft",url:"https://www.ziprecruiter.com/c/Cafe-Rio-Mexican-Grill/Job/Restaurant-Team-Member/-in-Menifee,CA?jid=b0f66bc5bfcc8254",posted:"2026-04-04T12:00:00.000Z",status:"open", source:"ZipRecruiter"},
     {title:"Swim Instructor",employer:"Phoenix Swim Academy",wage:"From $20.00/hr",type:"pt",url:"https://to.indeed.com/aazzhkh7tnrl",posted:"2026-04-02T00:00:00.000Z",status:"open", source:"Indeed"},
-    {title:"AT&T Sales Associate",employer:"Westline Collective",wage:"$45,000–$55,000/yr",type:"ft",url:"https://to.indeed.com/aay74gvtjrtx",posted:"2026-03-27T00:00:00.000Z",status:"open", source:"Indeed"},
+    {title:"Sales Associate",employer:"AT&T",wage:"$45,000–$55,000/yr",type:"ft",url:"https://to.indeed.com/aay74gvtjrtx",posted:"2026-03-27T00:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Maintenance Technician",employer:"Greystar",wage:"$23.00/hr",type:"ft",url:"https://jobs.greystar.com/job/-/-/35302/93121952240?source=APPLICANT_SOURCE-6-122",posted:"2026-03-26T08:00:00.000Z",status:"open", source:"LinkedIn"},
     {title:"Kitchen Team Member",employer:"Buffalo Wild Wings",wage:"$16.90/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4388095012",posted:"2026-03-26T07:00:00.000Z",status:"open", source:"LinkedIn"},
     {title:"Early Morning Stock Associate",employer:"Ross Stores, Inc.",wage:"$16.90/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4361817205",posted:"2026-03-26T06:00:00.000Z",status:"open", source:"LinkedIn"},
