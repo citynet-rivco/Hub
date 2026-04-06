@@ -2,7 +2,6 @@ const jobs = {
   "Murrieta": [
     {title:"Store Associate",employer:"In-N-Out Burger",wage:"$22.00/hr",type:"pt",url:"https://talent.innout.com/en_US/careers/JobDetail?jobId=2487",posted:"2026-04-05T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Crew Team Member",employer:"McDonald's",wage:"$16.90/hr",type:"pt",url:"https://www.indeed.com/viewjob?jk=81bf6fb70c694ca4&",posted:"2026-04-05T12:00:00.000Z",status:"open", source:"Indeed"},
-    {title:"Team Member",employer:"Capriotti's Sandwich Shop",wage:"$20.00/hr",type:"pt",url:"https://www.indeed.com/viewjob?jk=8076450260465bc3",posted:"2026-04-05T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Laundry Attendant",employer:"Murrieta Hot Springs Resort",wage:"$17.00/hr",type:"ft",url:"https://www.indeed.com/viewjob?jk=6b9a71fdc8e4e44b",posted:"2026-04-05T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Team Member",employer:"Quick Quack Car Wash",wage:"$17.00/hr",type:"ft",url:"https://www.indeed.com/viewjob?jk=e5a1b98beda212ea",posted:"2026-04-05T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Restaurant Team Member",employer:"Panera Bread",wage:"$20.00/hr",type:"ft",url:"https://www.indeed.com/viewjob?jk=fd5dddc24b0a750f",posted:"2026-04-04T12:00:00.000Z",status:"open", source:"Indeed"},
