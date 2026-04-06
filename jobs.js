@@ -6,6 +6,7 @@ const jobs = {
     {title:"Laundry Attendant",employer:"Murrieta Hot Springs Resort",wage:"$17.00/hr",type:"ft",url:"https://www.indeed.com/viewjob?jk=6b9a71fdc8e4e44b",posted:"2026-04-05T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Team Member",employer:"Quick Quack Car Wash",wage:"$17.00/hr",type:"ft",url:"https://www.indeed.com/viewjob?jk=e5a1b98beda212ea",posted:"2026-04-05T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Restaurant Team Member",employer:"Panera Bread",wage:"$20.00/hr",type:"ft",url:"https://www.indeed.com/viewjob?jk=fd5dddc24b0a750f",posted:"2026-04-04T12:00:00.000Z",status:"open", source:"Indeed"},
+    {title:"Customer Service & Logistics Admin",employer:"CCXchange",wage:"$23.15–$25.10/hr",type:"ft",url:"https://to.indeed.com/aaqh76hnf6y7",posted:"2026-04-02T00:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Line Cook",employer:"Chili's Grill & Bar",wage:"$17.00/hr",type:"ft",url:"https://to.indeed.com/aafqkxmc8qlb",posted:"2026-04-02T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Dishwasher",employer:"Black Bear Diner",wage:"$16.50/hr",type:"ft",url:"https://to.indeed.com/aa4vxpjw6d8y",posted:"2026-04-02T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Server",employer:"Black Bear Diner",wage:"$16.50/hr",type:"pt",url:"https://to.indeed.com/aangflbx789h",posted:"2026-04-02T12:00:00.000Z",status:"open", source:"Indeed"},
@@ -14,6 +15,7 @@ const jobs = {
     {title:"Window Cleaner",employer:"Clearvu Window Cleaning",wage:"$20.00/hr",type:"ft",url:"https://to.indeed.com/aacw68sqrpf6",posted:"2026-03-30T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Assistant Restaurant Manager",employer:"Chuck E. Cheese",wage:"$18.40/hr",type:"ft",url:"https://to.indeed.com/aafmy2bfzqlw",posted:"2026-03-30T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Medical Assistant",employer:"Tri Valley Internal Medicine",wage:"$20.00/hr",type:"ft",url:"https://to.indeed.com/aafd8q67vmcl",posted:"2026-03-30T12:00:00.000Z",status:"open", source:"Indeed"},
+    {title:"Customer Service Representative",employer:"Westline Collective",wage:"$45,000–$55,000/yr",type:"ft",url:"https://to.indeed.com/aagltlfwvvv7",posted:"2026-03-27T00:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Customer Service Representative",employer:"Andy's Glass & Window Company",wage:"$19.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4389802674",posted:"2026-03-26T11:00:00.000Z",status:"open", source:"LinkedIn"},
     {title:"Pharmacy Customer Service Associate",employer:"Walgreens",wage:"$17.90/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4388362946",posted:"2026-03-26T10:00:00.000Z",status:"open", source:"LinkedIn"},
     {title:"Front End Service Team Associate",employer:"Walmart",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4379995773",posted:"2026-03-26T09:00:00.000Z",status:"open", source:"LinkedIn"},
@@ -21,6 +23,7 @@ const jobs = {
     {title:"Shift Manager",employer:"McDonald's",wage:"$22.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4320771796/",posted:"2026-03-26T06:00:00.000Z",status:"open", source:"LinkedIn"},
     {title:"Fitness Manager",employer:"EōS Fitness",wage:"$25.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4334573194/",posted:"2026-03-26T05:00:00.000Z",status:"open", source:"LinkedIn"},
     {title:"Part Time Bridal Sales",employer:"David's Bridal",wage:"$17.65/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4389477139",posted:"2026-03-26T02:00:00.000Z",status:"open", source:"LinkedIn"},
+    {title:"Verizon Team Member",employer:"ASCND Solutions",wage:"$50,000–$61,000/yr",type:"ft",url:"https://to.indeed.com/aag2pwqxcn2l",posted:"2026-03-25T00:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Supervisor",employer:"Lucky Strike Entertainment",wage:"$24.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4387891598/",posted:"2026-03-25T17:00:00.000Z",status:"open", source:"LinkedIn"},
     {title:"Warehouse (Overnight)",employer:"Lowe's",wage:"$18.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4385163721/",posted:"2026-03-25T16:00:00.000Z",status:"open", source:"LinkedIn"},
     {title:"Security Specialist",employer:"Target",wage:"$20.50/hr",type:"pt",url:"https://www.indeed.com/jobs?q=Security+Specialist+Target&l=Murrieta%2C+CA",posted:"2026-03-25T12:00:00.000Z",status:"open", source:"Indeed"},
@@ -38,7 +41,7 @@ const jobs = {
     {title:"Plumbing Service Technician",employer:"Big B's Plumbing, Electric, Heating & Air",wage:"$25.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4384898423/",posted:"2026-03-25T12:00:00.000Z",status:"open", source:"LinkedIn"},
     {title:"Meat - Seafood Clerk",employer:"Albertsons",wage:"$16.70/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4389020620",posted:"2026-03-25T12:00:00.000Z",status:"open", source:"LinkedIn"},
     {title:"Maintenance Technician",employer:"Avenue5 Residential",wage:"$21.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4389273269",posted:"2026-03-25T12:00:00.000Z",status:"open", source:"LinkedIn"},
-    {title:"Part -Time Librarian",employer:"City of Murrieta",wage:"$34.92/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4387537909",posted:"2026-03-25T12:00:00.000Z",status:"open", source:"LinkedIn"},
+    {title:"Librarian",employer:"City of Murrieta",wage:"$34.92/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4387537909",posted:"2026-03-25T12:00:00.000Z",status:"open", source:"LinkedIn"},
     {title:"Tire Technician",employer:"Big Brand Tire & Service",wage:"$18.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4389060017",posted:"2026-03-25T12:00:00.000Z",status:"open", source:"LinkedIn"},
     {title:"Client Engagement Specialist",employer:"The Grey Legal Group",wage:"$23.00/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Client+Engagement+Specialist+Grey+Legal+Group&l=Murrieta%2C+CA",posted:"2026-03-24T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Barista / Busser",employer:"Intazza",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4382562974/",posted:"2026-03-24T12:00:00.000Z",status:"open", source:"LinkedIn"},
@@ -48,9 +51,9 @@ const jobs = {
     {title:"Membership Sales Associate",employer:"Super Star Car Wash",wage:"$18.50/hr",type:"pt",url:"https://www.indeed.com/jobs?q=Membership+Sales+Associate+Super+Star+Car+Wash&l=Murrieta%2C+CA",posted:"2026-03-23T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Medical Receptionist",employer:"RadNet",wage:"$19.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4382217549/",posted:"2026-03-23T12:00:00.000Z",status:"open", source:"LinkedIn"},
     {title:"Retail Stocking Associate",employer:"Burlington",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4383759969/",posted:"2026-03-23T12:00:00.000Z",status:"open", source:"LinkedIn"},
-    {title:"Retail Shortage Control",employer:"Burlington",wage:"$18.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4383768746/",posted:"2026-03-23T12:00:00.000Z",status:"open", source:"LinkedIn"},
+    {title:"Retail Shortage Control",employer:"Burlington",wage:"$18.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4383768746/",posted:"2026-03-23T12:00:00.000Z",status:"open", source:"LinkedIn"}
   ],
-    "Temecula": [
+  "Temecula": [
     {title:"Host",employer:"LongHorn Steakhouse",wage:"$16.00/hr",type:"pt",url:"https://www.indeed.com/viewjob?jk=3d902c6e41cf917b",posted:"2026-04-05T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Store Associate",employer:"In-N-Out Burger",wage:"$22.00/hr",type:"pt",url:"https://www.indeed.com/viewjob?jk=0016b4cba5a08f53",posted:"2026-04-05T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Cleaning Technician",employer:"T&T Temecula Cleaning",wage:"$18.00/hr",type:"ft",url:"https://www.indeed.com/viewjob?jk=5b32698e59839a9d",posted:"2026-04-05T12:00:00.000Z",status:"open", source:"Indeed"},
@@ -60,6 +63,9 @@ const jobs = {
     {title:"Crew Member",employer:"Robeks",wage:"$20.00/hr",type:"pt",url:"https://www.indeed.com/viewjob?jk=df524a05c82755d0",posted:"2026-04-03T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Team Member",employer:"Jack in the Box",wage:"$20.00/hr",type:"ft",url:"https://www.indeed.com/viewjob?jk=566b4b6c01fe8312",posted:"2026-04-03T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Mobile Associate",employer:"T-Mobile",wage:"$19.50/hr",type:"ft",url:"https://to.indeed.com/aax4hppcnq87",posted:"2026-04-02T12:00:00.000Z",status:"open", source:"Indeed"},
+    {title:"Sales Associate",employer:"Verizon",wage:"$44,000–$56,000/yr",type:"ft",url:"https://to.indeed.com/aabddh9fp2z9",posted:"2026-03-31T00:00:00.000Z",status:"open", source:"Indeed"},
+    {title:"Assistant",employer:"Verizon",wage:"$900–$1,400/wk",type:"ft",url:"https://to.indeed.com/aaqgnp4v2t8j",posted:"2026-03-31T00:00:00.000Z",status:"open", source:"Indeed"},
+    {title:"Team Member",employer:"Verizon",wage:"$50,000–$60,000/yr",type:"ft",url:"https://to.indeed.com/aaz4dzh22vqk",posted:"2026-03-31T00:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Kitchen Helper",employer:"K Sushi Bar & Grill",wage:"$17.00/hr",type:"pt",url:"https://to.indeed.com/aamw77fbmnqy",posted:"2026-03-30T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Distribution Specialist",employer:"Abbott",wage:"$15.55/hr",type:"ft",url:"https://to.indeed.com/aaflkp2b8lm7",posted:"2026-03-30T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Machine Operator",employer:"Argosy Industries",wage:"$16.90/hr",type:"ft",url:"https://to.indeed.com/aaj74xwhfxhc",posted:"2026-03-30T12:00:00.000Z",status:"open", source:"Indeed"},
@@ -74,16 +80,23 @@ const jobs = {
     {title:"Sales Associate",employer:"GNC",wage:"$16.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4389313964",posted:"2026-03-25T19:00:00.000Z",status:"open", source:"LinkedIn"},
     {title:"Service Technician",employer:"Pep Boys",wage:"$16.90/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4387175694/",posted:"2026-03-25T14:00:00.000Z",status:"open", source:"LinkedIn"},
     {title:"HR Support Services Assistant",employer:"Southwest Healthcare",wage:"$24.99/hr",type:"ft",url:"https://www.indeed.com/jobs?q=HR+Support+Services+Assistant+Southwest+Healthcare&l=Temecula%2C+CA",posted:"2026-03-25T12:00:00.000Z",status:"open", source:"Indeed"},
+    {title:"Entry-Level Sales Crew",employer:"Undisclosed",wage:"$48,000–$56,000/yr",type:"ft",url:"https://to.indeed.com/aaxf746vlvky",posted:"2026-03-24T00:00:00.000Z",status:"open", source:"Indeed"},
+    {title:"Front Desk Customer Service Rep",employer:"Legacy Education",wage:"$16.90–$20.00/hr",type:"ft",url:"https://to.indeed.com/aa8rhzlqwzdx",posted:"2026-03-23T00:00:00.000Z",status:"open", source:"Indeed"}
   ],
-    "Wildomar": [
+  "Wildomar": [
     {title:"Crew Team Member",employer:"McDonald's",wage:"$16.90/hr",type:"ft",url:"https://www.indeed.com/viewjob?jk=66b31ec602428534",posted:"2026-04-05T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Team Member",employer:"Popeyes",wage:"$16.90/hr",type:"ft",url:"https://www.indeed.com/viewjob?jk=5d6cbbb42784d3d0",posted:"2026-04-05T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Crew Member",employer:"Taco Bell",wage:"$20.00/hr",type:"ft",url:"https://www.indeed.com/viewjob?jk=fc805783906245a5",posted:"2026-04-04T12:00:00.000Z",status:"open", source:"Indeed"},
+    {title:"Verizon Sales Associate",employer:"Fresno Associates",wage:"$44,000–$56,000/yr",type:"ft",url:"https://to.indeed.com/aambpyxrmnzq",posted:"2026-03-31T00:00:00.000Z",status:"open", source:"Indeed"},
+    {title:"AT&T Sales Associate",employer:"Westline Collective",wage:"$45,000–$55,000/yr",type:"ft",url:"https://to.indeed.com/aaxz42s422mc",posted:"2026-03-27T00:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Assistant General Manager",employer:"McDonald's",wage:"$24.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4320741676/",posted:"2026-03-26T07:00:00.000Z",status:"open", source:"LinkedIn"},
+    {title:"Entry-Level Sales Crew",employer:"Undisclosed",wage:"$48,000–$56,000/yr",type:"ft",url:"https://to.indeed.com/aabzvlll2xwq",posted:"2026-03-24T00:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Membership Sales Associate",employer:"Super Star Car Wash",wage:"$18.50/hr",type:"pt",url:"https://www.indeed.com/jobs?q=Membership+Sales+Associate+Super+Star+Car+Wash&l=Wildomar%2C+CA",posted:"2026-03-23T12:00:00.000Z",status:"open", source:"Indeed"}
   ],
   "Menifee": [
     {title:"Restaurant Team Member",employer:"Cafe Rio",wage:"$20.00/hr",type:"ft",url:"https://www.ziprecruiter.com/c/Cafe-Rio-Mexican-Grill/Job/Restaurant-Team-Member/-in-Menifee,CA?jid=b0f66bc5bfcc8254",posted:"2026-04-04T12:00:00.000Z",status:"open", source:"ZipRecruiter"},
+    {title:"Swim Instructor",employer:"Phoenix Swim Academy",wage:"From $20.00/hr",type:"pt",url:"https://to.indeed.com/aazzhkh7tnrl",posted:"2026-04-02T00:00:00.000Z",status:"open", source:"Indeed"},
+    {title:"AT&T Sales Associate",employer:"Westline Collective",wage:"$45,000–$55,000/yr",type:"ft",url:"https://to.indeed.com/aay74gvtjrtx",posted:"2026-03-27T00:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Maintenance Technician",employer:"Greystar",wage:"$23.00/hr",type:"ft",url:"https://jobs.greystar.com/job/-/-/35302/93121952240?source=APPLICANT_SOURCE-6-122",posted:"2026-03-26T08:00:00.000Z",status:"open", source:"LinkedIn"},
     {title:"Kitchen Team Member",employer:"Buffalo Wild Wings",wage:"$16.90/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4388095012",posted:"2026-03-26T07:00:00.000Z",status:"open", source:"LinkedIn"},
     {title:"Early Morning Stock Associate",employer:"Ross Stores, Inc.",wage:"$16.90/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4361817205",posted:"2026-03-26T06:00:00.000Z",status:"open", source:"LinkedIn"},
@@ -95,11 +108,15 @@ const jobs = {
     {title:"Seasonal Retail Sales Associate",employer:"Lowe's",wage:"$16.90/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Seasonal+Retail+Sales+Associate+Lowes&l=Menifee%2C+CA",posted:"2026-03-24T23:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Logistics Coordinator",employer:"Amazon",wage:"$22.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/search/?keywords=Logistics+Coordinator+Amazon",posted:"2026-03-24T12:00:00.000Z",status:"open", source:"LinkedIn"},
     {title:"Grocery Clerk",employer:"Sprouts Farmers Market",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4383229662/",posted:"2026-03-24T12:00:00.000Z",status:"open", source:"LinkedIn"},
+    {title:"Customer Service Rep",employer:"Pivotal Executive Group",wage:"$3,400–$5,200/mo",type:"ft",url:"https://to.indeed.com/aaykprjt447x",posted:"2026-03-24T00:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Seasonal Cashier",employer:"Lowe's",wage:"$16.90/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4383474534/",posted:"2026-03-23T12:00:00.000Z",status:"open", source:"LinkedIn"},
-    {title:"Sales Associate",employer:"Petco",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4383801335/",posted:"2026-03-23T12:00:00.000Z",status:"open", source:"LinkedIn"},
+    {title:"Sales Associate",employer:"Petco",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4383801335/",posted:"2026-03-23T12:00:00.000Z",status:"open", source:"LinkedIn"}
   ],
-    "Winchester": [
+  "Winchester": [
+    {title:"Swim Instructor",employer:"Phoenix Swim Academy",wage:"From $20.00/hr",type:"pt",url:"https://to.indeed.com/aalgsylgbzcd",posted:"2026-04-02T00:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Restaurant Team Member",employer:"Panera Bread",wage:"$20.00/hr",type:"ft",url:"https://to.indeed.com/aakknnbxtkqp",posted:"2026-04-01T12:00:00.000Z",status:"open", source:"Indeed"},
+    {title:"Entry-Level Verizon Assistant",employer:"Pivotal Executive Group",wage:"$900–$1,400/wk",type:"ft",url:"https://to.indeed.com/aagbwkmgqk6g",posted:"2026-03-31T00:00:00.000Z",status:"open", source:"Indeed"},
+    {title:"AT&T Sales Associate",employer:"Westline Collective",wage:"$45,000–$55,000/yr",type:"ft",url:"https://to.indeed.com/aajw9j8mkyrk",posted:"2026-03-27T00:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Janitor",employer:"Stater Bros. Markets",wage:"$17.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4389267895",posted:"2026-03-25T14:00:00.000Z",status:"open", source:"LinkedIn"},
     {title:"Meat Clerk",employer:"Stater Bros. Markets",wage:"$17.10/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4389286275",posted:"2026-03-25T14:00:00.000Z",status:"open", source:"LinkedIn"},
     {title:"Service Team",employer:"Panda",wage:"$21.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4330589007/",posted:"2026-03-25T12:00:00.000Z",status:"open", source:"LinkedIn"},
@@ -112,10 +129,13 @@ const jobs = {
     {title:"Restaurant Team Member",employer:"Panera Bread",wage:"$20.00/hr",type:"ft",url:"https://www.indeed.com/viewjob?jk=003a7e218a5c0fc4",posted:"2026-04-05T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Sales Associate",employer:"Dollar General",wage:"$16.90/hr",type:"pt",url:"https://www.indeed.com/viewjob?jk=f5326b05e8a07adc",posted:"2026-04-05T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Retail Sales Associate",employer:"Big 5 Sporting Goods",wage:"$16.90/hr",type:"pt",url:"https://www.indeed.com/viewjob?jk=c91493f765bd3e35",posted:"2026-04-05T12:00:00.000Z",status:"open", source:"Indeed"},
+    {title:"Inside Sales – Fence Leasing",employer:"American Fence",wage:"$25.00–$30.00/hr",type:"ft",url:"https://to.indeed.com/aaz998kjsj68",posted:"2026-04-05T00:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Team Member",employer:"Chick-fil-A",wage:"$20.00/hr",type:"ft",url:"https://www.ziprecruiter.com/c/Chick-fil-A-Dexter-Ave/Job/Team-Member/-in-Lake-Elsinore,CA?jid=c4b79351763196dc",posted:"2026-04-04T12:00:00.000Z",status:"open", source:"ZipRecruiter"},
     {title:"Team Member",employer:"KFC",wage:"$20.00/hr",type:"ft",url:"https://www.indeed.com/viewjob?jk=552cd8c6ba1563da",posted:"2026-04-03T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Host",employer:"Chili's Grill & Bar",wage:"$16.90/hr",type:"pt",url:"https://to.indeed.com/aagrnq8z9sln",posted:"2026-04-02T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Mobile Associate",employer:"T-Mobile",wage:"$19.50/hr",type:"ft",url:"https://to.indeed.com/aafx78kyrdzr",posted:"2026-04-02T12:00:00.000Z",status:"open", source:"Indeed"},
+    {title:"Verizon Representative",employer:"Pivotal Executive Group",wage:"$900–$1,400/wk",type:"ft",url:"https://to.indeed.com/aamfjshzw9hs",posted:"2026-03-31T00:00:00.000Z",status:"open", source:"Indeed"},
+    {title:"Customer Service Rep",employer:"Westline Collective",wage:"$45,000–$55,000/yr",type:"ft",url:"https://to.indeed.com/aazfwt4wjzyj",posted:"2026-03-27T00:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Customer Service Representative",employer:"Circle K",wage:"$17.13/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4377622537",posted:"2026-03-26T10:00:00.000Z",status:"open", source:"LinkedIn"},
     {title:"Assistant General Manager",employer:"McDonald's",wage:"$24.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4320691772/",posted:"2026-03-26T07:00:00.000Z",status:"open", source:"LinkedIn"},
     {title:"Receptionist",employer:"H&R Block",wage:"$16.50/hr",type:"ft",url:"https://www.indeed.com/jobs?q=Receptionist+HR+Block&l=Lake+Elsinore%2C+CA",posted:"2026-03-26T02:00:00.000Z",status:"open", source:"Indeed"},
@@ -130,19 +150,22 @@ const jobs = {
     {title:"Retail Sales Associate",employer:"Skechers",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/3977885772/",posted:"2026-03-23T12:00:00.000Z",status:"open", source:"LinkedIn"},
     {title:"Merchandising Sales Associate",employer:"Tractor Supply Company",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4213262690/",posted:"2026-03-23T12:00:00.000Z",status:"open", source:"LinkedIn"},
     {title:"Meat / Produce Team Associate",employer:"Walmart",wage:"$18.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4373907843/",posted:"2026-03-23T12:00:00.000Z",status:"open", source:"LinkedIn"},
-    {title:"Youth Civic Engagement & Policy Leadership Intern",employer:"The Happier Life Project",wage:"$18.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4383443423/",posted:"2026-03-23T12:00:00.000Z",status:"open", source:"LinkedIn"},
+    {title:"Youth Civic Engagement & Policy Leadership Intern",employer:"The Happier Life Project",wage:"$18.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4383443423/",posted:"2026-03-23T12:00:00.000Z",status:"open", source:"LinkedIn"}
   ],
-    "Perris": [
+  "Perris": [
     {title:"Warehouse Worker",employer:"IDC Logistics",wage:"$18.00/hr",type:"ft",url:"https://www.indeed.com/viewjob?jk=1d6dad24534dd351",posted:"2026-04-05T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Store Associate",employer:"In-N-Out Burger",wage:"$22.00/hr",type:"pt",url:"https://www.indeed.com/viewjob?jk=617d702973f7cdcd",posted:"2026-04-05T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Warehouse Associate",employer:"Home Depot",wage:"$21.25/hr",type:"ft",url:"https://www.indeed.com/viewjob?jk=a06cc0dddf5e840e",posted:"2026-04-05T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Cashier",employer:"Corky's Kitchen & Bakery",wage:"$16.90/hr",type:"pt",url:"https://www.indeed.com/viewjob?jk=1c71471af2b98d5e",posted:"2026-04-05T12:00:00.000Z",status:"open", source:"Indeed"},
+    {title:"Inside Sales – Fence Leasing",employer:"American Fence",wage:"$25.00–$30.00/hr",type:"ft",url:"https://to.indeed.com/aajhqbs7fvwx",posted:"2026-04-05T00:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Crew Member",employer:"Popeyes",wage:"$20.00/hr",type:"ft",url:"https://www.indeed.com/viewjob?jk=536389f991a2da61",posted:"2026-04-04T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Retail Cashier Associate",employer:"Big 5 Sporting Goods",wage:"$16.90/hr",type:"pt",url:"https://www.indeed.com/viewjob?jk=4d15416bde402513",posted:"2026-04-03T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Warehouse Associate",employer:"Salvation Army",wage:"$18.00/hr",type:"ft",url:"https://www.indeed.com/viewjob?jk=29a6c4bafcb7b220",posted:"2026-04-03T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Shipping And Receiving Associate",employer:"White Cap",wage:"$20.00/hr",type:"ft",url:"https://to.indeed.com/aa8vckvwx8nz",posted:"2026-04-02T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Sales Associate",employer:"GNC",wage:"$16.90/hr",type:"pt",url:"https://to.indeed.com/aaphmpw8zncl",posted:"2026-04-02T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Warehouse Associate",employer:"Grainger",wage:"$22.00/hr",type:"ft",url:"https://to.indeed.com/aatfztglqmcg",posted:"2026-03-31T12:00:00.000Z",status:"open", source:"Indeed"},
+    {title:"Assistant Teacher",employer:"Zen Educate",wage:"$22.00–$25.00/hr",type:"pt",url:"https://to.indeed.com/aagkk7f7b6vp",posted:"2026-03-31T00:00:00.000Z",status:"open", source:"Indeed"},
+    {title:"Verizon Sales Assistant",employer:"Undisclosed",wage:"$1,000–$1,600/wk",type:"ft",url:"https://to.indeed.com/aaklwthlnhqs",posted:"2026-03-31T00:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Sandwich Artist",employer:"Subway",wage:"$20.00/hr",type:"pt",url:"https://to.indeed.com/aay2lh6w7p66",posted:"2026-03-30T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Warehouse Assembler",employer:"Capstone Logistics",wage:"$20.50/hr",type:"ft",url:"https://to.indeed.com/aak2v7ynrtzh",posted:"2026-03-30T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Shift Warehouse",employer:"Lensa",wage:"$19.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4385171774/",posted:"2026-03-25T20:00:00.000Z",status:"open", source:"LinkedIn"},
@@ -161,6 +184,8 @@ const jobs = {
     {title:"Server",employer:"Buffalo Wild Wings",wage:"$16.90/hr",type:"pt",url:"https://to.indeed.com/aavmvzcbzmt7",posted:"2026-04-02T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Kitchen Team Member",employer:"Buffalo Wild Wings",wage:"$16.90/hr",type:"pt",url:"https://to.indeed.com/aax62rm2qk4r",posted:"2026-04-02T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Crew Member",employer:"Little Caesars Pizza",wage:"$20.00/hr",type:"pt",url:"https://to.indeed.com/aa8v26q9zyth",posted:"2026-04-02T12:00:00.000Z",status:"open", source:"Indeed"},
+    {title:"Behavior Technician",employer:"B.E.S.T. Services",wage:"$22.00–$25.00/hr",type:"pt",url:"https://to.indeed.com/aas8jrlqzymg",posted:"2026-04-02T00:00:00.000Z",status:"open", source:"Indeed"},
+    {title:"Verizon Enrollment Associate",employer:"SB Telecommunications",wage:"$48,000–$60,000/yr",type:"ft",url:"https://to.indeed.com/aanchrqvc8k4",posted:"2026-04-01T00:00:00.000Z",status:"open", source:"Indeed"},
     {title:"CDL Driver",employer:"Brookdale",wage:"$18.57/hr",type:"pt",url:"https://ibmwjb.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/25019674?utm_medium=jobboard&utm_source=linkedin",posted:"2026-03-26T11:30:00.000Z",status:"open", source:"LinkedIn"},
     {title:"Task Associate",employer:"Ulta Beauty",wage:"$16.90/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4379999269",posted:"2026-03-26T07:00:00.000Z",status:"open", source:"LinkedIn"},
     {title:"Shift Manager",employer:"McDonald's",wage:"$22.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4320791651/",posted:"2026-03-26T04:00:00.000Z",status:"open", source:"LinkedIn"},
@@ -171,6 +196,8 @@ const jobs = {
     {title:"Kitchen Team",employer:"Panda",wage:"$21.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4366805176/",posted:"2026-03-25T12:00:00.000Z",status:"open", source:"LinkedIn"},
     {title:"Cast Member",employer:"Chuck E. Cheese",wage:"$16.90/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4389209367",posted:"2026-03-25T12:00:00.000Z",status:"open", source:"LinkedIn"},
     {title:"Fashion Team Associate",employer:"Walmart",wage:"$17.00/hr",type:"pt",url:"https://www.linkedin.com/jobs/view/4389027410",posted:"2026-03-25T12:00:00.000Z",status:"open", source:"LinkedIn"},
+    {title:"Entry-Level Field Marketer",employer:"Undisclosed",wage:"$18.00/hr",type:"ft",url:"https://to.indeed.com/aamm24x426cm",posted:"2026-03-24T00:00:00.000Z",status:"open", source:"Indeed"},
+    {title:"Customer Service Rep",employer:"Pivotal Executive Group",wage:"$3,400–$5,200/mo",type:"ft",url:"https://to.indeed.com/aa4r2fs88d6v",posted:"2026-03-24T00:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Customer Service Associate",employer:"Dollar Tree",wage:"$17.00/hr",type:"ft",url:"https://www.linkedin.com/jobs/view/4282880734",posted:"2026-03-24T12:00:00.000Z",status:"open", source:"LinkedIn"}
   ],
   "Coachella Valley": [
@@ -184,7 +211,11 @@ const jobs = {
     {title:"Cashier",employer:"Love's Travel Stops",wage:"$20.00/hr",type:"ft",url:"https://to.indeed.com/aarhvs6k6dpw",posted:"2026-04-02T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Barista",employer:"Starbucks",wage:"$20.25/hr",type:"ft",url:"https://to.indeed.com/aacctlqgwvps",posted:"2026-04-02T12:00:00.000Z",status:"open", source:"Indeed"},
     {title:"Restaurant Host",employer:"Applebee's",wage:"$16.90/hr",type:"pt",url:"https://to.indeed.com/aa9fcgvknwnk",posted:"2026-04-02T12:00:00.000Z",status:"open", source:"Indeed"},
-    {title:"Cashier",employer:"Lowe's",wage:"$16.90/hr",type:"pt",url:"https://to.indeed.com/aazd7ch27mfv",posted:"2026-04-02T12:00:00.000Z",status:"open", source:"Indeed"}
+    {title:"Cashier",employer:"Lowe's",wage:"$16.90/hr",type:"pt",url:"https://to.indeed.com/aazd7ch27mfv",posted:"2026-04-02T12:00:00.000Z",status:"open", source:"Indeed"},
+    {title:"Early Childhood Educator",employer:"Zen Educate",wage:"$22.00–$25.00/hr",type:"pt",url:"https://to.indeed.com/aag2rfxknwjp",posted:"2026-03-27T00:00:00.000Z",status:"open", source:"Indeed"},
+    {title:"Marketing & Social Media Coordinator",employer:"Guide Dogs of the Desert",wage:"$26.00–$28.00/hr",type:"ft",url:"https://to.indeed.com/aah9qb8bp2tj",posted:"2026-03-27T00:00:00.000Z",status:"open", source:"Indeed"},
+    {title:"Sales Concierge",employer:"Travel + Leisure Co.",wage:"$60,000–$90,000/yr",type:"ft",url:"https://to.indeed.com/aa4zj47yfwnl",posted:"2026-03-24T00:00:00.000Z",status:"open", source:"Indeed"},
+    {title:"Account Management Trainee",employer:"Undisclosed",wage:"$50,000–$63,000/yr",type:"ft",url:"https://to.indeed.com/aa6hstnrl6ky",posted:"2026-03-23T00:00:00.000Z",status:"open", source:"Indeed"}
   ]
 };
 
